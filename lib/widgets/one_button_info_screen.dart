@@ -28,7 +28,7 @@ class OneButtonInfoScreen extends StatelessWidget {
                     child: Text(
                       text,
                       textAlign: TextAlign.center,
-                      style: TextStyle(color: K_COLOR_FONT_DARK, fontSize: K_FONT_SIZE_LARGE),
+                      style: TextStyle(color: K_COLOR_FONT_PRIMARY, fontSize: K_FONT_SIZE_LARGE),
                     ),
                   ),
                 ],

@@ -71,7 +71,7 @@ class _ExplainScreenState extends State<CountdownScreen> with SingleTickerProvid
                     child: Text(
                       "$remainingSeconds",
                       textAlign: TextAlign.center,
-                      style: TextStyle(color: K_COLOR_FONT_DARK, fontSize: K_FONT_SIZE_XX_LARGE),
+                      style: TextStyle(color: K_COLOR_FONT_PRIMARY, fontSize: K_FONT_SIZE_XX_LARGE),
                     ),
                   ),
                 ],

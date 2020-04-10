@@ -4,10 +4,12 @@ import 'package:act_draw_explain/models/lastGameResult.dart';
 import 'package:act_draw_explain/models/results.dart';
 import 'package:act_draw_explain/models/topic.dart';
 import 'package:act_draw_explain/screens/game/end_game.dart';
+import 'package:act_draw_explain/utilities/settings.dart';
 import 'package:act_draw_explain/widgets/countdown_text.dart';
 import 'package:act_draw_explain/widgets/progress_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../constants.dart';
 
@@ -27,6 +29,8 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
   int currentQuestionID;
   int score = 0;
 
+  Duration gamePlayDuration;
+
   ColorTween backgroundAnimationColorTween = ColorTween(end: K_COLOR_BACKGROUND);
   AnimationController backgroundAnimationController;
   Animation backgroundColorAnimation;
@@ -39,6 +43,14 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
     topic = topics[widget.topicID];
     questionIDs = topic.shuffledQuestions;
     currentQuestionID = questionIDs.removeLast();
+
+    SharedPreferences.getInstance().then((prefs) {
+      setState(() {
+        gamePlayDuration = Duration(
+          seconds: getCurrentGameDuration(prefs),
+        );
+      });
+    });
 
     backgroundAnimationController = AnimationController(
       duration: Duration(seconds: 2),
@@ -99,14 +111,17 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
           color: backgroundColor,
           child: Column(
             children: <Widget>[
-              CountdownText(duration: K_DURATION_PLAY_GAME, onFinished: endGame,),
+              CountdownText(
+                duration: gamePlayDuration,
+                onFinished: endGame,
+              ),
               Expanded(
                 child: Container(
                   alignment: Alignment.center,
                   child: Text(
                     questions[currentQuestionID].text,
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: K_COLOR_FONT_DARK, fontSize: K_FONT_SIZE_X_LARGE),
+                    style: TextStyle(color: K_COLOR_FONT_PRIMARY, fontSize: K_FONT_SIZE_X_LARGE),
                     softWrap: true,
                   ),
                 ),

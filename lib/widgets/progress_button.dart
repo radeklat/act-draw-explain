@@ -29,7 +29,7 @@ class ProgressButton extends StatelessWidget {
             ),
             Text(
               title,
-              style: TextStyle(fontSize: K_FONT_SIZE_NORMAL, color: K_COLOR_FONT_DARK),
+              style: TextStyle(fontSize: K_FONT_SIZE_NORMAL, color: K_COLOR_FONT_PRIMARY),
             ),
           ],
         ),

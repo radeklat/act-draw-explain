@@ -2,6 +2,7 @@ import 'package:act_draw_explain/screens/game/end_game.dart';
 import 'package:act_draw_explain/screens/game/play/countdown.dart';
 import 'package:act_draw_explain/screens/game/play/explain.dart';
 import 'package:act_draw_explain/screens/game/start_game.dart';
+import 'package:act_draw_explain/screens/settings.dart';
 import 'package:act_draw_explain/screens/topic_selection.dart';
 import 'package:flutter/material.dart';
 
@@ -33,6 +34,8 @@ class MyApp extends StatelessWidget {
                 return EndGameScreen(lastGameResult: arguments);
               case CountdownScreen.ID:
                 return CountdownScreen(topicID: arguments);
+              case SettingsScreen.ID:
+                return SettingsScreen();
             }
             return null;
           },

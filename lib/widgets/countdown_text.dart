@@ -17,30 +17,35 @@ class _CountdownTextState extends State<CountdownText> with SingleTickerProvider
   int totalSeconds;
   int remainingSeconds;
 
+  void configureAnimation() {
+    if (totalSeconds == null && widget.duration != null) {
+      totalSeconds = widget.duration.inSeconds;
+      remainingSeconds = totalSeconds;
+
+      animationController = AnimationController(
+        duration: widget.duration,
+        vsync: this,
+        upperBound: totalSeconds.toDouble(),
+      );
+      animationController
+        ..addListener(() {
+          setState(() {
+            remainingSeconds = animationController.value.toInt() + 1;
+          });
+        })
+        ..addStatusListener((status) {
+          if (status == AnimationStatus.dismissed) {
+            widget.onFinished();
+          }
+        })
+        ..reverse(from: totalSeconds.toDouble());
+    }
+  }
+
   @override
   void initState() {
     super.initState();
-    totalSeconds = widget.duration.inSeconds;
-    remainingSeconds = totalSeconds;
-
-    animationController = AnimationController(
-      duration: widget.duration,
-      vsync: this,
-      upperBound: totalSeconds.toDouble(),
-    );
-    animationController.addListener(() {
-      setState(() {
-        remainingSeconds = animationController.value.toInt() + 1;
-      });
-    });
-
-    animationController
-      ..reverse(from: totalSeconds.toDouble())
-      ..addStatusListener((status) {
-        if (status == AnimationStatus.dismissed) {
-          widget.onFinished();
-        }
-      });
+    configureAnimation();
   }
 
   @override
@@ -51,6 +56,7 @@ class _CountdownTextState extends State<CountdownText> with SingleTickerProvider
 
   @override
   Widget build(BuildContext context) {
+    configureAnimation();
     return Text(
       remainingSeconds.toString(),
       style: TextStyle(fontSize: K_FONT_SIZE_NORMAL),

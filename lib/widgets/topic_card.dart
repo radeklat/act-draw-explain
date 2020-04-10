@@ -5,7 +5,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
-import '../utilities.dart';
+import '../utilities/color.dart';
 
 class TopicCard extends StatefulWidget {
   const TopicCard({
