@@ -10,11 +10,7 @@ UnmodifiableMapView<int, Topic> topics = UnmodifiableMapView(
         id: 1,
         name: "Pohádky",
         color: Colors.lightBlueAccent,
-        icon: Icon(
-          Icons.ac_unit,
-          size: 50,
-          color: Colors.white60,
-        ),
+        icon: Icon(Icons.ac_unit),
         questionIDs: UnmodifiableListView([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]),
       ),
     ],
