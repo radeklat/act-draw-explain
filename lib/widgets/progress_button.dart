@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../constants.dart';
+
 class ProgressButton extends StatelessWidget {
   final String title;
   final IconData iconData;
@@ -27,7 +29,7 @@ class ProgressButton extends StatelessWidget {
             ),
             Text(
               title,
-              style: TextStyle(fontSize: 21),
+              style: TextStyle(fontSize: K_FONT_SIZE_NORMAL, color: K_COLOR_FONT_DARK),
             ),
           ],
         ),

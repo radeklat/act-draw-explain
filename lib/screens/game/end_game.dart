@@ -1,6 +1,4 @@
-import 'package:act_draw_explain/data/topics.dart';
 import 'package:act_draw_explain/models/lastGameResult.dart';
-import 'package:act_draw_explain/models/results.dart';
 import 'package:act_draw_explain/screens/topic_selection.dart';
 import 'package:act_draw_explain/widgets/one_button_info_screen.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +15,7 @@ class EndGameScreen extends StatelessWidget {
       text: "Konec hry\nUhodnuto ${lastGameResult.score}/${lastGameResult.questionsCount}",
       buttonText: "Zpět na výběr témat",
       onPressed: () {
-        Navigator.pushNamed(context, TopicSelectionScreen.ID);
+        Navigator.popUntil(context, ModalRoute.withName(TopicSelectionScreen.ID));
       },
     );
   }

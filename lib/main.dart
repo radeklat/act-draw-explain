@@ -1,6 +1,7 @@
-import 'package:act_draw_explain/screens/end_game.dart';
-import 'package:act_draw_explain/screens/game/explain.dart';
-import 'package:act_draw_explain/screens/start_game.dart';
+import 'package:act_draw_explain/screens/game/end_game.dart';
+import 'package:act_draw_explain/screens/game/play/countdown.dart';
+import 'package:act_draw_explain/screens/game/play/explain.dart';
+import 'package:act_draw_explain/screens/game/start_game.dart';
 import 'package:act_draw_explain/screens/topic_selection.dart';
 import 'package:flutter/material.dart';
 
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: (settings) {
         final arguments = settings.arguments;
         return MaterialPageRoute(
+          settings: RouteSettings(name: settings.name),
           builder: (context) {
             switch (settings.name) {
               case ExplainScreen.ID:
@@ -29,6 +31,8 @@ class MyApp extends StatelessWidget {
                 return TopicSelectionScreen();
               case EndGameScreen.ID:
                 return EndGameScreen(lastGameResult: arguments);
+              case CountdownScreen.ID:
+                return CountdownScreen(topicID: arguments);
             }
             return null;
           },

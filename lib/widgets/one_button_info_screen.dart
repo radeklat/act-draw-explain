@@ -1,3 +1,4 @@
+import 'package:act_draw_explain/constants.dart';
 import 'package:flutter/material.dart';
 
 class OneButtonInfoScreen extends StatelessWidget {
@@ -27,7 +28,7 @@ class OneButtonInfoScreen extends StatelessWidget {
                     child: Text(
                       text,
                       textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.black87, fontSize: 48),
+                      style: TextStyle(color: K_COLOR_FONT_DARK, fontSize: K_FONT_SIZE_LARGE),
                     ),
                   ),
                 ],
@@ -36,12 +37,12 @@ class OneButtonInfoScreen extends StatelessWidget {
                 height: 30,
               ),
               MaterialButton(
-                color: Colors.lightGreenAccent,
+                color: K_COLOR_BUTTON_PRIMARY,
                 onPressed: onPressed,
                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 30),
                 child: Text(
                   buttonText,
-                  style: TextStyle(fontSize: 30),
+                  style: TextStyle(fontSize: K_FONT_SIZE_NORMAL),
                 ),
               ),
             ],

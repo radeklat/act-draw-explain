@@ -1,4 +1,4 @@
-import 'package:act_draw_explain/screens/game/explain.dart';
+import 'package:act_draw_explain/screens/game/play/countdown.dart';
 import 'package:act_draw_explain/widgets/one_button_info_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +14,7 @@ class StartGameScreen extends StatelessWidget {
       text: "Jste připraveni ke hře?",
       buttonText: "Start hry",
       onPressed: () {
-        Navigator.pushNamed(context, ExplainScreen.ID, arguments: topicID);
+        Navigator.pushNamed(context, CountdownScreen.ID, arguments: topicID);
       },
     );
   }

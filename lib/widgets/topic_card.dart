@@ -1,9 +1,10 @@
 import 'package:act_draw_explain/models/results.dart';
 import 'package:act_draw_explain/models/topic.dart';
-import 'package:act_draw_explain/screens/start_game.dart';
+import 'package:act_draw_explain/screens/game/start_game.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
+import '../constants.dart';
 import '../utilities.dart';
 
 class TopicCard extends StatefulWidget {
@@ -92,10 +93,10 @@ class TopicNameIcon extends StatelessWidget {
             constraints: BoxConstraints(maxHeight: 50),
             child: AutoSizeText(
               topic.name,
-              style: TextStyle(fontSize: 21, fontWeight: FontWeight.w500, color: foregroundColor),
+              style: TextStyle(fontSize: K_FONT_SIZE_NORMAL, fontWeight: FontWeight.w500, color: foregroundColor),
               textAlign: TextAlign.center,
               maxLines: 3,
-              minFontSize: 12,
+              minFontSize: K_FONT_SIZE_SMALL,
               overflow: TextOverflow.fade,
             ),
           ),
@@ -124,7 +125,7 @@ class TopicCounter extends StatelessWidget {
       padding: EdgeInsets.all(5),
       child: Text(
         value,
-        style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: foregroundColor),
+        style: TextStyle(fontSize: K_FONT_SIZE_SMALL, fontWeight: FontWeight.w400, color: foregroundColor),
         textAlign: TextAlign.center,
       ),
     );

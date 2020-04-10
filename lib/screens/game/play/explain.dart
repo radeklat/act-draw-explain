@@ -3,17 +3,16 @@ import 'package:act_draw_explain/data/topics.dart';
 import 'package:act_draw_explain/models/lastGameResult.dart';
 import 'package:act_draw_explain/models/results.dart';
 import 'package:act_draw_explain/models/topic.dart';
-import 'package:act_draw_explain/screens/end_game.dart';
+import 'package:act_draw_explain/screens/game/end_game.dart';
 import 'package:act_draw_explain/widgets/progress_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../../constants.dart';
+
 class ExplainScreen extends StatefulWidget {
   static const String ID = "explain_screen";
   final int topicID;
-
-  final Color passColor = Colors.lightGreen;
-  final Color failColor = Colors.red;
 
   const ExplainScreen({Key key, @required this.topicID}) : super(key: key);
 
@@ -27,10 +26,10 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
   int currentQuestionID;
   int score = 0;
 
-  ColorTween backgroundAnimationColorTween = ColorTween(end: Colors.white);
+  ColorTween backgroundAnimationColorTween = ColorTween(end: K_COLOR_BACKGROUND);
   AnimationController backgroundAnimationController;
   Animation backgroundColorAnimation;
-  Color backgroundColor = Colors.white;
+  Color backgroundColor = K_COLOR_BACKGROUND;
 
   @override
   void initState() {
@@ -79,7 +78,7 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
       setState(() {
         score = newScore;
         currentQuestionID = newQuestionID;
-        backgroundAnimationColorTween.begin = (passed) ? Colors.lightGreen : Colors.redAccent;
+        backgroundAnimationColorTween.begin = (passed) ? K_COLOR_PASS : K_COLOR_FAIL;
         backgroundAnimationController.forward(from: 0);
       });
     } on RangeError {
@@ -101,7 +100,7 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
                   child: Text(
                     questions[currentQuestionID].text,
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.black87, fontSize: 92),
+                    style: TextStyle(color: K_COLOR_FONT_DARK, fontSize: K_FONT_SIZE_X_LARGE),
                     softWrap: true,
                   ),
                 ),
@@ -111,7 +110,7 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
                   ProgressButton(
                     title: "Uhodnuto",
                     iconData: Icons.thumb_up,
-                    color: widget.passColor,
+                    color: K_COLOR_PASS,
                     onPressed: () {
                       nextQuestion(passed: true);
                     },
@@ -119,7 +118,7 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
                   ProgressButton(
                     title: "Neuhodnuto",
                     iconData: Icons.thumb_down,
-                    color: widget.failColor,
+                    color: K_COLOR_FAIL,
                     onPressed: () {
                       nextQuestion(passed: false);
                     },
