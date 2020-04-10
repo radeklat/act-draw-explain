@@ -14,7 +14,7 @@ class StartGameScreen extends StatelessWidget {
       text: "Jste připraveni ke hře?",
       buttonText: "Start hry",
       onPressed: () {
-        Navigator.pushNamed(context, CountdownScreen.ID, arguments: topicID);
+        Navigator.popAndPushNamed(context, CountdownScreen.ID, arguments: topicID);
       },
     );
   }

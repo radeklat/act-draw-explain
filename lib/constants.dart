@@ -13,3 +13,6 @@ const double K_FONT_SIZE_LARGE = 48;
 const double K_FONT_SIZE_NORMAL = 24;
 const double K_FONT_SIZE_SMALL = 12;
 const double K_FONT_SIZE_X_SMALL = 6;
+
+const Duration K_DURATION_START_GAME = Duration(seconds: 5);
+const Duration K_DURATION_PLAY_GAME = Duration(seconds: 60);

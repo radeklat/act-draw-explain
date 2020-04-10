@@ -4,6 +4,7 @@ import 'package:act_draw_explain/models/lastGameResult.dart';
 import 'package:act_draw_explain/models/results.dart';
 import 'package:act_draw_explain/models/topic.dart';
 import 'package:act_draw_explain/screens/game/end_game.dart';
+import 'package:act_draw_explain/widgets/countdown_text.dart';
 import 'package:act_draw_explain/widgets/progress_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -57,7 +58,11 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
     super.dispose();
   }
 
-  void endGame(int newScore) {
+  void endGame({int newScore}) {
+    if (newScore == null) {
+      newScore = score;
+    }
+
     Results.recordBestScore(topicID: topic.id, newScore: newScore);
     Navigator.pushNamed(
       context,
@@ -82,7 +87,7 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
         backgroundAnimationController.forward(from: 0);
       });
     } on RangeError {
-      endGame(newScore);
+      endGame(newScore: newScore);
     }
   }
 
@@ -94,6 +99,7 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
           color: backgroundColor,
           child: Column(
             children: <Widget>[
+              CountdownText(duration: K_DURATION_PLAY_GAME, onFinished: endGame,),
               Expanded(
                 child: Container(
                   alignment: Alignment.center,
@@ -108,7 +114,7 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
               Row(
                 children: <Widget>[
                   ProgressButton(
-                    title: "Uhodnuto",
+                    title: "Správně",
                     iconData: Icons.thumb_up,
                     color: K_COLOR_PASS,
                     onPressed: () {
@@ -116,7 +122,7 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
                     },
                   ),
                   ProgressButton(
-                    title: "Neuhodnuto",
+                    title: "Špatně",
                     iconData: Icons.thumb_down,
                     color: K_COLOR_FAIL,
                     onPressed: () {

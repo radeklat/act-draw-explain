@@ -11,8 +11,6 @@ import 'package:flutter/material.dart';
 import '../../../constants.dart';
 import 'explain.dart';
 
-const int DELAY = 5;
-
 class CountdownScreen extends StatefulWidget {
   static const String ID = "countdown_screen";
 
@@ -26,24 +24,25 @@ class CountdownScreen extends StatefulWidget {
 
 class _ExplainScreenState extends State<CountdownScreen> with SingleTickerProviderStateMixin {
   AnimationController animationController;
-  int remainingSeconds = DELAY;
+  int remainingSeconds = K_DURATION_START_GAME.inSeconds;
 
   @override
   void initState() {
     super.initState();
 
     animationController = AnimationController(
-      duration: Duration(seconds: DELAY),
+      duration: K_DURATION_START_GAME,
       vsync: this,
+      upperBound: K_DURATION_START_GAME.inSeconds.toDouble(),
     );
     animationController.addListener(() {
       setState(() {
-        remainingSeconds = (animationController.value * DELAY).floor() + 1;
+        remainingSeconds = animationController.value.toInt() + 1;
       });
     });
 
     animationController
-      ..reverse(from: 1.0)
+      ..reverse(from: K_DURATION_START_GAME.inSeconds.toDouble())
       ..addStatusListener((status) {
         if (status == AnimationStatus.dismissed) {
           Navigator.popAndPushNamed(context, ExplainScreen.ID, arguments: widget.topicID);
