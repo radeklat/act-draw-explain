@@ -12,17 +12,25 @@ class ExplainScreen extends StatefulWidget {
   static const String ID = "explain_screen";
   final int topicID;
 
+  final Color passColor = Colors.lightGreen;
+  final Color failColor = Colors.red;
+
   const ExplainScreen({Key key, @required this.topicID}) : super(key: key);
 
   @override
   _ExplainScreenState createState() => _ExplainScreenState();
 }
 
-class _ExplainScreenState extends State<ExplainScreen> {
+class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProviderStateMixin {
   List<int> questionIDs;
   Topic topic;
   int currentQuestionID;
   int score = 0;
+
+  ColorTween backgroundAnimationColorTween = ColorTween(end: Colors.white);
+  AnimationController backgroundAnimationController;
+  Animation backgroundColorAnimation;
+  Color backgroundColor = Colors.white;
 
   @override
   void initState() {
@@ -31,6 +39,23 @@ class _ExplainScreenState extends State<ExplainScreen> {
     topic = topics[widget.topicID];
     questionIDs = topic.shuffledQuestions;
     currentQuestionID = questionIDs.removeLast();
+
+    backgroundAnimationController = AnimationController(
+      duration: Duration(seconds: 2),
+      vsync: this,
+    )..addListener(() {
+        setState(() {
+          backgroundColor = backgroundColorAnimation.value;
+        });
+      });
+
+    backgroundColorAnimation = backgroundAnimationColorTween.animate(backgroundAnimationController);
+  }
+
+  @override
+  void dispose() {
+    backgroundAnimationController.dispose();
+    super.dispose();
   }
 
   void endGame(int newScore) {
@@ -46,7 +71,7 @@ class _ExplainScreenState extends State<ExplainScreen> {
   }
 
   void nextQuestion({@required bool passed}) {
-    int newScore = (passed) ? score+1 : score;
+    int newScore = (passed) ? score + 1 : score;
 
     try {
       int newQuestionID = questionIDs.removeLast();
@@ -54,6 +79,8 @@ class _ExplainScreenState extends State<ExplainScreen> {
       setState(() {
         score = newScore;
         currentQuestionID = newQuestionID;
+        backgroundAnimationColorTween.begin = (passed) ? Colors.lightGreen : Colors.redAccent;
+        backgroundAnimationController.forward(from: 0);
       });
     } on RangeError {
       endGame(newScore);
@@ -65,6 +92,7 @@ class _ExplainScreenState extends State<ExplainScreen> {
     return Scaffold(
       body: SafeArea(
         child: Container(
+          color: backgroundColor,
           child: Column(
             children: <Widget>[
               Expanded(
@@ -83,7 +111,7 @@ class _ExplainScreenState extends State<ExplainScreen> {
                   ProgressButton(
                     title: "Uhodnuto",
                     iconData: Icons.thumb_up,
-                    color: Colors.lightGreen,
+                    color: widget.passColor,
                     onPressed: () {
                       nextQuestion(passed: true);
                     },
@@ -91,7 +119,7 @@ class _ExplainScreenState extends State<ExplainScreen> {
                   ProgressButton(
                     title: "Neuhodnuto",
                     iconData: Icons.thumb_down,
-                    color: Colors.redAccent,
+                    color: widget.failColor,
                     onPressed: () {
                       nextQuestion(passed: false);
                     },
@@ -105,4 +133,3 @@ class _ExplainScreenState extends State<ExplainScreen> {
     );
   }
 }
-
