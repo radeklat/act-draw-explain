@@ -4,6 +4,7 @@ import 'package:act_draw_explain/models/lastGameResult.dart';
 import 'package:act_draw_explain/models/results.dart';
 import 'package:act_draw_explain/models/topic.dart';
 import 'package:act_draw_explain/screens/end_game.dart';
+import 'package:act_draw_explain/widgets/progress_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -32,6 +33,18 @@ class _ExplainScreenState extends State<ExplainScreen> {
     currentQuestionID = questionIDs.removeLast();
   }
 
+  void endGame(int newScore) {
+    Results.recordBestScore(topicID: topic.id, newScore: newScore);
+    Navigator.pushNamed(
+      context,
+      EndGameScreen.ID,
+      arguments: LastGameResult(
+        questionsCount: topic.questionIDs.length,
+        score: newScore,
+      ),
+    );
+  }
+
   void nextQuestion({@required bool passed}) {
     int newScore = (passed) ? score+1 : score;
 
@@ -43,15 +56,7 @@ class _ExplainScreenState extends State<ExplainScreen> {
         currentQuestionID = newQuestionID;
       });
     } on RangeError {
-      Results.recordBestScore(topicID: topic.id, newScore: newScore);
-      Navigator.pushNamed(
-        context,
-        EndGameScreen.ID,
-        arguments: LastGameResult(
-          questionsCount: topic.questionIDs.length,
-          score: newScore,
-        ),
-      );
+      endGame(newScore);
     }
   }
 
@@ -101,39 +106,3 @@ class _ExplainScreenState extends State<ExplainScreen> {
   }
 }
 
-class ProgressButton extends StatelessWidget {
-  final String title;
-  final IconData iconData;
-  final Color color;
-  final Function onPressed;
-
-  const ProgressButton({
-    Key key,
-    @required this.title,
-    @required this.iconData,
-    @required this.color,
-    @required this.onPressed,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: FlatButton(
-        child: Column(
-          children: <Widget>[
-            Icon(
-              iconData,
-              color: color,
-              size: 50,
-            ),
-            Text(
-              title,
-              style: TextStyle(fontSize: 21),
-            ),
-          ],
-        ),
-        onPressed: onPressed,
-      ),
-    );
-  }
-}
