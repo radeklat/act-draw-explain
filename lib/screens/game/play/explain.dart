@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:act_draw_explain/controllers/score.dart';
 import 'package:act_draw_explain/screens/game/end_game.dart';
+import 'package:act_draw_explain/utilities/sensors.dart';
 import 'package:act_draw_explain/widgets/countdown_text.dart';
 import 'package:act_draw_explain/widgets/progress_button.dart';
 import 'package:flutter/cupertino.dart';
@@ -19,6 +22,8 @@ class ExplainScreen extends StatefulWidget {
   _ExplainScreenState createState() => _ExplainScreenState();
 }
 
+
+
 class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProviderStateMixin {
   ScoreController scoreController;
   AnswerColorAnimation answerColorAnimation;
@@ -26,9 +31,15 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
   Color backgroundColor = K_COLOR_BACKGROUND;
   String questionText = "";
 
+  StreamSubscription<dynamic> sensorStream;
+
   @override
   void initState() {
     super.initState();
+
+    sensorStream = tiltStream.listen((TiltEvent tilt) {
+      nextQuestion(tilt.direction == TiltDirection.down);
+    });
 
     answerColorAnimation = AnswerColorAnimation(
       vsync: this,
@@ -46,6 +57,7 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
         });
       },
       onGameEnd: (gameResult) {
+        sensorStream?.cancel();
         Navigator.pushNamed(context, EndGameScreen.ID, arguments: gameResult);
       },
     );
@@ -54,7 +66,13 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
   @override
   void dispose() {
     answerColorAnimation.dispose();
+    sensorStream?.cancel();
     super.dispose();
+  }
+
+  void nextQuestion(bool passed) {
+      scoreController.nextQuestion(passed: passed);
+      answerColorAnimation.startAnimation(passed);
   }
 
   @override
@@ -88,19 +106,15 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
                     title: "Správně",
                     iconData: Icons.thumb_up,
                     color: K_COLOR_PASS,
-                    onPressed: () {
-                      scoreController.nextQuestion(passed: true);
-                      answerColorAnimation.startAnimation(true);
-                    },
+                    value: true,
+                    onPressed: nextQuestion,
                   ),
                   ProgressButton(
                     title: "Špatně",
                     iconData: Icons.thumb_down,
                     color: K_COLOR_FAIL,
-                    onPressed: () {
-                      scoreController.nextQuestion(passed: false);
-                      answerColorAnimation.startAnimation(false);
-                    },
+                    value: false,
+                    onPressed: nextQuestion,
                   ),
                 ],
               )

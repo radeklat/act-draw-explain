@@ -14,7 +14,7 @@ description: A new Flutter application.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.6.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -28,6 +28,7 @@ dependencies:
   auto_size_text: ^2.1.0
   preferences: ^5.2.0
   sensors: ">=0.4.1+10 <2.0.0"
+  stream_transform: ^1.2.0
 
 dev_dependencies:
   flutter_test:

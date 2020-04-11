@@ -6,7 +6,8 @@ class ProgressButton extends StatelessWidget {
   final String title;
   final IconData iconData;
   final Color color;
-  final Function onPressed;
+  final Function(bool) onPressed;
+  final bool value;
 
   const ProgressButton({
     Key key,
@@ -14,6 +15,7 @@ class ProgressButton extends StatelessWidget {
     @required this.iconData,
     @required this.color,
     @required this.onPressed,
+    this.value
   }) : super(key: key);
 
   @override
@@ -33,7 +35,7 @@ class ProgressButton extends StatelessWidget {
             ),
           ],
         ),
-        onPressed: onPressed,
+        onPressed: () {onPressed(value);},
       ),
     );
   }
