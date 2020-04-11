@@ -5,8 +5,14 @@ import 'package:act_draw_explain/screens/game/start_game.dart';
 import 'package:act_draw_explain/screens/settings.dart';
 import 'package:act_draw_explain/screens/topic_selection.dart';
 import 'package:flutter/material.dart';
+import 'package:preferences/preferences.dart';
 
-void main() => runApp(MyApp());
+
+main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await PrefService.init();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.

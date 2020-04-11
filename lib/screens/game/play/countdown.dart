@@ -45,7 +45,7 @@ class _ExplainScreenState extends State<CountdownScreen> with SingleTickerProvid
       ..reverse(from: K_DURATION_START_GAME.inSeconds.toDouble())
       ..addStatusListener((status) {
         if (status == AnimationStatus.dismissed) {
-          Navigator.popAndPushNamed(context, ExplainScreen.ID, arguments: widget.topicID);
+          Navigator.pushReplacementNamed(context, ExplainScreen.ID, arguments: widget.topicID);
         }
       });
   }
