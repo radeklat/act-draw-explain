@@ -1,7 +1,5 @@
-import 'dart:collection';
-
 class Game {
-  final UnmodifiableListView<int> topicIDs;
+  final List<int> topicIDs;
 
-  Game({this.topicIDs});
+  const Game({this.topicIDs});
 }

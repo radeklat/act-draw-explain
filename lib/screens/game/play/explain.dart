@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:preferences/preference_service.dart';
 
 import '../../../constants.dart';
+import '../../../animations/answer_color.dart';
 
 class ExplainScreen extends StatefulWidget {
   static const String ID = "explain_screen";
@@ -27,10 +28,7 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
   Topic topic;
   int currentQuestionID;
   int score = 0;
-
-  ColorTween backgroundAnimationColorTween = ColorTween(end: K_COLOR_BACKGROUND);
-  AnimationController backgroundAnimationController;
-  Animation backgroundColorAnimation;
+  AnswerColorAnimation answerColorAnimation;
   Color backgroundColor = K_COLOR_BACKGROUND;
 
   @override
@@ -40,22 +38,16 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
     topic = topics[widget.topicID];
     questionIDs = topic.shuffledQuestions;
     currentQuestionID = questionIDs.removeLast();
-
-    backgroundAnimationController = AnimationController(
-      duration: K_DURATION_PASS_FAIL_ANIMATION,
-      vsync: this,
-    )..addListener(() {
-        setState(() {
-          backgroundColor = backgroundColorAnimation.value;
-        });
+    answerColorAnimation = AnswerColorAnimation(vsync: this, listener: (newColor) {
+      setState(() {
+        backgroundColor = newColor;
       });
-
-    backgroundColorAnimation = backgroundAnimationColorTween.animate(backgroundAnimationController);
+    });
   }
 
   @override
   void dispose() {
-    backgroundAnimationController.dispose();
+    answerColorAnimation.dispose();
     super.dispose();
   }
 
@@ -77,19 +69,20 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
 
   void nextQuestion({@required bool passed}) {
     int newScore = (passed) ? score + 1 : score;
+    int newQuestionID;
 
     try {
-      int newQuestionID = questionIDs.removeLast();
-
-      setState(() {
-        score = newScore;
-        currentQuestionID = newQuestionID;
-        backgroundAnimationColorTween.begin = (passed) ? K_COLOR_PASS : K_COLOR_FAIL;
-        backgroundAnimationController.forward(from: 0);
-      });
+      newQuestionID = questionIDs.removeLast();
     } on RangeError {
       endGame(newScore: newScore);
+      return;
     }
+
+    setState(() {
+      score = newScore;
+      currentQuestionID = newQuestionID;
+      answerColorAnimation.startAnimation(passed);
+    });
   }
 
   @override
