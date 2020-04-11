@@ -1,5 +1,6 @@
 import 'package:flutter/animation.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/painting.dart';
 import 'package:flutter/scheduler.dart';
 
 import '../constants.dart';
@@ -8,16 +9,15 @@ class AnswerColorAnimation {
   ColorTween _colorTween = ColorTween(end: K_COLOR_BACKGROUND);
   AnimationController _animationController;
   Animation _animation;
-  Function _listener;
+  Function(Color) listener;
 
-  AnswerColorAnimation({@required TickerProvider vsync, @required Function listener}) {
-    _listener = listener;
+  AnswerColorAnimation({@required TickerProvider vsync, @required this.listener}) {
     _animationController = AnimationController(
       duration: K_DURATION_PASS_FAIL_ANIMATION,
       vsync: vsync,
     )
       ..addListener(() {
-        _listener(_animation.value);
+        listener(_animation.value);
       });
 
     _animation = _colorTween.animate(_animationController);

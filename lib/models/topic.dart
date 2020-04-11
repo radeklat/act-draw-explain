@@ -10,7 +10,7 @@ class Topic {
 
   const Topic({this.id, this.name, this.color, this.icon, this.questionIDs});
 
-  List<int> get shuffledQuestions {
+  List<int> asShuffledQuestionIDs() {
     List<int> questionsCopy = List.from(questionIDs);
     questionsCopy.shuffle();
     return questionsCopy;

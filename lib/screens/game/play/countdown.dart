@@ -1,6 +1,6 @@
 import 'package:act_draw_explain/data/questions.dart';
 import 'package:act_draw_explain/data/topics.dart';
-import 'package:act_draw_explain/models/lastGameResult.dart';
+import 'package:act_draw_explain/models/game_result.dart';
 import 'package:act_draw_explain/models/results.dart';
 import 'package:act_draw_explain/models/topic.dart';
 import 'package:act_draw_explain/screens/game/end_game.dart';
