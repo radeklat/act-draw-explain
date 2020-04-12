@@ -46,4 +46,8 @@ class ScoreController {
     _currentQuestionID = newQuestionID;
     onNextQuestion(questions[_currentQuestionID].text);
   }
+
+  bool get hasMoreQuestions {
+    return _questionIDs.length > 0;
+  }
 }

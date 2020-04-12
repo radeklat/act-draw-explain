@@ -8,6 +8,7 @@ import 'package:act_draw_explain/widgets/progress_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:preferences/preference_service.dart';
+import 'package:wakelock/wakelock.dart';
 
 import '../../../animations/answer_color.dart';
 import '../../../constants.dart';
@@ -22,8 +23,6 @@ class ExplainScreen extends StatefulWidget {
   _ExplainScreenState createState() => _ExplainScreenState();
 }
 
-
-
 class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProviderStateMixin {
   ScoreController scoreController;
   AnswerColorAnimation answerColorAnimation;
@@ -36,6 +35,8 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
   @override
   void initState() {
     super.initState();
+
+    Wakelock.enable();
 
     sensorStream = tiltStream.listen((TiltEvent tilt) {
       nextQuestion(tilt.direction == TiltDirection.down);
@@ -57,22 +58,29 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
         });
       },
       onGameEnd: (gameResult) {
-        sensorStream?.cancel();
+        cleanUp();
         Navigator.pushNamed(context, EndGameScreen.ID, arguments: gameResult);
       },
     );
   }
 
+  void cleanUp() {
+    Wakelock.disable();
+    answerColorAnimation?.dispose();
+    sensorStream?.cancel();
+  }
+
   @override
   void dispose() {
-    answerColorAnimation.dispose();
-    sensorStream?.cancel();
+    cleanUp();
     super.dispose();
   }
 
   void nextQuestion(bool passed) {
       scoreController.nextQuestion(passed: passed);
-      answerColorAnimation.startAnimation(passed);
+      if (scoreController.hasMoreQuestions) {
+        answerColorAnimation.startAnimation(passed);
+      }
   }
 
   @override
