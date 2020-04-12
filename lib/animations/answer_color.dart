@@ -29,6 +29,7 @@ class AnswerColorAnimation {
   }
 
   void dispose() {
-    _animationController.dispose();
+    _animationController?.dispose();
+    _animationController = null;
   }
 }

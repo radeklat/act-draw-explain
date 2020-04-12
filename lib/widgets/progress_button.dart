@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
@@ -23,6 +24,7 @@ class ProgressButton extends StatelessWidget {
     return Expanded(
       child: FlatButton(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
             Icon(
               iconData,

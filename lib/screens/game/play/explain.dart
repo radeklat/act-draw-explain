@@ -27,11 +27,29 @@ class ExplainScreen extends StatefulWidget {
 class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProviderStateMixin {
   ScoreController scoreController;
   AnswerColorAnimation answerColorAnimation;
+  bool showButtons = true;
 
   Color backgroundColor = K_COLOR_BACKGROUND;
   String questionText = "";
 
   StreamSubscription<dynamic> sensorStream;
+
+  void initGameControl() {
+    final String gameControlType = PrefService.getString(K_SETTINGS_GAME_CONTROL);
+
+    if (gameControlType == K_GAME_CONTROL_SCREEN_TILT) {
+      setPreferredOrientationsLandscape();
+      showButtons = false;
+    } else {
+      setPreferredOrientationsAll();
+    }
+
+    if (gameControlType != K_GAME_CONTROL_BUTTONS) {
+      sensorStream = tiltStream.listen((TiltEvent tilt) {
+        nextQuestion(tilt.direction == TiltDirection.down);
+      });
+    }
+  }
 
   @override
   void initState() {
@@ -39,15 +57,7 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
 
     Wakelock.enable();
 
-    if (PrefService.getString(K_SETTINGS_GAME_CONTROL) == K_GAME_CONTROL_SCREEN_TILT) {
-      setPreferredOrientationsLandscape();
-    } else {
-      setPreferredOrientationsAll();
-    }
-
-    sensorStream = tiltStream.listen((TiltEvent tilt) {
-      nextQuestion(tilt.direction == TiltDirection.down);
-    });
+    initGameControl();
 
     answerColorAnimation = AnswerColorAnimation(
       vsync: this,
@@ -65,32 +75,23 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
         });
       },
       onGameEnd: (gameResult) {
-        cleanUp();
-        Navigator.pushNamed(context, EndGameScreen.ID, arguments: gameResult);
+        Navigator.pushReplacementNamed(context, EndGameScreen.ID, arguments: gameResult);
       },
     );
   }
 
-  void cleanUp() {
+  @override
+  void dispose() {
     Wakelock.disable();
     setPreferredOrientationsAll();
     answerColorAnimation?.dispose();
-    answerColorAnimation = null;
     sensorStream?.cancel();
-    sensorStream = null;
-  }
-
-  @override
-  void dispose() {
-    cleanUp();
     super.dispose();
   }
 
   void nextQuestion(bool passed) {
       scoreController.nextQuestion(passed: passed);
-      if (scoreController.hasMoreQuestions) {
-        answerColorAnimation.startAnimation(passed);
-      }
+      if (scoreController.hasMoreQuestions) answerColorAnimation.startAnimation(passed);
   }
 
   @override
@@ -99,23 +100,31 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
       body: SafeArea(
         child: Container(
           color: backgroundColor,
-          child: Column(
+          child: Stack(
             children: <Widget>[
-              CountdownText(
-                onFinished: scoreController.endGame,
-              ),
-              Expanded(
-                child: Container(
-                  alignment: Alignment.center,
-                  child: Text(
-                    questionText,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: K_COLOR_FONT_PRIMARY, fontSize: K_FONT_SIZE_X_LARGE),
-                    softWrap: true,
+              Column(
+                children: <Widget>[
+                  CountdownText(
+                    style: TextStyle(fontSize: K_FONT_SIZE_NORMAL),
+                    onFinished: scoreController.endGame,
+                    duration: Duration(
+                      seconds: PrefService.getInt(K_SETTINGS_GAME_DURATION) ?? K_GAME_DURATION_DEFAULT,
+                    ),
                   ),
-                ),
+                  Expanded(
+                    child: Container(
+                      alignment: Alignment.center,
+                      child: Text(
+                        questionText,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: K_COLOR_FONT_PRIMARY, fontSize: K_FONT_SIZE_X_LARGE),
+                        softWrap: true,
+                      ),
+                    ),
+                  ),
+                ],
               ),
-              Row(
+              if (showButtons) Row(
                 children: <Widget>[
                   ProgressButton(
                     title: "Správně",
@@ -132,7 +141,7 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
                     onPressed: nextQuestion,
                   ),
                 ],
-              )
+              ),
             ],
           ),
         ),
