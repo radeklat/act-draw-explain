@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:act_draw_explain/controllers/score.dart';
 import 'package:act_draw_explain/screens/game/end_game.dart';
+import 'package:act_draw_explain/utilities/orientation.dart';
 import 'package:act_draw_explain/utilities/sensors.dart';
 import 'package:act_draw_explain/widgets/countdown_text.dart';
 import 'package:act_draw_explain/widgets/progress_button.dart';
@@ -38,6 +39,12 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
 
     Wakelock.enable();
 
+    if (PrefService.getString(K_SETTINGS_GAME_CONTROL) == K_GAME_CONTROL_SCREEN_TILT) {
+      setPreferredOrientationsLandscape();
+    } else {
+      setPreferredOrientationsAll();
+    }
+
     sensorStream = tiltStream.listen((TiltEvent tilt) {
       nextQuestion(tilt.direction == TiltDirection.down);
     });
@@ -66,6 +73,7 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
 
   void cleanUp() {
     Wakelock.disable();
+    setPreferredOrientationsAll();
     answerColorAnimation?.dispose();
     sensorStream?.cancel();
   }
