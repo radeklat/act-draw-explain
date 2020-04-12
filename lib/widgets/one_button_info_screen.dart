@@ -28,7 +28,7 @@ class OneButtonInfoScreen extends StatelessWidget {
                     child: Text(
                       text,
                       textAlign: TextAlign.center,
-                      style: TextStyle(color: K_COLOR_FONT_PRIMARY, fontSize: K_FONT_SIZE_LARGE),
+                      style: Theme.of(context).textTheme.display3,
                     ),
                   ),
                 ],
@@ -37,12 +37,11 @@ class OneButtonInfoScreen extends StatelessWidget {
                 height: 30,
               ),
               MaterialButton(
-                color: K_COLOR_BUTTON_PRIMARY,
+                color: Theme.of(context).buttonColor,
                 onPressed: onPressed,
                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 30),
                 child: Text(
                   buttonText,
-                  style: TextStyle(fontSize: K_FONT_SIZE_NORMAL),
                 ),
               ),
             ],

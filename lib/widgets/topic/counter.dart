@@ -21,7 +21,7 @@ class TopicCounter extends StatelessWidget {
       padding: EdgeInsets.all(5),
       child: Text(
         value,
-        style: TextStyle(fontSize: K_FONT_SIZE_SMALL, fontWeight: FontWeight.w400, color: foregroundColor),
+        style: Theme.of(context).textTheme.overline.copyWith(fontWeight: FontWeight.w400, color: foregroundColor),
         textAlign: TextAlign.center,
       ),
     );

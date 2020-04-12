@@ -35,10 +35,10 @@ class TopicNameIcon extends StatelessWidget {
             constraints: BoxConstraints(maxHeight: 50),
             child: AutoSizeText(
               topic.name,
-              style: TextStyle(fontSize: K_FONT_SIZE_NORMAL, fontWeight: FontWeight.w500, color: foregroundColor),
+              style: Theme.of(context).textTheme.button.copyWith(color: foregroundColor),
               textAlign: TextAlign.center,
               maxLines: 3,
-              minFontSize: K_FONT_SIZE_SMALL,
+              minFontSize: Theme.of(context).textTheme.overline.fontSize,
               overflow: TextOverflow.fade,
             ),
           ),

@@ -1,7 +1,9 @@
+import 'package:act_draw_explain/constants.dart';
 import 'package:act_draw_explain/screens/game/end_game.dart';
 import 'package:act_draw_explain/screens/game/play/countdown.dart';
 import 'package:act_draw_explain/screens/game/play/explain.dart';
 import 'package:act_draw_explain/screens/game/start_game.dart';
+import 'package:act_draw_explain/screens/help.dart';
 import 'package:act_draw_explain/screens/settings.dart';
 import 'package:act_draw_explain/screens/topic_selection.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +23,22 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Act, Draw, Explain',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: K_COLOR_PASS,
+        accentColor: K_COLOR_FAIL,
+        backgroundColor: K_COLOR_BACKGROUND,
+        buttonColor: Colors.lightGreenAccent,
+        // http://spencermortensen.com/articles/typographic-scale/
+        textTheme: TextTheme(
+          display1: TextStyle(fontSize: 192, color: Colors.black87),
+          display2: TextStyle(fontSize: 96, color: Colors.black87),
+          display3: TextStyle(fontSize: 48, color: Colors.black87),
+          display4: TextStyle(fontSize: 36, color: Colors.black87),
+          title: TextStyle(fontSize: 30),
+          subtitle: TextStyle(fontSize: 21),
+          body1: TextStyle(fontSize: 16),
+          button: TextStyle(fontSize: 24),
+          overline: TextStyle(fontSize: 12, letterSpacing: 0),
+        ),
       ),
       initialRoute: TopicSelectionScreen.ID,
       onGenerateRoute: (settings) {
@@ -42,6 +59,8 @@ class MyApp extends StatelessWidget {
                 return CountdownScreen(topicID: arguments);
               case SettingsScreen.ID:
                 return SettingsScreen();
+              case HelpScreen.ID:
+                return HelpScreen();
             }
             return null;
           },

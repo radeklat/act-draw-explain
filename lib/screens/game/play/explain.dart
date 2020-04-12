@@ -102,22 +102,27 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
           color: backgroundColor,
           child: Stack(
             children: <Widget>[
-              Column(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
                   CountdownText(
-                    style: TextStyle(fontSize: K_FONT_SIZE_NORMAL),
                     onFinished: scoreController.endGame,
                     duration: Duration(
                       seconds: PrefService.getInt(K_SETTINGS_GAME_DURATION) ?? K_GAME_DURATION_DEFAULT,
                     ),
+                    style: Theme.of(context).textTheme.display3,
                   ),
+                ],
+              ),
+              Column(
+                children: <Widget>[
                   Expanded(
                     child: Container(
                       alignment: Alignment.center,
                       child: Text(
                         questionText,
                         textAlign: TextAlign.center,
-                        style: TextStyle(color: K_COLOR_FONT_PRIMARY, fontSize: K_FONT_SIZE_X_LARGE),
+                        style: Theme.of(context).textTheme.display2,
                         softWrap: true,
                       ),
                     ),

@@ -32,7 +32,7 @@ class CountdownScreen extends StatelessWidget {
                   Flexible(
                     child: CountdownText(
                       duration: K_DURATION_START_GAME,
-                      style: TextStyle(color: K_COLOR_FONT_PRIMARY, fontSize: K_FONT_SIZE_XX_LARGE),
+                      style: Theme.of(context).textTheme.display1,
                       onFinished: () {
                         Navigator.pushReplacementNamed(context, ExplainScreen.ID, arguments: topicID);
                       },
