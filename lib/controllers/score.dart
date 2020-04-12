@@ -3,6 +3,8 @@ import 'package:act_draw_explain/data/topics.dart';
 import 'package:act_draw_explain/models/game_result.dart';
 import 'package:act_draw_explain/models/results.dart';
 import 'package:act_draw_explain/models/topic.dart';
+import 'package:audioplayers/audio_cache.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/foundation.dart';
 
 class ScoreController {
@@ -11,13 +13,23 @@ class ScoreController {
   int _currentQuestionID;
   int _score = 0;
 
+  GameSounds _sounds = GameSounds();
+
   Function(String) onNextQuestion;
   Function(GameResult) onGameEnd;
 
   ScoreController({@required topicID, @required this.onNextQuestion, @required this.onGameEnd}) {
     _topic = topics[topicID];
     _questionIDs = _topic.asShuffledQuestionIDs();
-    nextQuestion(passed: false);
+
+    try {
+      _currentQuestionID = _questionIDs.removeLast();
+    } on RangeError {
+      endGame(newScore: 0);
+      return;
+    }
+
+    onNextQuestion(questions[_currentQuestionID].text);
   }
 
   void endGame({int newScore}) {
@@ -42,6 +54,7 @@ class ScoreController {
       return;
     }
 
+    (passed) ? _sounds.playCorrect() : _sounds.playWrong();
     _score = newScore;
     _currentQuestionID = newQuestionID;
     onNextQuestion(questions[_currentQuestionID].text);
@@ -50,4 +63,22 @@ class ScoreController {
   bool get hasMoreQuestions {
     return _questionIDs.length > 0;
   }
+}
+
+class GameSounds {
+  static const String CORRECT = "correct_coin.mp3";
+  static const String WRONG = "wrong_buzzer.mp3";
+
+  static AudioCache _audioPlayer = AudioCache(
+    fixedPlayer: AudioPlayer(mode: PlayerMode.LOW_LATENCY),
+    prefix: "sounds/",
+  );
+
+  GameSounds() {
+    _audioPlayer.load(CORRECT);
+    _audioPlayer.load(WRONG);
+  }
+
+  void playCorrect() {_audioPlayer.play(CORRECT);}
+  void playWrong() {_audioPlayer.play(WRONG);}
 }
