@@ -75,7 +75,9 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
     Wakelock.disable();
     setPreferredOrientationsAll();
     answerColorAnimation?.dispose();
+    answerColorAnimation = null;
     sensorStream?.cancel();
+    sensorStream = null;
   }
 
   @override
@@ -100,9 +102,6 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
           child: Column(
             children: <Widget>[
               CountdownText(
-                duration: Duration(
-                  seconds: PrefService.getInt(K_SETTINGS_GAME_DURATION) ?? K_GAME_DURATION_DEFAULT,
-                ),
                 onFinished: scoreController.endGame,
               ),
               Expanded(
