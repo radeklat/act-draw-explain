@@ -14,78 +14,80 @@ class HelpScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ListView(
-            children: <Widget>[
-              Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: <Widget>[
-                      TextTitle("Jak hrát"),
-                      TextBody1(
-                        "Hra je určena pro 2 a více hráčů. V případě více hráčů je možné se rozdělit do několik týmů "
-                        "o minimálně dvou hráčích. Principem hry je uhodnout co nejvíce zobrazených termínů. V průběhu "
-                        "se nesmí používat slova se stejným kořenem, jako hádaný termín.",
-                      ),
-                      TextSubtitle("Styl slepec"),
-                      TextBody1(
-                        "Jeden z hráčů hádá termín a nevidí jej, ostatní jej vidí a snaží se jej popsat.",
-                      ),
-                      TextSubtitle("Styl vypravěc"),
-                      TextBody1(
-                        "Jeden z hráčů vidí hádáný termín a popisuje jej, ostatní jej nevidí a hádají.",
-                      ),
-                    ],
-                  ),
+        child: ListView(
+          children: <Widget>[
+            HelpCard(
+              children: <Widget>[
+                TextTitle("Jak hrát"),
+                TextBody1(
+                  "Hra je určena pro 2 a více hráčů. V případě více hráčů je možné se rozdělit do několik týmů "
+                  "o minimálně dvou hráčích. Principem hry je uhodnout co nejvíce zobrazených termínů. V průběhu "
+                  "se nesmí používat slova se stejným kořenem, jako hádaný termín.",
                 ),
-              ),
-              Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: <Widget>[
-                      TextTitle("Ovládání hry"),
-                      TextBody1(
-                        "Způsob ovládání lze změnit v nastaveních, která jsou k dispozici na hlavní obrazovce pod symbolem ozubeného kola.",
-                      ),
-                      TextSubtitle("Tlačítka"),
-                      TextBody1(
-                        "Na obrazovce s hádaným termínem jsou zobrazena tlačítka pro správnou a špatnou odpověď. Na "
-                        "dotyk reaguje celá polovina obrazovky nad tlačítkem.",
-                      ),
-                      TextBody1(
-                        "Ve hře dvou hráčů je možné telefon držet v ruce tak, aby jej druhý neviděl a nechat jej hádat. "
-                        "Pokud je hráčů více nebo je několik týmů, lze telefon držet přitisknutý na čelo a poklepávat na "
-                        "pravou nebo levou část obrazovky pro správnou či špatnou odpověď.",
-                      ),
-                      TextSubtitle("Naklopení displeje"),
-                      TextBody1(
-                        "Telefon je nutné mít přiskutý na čele. Správná odpověď se zvolí naklopením displeje dolu, "
-                        "špatná naklopením nahoru. Toto ovládání nelze použít pro Styl vypravěč.",
-                      ),
-                    ],
-                  ),
+                TextSubtitle("Styl slepec"),
+                TextBody1(
+                  "Jeden z hráčů hádá termín a nevidí jej, ostatní jej vidí a snaží se jej popsat.",
                 ),
-              ),
-              Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: <Widget>[
-                      TextTitle("Hry pro pokročilé"),
-                      TextSubtitle("Nejvyšší skóre"),
-                      TextBody1(
-                        "V nastaveních zvolte neomezenou délku hry. Hra trvá dokud nedojou termíny. Kdo má nejvíce uhodnuto?",
-                      ),
-                    ],
-                  ),
+                TextSubtitle("Styl vypravěc"),
+                TextBody1(
+                  "Jeden z hráčů vidí hádáný termín a popisuje jej, ostatní jej nevidí a hádají.",
                 ),
-              ),
-            ],
-          ),
+              ],
+            ),
+            HelpCard(
+              children: <Widget>[
+                TextTitle("Ovládání hry"),
+                TextBody1(
+                  "Způsob ovládání lze změnit v nastaveních, která jsou k dispozici na hlavní obrazovce pod symbolem ozubeného kola.",
+                ),
+                TextSubtitle("Tlačítka"),
+                TextBody1(
+                  "Na obrazovce s hádaným termínem jsou zobrazena tlačítka pro správnou a špatnou odpověď. Na "
+                  "dotyk reaguje celá polovina obrazovky nad tlačítkem.",
+                ),
+                TextBody1(
+                  "Ve hře dvou hráčů je možné telefon držet v ruce tak, aby jej druhý neviděl a nechat jej hádat. "
+                  "Pokud je hráčů více nebo je několik týmů, lze telefon držet přitisknutý na čelo a poklepávat na "
+                  "pravou nebo levou část obrazovky pro správnou či špatnou odpověď.",
+                ),
+                TextSubtitle("Naklopení displeje"),
+                TextBody1(
+                  "Telefon je nutné mít přiskutý na čele. Správná odpověď se zvolí naklopením displeje dolu, "
+                  "špatná naklopením nahoru. Toto ovládání nelze použít pro Styl vypravěč.",
+                ),
+              ],
+            ),
+            HelpCard(
+              children: <Widget>[
+                TextTitle("Hry pro pokročilé"),
+                TextSubtitle("Nejvyšší skóre"),
+                TextBody1(
+                  "V nastaveních zvolte neomezenou délku hry. Hra trvá dokud nedojou termíny. Kdo má nejvíce uhodnuto?",
+                ),
+              ],
+            ),
+          ],
         ),
+      ),
+    );
+  }
+}
+
+class HelpCard extends StatelessWidget {
+  final List<Widget> children;
+
+  const HelpCard({
+    Key key,
+    this.children,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: EdgeInsets.all(8.0),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(children: children),
       ),
     );
   }
@@ -104,7 +106,6 @@ class TextTitle extends StatelessWidget {
     );
   }
 }
-
 
 class TextSubtitle extends StatelessWidget {
   final String text;
@@ -133,4 +134,3 @@ class TextBody1 extends StatelessWidget {
     );
   }
 }
-
