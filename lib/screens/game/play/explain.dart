@@ -129,11 +129,16 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
                 child: Row(
                   children: <Widget>[
                     Expanded(
-                      child: AutoSizeText(
-                        questionText,
-                        textAlign: TextAlign.center,
-                        style: Theme.of(context).textTheme.display2,
-                        minFontSize: Theme.of(context).textTheme.display4.fontSize,
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: AutoSizeText(
+                          questionText,
+                          textAlign: TextAlign.center,
+                          style: Theme.of(context).textTheme.display2,
+                          minFontSize: Theme.of(context).textTheme.display4.fontSize,
+                          wrapWords: false,
+                          maxLines: 4,
+                        ),
                       ),
                     ),
                   ],

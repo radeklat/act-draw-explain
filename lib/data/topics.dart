@@ -7,18 +7,18 @@ UnmodifiableMapView<int, Topic> topics = UnmodifiableMapView(
   Map.fromIterable(
     [
       Topic(
-        id: 1,
-        name: "Pohádky",
-        color: Colors.lightBlueAccent,
-        icon: Icon(Icons.ac_unit),
-        questionIDs: UnmodifiableListView([for(var i=1; i<=20; i+=1) i]),
-      ),
-      Topic(
         id: 2,
         name: "Brno",
         color: Colors.red.shade600,
         icon: Icon(Icons.location_city),
         questionIDs: UnmodifiableListView([for(var i=21; i<=49; i+=1) i]),
+      ),
+      Topic(
+        id: 1,
+        name: "Pohádky",
+        color: Colors.lightBlueAccent,
+        icon: Icon(Icons.ac_unit),
+        questionIDs: UnmodifiableListView([for(var i=1; i<=20; i+=1) i]),
       ),
       Topic(
         id: 3,
@@ -33,6 +33,20 @@ UnmodifiableMapView<int, Topic> topics = UnmodifiableMapView(
         color: Colors.amber,
         icon: Icon(Icons.tv),
         questionIDs: UnmodifiableListView([for(var i=65; i<=84; i+=1) i]),
+      ),
+      Topic(
+        id: 5,
+        name: "ČSFD Top 20 Filmů",
+        color: Colors.red.shade400,
+        icon: Icon(Icons.tv),
+        questionIDs: UnmodifiableListView([for(var i=85; i<=104; i+=1) i]),
+      ),
+      Topic(
+        id: 6,
+        name: "ČSFD Top 20 Seriálů",
+        color: Colors.red.shade400,
+        icon: Icon(Icons.tv),
+        questionIDs: UnmodifiableListView([for(var i=105; i<=124; i+=1) i]),
       ),
     ],
     key: (topic) => topic.id,

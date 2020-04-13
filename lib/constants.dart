@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 const Color K_COLOR_PASS = Colors.lightGreen;
@@ -24,7 +25,7 @@ final ThemeData AppTheme = ThemeData(
   ),
 );
 
-const Duration K_DURATION_START_GAME = Duration(seconds: 1);
+const Duration K_DURATION_START_GAME = Duration(seconds: (kReleaseMode) ? 5 : 1);
 const Duration K_DURATION_PASS_FAIL_ANIMATION = Duration(milliseconds: 500);
 
 const List<int> K_GAME_DURATION_VALUES = [30, 60, 90, 2 * 60, 3 * 60, 5 * 60, 0];

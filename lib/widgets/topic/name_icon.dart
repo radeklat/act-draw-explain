@@ -40,6 +40,7 @@ class TopicNameIcon extends StatelessWidget {
               maxLines: 3,
               minFontSize: Theme.of(context).textTheme.overline.fontSize,
               overflow: TextOverflow.fade,
+              wrapWords: false,
             ),
           ),
         ],

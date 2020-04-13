@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:sensors/sensors.dart';
 import 'package:sprintf/sprintf.dart';
 
@@ -66,8 +67,6 @@ class TiltEvent {
     return tilt;
   }
 
-  void debugTilt() {}
-
   void debugSensors(
     AccelerometerEvent _acc,
     GyroscopeEvent _gyro,
@@ -76,19 +75,21 @@ class TiltEvent {
     int upMovement,
     TiltDirection tilt,
   ) {
-    if (K_DEBUG_TILT_SENSORS == DebugLevel.none) {
-      return;
+    if (!kReleaseMode) {
+      if (K_DEBUG_TILT_SENSORS == DebugLevel.none) {
+        return;
+      }
+
+      if (K_DEBUG_TILT_SENSORS == DebugLevel.movement && gyroMoving[2] == 0) {
+        return;
+      }
+
+      var gyroMoveDebug = sprintf(MOVEMENT_TEMPLATE, gyroMoving);
+      var accDebug = sprintf(SENSOR_TEMPLATE, [_acc.x, _acc.y, _acc.z]);
+      var gyroDebug = sprintf(SENSOR_TEMPLATE, [_gyro.x, _gyro.y, _gyro.z]);
+
+      print("Gyro: $gyroMoveDebug | Down: $downMovement | Up: $upMovement | Acc $accDebug | Gyro $gyroDebug | $tilt");
     }
-
-    if (K_DEBUG_TILT_SENSORS == DebugLevel.movement && gyroMoving[2] == 0) {
-      return;
-    }
-
-    var gyroMoveDebug = sprintf(MOVEMENT_TEMPLATE, gyroMoving);
-    var accDebug = sprintf(SENSOR_TEMPLATE, [_acc.x, _acc.y, _acc.z]);
-    var gyroDebug = sprintf(SENSOR_TEMPLATE, [_gyro.x, _gyro.y, _gyro.z]);
-
-    print("Gyro: $gyroMoveDebug | Down: $downMovement | Up: $upMovement | Acc $accDebug | Gyro $gyroDebug | $tilt");
   }
 }
 

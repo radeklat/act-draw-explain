@@ -37,9 +37,9 @@ class _CountdownTextState extends State<CountdownText> with SingleTickerProvider
     _remainingTime = widget.duration;
     _stopwatch.start();
     _stream = Stream.periodic(Duration(seconds: 1)).listen((_value) {
-      Duration newRemainingTime = widget.duration - _stopwatch.elapsed;
+      Duration newRemainingTime = widget.duration - _stopwatch.elapsed + Duration(seconds: 1);
 
-      if (newRemainingTime.inSeconds <= 0) {
+      if (newRemainingTime.inSeconds < 1) {
         stop(isDisposing: false);
         newRemainingTime = Duration(seconds: 1);
       }
