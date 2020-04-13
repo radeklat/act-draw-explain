@@ -32,7 +32,7 @@ class TopicNameIcon extends StatelessWidget {
             height: 5,
           ),
           Container(
-            constraints: BoxConstraints(maxHeight: 50),
+            constraints: BoxConstraints(maxHeight: 42),
             child: AutoSizeText(
               topic.name,
               style: Theme.of(context).textTheme.button.copyWith(color: foregroundColor),
