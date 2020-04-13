@@ -39,9 +39,10 @@ class OneButtonInfoScreen extends StatelessWidget {
               MaterialButton(
                 color: Theme.of(context).buttonColor,
                 onPressed: onPressed,
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 30),
+                padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
                 child: Text(
                   buttonText,
+                  style: Theme.of(context).textTheme.button,
                 ),
               ),
             ],

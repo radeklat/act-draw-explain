@@ -28,6 +28,7 @@ dependencies:
   stream_transform: ^1.2.0
   wakelock: ^0.1.4+1
   audioplayers: ^0.15.0
+  provider: ^4.0.5
   # https://pub.dev/packages/flutter_launcher_icons#book-guide
   flutter_launcher_icons: ^0.7.4  # flutter pub run flutter_launcher_icons:main
 
