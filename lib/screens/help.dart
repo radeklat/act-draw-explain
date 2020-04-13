@@ -22,48 +22,52 @@ class HelpScreen extends StatelessWidget {
                 TextBody1(
                   "Hra je určena pro 2 a více hráčů. V případě více hráčů je možné se rozdělit do několik týmů "
                   "o minimálně dvou hráčích. Principem hry je uhodnout co nejvíce zobrazených termínů. V průběhu "
-                  "se nesmí používat slova se stejným kořenem, jako hádaný termín.",
+                  "se nesmí používat slova se stejným kořenem, jako hádaný termín. Hráč může hádat dokud neodpoví "
+                  "správně. Pokud je však hra limitovaná časem nebo je termín příliš těžký, je možné jej přeskočit.",
                 ),
-                TextSubtitle("Styl slepec"),
                 TextBody1(
-                  "Jeden z hráčů hádá termín a nevidí jej, ostatní jej vidí a snaží se jej popsat.",
+                  "Způsob ovládání lze změnit v nastaveních, která jsou k dispozici na hlavní obrazovce pod symbolem "
+                  "ozubeného kola.",
                 ),
-                TextSubtitle("Styl vypravěc"),
+                TextSubtitle("Tlačítka"),
                 TextBody1(
-                  "Jeden z hráčů vidí hádáný termín a popisuje jej, ostatní jej nevidí a hádají.",
+                  "Na obrazovce s hádaným termínem jsou zobrazena tlačítka pro správnou a špatnou odpověď.",
+                ),
+                TextSubtitle("Naklopení displeje"),
+                TextBody1(
+                  "Telefon je nutné mít přiskutý na čele. Správná odpověď se zvolí naklopením displeje dolu, "
+                  "špatná naklopením nahoru.",
                 ),
               ],
             ),
             HelpCard(
               children: <Widget>[
                 TextTitle("Ovládání hry"),
+                TextSubtitle("Styl slepec"),
                 TextBody1(
-                  "Způsob ovládání lze změnit v nastaveních, která jsou k dispozici na hlavní obrazovce pod symbolem ozubeného kola.",
+                  "Jeden z hráčů hádá termín a nevidí jej, ostatní jej vidí a snaží se jej popsat. Zda byla odpověď "
+                      "správná či špatná lze označit naklopením telefonu.",
                 ),
-                TextSubtitle("Tlačítka"),
+                TextSubtitle("Styl vypravěc"),
                 TextBody1(
-                  "Na obrazovce s hádaným termínem jsou zobrazena tlačítka pro správnou a špatnou odpověď. Na "
-                  "dotyk reaguje celá polovina obrazovky nad tlačítkem.",
+                  "Jeden z hráčů vidí hádáný termín a popisuje jej, ostatní jej nevidí a hádají. Odpověď lze označit "
+                      "tlačítky.",
                 ),
+                TextSubtitle("Na čas"),
                 TextBody1(
-                  "Ve hře dvou hráčů je možné telefon držet v ruce tak, aby jej druhý neviděl a nechat jej hádat. "
-                  "Pokud je hráčů více nebo je několik týmů, lze telefon držet přitisknutý na čelo a poklepávat na "
-                  "pravou nebo levou část obrazovky pro správnou či špatnou odpověď.",
+                  "V nastaveních zvolte délku hry. Kdo stihne nejvíce odpovědí v časovém limitu?",
                 ),
-                TextSubtitle("Naklopení displeje"),
+                TextSubtitle("Nejvyšší skóre"),
                 TextBody1(
-                  "Telefon je nutné mít přiskutý na čele. Správná odpověď se zvolí naklopením displeje dolu, "
-                  "špatná naklopením nahoru. Toto ovládání nelze použít pro Styl vypravěč.",
+                  "V nastaveních zvolte neomezenou délku hry. Hra trvá dokud nedojou termíny. Kdo má nejvíce uhodnuto?",
                 ),
+
               ],
             ),
             HelpCard(
               children: <Widget>[
                 TextTitle("Hry pro pokročilé"),
-                TextSubtitle("Nejvyšší skóre"),
-                TextBody1(
-                  "V nastaveních zvolte neomezenou délku hry. Hra trvá dokud nedojou termíny. Kdo má nejvíce uhodnuto?",
-                ),
+
               ],
             ),
           ],

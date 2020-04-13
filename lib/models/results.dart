@@ -2,23 +2,24 @@ import 'package:flutter/cupertino.dart';
 import 'package:preferences/preference_service.dart';
 import 'package:sprintf/sprintf.dart';
 
-class Results {
-  static final String keyPattern = "topic.%s.bestScore";
+class TopicBestScore extends ChangeNotifier {
+  final String keyPattern = "topic.%s.bestScore";
 
-  static String _getKey(int topicID) {
-    return sprintf(Results.keyPattern, [topicID]);
+  String _getKey(int topicID) {
+    return sprintf(keyPattern, [topicID]);
   }
 
-  static void recordBestScore({@required int topicID, @required int newScore}) {
+  void record({@required int topicID, @required int newScore}) {
     String key = _getKey(topicID);
     int bestScore = PrefService.getInt(key) ?? 0;
 
     if (newScore > bestScore) {
       PrefService.setInt(key, newScore);
+      notifyListeners();
     }
   }
 
-  static int getBestScore({@required int topicID}) {
+  int get({@required int topicID}) {
     return PrefService.getInt(_getKey(topicID));
   }
 }

@@ -65,7 +65,6 @@ class _CountdownTextState extends State<CountdownText> with SingleTickerProvider
 
   @override
   void dispose() {
-    print("################ DISPOSE");
     stop(isDisposing: true);
     super.dispose();
   }

@@ -4,6 +4,26 @@ const Color K_COLOR_PASS = Colors.lightGreen;
 const Color K_COLOR_FAIL = Colors.pink;
 const Color K_COLOR_BACKGROUND = Colors.white;
 
+final ThemeData AppTheme = ThemeData(
+  primaryColor: K_COLOR_FAIL,
+  accentColor: Colors.pinkAccent,
+  backgroundColor: K_COLOR_BACKGROUND,
+  buttonColor: Colors.pinkAccent,
+
+  // http://spencermortensen.com/articles/typographic-scale/
+  textTheme: TextTheme(
+    display1: TextStyle(fontSize: 192, color: Colors.black87),
+    display2: TextStyle(fontSize: 96, color: Colors.black87),
+    display3: TextStyle(fontSize: 48, color: Colors.black87),
+    display4: TextStyle(fontSize: 36, color: Colors.black87),
+    title: TextStyle(fontSize: 30, color: Colors.pink.shade700),
+    subtitle: TextStyle(fontSize: 21, color: Colors.pink.shade600),
+    body1: TextStyle(fontSize: 16),
+    button: TextStyle(fontSize: 24, color: Colors.white),
+    overline: TextStyle(fontSize: 12, letterSpacing: 0),
+  ),
+);
+
 const Duration K_DURATION_START_GAME = Duration(seconds: 1);
 const Duration K_DURATION_PASS_FAIL_ANIMATION = Duration(milliseconds: 500);
 

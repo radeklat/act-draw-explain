@@ -13,7 +13,7 @@ int _inRange(value, low, high) {
 }
 
 int _noChange(value) {
-  return _inRange(value, -1.5, 1.5);
+  return _inRange(value, -1, 1);
 }
 
 extension ConversionsToInt on bool {
@@ -51,22 +51,13 @@ class TiltEvent {
       _noChange(gyro.z)
     ];
 
-    List<int> downMovement = [
-      _inRange(acc.x, -4, 4),
-      _noChange(acc.y),
-      _inRange(acc.z, _MIN_VAL, -9),
-    ];
-
-    List<int> upMovement = [
-      _inRange(acc.x, -4, 4),
-      _noChange(acc.y),
-      _inRange(acc.z, 7.5, _MAX_VAL),
-    ];
+    int downMovement = _inRange(acc.z, _MIN_VAL, -8);
+    int upMovement = _inRange(acc.z, 7, _MAX_VAL);
 
     if (all(gyroMoving)) {
-      if (all(downMovement)) {
+      if (downMovement == 1) {
         tilt = TiltDirection.down;
-      } else if (all(upMovement)) {
+      } else if (upMovement == 1) {
         tilt = TiltDirection.up;
       }
     }
@@ -81,8 +72,8 @@ class TiltEvent {
     AccelerometerEvent _acc,
     GyroscopeEvent _gyro,
     List<int> gyroMoving,
-    List<int> downMovement,
-    List<int> upMovement,
+    int downMovement,
+    int upMovement,
     TiltDirection tilt,
   ) {
     if (K_DEBUG_TILT_SENSORS == DebugLevel.none) {
@@ -94,12 +85,10 @@ class TiltEvent {
     }
 
     var gyroMoveDebug = sprintf(MOVEMENT_TEMPLATE, gyroMoving);
-    var downDebug = sprintf(MOVEMENT_TEMPLATE, downMovement);
-    var upDebug = sprintf(MOVEMENT_TEMPLATE, upMovement);
     var accDebug = sprintf(SENSOR_TEMPLATE, [_acc.x, _acc.y, _acc.z]);
     var gyroDebug = sprintf(SENSOR_TEMPLATE, [_gyro.x, _gyro.y, _gyro.z]);
 
-    print("Gyro: $gyroMoveDebug | Down: $downDebug | Up: $upDebug | Acc $accDebug | Gyro $gyroDebug | $tilt");
+    print("Gyro: $gyroMoveDebug | Down: $downMovement | Up: $upMovement | Acc $accDebug | Gyro $gyroDebug | $tilt");
   }
 }
 

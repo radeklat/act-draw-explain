@@ -1,14 +1,17 @@
 import 'dart:async';
 
 import 'package:act_draw_explain/controllers/score.dart';
+import 'package:act_draw_explain/models/results.dart';
 import 'package:act_draw_explain/screens/game/end_game.dart';
 import 'package:act_draw_explain/utilities/orientation.dart';
 import 'package:act_draw_explain/utilities/sensors.dart';
 import 'package:act_draw_explain/widgets/countdown_text.dart';
 import 'package:act_draw_explain/widgets/progress_button.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:preferences/preference_service.dart';
+import 'package:provider/provider.dart';
 import 'package:wakelock/wakelock.dart';
 
 import '../../../animations/answer_color.dart';
@@ -31,6 +34,7 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
 
   Color backgroundColor = K_COLOR_BACKGROUND;
   String questionText = "";
+  Duration gameDuration;
 
   StreamSubscription<dynamic> sensorStream;
 
@@ -56,8 +60,11 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
     super.initState();
 
     Wakelock.enable();
-
     initGameControl();
+
+    gameDuration = Duration(
+      seconds: PrefService.getInt(K_SETTINGS_GAME_DURATION) ?? K_GAME_DURATION_DEFAULT,
+    );
 
     answerColorAnimation = AnswerColorAnimation(
       vsync: this,
@@ -77,6 +84,9 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
       onGameEnd: (gameResult) {
         Navigator.pushReplacementNamed(context, EndGameScreen.ID, arguments: gameResult);
       },
+      setNewScore: (newScore) {
+        Provider.of<TopicBestScore>(context, listen: false).record(topicID: widget.topicID, newScore: newScore);
+      }
     );
   }
 
@@ -90,63 +100,64 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
   }
 
   void nextQuestion(bool passed) {
-      scoreController.nextQuestion(passed: passed);
-      if (scoreController.hasMoreQuestions) answerColorAnimation.startAnimation(passed);
+    scoreController.nextQuestion(passed: passed);
+    if (scoreController.hasMoreQuestions) answerColorAnimation.startAnimation(passed);
   }
 
   @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
       body: SafeArea(
         child: Container(
           color: backgroundColor,
-          child: Stack(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Row(
+              if (gameDuration.inSeconds > 0) Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
                   CountdownText(
                     onFinished: scoreController.endGame,
-                    duration: Duration(
-                      seconds: PrefService.getInt(K_SETTINGS_GAME_DURATION) ?? K_GAME_DURATION_DEFAULT,
-                    ),
+                    duration: gameDuration,
                     style: Theme.of(context).textTheme.display3,
                   ),
                 ],
               ),
-              Column(
-                children: <Widget>[
-                  Expanded(
-                    child: Container(
-                      alignment: Alignment.center,
-                      child: Text(
+              Expanded(
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: AutoSizeText(
                         questionText,
                         textAlign: TextAlign.center,
                         style: Theme.of(context).textTheme.display2,
-                        softWrap: true,
+                        minFontSize: Theme.of(context).textTheme.display4.fontSize,
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-              if (showButtons) Row(
-                children: <Widget>[
-                  ProgressButton(
-                    title: "Správně",
-                    iconData: Icons.thumb_up,
-                    color: K_COLOR_PASS,
-                    value: true,
-                    onPressed: nextQuestion,
-                  ),
-                  ProgressButton(
-                    title: "Špatně",
-                    iconData: Icons.thumb_down,
-                    color: K_COLOR_FAIL,
-                    value: false,
-                    onPressed: nextQuestion,
-                  ),
-                ],
-              ),
+              if (showButtons)
+                Row(
+                  children: <Widget>[
+                    ProgressButton(
+                      title: "Správně",
+                      iconData: Icons.thumb_up,
+                      color: K_COLOR_PASS,
+                      value: true,
+                      onPressed: nextQuestion,
+                    ),
+                    ProgressButton(
+                      title: "Špatně",
+                      iconData: Icons.thumb_down,
+                      color: K_COLOR_FAIL,
+                      value: false,
+                      onPressed: nextQuestion,
+                    ),
+                  ],
+                ),
             ],
           ),
         ),

@@ -1,4 +1,3 @@
-import 'package:act_draw_explain/constants.dart';
 import 'package:flutter/material.dart';
 
 class OneButtonInfoScreen extends StatelessWidget {

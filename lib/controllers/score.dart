@@ -1,7 +1,6 @@
 import 'package:act_draw_explain/data/questions.dart';
 import 'package:act_draw_explain/data/topics.dart';
 import 'package:act_draw_explain/models/game_result.dart';
-import 'package:act_draw_explain/models/results.dart';
 import 'package:act_draw_explain/models/topic.dart';
 import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
@@ -12,13 +11,19 @@ class ScoreController {
   Topic _topic;
   int _currentQuestionID;
   int _score = 0;
+  Function(int) setNewScore;
 
   GameSounds _sounds = GameSounds();
 
   Function(String) onNextQuestion;
   Function(GameResult) onGameEnd;
 
-  ScoreController({@required topicID, @required this.onNextQuestion, @required this.onGameEnd}) {
+  ScoreController({
+    @required topicID,
+    @required this.onNextQuestion,
+    @required this.onGameEnd,
+    @required this.setNewScore,
+  }) {
     _topic = topics[topicID];
     _questionIDs = _topic.asShuffledQuestionIDs();
 
@@ -37,7 +42,7 @@ class ScoreController {
       newScore = _score;
     }
 
-    Results.recordBestScore(topicID: _topic.id, newScore: newScore);
+    setNewScore(newScore);
     onGameEnd(
       GameResult(questionsCount: _topic.questionIDs.length, score: _score),
     );
@@ -79,6 +84,11 @@ class GameSounds {
     _audioPlayer.load(WRONG);
   }
 
-  void playCorrect() {_audioPlayer.play(CORRECT);}
-  void playWrong() {_audioPlayer.play(WRONG);}
+  void playCorrect() {
+    _audioPlayer.play(CORRECT);
+  }
+
+  void playWrong() {
+    _audioPlayer.play(WRONG);
+  }
 }
