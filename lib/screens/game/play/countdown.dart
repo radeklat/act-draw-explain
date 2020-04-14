@@ -1,3 +1,4 @@
+import 'package:act_draw_explain/controllers/score.dart';
 import 'package:act_draw_explain/data/questions.dart';
 import 'package:act_draw_explain/data/topics.dart';
 import 'package:act_draw_explain/models/game_result.dart';
@@ -35,6 +36,7 @@ class CountdownScreen extends StatelessWidget {
                       duration: K_DURATION_START_GAME,
                       style: Theme.of(context).textTheme.display1,
                       onFinished: () {
+                        GameSounds.gameStart();
                         GameVibrations.gameStart();
                         Navigator.pushReplacementNamed(context, ExplainScreen.ID, arguments: topicID);
                       },

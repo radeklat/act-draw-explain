@@ -141,7 +141,6 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       Question(id: 127, text: "Raja"),
       Question(id: 128, text: "Sharon Needles"),
       Question(id: 129, text: "Jinkx Monsoon"),
-
       Question(id: 130, text: "Bianca Del Rio"),
       Question(id: 131, text: "Violet Chachki"),
       Question(id: 132, text: "Bob the Drag Queen"),
@@ -152,7 +151,6 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       Question(id: 137, text: "Alaska Thunderfuck 5000"),
       Question(id: 138, text: "Trixie Mattel"),
       Question(id: 139, text: "Monét X Change"),
-
       Question(id: 140, text: "Trinity the Tuck"),
       Question(id: 141, text: "RuPaul Andre Charles"),
       Question(id: 142, text: "Santino Rice"),
@@ -163,7 +161,6 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       Question(id: 147, text: "Shantay you stay"),
       Question(id: 148, text: "Good luck and don't fuck it up"),
       Question(id: 149, text: "Herstory"),
-
       Question(id: 150, text: "Snatch Game"),
       Question(id: 151, text: "Rusical"),
       Question(id: 152, text: "Lip sync"),
@@ -174,7 +171,6 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       Question(id: 157, text: "Work room"),
       Question(id: 158, text: "The Vivienne"),
       Question(id: 159, text: "Vanessa Vanjie Mateo"),
-
       Question(id: 160, text: "Alyssa Edwards"),
       Question(id: 161, text: "Pit Crew"),
       Question(id: 162, text: "\$100,000"),
@@ -185,6 +181,17 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       Question(id: 167, text: "For your life!"),
       Question(id: 168, text: "Bring back my girls"),
       Question(id: 169, text: "I've made my decision"),
+
+      Question(id: 170, text: "You're a winner baby"),
+      Question(id: 171, text: "Squirrel friends"),
+//      Question(id: 172, text: ""),
+//      Question(id: 173, text: ""),
+//      Question(id: 174, text: ""),
+//      Question(id: 175, text: ""),
+//      Question(id: 176, text: ""),
+//      Question(id: 177, text: ""),
+//      Question(id: 178, text: ""),
+//      Question(id: 179, text: ""),
 
 //      Question(id: 10, text: ""),
 //      Question(id: 11, text: ""),

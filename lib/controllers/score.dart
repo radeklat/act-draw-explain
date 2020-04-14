@@ -14,8 +14,6 @@ class ScoreController {
   int _score = 0;
   Function(int) setNewScore;
 
-  GameSounds _sounds = GameSounds();
-
   Function(String) onNextQuestion;
   Function(GameResult) onGameEnd;
 
@@ -44,6 +42,7 @@ class ScoreController {
     }
 
     setNewScore(newScore);
+    GameSounds.gameEnd();
     GameVibrations.gameEnd();
     onGameEnd(
       GameResult(questionsCount: _topic.questionIDs.length, score: _score),
@@ -61,7 +60,7 @@ class ScoreController {
       return;
     }
 
-    (passed) ? _sounds.playCorrect() : _sounds.playWrong();
+    (passed) ? GameSounds.correct() : GameSounds.wrong();
     GameVibrations.answer();
     _score = newScore;
     _currentQuestionID = newQuestionID;
@@ -76,22 +75,40 @@ class ScoreController {
 class GameSounds {
   static const String CORRECT = "correct_coin.mp3";
   static const String WRONG = "wrong_buzzer.mp3";
+  static const String TICK = "tick.mp3";
+  static const String CHIME = "chime.mp3";
+  static const String WINNER = "winner.mp3";
 
   static AudioCache _audioPlayer = AudioCache(
     fixedPlayer: AudioPlayer(mode: PlayerMode.LOW_LATENCY),
     prefix: "sounds/",
   );
+  static bool _initialised = false;
 
-  GameSounds() {
-    _audioPlayer.load(CORRECT);
-    _audioPlayer.load(WRONG);
+  static init() {
+    if (!_initialised) {
+      [CORRECT, WRONG, TICK, CHIME, WINNER].map((filename) => _audioPlayer.load(filename));
+      _initialised = true;
+    }
   }
 
-  void playCorrect() {
+  static void correct() {
     _audioPlayer.play(CORRECT);
   }
 
-  void playWrong() {
+  static void wrong() {
     _audioPlayer.play(WRONG);
+  }
+
+  static void timerTick() {
+    _audioPlayer.play(TICK);
+  }
+
+  static void gameStart() {
+    _audioPlayer.play(CHIME);
+  }
+
+  static void gameEnd() {
+    _audioPlayer.play(WINNER);
   }
 }
