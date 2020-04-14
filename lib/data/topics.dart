@@ -48,6 +48,13 @@ UnmodifiableMapView<int, Topic> topics = UnmodifiableMapView(
         icon: Icon(Icons.tv),
         questionIDs: UnmodifiableListView([for(var i=105; i<=124; i+=1) i]),
       ),
+      Topic(
+        id: 7,
+        name: "RuPaul's Drag Race",
+        color: Colors.pinkAccent,
+        icon: Icon(Icons.tv),
+        questionIDs: UnmodifiableListView([for(var i=124; i<=169; i+=1) i]),
+      ),
     ],
     key: (topic) => topic.id,
     value: (topic) => topic,
