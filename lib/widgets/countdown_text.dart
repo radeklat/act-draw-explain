@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:act_draw_explain/utilities/vibrations.dart';
 import 'package:flutter/material.dart';
 import 'package:act_draw_explain/utilities/duration.dart';
 
@@ -38,6 +39,10 @@ class _CountdownTextState extends State<CountdownText> with SingleTickerProvider
     _stopwatch.start();
     _stream = Stream.periodic(Duration(seconds: 1)).listen((_value) {
       Duration newRemainingTime = widget.duration - _stopwatch.elapsed + Duration(seconds: 1);
+
+      if (newRemainingTime.inSeconds <= 5) {
+        GameVibrations.timerTick();
+      }
 
       if (newRemainingTime.inSeconds < 1) {
         stop(isDisposing: false);

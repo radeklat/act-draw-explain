@@ -1,3 +1,4 @@
+import 'package:act_draw_explain/utilities/vibrations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:preferences/preferences.dart';
@@ -21,13 +22,21 @@ class SettingsScreen extends StatelessWidget {
               values: K_GAME_DURATION_VALUES,
               displayValues: K_GAME_DURATION_DISPLAY,
             ),
+            PreferenceTitle('Rozhraní'),
             DropdownPreference(
-              'Ovládání',
+              'Přechod na další otázku',
               K_SETTINGS_GAME_CONTROL,
-              desc: "Přechod na další otázku",
               defaultVal: K_GAME_CONTROL_DEFAULT,
               values: K_GAME_CONTROL_VALUES,
               displayValues: K_GAME_CONTROL_DISPLAY,
+            ),
+            DropdownPreference(
+              'Vibrace ve hře',
+              K_SETTINGS_GAME_VIBRATE,
+              defaultVal: K_GAME_VIBRATE_DEFAULT,
+              values: [true, false],
+              displayValues: ["Zapnuty", "Vypnuty"],
+              disabled: !GameVibrations.hasVibrator,
             ),
           ],
         ),

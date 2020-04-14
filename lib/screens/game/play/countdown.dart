@@ -4,6 +4,7 @@ import 'package:act_draw_explain/models/game_result.dart';
 import 'package:act_draw_explain/models/results.dart';
 import 'package:act_draw_explain/models/topic.dart';
 import 'package:act_draw_explain/screens/game/end_game.dart';
+import 'package:act_draw_explain/utilities/vibrations.dart';
 import 'package:act_draw_explain/widgets/countdown_text.dart';
 import 'package:act_draw_explain/widgets/progress_button.dart';
 import 'package:flutter/cupertino.dart';
@@ -34,6 +35,7 @@ class CountdownScreen extends StatelessWidget {
                       duration: K_DURATION_START_GAME,
                       style: Theme.of(context).textTheme.display1,
                       onFinished: () {
+                        GameVibrations.gameStart();
                         Navigator.pushReplacementNamed(context, ExplainScreen.ID, arguments: topicID);
                       },
                     ),

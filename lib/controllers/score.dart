@@ -2,6 +2,7 @@ import 'package:act_draw_explain/data/questions.dart';
 import 'package:act_draw_explain/data/topics.dart';
 import 'package:act_draw_explain/models/game_result.dart';
 import 'package:act_draw_explain/models/topic.dart';
+import 'package:act_draw_explain/utilities/vibrations.dart';
 import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/foundation.dart';
@@ -43,6 +44,7 @@ class ScoreController {
     }
 
     setNewScore(newScore);
+    GameVibrations.gameEnd();
     onGameEnd(
       GameResult(questionsCount: _topic.questionIDs.length, score: _score),
     );
@@ -60,6 +62,7 @@ class ScoreController {
     }
 
     (passed) ? _sounds.playCorrect() : _sounds.playWrong();
+    GameVibrations.answer();
     _score = newScore;
     _currentQuestionID = newQuestionID;
     onNextQuestion(questions[_currentQuestionID].text);
