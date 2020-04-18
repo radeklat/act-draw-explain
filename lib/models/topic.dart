@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:flutter/material.dart';
 
 
@@ -6,7 +8,7 @@ class Topic {
   final String name;
   final Color color;
   final Icon icon;
-  final List<int> questionIDs;
+  final UnmodifiableListView<int> questionIDs;
 
   const Topic({this.id, this.name, this.color, this.icon, this.questionIDs});
 

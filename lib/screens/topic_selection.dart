@@ -6,8 +6,6 @@ import 'package:act_draw_explain/widgets/topic/card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../constants.dart';
-
 class TopicSelectionScreen extends StatelessWidget {
   static const String ID = "topic_selection_screen";
 
@@ -36,15 +34,12 @@ class TopicSelectionScreen extends StatelessWidget {
       body: Column(
         children: <Widget>[
           Expanded(
-            child: GridView.builder(
+            child: GridView.extent(
               padding: EdgeInsets.all(16),
-              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 150,
-                mainAxisSpacing: 10,
-                crossAxisSpacing: 10,
-              ),
-              itemBuilder: (context, index) => TopicCard(topic: topics[game.topicIDs[index]]),
-              itemCount: game.topicIDs.length,
+              maxCrossAxisExtent: 150,
+              mainAxisSpacing: 10,
+              crossAxisSpacing: 10,
+              children: [...game.topicIDs.map((topicID) => TopicCard(topic: topics[topicID])).toList()], //AddTopicCard()],
             ),
           ),
         ],
