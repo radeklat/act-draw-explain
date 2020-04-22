@@ -22,6 +22,21 @@ class SettingsScreen extends StatelessWidget {
               values: K_GAME_DURATION_VALUES,
               displayValues: K_GAME_DURATION_DISPLAY,
             ),
+            TextFieldPreference(
+              "Počet karet ve hře (0 = neomezeně)",
+              K_SETTINGS_GAME_CARDS_COUNT,
+              defaultVal: K_GAME_CARDS_COUNT_DEFAULT.toString(),
+              keyboardType: TextInputType.numberWithOptions(),
+              validator: (value) {
+                try {
+                  if (int.parse(value) < 0) throw FormatException;
+                } catch (FormatException) {
+                  return "Hodnota musí být celé číslo, větší nebo rovno 0.";
+                }
+
+                return null;
+              },
+            ),
             PreferenceTitle('Rozhraní'),
             DropdownPreference(
               'Přechod na další otázku',
@@ -30,12 +45,10 @@ class SettingsScreen extends StatelessWidget {
               values: K_GAME_CONTROL_VALUES,
               displayValues: K_GAME_CONTROL_DISPLAY,
             ),
-            DropdownPreference(
+            SwitchPreference(
               'Vibrace ve hře',
               K_SETTINGS_GAME_VIBRATE,
               defaultVal: K_GAME_VIBRATE_DEFAULT,
-              values: [true, false],
-              displayValues: ["Zapnuty", "Vypnuty"],
               disabled: !GameVibrations.hasVibrator,
             ),
           ],

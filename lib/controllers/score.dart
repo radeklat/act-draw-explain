@@ -12,6 +12,7 @@ class ScoreController {
   Topic _topic;
   int _currentQuestionID;
   int _score = 0;
+  int _maxQuestions;
   Function(int) setNewScore;
 
   Function(String) onNextQuestion;
@@ -22,9 +23,12 @@ class ScoreController {
     @required this.onNextQuestion,
     @required this.onGameEnd,
     @required this.setNewScore,
+    maxQuestions,
   }) {
     _topic = topics[topicID];
     _questionIDs = _topic.asShuffledQuestionIDs();
+    _maxQuestions = ((maxQuestions ?? 0) == 0) ? _questionIDs.length : maxQuestions;
+    _questionIDs = _questionIDs.sublist(0, _maxQuestions);
 
     try {
       _currentQuestionID = _questionIDs.removeLast();
@@ -45,7 +49,7 @@ class ScoreController {
     GameSounds.gameEnd();
     GameVibrations.gameEnd();
     onGameEnd(
-      GameResult(questionsCount: _topic.questionIDs.length, score: _score),
+      GameResult(questionsCount: _maxQuestions, score: _score),
     );
   }
 

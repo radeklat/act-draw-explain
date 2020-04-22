@@ -86,7 +86,8 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
       },
       setNewScore: (newScore) {
         Provider.of<TopicBestScore>(context, listen: false).record(topicID: widget.topicID, newScore: newScore);
-      }
+      },
+      maxQuestions: int.tryParse(PrefService.getString(K_SETTINGS_GAME_CARDS_COUNT)) ?? K_GAME_CARDS_COUNT_DEFAULT,
     );
   }
 

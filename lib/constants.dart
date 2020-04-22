@@ -40,8 +40,10 @@ const List<String> K_GAME_CONTROL_VALUES = [K_GAME_CONTROL_BUTTONS, K_GAME_CONTR
 const List<String> K_GAME_CONTROL_DISPLAY = ["Tlačítky", "Naklopením telefonu", "Tlačítky i naklopením"];
 const String K_GAME_CONTROL_DEFAULT = "buttons";
 const bool K_GAME_VIBRATE_DEFAULT = true;
+const int K_GAME_CARDS_COUNT_DEFAULT = 0;
 
 const String K_SETTINGS_GAME_DURATION = "settings.game.duration";
+const String K_SETTINGS_GAME_CARDS_COUNT = "settings.game.cards.count";
 const String K_SETTINGS_GAME_CONTROL = "settings.game.control";
 const String K_SETTINGS_GAME_VIBRATE = "settings.game.vibrate";
 
