@@ -150,6 +150,13 @@ UnmodifiableMapView<int, Topic> topics = UnmodifiableMapView(
         icon: Icon(Icons.palette),
         questionIDs: range(650, 674),
       ),
+      Topic(
+        id: 21,
+        name: "Sporty",
+        color: Colors.purple,
+        icon: Icon(Icons.rowing),
+        questionIDs: range(675, 751),
+      ),
     ],
     key: (topic) => topic.id,
     value: (topic) => topic,
