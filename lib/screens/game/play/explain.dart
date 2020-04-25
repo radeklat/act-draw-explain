@@ -87,7 +87,7 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
       setNewScore: (newScore) {
         Provider.of<TopicBestScore>(context, listen: false).record(topicID: widget.topicID, newScore: newScore);
       },
-      maxQuestions: int.tryParse(PrefService.getString(K_SETTINGS_GAME_CARDS_COUNT)) ?? K_GAME_CARDS_COUNT_DEFAULT,
+      maxQuestions: int.parse(PrefService.getString(K_SETTINGS_GAME_CARDS_COUNT) ?? "$K_GAME_CARDS_COUNT_DEFAULT"),
     );
   }
 
@@ -107,8 +107,6 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
 
   @override
   Widget build(BuildContext context) {
-
-
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -116,16 +114,17 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              if (gameDuration.inSeconds > 0) Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
-                  CountdownText(
-                    onFinished: scoreController.endGame,
-                    duration: gameDuration,
-                    style: Theme.of(context).textTheme.display3,
-                  ),
-                ],
-              ),
+              if (gameDuration.inSeconds > 0)
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    CountdownText(
+                      onFinished: scoreController.endGame,
+                      duration: gameDuration,
+                      style: Theme.of(context).textTheme.display3,
+                    ),
+                  ],
+                ),
               Expanded(
                 child: Row(
                   children: <Widget>[
