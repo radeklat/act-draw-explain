@@ -35,7 +35,7 @@ UnmodifiableMapView<int, Topic> topics = UnmodifiableMapView(
         id: 4,
         name: "IMDb Top 20 Movies",
         color: Colors.amber,
-        icon: Icon(Icons.tv),
+        icon: Icon(Icons.movie),
         questionIDs: range(65, 84),
       ),
       Topic(
@@ -56,7 +56,7 @@ UnmodifiableMapView<int, Topic> topics = UnmodifiableMapView(
         id: 7,
         name: "RuPaul's Drag Race",
         color: Colors.pinkAccent,
-        icon: Icon(Icons.tv),
+        icon: Icon(Icons.looks),
         questionIDs: range(125, 172, extra: [435, 436]),
       ),
       Topic(
@@ -91,7 +91,7 @@ UnmodifiableMapView<int, Topic> topics = UnmodifiableMapView(
         id: 12,
         name: "Čeští herci a herečky",
         color: Colors.lime,
-        icon: Icon(Icons.tv),
+        icon: Icon(Icons.theaters),
         questionIDs: range(303, 342, extra: [292, 302]),
       ),
       Topic(
@@ -112,7 +112,7 @@ UnmodifiableMapView<int, Topic> topics = UnmodifiableMapView(
         id: 15,
         name: "National dishes",
         color: Colors.brown,
-        icon: Icon(Icons.local_pizza),
+        icon: Icon(Icons.restaurant),
         questionIDs: range(437, 503),
       ),
       Topic(
@@ -126,7 +126,7 @@ UnmodifiableMapView<int, Topic> topics = UnmodifiableMapView(
         id: 17,
         name: "Best paid musicians",
         color: Colors.lightGreenAccent,
-        icon: Icon(Icons.music_note),
+        icon: Icon(Icons.headset),
         questionIDs: range(550, 589),
       ),
       Topic(
@@ -140,7 +140,7 @@ UnmodifiableMapView<int, Topic> topics = UnmodifiableMapView(
         id: 19,
         name: "Společenské hry",
         color: Colors.lightBlue,
-        icon: Icon(Icons.dashboard),
+        icon: Icon(Icons.extension),
         questionIDs: range(629, 649),
       ),
       Topic(
@@ -154,8 +154,15 @@ UnmodifiableMapView<int, Topic> topics = UnmodifiableMapView(
         id: 21,
         name: "Sporty",
         color: Colors.purple,
-        icon: Icon(Icons.rowing),
+        icon: Icon(Icons.pool),
         questionIDs: range(675, 751),
+      ),
+      Topic(
+        id: 22,
+        name: "Zvířata",
+        color: Colors.green,
+        icon: Icon(Icons.pets),
+        questionIDs: range(752, 900),
       ),
     ],
     key: (topic) => topic.id,
