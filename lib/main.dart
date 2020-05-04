@@ -31,6 +31,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<TopicBestScore>(create: (_) => TopicBestScore()),
       ],
       child: MaterialApp(
+//        debugShowCheckedModeBanner: false,
         title: 'Act, Draw, Explain',
         theme: AppTheme,
         initialRoute: TopicSelectionScreen.ID,
