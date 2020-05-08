@@ -18,7 +18,7 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 
 // To enable Analytics Debug mode on an emulated Android device, execute the following command line:
-//    adb shell setprop debug.firebase.analytics.app sk.lat.act_draw_explain
+//    adb shell setprop debug.firebase.analytics.app sk.lat.act_draw_explain.debug
 // This behavior persists until you explicitly disable Debug mode by executing the following command line:
 //    adb shell setprop debug.firebase.analytics.app .none.
 FirebaseAnalytics analytics = FirebaseAnalytics();
