@@ -948,9 +948,10 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       Question(id: 899, text: "Žralok"),
       Question(id: 900, text: "Žížala"),
 
-        // Topic 23
-//      Question(id: 901, text: ""),
-//      Question(id: 902, text: ""),
+      Question(id: 901, text: "Gagging"),
+      Question(id: 902, text: "Sickening"),
+
+      // Topic 23
 //      Question(id: 903, text: ""),
 //      Question(id: 904, text: ""),
 //      Question(id: 905, text: ""),
