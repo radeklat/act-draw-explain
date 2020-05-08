@@ -15,7 +15,7 @@ class GameVibrations {
     List<int> intensities = const [],
     int amplitude = -1,
   }) {
-    if (GameVibrations.hasVibrator && PrefService.getBool(K_SETTINGS_GAME_VIBRATE) ?? K_GAME_VIBRATE_DEFAULT) {
+    if (GameVibrations.hasVibrator && (PrefService.getBool(K_SETTINGS_GAME_VIBRATE) ?? K_GAME_VIBRATE_DEFAULT)) {
       return _channel.invokeMethod(
         "vibrate",
         {
