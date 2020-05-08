@@ -13,12 +13,18 @@ import 'package:act_draw_explain/utilities/vibrations.dart';
 import 'package:flutter/material.dart';
 import 'package:preferences/preferences.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 
 main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  Crashlytics.instance.enableInDevMode = false;  // Pass all uncaught errors from the framework to Crashlytics.
+  FlutterError.onError = Crashlytics.instance.recordFlutterError;
+
   await PrefService.init();
   GameVibrations.init();
   GameSounds.init();
+
   runApp(MyApp());
 }
 

@@ -57,7 +57,7 @@ UnmodifiableMapView<int, Topic> topics = UnmodifiableMapView(
         name: "RuPaul's Drag Race",
         color: Colors.pinkAccent,
         icon: Icon(Icons.looks),
-        questionIDs: range(125, 172, extra: [435, 436]),
+        questionIDs: range(125, 172, extra: [435, 436, 901, 902]),
       ),
       Topic(
         id: 8,
