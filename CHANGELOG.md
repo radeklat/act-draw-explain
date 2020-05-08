@@ -15,6 +15,13 @@ Types of changes are:
 ## [Unreleased]
 <!-- Don't forget to update version in pubspec.yaml -->
 
+## [0.1.2+3] - 2020-05-08
+
+### Added
+* Basic analytics
+### Fixed
+* Crashing countdown screen causing it to be stuck on the initial value.
+
 ## [0.1.1+2] - 2020-05-08
 
 ### Added
@@ -26,6 +33,7 @@ Types of changes are:
 ### Added
 * Initial source code
 
-[Unreleased]: https://github.com/radeklat/act-draw-explain/compare/releases/0.1.1+2...HEAD
+[Unreleased]: https://github.com/radeklat/act-draw-explain/compare/releases/0.1.2+3...HEAD
+[0.1.2+3]: https://github.com/radeklat/act-draw-explain/compare/releases/0.1.1+2...releases/0.1.2+3
 [0.1.1+2]: https://github.com/radeklat/act-draw-explain/compare/releases/0.1.0+1...releases/0.1.1+2
 [0.1.0+1]: https://github.com/radeklat/act-draw-explain/compare/initial...releases/0.1.0+1
