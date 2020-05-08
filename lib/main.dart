@@ -10,10 +10,18 @@ import 'package:act_draw_explain/screens/settings.dart';
 import 'package:act_draw_explain/screens/topic_edit.dart';
 import 'package:act_draw_explain/screens/topic_selection.dart';
 import 'package:act_draw_explain/utilities/vibrations.dart';
+import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/material.dart';
 import 'package:preferences/preferences.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+
+// To enable Analytics Debug mode on an emulated Android device, execute the following command line:
+//    adb shell setprop debug.firebase.analytics.app sk.lat.act_draw_explain
+// This behavior persists until you explicitly disable Debug mode by executing the following command line:
+//    adb shell setprop debug.firebase.analytics.app .none.
+FirebaseAnalytics analytics = FirebaseAnalytics();
 
 main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -41,6 +49,9 @@ class MyApp extends StatelessWidget {
         title: 'Act, Draw, Explain',
         theme: AppTheme,
         initialRoute: TopicSelectionScreen.ID,
+        navigatorObservers: [
+          FirebaseAnalyticsObserver(analytics: analytics),
+        ],
         onGenerateRoute: (settings) {
           final arguments = settings.arguments;
           return MaterialPageRoute(
