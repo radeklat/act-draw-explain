@@ -14,6 +14,8 @@ Types of changes are:
 
 ## [Unreleased]
 <!-- Don't forget to update version in pubspec.yaml -->
+### Added
+* App name localisation for CS/EN in launcher.
 
 ## [0.1.2+3] - 2020-05-08
 
