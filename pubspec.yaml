@@ -16,6 +16,7 @@ version: 0.1.2+3
 environment:
   sdk: ">=2.6.0 <3.0.0"
 
+# `flutter pub outdated` to see what can be upgraded
 dependencies:
   flutter:
     sdk: flutter
