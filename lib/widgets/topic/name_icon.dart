@@ -19,28 +19,37 @@ class TopicNameIcon extends StatelessWidget {
     return Container(
       width: 200,
       height: 200,
-      padding: EdgeInsets.all(10),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Icon(
-            topic.icon.icon,
-            size: 50,
-            color: foregroundColor.withOpacity(0.8),
+          Expanded(
+            flex: 1,
+            child: Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: LayoutBuilder(
+                builder: (context, constraint) => Icon(
+                  topic.icon.icon,
+                  size: constraint.biggest.height,
+                  color: foregroundColor.withOpacity(0.8),
+                ),
+              ),
+            ),
           ),
-          SizedBox(
-            height: 5,
-          ),
-          Container(
-            constraints: BoxConstraints(maxHeight: 42),
-            child: AutoSizeText(
-              topic.name,
-              style: Theme.of(context).textTheme.button.copyWith(color: foregroundColor),
-              textAlign: TextAlign.center,
-              maxLines: 3,
-              minFontSize: Theme.of(context).textTheme.overline.fontSize,
-              overflow: TextOverflow.fade,
-              wrapWords: false,
+          Expanded(
+            flex: 1,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10, top: 5),
+              child: Center(
+                child: AutoSizeText(
+                  topic.name,
+                  style: Theme.of(context).textTheme.button.copyWith(color: foregroundColor),
+                  textAlign: TextAlign.center,
+                  maxLines: 3,
+                  minFontSize: Theme.of(context).textTheme.overline.fontSize,
+                  overflow: TextOverflow.fade,
+                  wrapWords: false,
+                ),
+              ),
             ),
           ),
         ],

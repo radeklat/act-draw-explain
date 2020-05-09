@@ -21,7 +21,7 @@ final ThemeData AppTheme = ThemeData(
     subtitle: TextStyle(fontSize: 21, color: Colors.pink.shade600),
     body1: TextStyle(fontSize: 16),
     button: TextStyle(fontSize: 24, color: Colors.white),
-    overline: TextStyle(fontSize: 12, letterSpacing: 0),
+    overline: TextStyle(fontSize: 11, letterSpacing: 0),
   ),
 );
 

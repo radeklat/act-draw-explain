@@ -102,6 +102,7 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
 
   void nextQuestion(bool passed) {
     scoreController.nextQuestion(passed: passed);
+
     if (scoreController.hasMoreQuestions) answerColorAnimation.startAnimation(passed);
   }
 
