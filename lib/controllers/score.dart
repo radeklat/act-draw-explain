@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:act_draw_explain/data/questions.dart';
 import 'package:act_draw_explain/data/topics.dart';
 import 'package:act_draw_explain/models/game_result.dart';
@@ -27,7 +29,7 @@ class ScoreController {
   }) {
     _topic = topics[topicID];
     _questionIDs = _topic.asShuffledQuestionIDs();
-    _maxQuestions = ((maxQuestions ?? 0) == 0) ? _questionIDs.length : maxQuestions;
+    _maxQuestions = min(((maxQuestions ?? 0) == 0) ? _questionIDs.length : maxQuestions, _questionIDs.length);
     _questionIDs = _questionIDs.sublist(0, _maxQuestions);
 
     try {

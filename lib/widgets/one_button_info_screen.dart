@@ -27,7 +27,7 @@ class OneButtonInfoScreen extends StatelessWidget {
                     child: Text(
                       text,
                       textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.display3,
+                      style: Theme.of(context).textTheme.headline4,
                     ),
                   ),
                 ],

@@ -34,7 +34,7 @@ class CountdownScreen extends StatelessWidget {
                   Flexible(
                     child: CountdownText(
                       duration: K_DURATION_START_GAME,
-                      style: Theme.of(context).textTheme.display1,
+                      style: Theme.of(context).textTheme.headline1,
                       onFinished: () {
                         GameSounds.gameStart();
                         GameVibrations.gameStart();

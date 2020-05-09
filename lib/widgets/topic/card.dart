@@ -35,7 +35,8 @@ class TopicCard extends StatelessWidget {
               TopicNameIcon(foregroundColor: foregroundColor, topic: topic),
               TopicCounter(
                 alignment: Alignment.topRight,
-                value: "${bestScore ?? 0}/${topic.questionIDs.length}",
+                valueTop: "${bestScore ?? 0}",
+                valueBottom: "${topic.questionIDs.length}",
                 foregroundColor: foregroundColor,
               ),
             ],

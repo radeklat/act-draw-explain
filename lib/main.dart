@@ -17,16 +17,11 @@ import 'package:provider/provider.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 
-// To enable Analytics Debug mode on an emulated Android device, execute the following command line:
-//    adb shell setprop debug.firebase.analytics.app sk.lat.act_draw_explain
-// This behavior persists until you explicitly disable Debug mode by executing the following command line:
-//    adb shell setprop debug.firebase.analytics.app .none.
-FirebaseAnalytics analytics = FirebaseAnalytics();
 
 main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  Crashlytics.instance.enableInDevMode = false;  // Pass all uncaught errors from the framework to Crashlytics.
+  Crashlytics.instance.enableInDevMode = false; // Pass all uncaught errors from the framework to Crashlytics.
   FlutterError.onError = Crashlytics.instance.recordFlutterError;
 
   await PrefService.init();
@@ -37,21 +32,28 @@ main() async {
 }
 
 class MyApp extends StatelessWidget {
+  // To enable Analytics Debug mode on an emulated Android device, execute the following command line:
+  //    adb shell setprop debug.firebase.analytics.app sk.lat.act_draw_explain.debug
+  // This behavior persists until you explicitly disable Debug mode by executing the following command line:
+  //    adb shell setprop debug.firebase.analytics.app .none.
+  static FirebaseAnalytics analytics = FirebaseAnalytics();
+  static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(analytics: analytics);
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<TopicBestScore>(create: (_) => TopicBestScore()),
+        Provider<FirebaseAnalytics>.value(value: analytics),
+        Provider<FirebaseAnalyticsObserver>.value(value: observer),
       ],
       child: MaterialApp(
 //        debugShowCheckedModeBanner: false,
         title: 'Act, Draw, Explain',
         theme: AppTheme,
         initialRoute: TopicSelectionScreen.ID,
-        navigatorObservers: [
-          FirebaseAnalyticsObserver(analytics: analytics),
-        ],
+        navigatorObservers: <NavigatorObserver>[observer],
         onGenerateRoute: (settings) {
           final arguments = settings.arguments;
           return MaterialPageRoute(
