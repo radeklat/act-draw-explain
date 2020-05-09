@@ -61,13 +61,15 @@ class HelpScreen extends StatelessWidget {
                 TextBody1(
                   "V nastaveních zvolte neomezenou délku hry. Hra trvá dokud nedojou termíny. Kdo má nejvíce uhodnuto?",
                 ),
-
               ],
             ),
             HelpCard(
               children: <Widget>[
                 TextTitle("Hry pro pokročilé"),
-
+                TextBody1(
+                  "I když k tomu aplikace zatím nevybízí a není k tomu optimalizovaná při výběru otázek, je možné hádat "
+                  "i předvedením (pantomimou) nebo nakreslením.",
+                ),
               ],
             ),
           ],
