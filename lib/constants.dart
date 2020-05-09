@@ -42,7 +42,7 @@ const String K_GAME_CONTROL_BOTH = "buttons_and_tilt";
 
 const List<String> K_GAME_CONTROL_VALUES = [K_GAME_CONTROL_BUTTONS, K_GAME_CONTROL_SCREEN_TILT, K_GAME_CONTROL_BOTH];
 const List<String> K_GAME_CONTROL_DISPLAY = ["Tlačítky", "Naklopením telefonu", "Tlačítky i naklopením"];
-const String K_GAME_CONTROL_DEFAULT = "buttons";
+const String K_GAME_CONTROL_DEFAULT = K_GAME_CONTROL_BOTH;
 const bool K_GAME_VIBRATE_DEFAULT = true;
 const int K_GAME_CARDS_COUNT_DEFAULT = 20;
 
