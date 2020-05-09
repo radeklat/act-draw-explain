@@ -12,6 +12,10 @@ Types of changes are:
 ## [Unreleased]
 <!-- Don't forget to update version in pubspec.yaml -->
 
+## [0.2.1+5] - 2020-05-09
+### Features
+*  Downgraded Flutter from v0.17.0 causing app to crash on start to previous v1.16.3
+
 ## [0.2.0+4] - 2020-05-09
 ### Features
 * App name localisation to CS/EN in app launcher
@@ -39,7 +43,8 @@ Types of changes are:
 ### Features
 * Initial source code
 
-[Unreleased]: https://github.com/radeklat/act-draw-explain/compare/releases/0.2.0+4...HEAD
+[Unreleased]: https://github.com/radeklat/act-draw-explain/compare/releases/0.2.1+5...HEAD
+[0.2.1+5]: https://github.com/radeklat/act-draw-explain/compare/releases/0.2.0+4...releases/0.2.1+5
 [0.2.0+4]: https://github.com/radeklat/act-draw-explain/compare/releases/0.1.2+3...releases/0.2.0+4
 [0.1.2+3]: https://github.com/radeklat/act-draw-explain/compare/releases/0.1.1+2...releases/0.1.2+3
 [0.1.1+2]: https://github.com/radeklat/act-draw-explain/compare/releases/0.1.0+1...releases/0.1.1+2
