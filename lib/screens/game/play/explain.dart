@@ -122,7 +122,7 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
                     CountdownText(
                       onFinished: scoreController.endGame,
                       duration: gameDuration,
-                      style: Theme.of(context).textTheme.display3,
+                      style: Theme.of(context).textTheme.headline4,
                     ),
                   ],
                 ),
@@ -135,8 +135,8 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
                         child: AutoSizeText(
                           questionText,
                           textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.display2,
-                          minFontSize: Theme.of(context).textTheme.display4.fontSize,
+                          style: Theme.of(context).textTheme.headline2,
+                          minFontSize: Theme.of(context).textTheme.headline5.fontSize,
                           wrapWords: false,
                           maxLines: 4,
                         ),

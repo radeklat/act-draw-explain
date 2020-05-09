@@ -40,14 +40,14 @@ class TopicEditScreen extends StatelessWidget {
                 ),
                 textAlign: TextAlign.center,
                 autofocus: true,
-                style: Theme.of(context).textTheme.display4.copyWith(fontWeight: FontWeight.normal),
+                style: Theme.of(context).textTheme.headline5.copyWith(fontWeight: FontWeight.normal),
               ),
             ),
             ListTile(
               contentPadding: EdgeInsets.only(left: 32, top: 0, right: 32, bottom: 8),
               title: Text(
                 "Otázky",
-                style: Theme.of(context).textTheme.display4.copyWith(fontWeight: FontWeight.normal),
+                style: Theme.of(context).textTheme.headline5.copyWith(fontWeight: FontWeight.normal),
               ),
               trailing: IconButton(
                 icon: Icon(

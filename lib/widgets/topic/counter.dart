@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../constants.dart';
-
 class TopicCounter extends StatelessWidget {
   const TopicCounter({
     Key key,

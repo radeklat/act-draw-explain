@@ -106,7 +106,7 @@ class TextTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 0, bottom: 16),
-      child: Text(text, style: Theme.of(context).textTheme.title),
+      child: Text(text, style: Theme.of(context).textTheme.headline5.copyWith(color: Theme.of(context).accentColor)),
     );
   }
 }
@@ -120,7 +120,7 @@ class TextSubtitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 4, bottom: 8),
-      child: Text(text, style: Theme.of(context).textTheme.subtitle),
+      child: Text(text, style: Theme.of(context).textTheme.headline6),
     );
   }
 }
@@ -134,7 +134,7 @@ class TextBody1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),
-      child: Text(text, style: Theme.of(context).textTheme.body1),
+      child: Text(text, style: Theme.of(context).textTheme.bodyText1),
     );
   }
 }
