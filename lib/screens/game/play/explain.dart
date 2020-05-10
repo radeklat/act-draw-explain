@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:act_draw_explain/controllers/score.dart';
+import 'package:act_draw_explain/data/topics.dart';
 import 'package:act_draw_explain/models/results.dart';
 import 'package:act_draw_explain/screens/game/end_game.dart';
 import 'package:act_draw_explain/utilities/orientation.dart';
@@ -8,7 +9,6 @@ import 'package:act_draw_explain/utilities/sensors.dart';
 import 'package:act_draw_explain/widgets/countdown_text.dart';
 import 'package:act_draw_explain/widgets/progress_button.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:preferences/preference_service.dart';
@@ -84,8 +84,9 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
         });
       },
       logQuestion: (topic, question, duration, state) =>
-          Provider.of<Analytics>(context, listen: false).logQuestion(topic, question, duration, state, gameDuration),
+          Provider.of<Analytics>(context, listen: false).playedQuestion(topic, question, duration, state, gameDuration),
       onGameEnd: (gameResult) {
+        Provider.of<Analytics>(context, listen: false).playedGame(topics[widget.topicID], gameDuration, gameResult);
         Navigator.pushReplacementNamed(context, EndGameScreen.ID, arguments: gameResult);
       },
       setNewScore: (newScore) {

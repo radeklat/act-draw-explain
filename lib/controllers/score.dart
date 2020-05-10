@@ -49,8 +49,10 @@ class ScoreController {
   }
 
   void endGame({int newScore}) {
+    bool timeOut = false;
     if (newScore == null) {
       newScore = _score;
+      timeOut = true;
       logQuestion(_topic, questions[_currentQuestionID], _stopwatch.elapsed, QuestionState.timeout);
     }
 
@@ -59,7 +61,12 @@ class ScoreController {
     GameVibrations.gameEnd();
     _stopwatch.stop();
     onGameEnd(
-      GameResult(questionsCount: _maxQuestions, score: newScore),
+      GameResult(
+        questionsCount: _maxQuestions,
+        questionsGuessed: _maxQuestions - _questionIDs.length,
+        score: newScore,
+        timeOut: timeOut,
+      ),
     );
   }
 
