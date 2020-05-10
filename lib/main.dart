@@ -17,6 +17,8 @@ import 'package:provider/provider.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 
+import 'analytics.dart';
+
 
 main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -45,7 +47,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<TopicBestScore>(create: (_) => TopicBestScore()),
-        Provider<FirebaseAnalytics>.value(value: analytics),
+        Provider<Analytics>(create: (_) => Analytics(analytics)),
         Provider<FirebaseAnalyticsObserver>.value(value: observer),
       ],
       child: MaterialApp(

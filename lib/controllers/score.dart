@@ -1,8 +1,10 @@
 import 'dart:math';
 
+import 'package:act_draw_explain/analytics.dart';
 import 'package:act_draw_explain/data/questions.dart';
 import 'package:act_draw_explain/data/topics.dart';
 import 'package:act_draw_explain/models/game_result.dart';
+import 'package:act_draw_explain/models/question.dart';
 import 'package:act_draw_explain/models/topic.dart';
 import 'package:act_draw_explain/utilities/vibrations.dart';
 import 'package:audioplayers/audio_cache.dart';
@@ -13,18 +15,21 @@ class ScoreController {
   List<int> _questionIDs;
   Topic _topic;
   int _currentQuestionID;
+  Stopwatch _stopwatch = Stopwatch();
   int _score = 0;
   int _maxQuestions;
   Function(int) setNewScore;
 
   Function(String) onNextQuestion;
   Function(GameResult) onGameEnd;
+  Function(Topic, Question, Duration, QuestionState) logQuestion;
 
   ScoreController({
     @required topicID,
     @required this.onNextQuestion,
     @required this.onGameEnd,
     @required this.setNewScore,
+    @required this.logQuestion,
     maxQuestions,
   }) {
     _topic = topics[topicID];
@@ -40,16 +45,19 @@ class ScoreController {
     }
 
     onNextQuestion(questions[_currentQuestionID].text);
+    _stopwatch.start();
   }
 
   void endGame({int newScore}) {
     if (newScore == null) {
       newScore = _score;
+      logQuestion(_topic, questions[_currentQuestionID], _stopwatch.elapsed, QuestionState.timeout);
     }
 
     setNewScore(newScore);
     GameSounds.gameEnd();
     GameVibrations.gameEnd();
+    _stopwatch.stop();
     onGameEnd(
       GameResult(questionsCount: _maxQuestions, score: newScore),
     );
@@ -58,6 +66,13 @@ class ScoreController {
   void nextQuestion({@required bool passed}) {
     int newScore = (passed) ? _score + 1 : _score;
     int newQuestionID;
+
+    logQuestion(
+      _topic,
+      questions[_currentQuestionID],
+      _stopwatch.elapsed,
+      (passed) ? QuestionState.pass : QuestionState.fail,
+    );
 
     try {
       newQuestionID = _questionIDs.removeLast();
@@ -70,6 +85,7 @@ class ScoreController {
     GameVibrations.answer();
     _score = newScore;
     _currentQuestionID = newQuestionID;
+    _stopwatch.reset();
     onNextQuestion(questions[_currentQuestionID].text);
   }
 

@@ -8,12 +8,14 @@ import 'package:act_draw_explain/utilities/sensors.dart';
 import 'package:act_draw_explain/widgets/countdown_text.dart';
 import 'package:act_draw_explain/widgets/progress_button.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:preferences/preference_service.dart';
 import 'package:provider/provider.dart';
 import 'package:wakelock/wakelock.dart';
 
+import '../../../analytics.dart';
 import '../../../animations/answer_color.dart';
 import '../../../constants.dart';
 
@@ -81,6 +83,8 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
           questionText = newQuestion;
         });
       },
+      logQuestion: (topic, question, duration, state) =>
+          Provider.of<Analytics>(context, listen: false).logQuestion(topic, question, duration, state, gameDuration),
       onGameEnd: (gameResult) {
         Navigator.pushReplacementNamed(context, EndGameScreen.ID, arguments: gameResult);
       },
