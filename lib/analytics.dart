@@ -11,7 +11,8 @@ class Analytics {
 
   Analytics(this.analytics);
 
-  void playedQuestion(Topic topic, Question question, Duration duration, QuestionState state, Duration timeLimit) async {
+  void playedQuestion(
+      Topic topic, Question question, Duration duration, QuestionState state, Duration timeLimit) async {
     await analytics.logEvent(
       name: 'playedQuestion',
       parameters: <String, dynamic>{
@@ -35,6 +36,13 @@ class Analytics {
         'timeLimitSeconds': timeLimit.inSeconds,
         ...gameResult.toMap(),
       },
+    );
+  }
+
+  void settingsChanged(String key, Map<String, dynamic> allValues) async {
+    await analytics.logEvent(
+      name: 'settingsChanged',
+      parameters: <String, dynamic>{'key': key, 'newValue': allValues[key], ...allValues},
     );
   }
 }

@@ -46,10 +46,11 @@ const String K_GAME_CONTROL_DEFAULT = K_GAME_CONTROL_BOTH;
 const bool K_GAME_VIBRATE_DEFAULT = true;
 const int K_GAME_CARDS_COUNT_DEFAULT = 20;
 
-const String K_SETTINGS_GAME_DURATION = "settings.game.duration";
-const String K_SETTINGS_GAME_CARDS_COUNT = "settings.game.cards.count";
-const String K_SETTINGS_GAME_CONTROL = "settings.game.control";
-const String K_SETTINGS_GAME_VIBRATE = "settings.game.vibrate";
+const String K_SETTINGS_PREFIX = "settings.";
+const String K_SETTINGS_GAME_DURATION = "${K_SETTINGS_PREFIX}game.duration";
+const String K_SETTINGS_GAME_CARDS_COUNT = "${K_SETTINGS_PREFIX}game.cards.count";
+const String K_SETTINGS_GAME_CONTROL = "${K_SETTINGS_PREFIX}game.control";
+const String K_SETTINGS_GAME_VIBRATE = "${K_SETTINGS_PREFIX}game.vibrate";
 
 const K_SENSORS_THROTTLE = Duration(milliseconds: 100);
 const K_TILT_THROTTLE = Duration(seconds: 1);
