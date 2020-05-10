@@ -51,7 +51,7 @@ class ScoreController {
     GameSounds.gameEnd();
     GameVibrations.gameEnd();
     onGameEnd(
-      GameResult(questionsCount: _maxQuestions, score: _score),
+      GameResult(questionsCount: _maxQuestions, score: newScore),
     );
   }
 
