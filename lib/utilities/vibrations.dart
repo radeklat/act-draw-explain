@@ -1,6 +1,5 @@
 import 'package:flutter/services.dart';
 import 'package:preferences/preference_service.dart';
-import 'package:vibration/vibration.dart';
 
 import '../constants.dart';
 

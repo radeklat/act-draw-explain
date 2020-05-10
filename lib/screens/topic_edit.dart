@@ -1,9 +1,5 @@
-import 'package:act_draw_explain/utilities/vibrations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:preferences/preferences.dart';
-
-import '../constants.dart';
 
 class TopicEditScreen extends StatelessWidget {
   static const String ID = "topic_edit_screen";

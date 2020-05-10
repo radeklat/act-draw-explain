@@ -5,7 +5,7 @@ const Color K_COLOR_PASS = Colors.lightGreen;
 const Color K_COLOR_FAIL = Colors.pink;
 const Color K_COLOR_BACKGROUND = Colors.white;
 
-final ThemeData AppTheme = ThemeData(
+final ThemeData appTheme = ThemeData(
   primaryColor: K_COLOR_FAIL,
   accentColor: Colors.pinkAccent,
   backgroundColor: K_COLOR_BACKGROUND,

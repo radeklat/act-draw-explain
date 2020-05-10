@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../constants.dart';
-
 class ProgressButton extends StatelessWidget {
   final String title;
   final IconData iconData;

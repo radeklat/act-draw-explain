@@ -1,11 +1,5 @@
-import 'package:act_draw_explain/data/game.dart';
-import 'package:act_draw_explain/data/topics.dart';
-import 'package:act_draw_explain/screens/settings.dart';
-import 'package:act_draw_explain/widgets/topic/card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../constants.dart';
 
 class HelpScreen extends StatelessWidget {
   static const String ID = "help_screen";

@@ -53,7 +53,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
 //        debugShowCheckedModeBanner: false,
         title: 'Act, Draw, Explain',
-        theme: AppTheme,
+        theme: appTheme,
         initialRoute: TopicSelectionScreen.ID,
         navigatorObservers: <NavigatorObserver>[observer],
         onGenerateRoute: (settings) {

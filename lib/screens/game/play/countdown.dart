@@ -1,13 +1,6 @@
 import 'package:act_draw_explain/controllers/score.dart';
-import 'package:act_draw_explain/data/questions.dart';
-import 'package:act_draw_explain/data/topics.dart';
-import 'package:act_draw_explain/models/game_result.dart';
-import 'package:act_draw_explain/models/results.dart';
-import 'package:act_draw_explain/models/topic.dart';
-import 'package:act_draw_explain/screens/game/end_game.dart';
 import 'package:act_draw_explain/utilities/vibrations.dart';
 import 'package:act_draw_explain/widgets/countdown_text.dart';
-import 'package:act_draw_explain/widgets/progress_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
