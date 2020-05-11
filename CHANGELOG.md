@@ -12,18 +12,18 @@ Types of changes are:
 ## [Unreleased]
 <!-- Don't forget to update version in pubspec.yaml -->
 
-## [0.3.0+6] - 2020-05-10
+## [0.3.0+6] - 2020-05-10 <a name="0.3.0" />
 ### Features
 * Analytics
 
 ### Fixes
 * Wrong score when the last question was a pass
 
-## [0.2.1+5] - 2020-05-09
+## [0.2.1+5] - 2020-05-09 <a name="0.2.1" />
 ### Features
 *  Downgraded Flutter from v0.17.0 causing app to crash on start to previous v1.16.3
 
-## [0.2.0+4] - 2020-05-09
+## [0.2.0+4] - 2020-05-09 <a name="0.2.0" />
 ### Features
 * App name localisation to CS/EN in app launcher
 * Update application icon
@@ -33,19 +33,19 @@ Types of changes are:
 * App crashing when max questions higher than available questions count.
 * Missing advanced game play documentation
 
-## [0.1.2+3] - 2020-05-08
+## [0.1.2+3] - 2020-05-08 <a name="0.1.2" />
 
 ### Features
 * Basic analytics
 ### Fixes
 * Crashing countdown screen causing it to be stuck on the initial value.
 
-## [0.1.1+2] - 2020-05-08
+## [0.1.1+2] - 2020-05-08 <a name="0.1.1" />
 
 ### Features
 * Crashlytics
 
-## [0.1.0+1] - 2020-04-08
+## [0.1.0+1] - 2020-04-08 <a name="0.1.0" />
 
 ### Features
 * Initial source code
