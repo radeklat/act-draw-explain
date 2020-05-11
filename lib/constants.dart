@@ -58,3 +58,5 @@ const K_TILT_THROTTLE = Duration(seconds: 1);
 enum DebugLevel { all, movement, none }
 
 const DebugLevel K_DEBUG_TILT_SENSORS = DebugLevel.none;
+
+const String CHANGELOG_URL = "https://github.com/radeklat/act-draw-explain/blob/master/CHANGELOG.md";

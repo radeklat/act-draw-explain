@@ -35,6 +35,8 @@ dependencies:
   firebase_analytics: ^5.0.11
   # https://pub.dev/packages/flutter_launcher_icons#book-guide
   flutter_launcher_icons: ^0.7.4  # flutter pub run flutter_launcher_icons:main
+  url_launcher: ^5.4.5
+  package_info: ^0.4.0+17
 
 dev_dependencies:
   flutter_test:

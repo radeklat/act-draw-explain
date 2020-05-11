@@ -10,12 +10,12 @@ import 'package:act_draw_explain/screens/settings.dart';
 import 'package:act_draw_explain/screens/topic_edit.dart';
 import 'package:act_draw_explain/screens/topic_selection.dart';
 import 'package:act_draw_explain/utilities/vibrations.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:preferences/preferences.dart';
 import 'package:provider/provider.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
 
 import 'analytics.dart';
 
