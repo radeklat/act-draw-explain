@@ -59,4 +59,13 @@ enum DebugLevel { all, movement, none }
 
 const DebugLevel K_DEBUG_TILT_SENSORS = DebugLevel.none;
 
-const String CHANGELOG_URL = "https://github.com/radeklat/act-draw-explain/blob/master/CHANGELOG.md";
+class _URL {
+  static const String REPO = "https://github.com/radeklat/act-draw-explain";
+  final String changelog = "$REPO/blob/master/CHANGELOG.md";
+  final String bugReport = "$REPO/issues/new?labels=bug%2C+triage&template=bug_report.md";
+  final String featureRequest = "$REPO/issues/new?labels=enhancement%2C+triage&template=feature_request.md";
+}
+
+class K {
+  static final url = _URL();
+}

@@ -37,6 +37,8 @@ dependencies:
   flutter_launcher_icons: ^0.7.4  # flutter pub run flutter_launcher_icons:main
   url_launcher: ^5.4.5
   package_info: ^0.4.0+17
+  device_info: ">=0.4.2+4 <2.0.0"
+  fluttertoast: ^4.0.1
 
 dev_dependencies:
   flutter_test:
