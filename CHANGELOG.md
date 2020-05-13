@@ -12,6 +12,13 @@ Types of changes are:
 ## [Unreleased]
 <!-- Don't forget to update version in pubspec.yaml -->
 
+## [0.4.0+7] - 2020-05-13 <a name="0.4.0" />
+### Features
+* Link to feedback (bug report, feature requests) from the app
+
+### Fixes
+* Font od body text from bold to normal
+
 ## [0.3.0+6] - 2020-05-10 <a name="0.3.0" />
 ### Features
 * Analytics
@@ -50,7 +57,8 @@ Types of changes are:
 ### Features
 * Initial source code
 
-[Unreleased]: https://github.com/radeklat/act-draw-explain/compare/releases/0.3.0+6...HEAD
+[Unreleased]: https://github.com/radeklat/act-draw-explain/compare/releases/0.4.0+7...HEAD
+[0.4.0+7]: https://github.com/radeklat/act-draw-explain/compare/releases/0.3.0+6...releases/0.4.0+7
 [0.3.0+6]: https://github.com/radeklat/act-draw-explain/compare/releases/0.2.1+5...releases/0.3.0+6
 [0.2.1+5]: https://github.com/radeklat/act-draw-explain/compare/releases/0.2.0+4...releases/0.2.1+5
 [0.2.0+4]: https://github.com/radeklat/act-draw-explain/compare/releases/0.1.2+3...releases/0.2.0+4
