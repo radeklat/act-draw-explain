@@ -15,6 +15,7 @@ Types of changes are:
 ## [0.4.0+7] - 2020-05-13 <a name="0.4.0" />
 ### Features
 * Link to feedback (bug report, feature requests) from the app
+* Link to change log from the app
 
 ### Fixes
 * Font od body text from bold to normal
