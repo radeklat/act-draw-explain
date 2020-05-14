@@ -1,6 +1,8 @@
 import 'package:act_draw_explain/models/game_result.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:flutter/foundation.dart';
 
+import 'constants.dart';
 import 'models/question.dart';
 import 'models/topic.dart';
 
@@ -21,7 +23,7 @@ class Analytics {
         'questionID': question.id,
         'questionText': question.text,
         'durationSeconds': duration.inMilliseconds / 1000,
-        'state': state.toString().replaceFirst((QuestionState).toString() + ".", ""),
+        'state': describeEnum(state),
         'timeLimitSeconds': timeLimit.inSeconds,
       },
     );
@@ -44,5 +46,20 @@ class Analytics {
       name: 'settingsChanged',
       parameters: <String, dynamic>{'key': key, 'newValue': allValues[key], ...allValues},
     );
+  }
+
+  void userFeedback(FeedbackType type) async {
+    await analytics.logEvent(
+      name: 'feedback',
+      parameters: <String, dynamic>{'type': describeEnum(type),},
+    );
+  }
+
+  void _simpleEvent(String name) async {
+    await analytics.logEvent(name: name);
+  }
+
+  void openedChangelog() {
+    _simpleEvent("openedChangelog");
   }
 }

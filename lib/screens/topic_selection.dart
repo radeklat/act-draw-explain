@@ -1,3 +1,4 @@
+import 'package:act_draw_explain/analytics.dart';
 import 'package:act_draw_explain/data/game.dart';
 import 'package:act_draw_explain/data/topics.dart';
 import 'package:act_draw_explain/utilities/device_info.dart';
@@ -7,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:package_info/package_info.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../constants.dart';
@@ -60,18 +62,20 @@ class AppBarPopupMenu extends StatelessWidget {
   void openChangelog(BuildContext context) async {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
     openUrl(context, "${K.url.changelog}#${packageInfo.version}");
+    Provider.of<Analytics>(context, listen: false).openedChangelog();
   }
 
-  void openFeedback(context, url) async {
+  void openFeedback(BuildContext context, FeedbackType feedbackType) async {
     String deviceInfo = await collectDeviceInfo();
     // TODO: Download template from the repo, replace a placeholder and pre-fill with:
-    openUrl(context, url); // + "&body=" + Uri.encodeComponent(deviceInfo));
+    openUrl(context, K.url.feedback[feedbackType]); // + "&body=" + Uri.encodeComponent(deviceInfo));
     Navigator.pop(context, "");
     Clipboard.setData(ClipboardData(text: deviceInfo));
     Fluttertoast.showToast(
         msg: "Informace o zařízení zkopírována do schránky.",
         timeInSecForIosWeb: 5,
     );
+    Provider.of<Analytics>(context, listen: false).userFeedback(feedbackType);
   }
 
   Future<void> chooseFeedback(BuildContext context) async {
@@ -85,7 +89,7 @@ class AppBarPopupMenu extends StatelessWidget {
           children: <Widget>[
             SimpleDialogOption(
               onPressed: () {
-                openFeedback(context, K.url.featureRequest);
+                openFeedback(context, FeedbackType.feature);
               },
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8),
@@ -94,7 +98,7 @@ class AppBarPopupMenu extends StatelessWidget {
             ),
             SimpleDialogOption(
               onPressed: () {
-                openFeedback(context, K.url.bugReport);
+                openFeedback(context, FeedbackType.bug);
               },
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8),

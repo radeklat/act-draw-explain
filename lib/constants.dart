@@ -1,5 +1,9 @@
+import 'dart:collection';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
+import 'analytics.dart';
 
 const Color K_COLOR_PASS = Colors.lightGreen;
 const Color K_COLOR_FAIL = Colors.pink;
@@ -20,7 +24,7 @@ final ThemeData appTheme = ThemeData(
     headline5: TextStyle(fontSize: 34, color: Colors.black87),
     headline6: TextStyle(fontSize: 24, color: Colors.black87),
     subtitle1: TextStyle(fontSize: 16),
-    subtitle2:  TextStyle(fontSize: 14),
+    subtitle2: TextStyle(fontSize: 14),
     bodyText1: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
     bodyText2: TextStyle(fontSize: 14, fontWeight: FontWeight.normal),
     caption: TextStyle(fontSize: 12),
@@ -56,14 +60,17 @@ const K_SENSORS_THROTTLE = Duration(milliseconds: 100);
 const K_TILT_THROTTLE = Duration(seconds: 1);
 
 enum DebugLevel { all, movement, none }
+enum FeedbackType { bug, feature }
 
 const DebugLevel K_DEBUG_TILT_SENSORS = DebugLevel.none;
 
 class _URL {
   static const String REPO = "https://github.com/radeklat/act-draw-explain";
   final String changelog = "$REPO/blob/master/CHANGELOG.md";
-  final String bugReport = "$REPO/issues/new?labels=bug%2C+triage&template=bug_report.md";
-  final String featureRequest = "$REPO/issues/new?labels=enhancement%2C+triage&template=feature_request.md";
+  final UnmodifiableMapView<FeedbackType, String> feedback = UnmodifiableMapView({
+    FeedbackType.bug: "$REPO/issues/new?labels=bug%2C+triage&template=bug_report.md",
+    FeedbackType.feature: "$REPO/issues/new?labels=enhancement%2C+triage&template=feature_request.md",
+  });
 }
 
 class K {
