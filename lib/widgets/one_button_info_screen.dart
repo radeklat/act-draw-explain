@@ -28,6 +28,7 @@ class OneButtonInfoScreen extends StatelessWidget {
                       text,
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.headline4,
+                      key: Key((key as ValueKey).value + "_text"),
                     ),
                   ),
                 ],
@@ -39,6 +40,7 @@ class OneButtonInfoScreen extends StatelessWidget {
                 color: Theme.of(context).buttonColor,
                 onPressed: onPressed,
                 padding: EdgeInsets.symmetric(vertical: 20, horizontal: 40),
+                key: Key((key as ValueKey).value + "_button"),
                 child: Text(
                   buttonText,
                   style: Theme.of(context).textTheme.button,

@@ -13,6 +13,7 @@ class StartGameScreen extends StatelessWidget {
     return OneButtonInfoScreen(
       text: "Jste připraveni ke hře?",
       buttonText: "Start hry",
+      key: Key("start_game"),
       onPressed: () {
         Navigator.pushReplacementNamed(context, CountdownScreen.ID, arguments: topicID);
       },

@@ -14,6 +14,7 @@ class EndGameScreen extends StatelessWidget {
     return OneButtonInfoScreen(
       text: "Konec hry\nUhodnuto ${lastGameResult.score}/${lastGameResult.questionsCount}",
       buttonText: "Zpět na výběr témat",
+      key: Key("end_game"),
       onPressed: () {
         Navigator.popUntil(context, ModalRoute.withName(TopicSelectionScreen.ID));
       },

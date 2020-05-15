@@ -24,7 +24,7 @@ class TopicSelectionScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("Act, Draw, Explain"),
         actions: <Widget>[
-          AppBarPopupMenu(),
+          AppBarPopupMenu(key: Key("popup_menu"),),
         ],
       ),
       body: Column(
@@ -36,7 +36,9 @@ class TopicSelectionScreen extends StatelessWidget {
               mainAxisSpacing: 10,
               crossAxisSpacing: 10,
               children: [
-                ...game.topicIDs.map((topicID) => TopicCard(topic: topics[topicID])).toList()
+                ...game.topicIDs
+                    .map((topicID) => TopicCard(topic: topics[topicID], key: Key("topic_card_$topicID")))
+                    .toList()
               ], //AddTopicCard()],
             ),
           ),
@@ -72,8 +74,8 @@ class AppBarPopupMenu extends StatelessWidget {
     Navigator.pop(context, "");
     Clipboard.setData(ClipboardData(text: deviceInfo));
     Fluttertoast.showToast(
-        msg: "Informace o zařízení zkopírována do schránky.",
-        timeInSecForIosWeb: 5,
+      msg: "Informace o zařízení zkopírována do schránky.",
+      timeInSecForIosWeb: 5,
     );
     Provider.of<Analytics>(context, listen: false).userFeedback(feedbackType);
   }
@@ -124,10 +126,10 @@ class AppBarPopupMenu extends StatelessWidget {
         }
       },
       itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-        PopupMenuItem<String>(value: SettingsScreen.ID, child: Text("Nastavení")),
-        PopupMenuItem<String>(value: HelpScreen.ID, child: Text("Nápověda")),
-        PopupMenuItem<String>(value: "feedback", child: Text("Zpětná vazba")),
-        PopupMenuItem<String>(value: "changelog", child: Text("Seznam změn")),
+        PopupMenuItem<String>(value: SettingsScreen.ID, child: Text("Nastavení"), key: Key("popup_menu_settings")),
+        PopupMenuItem<String>(value: HelpScreen.ID, child: Text("Nápověda"), key: Key("popup_menu_help")),
+        PopupMenuItem<String>(value: "feedback", child: Text("Zpětná vazba"), key: Key("popup_menu_feedback"),),
+        PopupMenuItem<String>(value: "changelog", child: Text("Seznam změn"), key: Key("popup_menu_chagelog"),),
       ],
     );
   }

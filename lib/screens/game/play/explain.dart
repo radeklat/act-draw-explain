@@ -159,6 +159,7 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
                       color: K_COLOR_PASS,
                       value: true,
                       onPressed: nextQuestion,
+                      key: Key("answer_correct"),
                     ),
                     ProgressButton(
                       title: "Špatně",
@@ -166,6 +167,7 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
                       color: K_COLOR_FAIL,
                       value: false,
                       onPressed: nextQuestion,
+                      key: Key("answer_wrong"),
                     ),
                   ],
                 ),
