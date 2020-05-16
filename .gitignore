@@ -41,3 +41,4 @@ android/app/google-services.json
 
 **/*-assets/
 coverage
+test/all_imports_test.dart
