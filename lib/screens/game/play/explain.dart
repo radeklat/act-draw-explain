@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:act_draw_explain/controllers/score.dart';
+import 'package:act_draw_explain/data/questions.dart';
 import 'package:act_draw_explain/data/topics.dart';
 import 'package:act_draw_explain/models/results.dart';
 import 'package:act_draw_explain/screens/game/end_game.dart';
@@ -77,7 +78,8 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
       },
     );
     scoreController = ScoreController(
-      topicID: widget.topicID,
+      topic: topics[widget.topicID],
+      questions: questions,
       onNextQuestion: (newQuestion) {
         setState(() {
           questionText = newQuestion;

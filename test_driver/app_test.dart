@@ -93,6 +93,7 @@ void main() {
     });
 
     test('WHEN I answer first question right', () async {
+      // TODO: For unknown reason this fail but it shouldn't. The whole framework is not production ready.
       await driver.tap(find.byValueKey("answer_correct"), timeout: Duration(seconds: 2));
     });
 

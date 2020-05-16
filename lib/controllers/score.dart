@@ -1,8 +1,7 @@
+import 'dart:collection';
 import 'dart:math';
 
 import 'package:act_draw_explain/analytics.dart';
-import 'package:act_draw_explain/data/questions.dart';
-import 'package:act_draw_explain/data/topics.dart';
 import 'package:act_draw_explain/models/game_result.dart';
 import 'package:act_draw_explain/models/question.dart';
 import 'package:act_draw_explain/models/topic.dart';
@@ -12,8 +11,9 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/foundation.dart';
 
 class ScoreController {
+  final Topic topic;
+  final UnmodifiableMapView<int, Question> questions;
   List<int> _questionIDs;
-  Topic _topic;
   int _currentQuestionID;
   Stopwatch _stopwatch = Stopwatch();
   int _score = 0;
@@ -25,15 +25,15 @@ class ScoreController {
   Function(Topic, Question, Duration, QuestionState) logQuestion;
 
   ScoreController({
-    @required topicID,
-    @required this.onNextQuestion,
-    @required this.onGameEnd,
-    @required this.setNewScore,
-    @required this.logQuestion,
+    @required this.topic,
+    @required this.questions,
+    this.onNextQuestion,
+    this.onGameEnd,
+    this.setNewScore,
+    this.logQuestion,
     maxQuestions,
   }) {
-    _topic = topics[topicID];
-    _questionIDs = _topic.asShuffledQuestionIDs();
+    _questionIDs = topic.asShuffledQuestionIDs();
     _maxQuestions = min(((maxQuestions ?? 0) == 0) ? _questionIDs.length : maxQuestions, _questionIDs.length);
     _questionIDs = _questionIDs.sublist(0, _maxQuestions);
 
@@ -44,7 +44,7 @@ class ScoreController {
       return;
     }
 
-    onNextQuestion(questions[_currentQuestionID].text);
+    onNextQuestion?.call(questions[_currentQuestionID].text);
     _stopwatch.start();
   }
 
@@ -53,14 +53,14 @@ class ScoreController {
     if (newScore == null) {
       newScore = _score;
       timeOut = true;
-      logQuestion(_topic, questions[_currentQuestionID], _stopwatch.elapsed, QuestionState.timeout);
+      logQuestion?.call(topic, questions[_currentQuestionID], _stopwatch.elapsed, QuestionState.timeout);
     }
 
-    setNewScore(newScore);
+    setNewScore?.call(newScore);
     GameSounds.gameEnd();
     GameVibrations.gameEnd();
     _stopwatch.stop();
-    onGameEnd(
+    onGameEnd?.call(
       GameResult(
         questionsCount: _maxQuestions,
         questionsGuessed: _maxQuestions - _questionIDs.length,
@@ -74,8 +74,8 @@ class ScoreController {
     int newScore = (passed) ? _score + 1 : _score;
     int newQuestionID;
 
-    logQuestion(
-      _topic,
+    logQuestion?.call(
+      topic,
       questions[_currentQuestionID],
       _stopwatch.elapsed,
       (passed) ? QuestionState.pass : QuestionState.fail,
@@ -93,7 +93,7 @@ class ScoreController {
     _score = newScore;
     _currentQuestionID = newQuestionID;
     _stopwatch.reset();
-    onNextQuestion(questions[_currentQuestionID].text);
+    onNextQuestion?.call(questions[_currentQuestionID].text);
   }
 
   bool get hasMoreQuestions {
