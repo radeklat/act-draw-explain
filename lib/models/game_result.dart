@@ -6,7 +6,7 @@ class GameResult extends Equatable {
   final int score;
   final bool timeOut;
 
-  const GameResult({@required this.questionsCount, @required this.questionsGuessed, @required this.score, @required this.timeOut});
+  const GameResult(this.questionsCount, this.questionsGuessed, this.score, this.timeOut);
 
   Map<String, dynamic> toMap() {
     return {

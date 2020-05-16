@@ -12,7 +12,7 @@ Topic fakeTopic = Topic(
   name: "Fake topic",
   color: Colors.black,
   icon: Icon(Icons.score),
-  questionIDs: UnmodifiableListView([1, 2, 3]),
+  questionIDs: UnmodifiableListView([1, 2, 3, 4]),
 );
 
 Topic fakeEmptyTopic = Topic(
@@ -25,7 +25,12 @@ Topic fakeEmptyTopic = Topic(
 
 UnmodifiableMapView<int, Question> fakeQuestions = UnmodifiableMapView(
   Map.fromIterable(
-    [Question(id: 1, text: "q1"), Question(id: 2, text: "q2"), Question(id: 3, text: "q3")],
+    [
+      Question(id: 1, text: "q1"),
+      Question(id: 2, text: "q2"),
+      Question(id: 3, text: "q3"),
+      Question(id: 4, text: "q4")
+    ],
     key: (question) => question.id,
     value: (question) => question,
   ),
@@ -35,18 +40,16 @@ void main() {
   group('ScoreController', () {
     testWidgets('should generate next question text', (WidgetTester tester) async {
       String nextQuestion;
-      ScoreController sc = ScoreController(
+      ScoreController(
         topic: fakeTopic,
         questions: fakeQuestions,
         onNextQuestion: (str) {
           nextQuestion = str;
         },
-      );
+      ).nextQuestion(passed: true);
 
-      sc.nextQuestion(passed: true);
-
-      assert(nextQuestion != null);
-      assert(nextQuestion.length > 0);
+      expect(nextQuestion, isNotNull, reason: "nextQuestion");
+      expect(nextQuestion.length, isPositive, reason: "nextQuestion.length");
     });
 
     GameResult _playGame({List<bool> answers, int maxQuestions}) {
@@ -66,19 +69,19 @@ void main() {
     }
 
     testWidgets('should end game when maxQuestions is reached', (WidgetTester tester) async {
-      assert(_playGame(answers: [true], maxQuestions: 1) != null);
+      expect(_playGame(answers: [true], maxQuestions: 1), isNotNull);
     });
 
     testWidgets('should not end game when there are more questions', (WidgetTester tester) async {
-      assert(_playGame(answers: [true, false]) == null);
+      expect(_playGame(answers: [true, false]), isNull);
     });
 
     testWidgets('should end game when there are no more questions', (WidgetTester tester) async {
-      assert(_playGame() != null);
+      expect(_playGame(), isNotNull);
     });
 
     testWidgets('should treat 0 maxQuestions as all questions', (WidgetTester tester) async {
-      assert(_playGame(maxQuestions: 0).questionsCount == fakeQuestions.length);
+      expect(_playGame(maxQuestions: 0).questionsCount, fakeQuestions.length);
     });
 
     testWidgets('should end game immediately when topic has no questions', (WidgetTester tester) async {
@@ -91,9 +94,22 @@ void main() {
         },
       );
 
-      assert(result != null);
-      assert(result.questionsCount == 0);
-      assert(result.score == 0);
+      expect(result, GameResult(0, 0, 0, false));
+    });
+
+    testWidgets('should return current score when game is ended externally', (WidgetTester tester) async {
+      GameResult result;
+      ScoreController(
+        topic: fakeTopic,
+        questions: fakeQuestions,
+        onGameEnd: (gameResult) {
+          result = gameResult;
+        },
+      )
+        ..nextQuestion(passed: true)
+        ..endGame();
+
+      expect(result, GameResult(fakeQuestions.length, 1, 1, true));
     });
   });
 }
