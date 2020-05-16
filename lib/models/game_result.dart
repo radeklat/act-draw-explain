@@ -1,6 +1,6 @@
-import 'package:flutter/foundation.dart';
+import 'package:equatable/equatable.dart';
 
-class GameResult {
+class GameResult extends Equatable {
   final int questionsCount;
   final int questionsGuessed;
   final int score;
@@ -16,5 +16,13 @@ class GameResult {
       "successRate": (questionsGuessed > 0) ? score / questionsGuessed : 0.0,
       "timeOut": timeOut,
     };
+  }
+
+  @override
+  List<Object> get props => [questionsCount, questionsGuessed, score, timeOut];
+
+  @override
+  String toString() {
+    return "questionsCount: $questionsCount, questionsGuessed: $questionsGuessed, score: $score, timeOut: $timeOut";
   }
 }
