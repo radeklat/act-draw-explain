@@ -10,6 +10,7 @@ import 'explain.dart';
 class CountdownScreen extends StatelessWidget {
   static const String ID = "countdown_screen";
   final int topicID;
+  static GameSounds gameSounds = GameSounds();
 
   const CountdownScreen({Key key, this.topicID}) : super(key: key);
 
@@ -29,7 +30,7 @@ class CountdownScreen extends StatelessWidget {
                       duration: K_DURATION_START_GAME,
                       style: Theme.of(context).textTheme.headline1,
                       onFinished: () {
-                        GameSounds.gameStart();
+                        gameSounds.gameStart();
                         GameVibrations.gameStart();
                         Navigator.pushReplacementNamed(context, ExplainScreen.ID, arguments: topicID);
                       },

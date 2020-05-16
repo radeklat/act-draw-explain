@@ -16,6 +16,7 @@ class ScoreController {
   List<int> _questionIDs;
   int _currentQuestionID;
   Stopwatch _stopwatch = Stopwatch();
+  static GameSounds gameSounds = GameSounds();
   int _score = 0;
   int _maxQuestions;
   Function(int) setNewScore;
@@ -62,7 +63,7 @@ class ScoreController {
     }
 
     setNewScore?.call(newScore);
-    GameSounds.gameEnd();
+    gameSounds.gameEnd();
     GameVibrations.gameEnd();
     _stopwatch.stop();
     onGameEnd?.call(GameResult(_maxQuestions, questionsGuessed, newScore, timeOut));
@@ -86,7 +87,7 @@ class ScoreController {
       return;
     }
 
-    (passed) ? GameSounds.correct() : GameSounds.wrong();
+    (passed) ? gameSounds.correct() : gameSounds.wrong();
     GameVibrations.answer();
     _score = newScore;
     _currentQuestionID = newQuestionID;
@@ -100,11 +101,11 @@ class ScoreController {
 }
 
 class GameSounds {
-  static const String CORRECT = "correct_coin.mp3";
-  static const String WRONG = "wrong_buzzer.mp3";
-  static const String TICK = "tick.mp3";
-  static const String CHIME = "chime.mp3";
-  static const String WINNER = "winner.mp3";
+  static const String _CORRECT = "correct_coin.mp3";
+  static const String _WRONG = "wrong_buzzer.mp3";
+  static const String _TICK = "tick.mp3";
+  static const String _CHIME = "chime.mp3";
+  static const String _WINNER = "winner.mp3";
 
   static AudioCache _audioPlayer = AudioCache(
     fixedPlayer: AudioPlayer(mode: PlayerMode.LOW_LATENCY),
@@ -112,30 +113,30 @@ class GameSounds {
   );
   static bool _initialised = false;
 
-  static init() {
+  GameSounds() {
     if (!_initialised) {
-      [CORRECT, WRONG, TICK, CHIME, WINNER].map((filename) => _audioPlayer.load(filename));
+      [_CORRECT, _WRONG, _TICK, _CHIME, _WINNER].map((filename) => _audioPlayer.load(filename));
       _initialised = true;
     }
   }
 
-  static void correct() {
-    _audioPlayer.play(CORRECT);
+  void correct() {
+    _audioPlayer.play(_CORRECT);
   }
 
-  static void wrong() {
-    _audioPlayer.play(WRONG);
+  void wrong() {
+    _audioPlayer.play(_WRONG);
   }
 
-  static void timerTick() {
-    _audioPlayer.play(TICK);
+  void timerTick() {
+    _audioPlayer.play(_TICK);
   }
 
-  static void gameStart() {
-    _audioPlayer.play(CHIME);
+  void gameStart() {
+    _audioPlayer.play(_CHIME);
   }
 
-  static void gameEnd() {
-    _audioPlayer.play(WINNER);
+  void gameEnd() {
+    _audioPlayer.play(_WINNER);
   }
 }

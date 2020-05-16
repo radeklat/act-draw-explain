@@ -28,7 +28,6 @@ main() async {
 
   await PrefService.init();
   GameVibrations.init();
-  GameSounds.init();
 
   runApp(MyApp());
 }

@@ -26,6 +26,7 @@ class _CountdownTextState extends State<CountdownText> with SingleTickerProvider
   Stopwatch _stopwatch = Stopwatch();
   Duration _remainingTime;
   bool _disabled = false;
+  static GameSounds gameSounds = GameSounds();
 
   @override
   void initState() {
@@ -48,7 +49,7 @@ class _CountdownTextState extends State<CountdownText> with SingleTickerProvider
         newRemainingTime = Duration(seconds: 1);
       } else if (newRemainingTime.inSeconds <= 5) {
         GameVibrations.timerTick();
-        GameSounds.timerTick();
+        gameSounds.timerTick();
       }
 
       setState(() {

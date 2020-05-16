@@ -146,4 +146,26 @@ void main() {
       expect(logsCount, 3, reason: "log count");
     });
   });
+
+  group('GameSounds', () {
+    testWidgets('can have multiple instances', (WidgetTester tester) async {
+      GameSounds();
+      GameSounds();
+    });
+
+    group('can play sound for', () {
+      testCase(Function func) {
+        String functionName = func.toString().split(" ").last.replaceAll(RegExp(r"[':.]"), "");
+        testWidgets(functionName, (WidgetTester tester) async {
+          func();
+        });
+      }
+
+      testCase(GameSounds().correct);
+      testCase(GameSounds().wrong);
+      testCase(GameSounds().timerTick);
+      testCase(GameSounds().gameStart);
+      testCase(GameSounds().gameEnd);
+    });
+  });
 }
