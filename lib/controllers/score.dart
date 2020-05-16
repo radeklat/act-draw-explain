@@ -40,7 +40,7 @@ class ScoreController {
     try {
       _currentQuestionID = _questionIDs.removeLast();
     } on RangeError {
-      endGame(newScore: 0);
+      _endGame(newScore: 0);
       return;
     }
 
@@ -48,7 +48,9 @@ class ScoreController {
     _stopwatch.start();
   }
 
-  void endGame({int newScore}) {
+  void endGame() => _endGame();
+
+  void _endGame({int newScore}) {
     bool timeOut = false;
     int questionsGuessed = _maxQuestions - _questionIDs.length;
 
@@ -80,7 +82,7 @@ class ScoreController {
     try {
       newQuestionID = _questionIDs.removeLast();
     } on RangeError {
-      endGame(newScore: newScore);
+      _endGame(newScore: newScore);
       return;
     }
 

@@ -1,5 +1,6 @@
 import 'dart:collection';
 
+import 'package:act_draw_explain/analytics.dart';
 import 'package:act_draw_explain/controllers/score.dart';
 import 'package:act_draw_explain/models/game_result.dart';
 import 'package:act_draw_explain/models/question.dart';
@@ -110,6 +111,39 @@ void main() {
         ..endGame();
 
       expect(result, GameResult(fakeQuestions.length, 1, 1, true));
+    });
+
+    testWidgets('should expose if it has more questions', (WidgetTester tester) async {
+      ScoreController sc = ScoreController(topic: fakeTopic, questions: fakeQuestions);
+      List.generate(fakeQuestions.length - 1, (index) {
+        expect(sc.hasMoreQuestions, true, reason: "hasMoreQuestions during round ${index + 1}/${fakeQuestions.length}");
+        sc.nextQuestion(passed: true);
+      });
+
+      expect(sc.hasMoreQuestions, false, reason: "hasMoreQuestions at the end");
+    });
+
+    testWidgets('should log each answered question', (WidgetTester tester) async {
+      int logsCount = 0;
+      QuestionState expectedState = QuestionState.pass;
+      ScoreController sc = ScoreController(
+        topic: fakeTopic,
+        questions: fakeQuestions,
+        logQuestion: (Topic t, Question q, Duration d, QuestionState qs) {
+          expect(t, fakeTopic, reason: "Topic in $expectedState");
+          expect(q, isIn(fakeQuestions.values), reason: "Question in $expectedState");
+          expect(d.inMicroseconds, isPositive, reason: "Duration in $expectedState");
+          expect(qs, expectedState, reason: "QuestionState");
+          logsCount++;
+        },
+      );
+
+      sc.nextQuestion(passed: true);
+      expectedState = QuestionState.fail;
+      sc.nextQuestion(passed: false);
+      expectedState = QuestionState.timeout;
+      sc.endGame();
+      expect(logsCount, 3, reason: "log count");
     });
   });
 }
