@@ -12,6 +12,14 @@ Types of changes are:
 ## [Unreleased]
 <!-- Don't forget to update version in pubspec.yaml -->
 
+## [0.5.0+8] - 2020-05-17 <a name="0.5.0" />
+### Features
+* New topic "hobbies"
+
+### Fixes
+* Remove unnecessary and PID information from bug report
+* GameScore counting guessed questions count wrong on timeout
+
 ## [0.4.0+7] - 2020-05-13 <a name="0.4.0" />
 ### Features
 * Link to feedback (bug report, feature requests) from the app
@@ -58,7 +66,8 @@ Types of changes are:
 ### Features
 * Initial source code
 
-[Unreleased]: https://github.com/radeklat/act-draw-explain/compare/releases/0.4.0+7...HEAD
+[Unreleased]: https://github.com/radeklat/act-draw-explain/compare/releases/0.5.0+8...HEAD
+[0.5.0+8]: https://github.com/radeklat/act-draw-explain/compare/releases/0.4.0+7...releases/0.5.0+8
 [0.4.0+7]: https://github.com/radeklat/act-draw-explain/compare/releases/0.3.0+6...releases/0.4.0+7
 [0.3.0+6]: https://github.com/radeklat/act-draw-explain/compare/releases/0.2.1+5...releases/0.3.0+6
 [0.2.1+5]: https://github.com/radeklat/act-draw-explain/compare/releases/0.2.0+4...releases/0.2.1+5
