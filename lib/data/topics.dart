@@ -4,7 +4,7 @@ import 'package:act_draw_explain/models/topic.dart';
 import 'package:flutter/material.dart';
 
 UnmodifiableListView<int> range(int min, int max, {List<int> extra}) {
-  return UnmodifiableListView([for(var i=min; i<=max; i+=1) i, ...(extra ?? [])]);
+  return UnmodifiableListView([for (var i = min; i <= max; i += 1) i, ...(extra ?? [])]);
 }
 
 UnmodifiableMapView<int, Topic> topics = UnmodifiableMapView(
@@ -57,7 +57,7 @@ UnmodifiableMapView<int, Topic> topics = UnmodifiableMapView(
         name: "RuPaul's Drag Race",
         color: Colors.pinkAccent,
         icon: Icon(Icons.looks),
-        questionIDs: range(125, 172, extra: [435, 436, 901, 902]),
+        questionIDs: range(125, 172, extra: [435, 436, 901, 902, 903]),
       ),
       Topic(
         id: 8,
@@ -119,7 +119,7 @@ UnmodifiableMapView<int, Topic> topics = UnmodifiableMapView(
         id: 16,
         name: "Best paid actors",
         color: Colors.amber,
-        icon: Icon(Icons.people),
+        icon: Icon(Icons.star),
         questionIDs: range(504, 549),
       ),
       Topic(
@@ -155,7 +155,7 @@ UnmodifiableMapView<int, Topic> topics = UnmodifiableMapView(
         name: "Sporty",
         color: Colors.purple,
         icon: Icon(Icons.pool),
-        questionIDs: range(675, 751),
+        questionIDs: range(675, 751, extra: [919, 955, 973, 980, 981, 983, 989, 991, 996, 1000, 1010, 1028]),
       ),
       Topic(
         id: 22,
@@ -163,6 +163,52 @@ UnmodifiableMapView<int, Topic> topics = UnmodifiableMapView(
         color: Colors.green,
         icon: Icon(Icons.pets),
         questionIDs: range(752, 900),
+      ),
+      Topic(
+        id: 23,
+        name: "Koníčky",
+        color: Colors.yellow,
+        icon: Icon(Icons.favorite),
+        questionIDs: range(904, 1028, extra: [
+          675,
+          679,
+          680,
+          682,
+          684,
+          688,
+          690,
+          691,
+          692,
+          695,
+          696,
+          701,
+          703,
+          705,
+          707,
+          708,
+          710,
+          719,
+          724,
+          726,
+          727,
+          728,
+          730,
+          731,
+          732,
+          733,
+          734,
+          735,
+          736,
+          737,
+          742,
+          743,
+          744,
+          745,
+          746,
+          748,
+          749,
+          750,
+        ]),
       ),
     ],
     key: (topic) => topic.id,
