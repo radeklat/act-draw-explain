@@ -95,7 +95,7 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       Question(id: 84, text: "Se7en (1995)"),
       // Topic 5
       Question(id: 85, text: "Vykoupení z věznice Shawshank (1994)"),
-      Question(id: 86, text: "Forrest Gump (1994)"),
+      Question(id: 86, text: "Matrix (1999)"),
       Question(id: 87, text: "Zelená míle (1999)"),
       Question(id: 88, text: "Přelet nad kukaččím hnízdem (1975)"),
       Question(id: 89, text: "Sedm (1995)"),
@@ -113,7 +113,6 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       Question(id: 101, text: "Pán prstenů: Návrat krále (2003)"),
       Question(id: 102, text: "Gran Torino (2008)"),
       Question(id: 103, text: "Temný rytíř (2008)"),
-      Question(id: 104, text: "Matrix (1999)"),
       // Topic 6
       Question(id: 105, text: "Zázračná planeta II"),
       Question(id: 106, text: "Černobyl"),
@@ -368,7 +367,7 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       Question(id: 343, text: "Tomáš Garrigue Masaryk"),
       Question(id: 344, text: "Edvard Beneš"),
       Question(id: 345, text: "Emil Hácha"),
-      Question(id: 346, text: "Edvard Beneš"),
+      Question(id: 346, text: "Miloš Zeman"),
       Question(id: 347, text: "Klement Gottwald"),
       Question(id: 348, text: "Antonín Zápotocký"),
       Question(id: 349, text: "Antonín Novotný"),
@@ -376,7 +375,6 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       Question(id: 351, text: "Gustáv Husák"),
       Question(id: 352, text: "Václav Havel"),
       Question(id: 353, text: "Václav Klaus"),
-      Question(id: 354, text: "Miloš Zeman"),
 
       // Topic 1
       Question(id: 355, text: "Lotrando a Zubejda"),
@@ -571,7 +569,7 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       Question(id: 536, text: "Elisabeth Moss"),
       Question(id: 537, text: "Margot Robbie"),
       Question(id: 538, text: "Ellen Pompeo"),
-      Question(id: 539, text: "Jackie Chan"),
+      Question(id: 539, text: "Mel Gibson"),
       Question(id: 540, text: "Keanu Reeves"),
       Question(id: 541, text: "Bruce Willis"),
       Question(id: 542, text: "Sandra Bullock"),
@@ -581,7 +579,6 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       Question(id: 546, text: "Cameron Diaz"),
       Question(id: 547, text: "Jim Carrey"),
       Question(id: 548, text: "Arnold Schwarzenegger"),
-      Question(id: 549, text: "Mel Gibson"),
 
       // Topic 17
       Question(id: 550, text: "Migos"),
@@ -626,8 +623,7 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       Question(id: 589, text: "Taylor Swift"),
 
       // Topic 18
-      Question(id: 590, text: "Praha"),
-      Question(id: 591, text: "Český Krumlov"),
+      Question(id: 591, text: "Praha"),
       Question(id: 592, text: "Kutná Hora"),
       Question(id: 593, text: "Litomyšl"),
       Question(id: 594, text: "Telč"),
@@ -1317,6 +1313,13 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       Question(id: 1237, text: "Vodka"),
       Question(id: 1238, text: "Absint"),
       Question(id: 1239, text: "Ouzo"),
+
+//      Question(id: 104, text: ""),
+//      Question(id: 354, text: ""),
+//      Question(id: 549, text: ""),
+//      Question(id: 590, text: ""),
+
+
 
 //      Question(id: 1240, text: ""),
 //      Question(id: 1241, text: ""),

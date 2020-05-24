@@ -43,7 +43,7 @@ UnmodifiableMapView<int, Topic> topics = UnmodifiableMapView(
         name: "ČSFD Top 20 Filmů",
         color: Colors.red.shade400,
         icon: Icon(Icons.tv),
-        questionIDs: range(85, 104),
+        questionIDs: range(85, 103, extra: [76]),
       ),
       Topic(
         id: 6,
@@ -99,7 +99,7 @@ UnmodifiableMapView<int, Topic> topics = UnmodifiableMapView(
         name: "Prezidenti ČR a ČS",
         color: Colors.yellow,
         icon: Icon(Icons.person),
-        questionIDs: range(343, 354),
+        questionIDs: range(343, 353),
       ),
       Topic(
         id: 14,
@@ -120,7 +120,7 @@ UnmodifiableMapView<int, Topic> topics = UnmodifiableMapView(
         name: "Best paid actors",
         color: Colors.amber,
         icon: Icon(Icons.star),
-        questionIDs: range(504, 549),
+        questionIDs: range(504, 548),
       ),
       Topic(
         id: 17,
@@ -134,7 +134,7 @@ UnmodifiableMapView<int, Topic> topics = UnmodifiableMapView(
         name: "Nejkrásnější města ČR",
         color: Colors.pinkAccent,
         icon: Icon(Icons.location_city),
-        questionIDs: range(590, 628),
+        questionIDs: range(591, 628, extra: [243]),
       ),
       Topic(
         id: 19,
