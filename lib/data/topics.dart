@@ -167,7 +167,7 @@ UnmodifiableMapView<int, Topic> topics = UnmodifiableMapView(
       Topic(
         id: 23,
         name: "Koníčky",
-        color: Colors.brown,
+        color: Colors.pinkAccent,
         icon: Icon(Icons.favorite),
         questionIDs: range(904, 1028, extra: [
           675,
@@ -216,6 +216,13 @@ UnmodifiableMapView<int, Topic> topics = UnmodifiableMapView(
         color: Colors.yellow,
         icon: Icon(Icons.games),
         questionIDs: range(1029, 1108),
+      ),
+      Topic(
+        id: 25,
+        name: "Jídlo a pití",
+        color: Colors.brown,
+        icon: Icon(Icons.restaurant_menu),
+        questionIDs: range(1116, 1239),
       ),
     ],
     key: (topic) => topic.id,
