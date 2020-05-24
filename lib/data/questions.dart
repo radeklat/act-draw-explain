@@ -148,7 +148,7 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       Question(id: 134, text: "Aquaria"),
       Question(id: 135, text: "Yvie Oddly"),
       Question(id: 136, text: "Chad Michaels"),
-      Question(id: 137, text: "Alaska Thunderfuck 5000"),
+      Question(id: 137, text: "Alaska Thunderf*ck 5000"),
       Question(id: 138, text: "Trixie Mattel"),
       Question(id: 139, text: "Monét X Change"),
       Question(id: 140, text: "Trinity the Tuck"),
@@ -159,7 +159,7 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       Question(id: 145, text: "Carson Kressley"),
       Question(id: 146, text: "Sashay away"),
       Question(id: 147, text: "Shantay you stay"),
-      Question(id: 148, text: "Good luck and don't fuck it up"),
+      Question(id: 148, text: "Good luck and don't f*ck it up"),
       Question(id: 149, text: "Herstory"),
       Question(id: 150, text: "Snatch Game"),
       Question(id: 151, text: "Rusical"),
@@ -1172,6 +1172,15 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       Question(id: 1107, text: "X-COM: UFO Defense"),
       Question(id: 1108, text: "Age of Empires"),
 
+      // Topic 7
+      Question(id: 1109, text: "Toot or Boot"),
+      Question(id: 1110, text: "Backrolls"),
+      Question(id: 1111, text: "Hiiiiiieeeee"),
+      Question(id: 1112, text: "Choices"),
+      Question(id: 1113, text: "Now let the music play!"),
+      Question(id: 1114, text: "Helo, helo, helo!"),
+      Question(id: 1115, text: "Sissy that walk!"),
+
       // Topic 25
 //      Question(id: 1109, text: ""),
 //      Question(id: 1110, text: ""),
@@ -1265,7 +1274,7 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
 //      Question(id: 1198, text: ""),
 //      Question(id: 1199, text: ""),
 
-      //      Question(id: 1000, text: ""),
+//      Question(id: 1000, text: ""),
 //      Question(id: 1001, text: ""),
 //      Question(id: 1002, text: ""),
 //      Question(id: 1003, text: ""),
