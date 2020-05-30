@@ -1518,6 +1518,7 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       Question(id: 1433, text: "Závozník"),
 
       // Topic 26
+      // https://www.gvm.cz/images/stories/o-studiu/komise/cj/seznam-cetby-maturita-2019-2020.pdf
       Question(id: 1434, text: "Epos o Gilgamešovi"),
       Question(id: 1435, text: "Bible"),
       Question(id: 1436, text: "Král Oidipus (Sofokles)"),
@@ -1653,39 +1654,143 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       Question(id: 1566, text: "Básně (Krchovský)"),
       Question(id: 1567, text: "Hrdý Budžes (Dousková)"),
 
+    // Topic 28
+    // https://cs.wikipedia.org/wiki/Seznam_hudebn%C3%ADch_n%C3%A1stroj%C5%AF
+      Question(id: 1568, text: "Akordeon"),
+      Question(id: 1569, text: "Banjo"),
+      Question(id: 1570, text: "Bongo"),
+      Question(id: 1571, text: "Buben"),
+      Question(id: 1572, text: "Cimbál"),
+      Question(id: 1573, text: "Činely"),
+      Question(id: 1574, text: "Dudy"),
+      Question(id: 1575, text: "Dřívka"),
+      Question(id: 1576, text: "Foukací harmonika"),
+      Question(id: 1577, text: "Flétna"),
+      Question(id: 1578, text: "Harfa"),
+      Question(id: 1579, text: "Harmonika"),
+      Question(id: 1580, text: "Hoboj"),
+      Question(id: 1581, text: "Housle"),
+      Question(id: 1582, text: "Klarinet"),
+      Question(id: 1583, text: "Klavír"),
+      Question(id: 1584, text: "Kontrabas"),
+      Question(id: 1585, text: "Kytara"),
+      Question(id: 1586, text: "Lesní roh"),
+      Question(id: 1587, text: "Loutna"),
+      Question(id: 1588, text: "Lyra"),
+      Question(id: 1589, text: "Mandolína"),
+      Question(id: 1590, text: "Piano"),
+      Question(id: 1591, text: "Příčná flétna"),
+      Question(id: 1592, text: "Rolnička"),
+      Question(id: 1593, text: "Rumba koule"),
+      Question(id: 1594, text: "Rituální zvony"),
+      Question(id: 1595, text: "Saxofon"),
+      Question(id: 1596, text: "Skleněná harmonika"),
+      Question(id: 1597, text: "Tibetská mísa"),
+      Question(id: 1598, text: "Triangl"),
+      Question(id: 1599, text: "Trombón"),
+      Question(id: 1600, text: "Trumpeta"),
+      Question(id: 1601, text: "Tuba"),
+      Question(id: 1602, text: "Tympány"),
+      Question(id: 1603, text: "Ukulele"),
+      Question(id: 1604, text: "Valcha"),
+      Question(id: 1605, text: "Varhany"),
+      Question(id: 1606, text: "Viola"),
+      Question(id: 1607, text: "Violoncello"),
+      Question(id: 1608, text: "Vuvuzela"),
+      Question(id: 1609, text: "Xylofon"),
+      Question(id: 1610, text: "Zobcová flétna"),
+      Question(id: 1611, text: "Zvon"),
+      Question(id: 1612, text: "Zvonkohra"),
 
-//      Question(id: 1568, text: ""),
-//      Question(id: 1569, text: ""),
-//      Question(id: 1570, text: ""),
-//      Question(id: 1571, text: ""),
-//      Question(id: 1572, text: ""),
-//      Question(id: 1573, text: ""),
-//      Question(id: 1574, text: ""),
-//      Question(id: 1575, text: ""),
-//      Question(id: 1576, text: ""),
-//      Question(id: 1577, text: ""),
-//      Question(id: 1578, text: ""),
-//      Question(id: 1579, text: ""),
-//      Question(id: 1580, text: ""),
-//      Question(id: 1581, text: ""),
-//      Question(id: 1582, text: ""),
-//      Question(id: 1583, text: ""),
-//      Question(id: 1584, text: ""),
-//      Question(id: 1585, text: ""),
-//      Question(id: 1586, text: ""),
-//      Question(id: 1587, text: ""),
-//      Question(id: 1588, text: ""),
-//      Question(id: 1589, text: ""),
-//      Question(id: 1590, text: ""),
-//      Question(id: 1591, text: ""),
-//      Question(id: 1592, text: ""),
-//      Question(id: 1593, text: ""),
-//      Question(id: 1594, text: ""),
-//      Question(id: 1595, text: ""),
-//      Question(id: 1596, text: ""),
-//      Question(id: 1597, text: ""),
-//      Question(id: 1598, text: ""),
-//      Question(id: 1599, text: ""),
+      // Topic 29
+      // https://en.wikipedia.org/wiki/List_of_best-selling_singles
+      Question(id: 1613, text: "Yes Sir, I Can Boogie (Baccara)"),
+      Question(id: 1614, text: "I Do It for You (Bryan Adams)"),
+      Question(id: 1615, text: "I Will Always Love You (Whitney Houston)"),
+      Question(id: 1616, text: "All I Want for Christmas Is You (Mariah Carey)"),
+      Question(id: 1617, text: "Candle in the Wind 1997 (Elton John)"),
+      Question(id: 1618, text: "My Heart Will Go On (Celine Dion)"),
+      Question(id: 1619, text: "Rudolph the Red-Nosed Reindeer (Gene Autry)"),
+      Question(id: 1620, text: "I Want to Hold Your Hand (The Beatles)"),
+      Question(id: 1621, text: "I Will Survive (Gloria Gaynor)"),
+      Question(id: 1622, text: "Y.M.C.A. (Village People)"),
+      Question(id: 1623, text: "Macarena (Los del Río)"),
+      Question(id: 1624, text: "Believe (Cher)"),
+      Question(id: 1625, text: "...Baby One More Time (Britney Spears)"),
+      Question(id: 1626, text: "Eye of the Tiger (Survivor)"),
+      Question(id: 1627, text: "Smells Like Teen Spirit (Nirvana)"),
+      Question(id: 1628, text: "Barbie Girl (Aqua)"),
+      Question(id: 1629, text: "Livin' La Vida Loca (Ricky Martin)"),
+      Question(id: 1630, text: "Whenever, Wherever (Shakira)"),
+      Question(id: 1631, text: "Dragostea Din Tei (O-Zone)"),
+      Question(id: 1632, text: "Another One Bites the Dust (Queen)"),
+      Question(id: 1633, text: "Wannabe (Spice Girls)"),
+      Question(id: 1634, text: "Uninvited (Alanis Morissette)"),
+      Question(id: 1635, text: "Genie in a Bottle (Christina Aguilera)"),
+      Question(id: 1636, text: "Dilemma (Nelly, Kelly Rowland)"),
+      Question(id: 1637, text: "The Ketchup Song (Aserejé) (Las Ketchup)"),
+      Question(id: 1638, text: "Jingle Bells (Bing Crosby)"),
+      Question(id: 1639, text: "Bohemian Rhapsody (Queen)"),
+      Question(id: 1640, text: "Total Eclipse of the Heart (Bonnie Tyler)"),
+      Question(id: 1641, text: "Careless Whisper (George Michael)"),
+      Question(id: 1642, text: "Vogue (Madonna)"),
+      Question(id: 1643, text: "Gangsta's Paradise (Coolio, L.V.)"),
+      Question(id: 1644, text: "Together Again (Janet Jackson)"),
+      Question(id: 1645, text: "Waterloo (ABBA)"),
+      Question(id: 1646, text: "Lambada (Kaoma)"),
+      Question(id: 1647, text: "Like a Prayer (Madonna)"),
+      Question(id: 1648, text: "Call Me Maybe (Carly Rae Jepsen)"),
+      Question(id: 1649, text: "Someone Like You (Adele)"),
+      Question(id: 1650, text: "Uptown Funk (Mark Ronson, Bruno Mars)"),
+      Question(id: 1651, text: "Thinking Out Loud (Ed Sheeran)"),
+      Question(id: 1652, text: "Closer (The Chainsmokers, Halsey)"),
+      Question(id: 1653, text: "Shape of You (Ed Sheeran)"),
+      Question(id: 1654, text: "Despacito (Luis Fonsi, Daddy Yankee)"),
+      Question(id: 1655, text: "Perfect (Ed Sheeran)"),
+      Question(id: 1656, text: "Poker Face (Lady Gaga)"),
+      Question(id: 1657, text: "TiK ToK (Kesha)"),
+      Question(id: 1658, text: "Right Round (Flo Rida, Kesha)"),
+      Question(id: 1659, text: "Bad Romance (Lady Gaga)"),
+      Question(id: 1660, text: "Just the Way You Are (Bruno Mars)"),
+      Question(id: 1661, text: "Gangnam Style (Psy)"),
+      Question(id: 1662, text: "Happy (Pharrell Williams)"),
+      Question(id: 1663, text: "Dark Horse (Katy Perry, Juicy J)"),
+      Question(id: 1664, text: "Sugar (Maroon 5)"),
+      Question(id: 1665, text: "Love Me like You Do (Ellie Goulding)"),
+      Question(id: 1666, text: "Hello (Adele)"),
+      Question(id: 1667, text: "Hips Don't Lie (Shakira, Wyclef Jean)"),
+      Question(id: 1668, text: "Just Dance (Lady Gaga, Colby O'Donis)"),
+      Question(id: 1669, text: "Grenade (Bruno Mars)"),
+      Question(id: 1670, text: "Waka Waka (Shakira, Freshlyground)"),
+      Question(id: 1671, text: "Let It Go (Idina Menzel)"),
+      Question(id: 1672, text: "Royals (Lorde)"),
+      Question(id: 1673, text: "All About That Bass (Meghan Trainor)"),
+      Question(id: 1674, text: "Love Yourself (Justin Bieber)"),
+      Question(id: 1675, text: "Sorry (Justin Bieber)"),
+      Question(id: 1676, text: "Work (Rihanna, Drake)"),
+      Question(id: 1677, text: "Girls Like You (Maroon 5, Cardi B)"),
+      Question(id: 1678, text: "Shallow (Lady Gaga, Bradley Cooper)"),
+      Question(id: 1679, text: "Hung Up (Madonna)"),
+      Question(id: 1680, text: "Boom Boom Pow (Black Eyed Peas)"),
+      Question(id: 1681, text: "Rolling in the Deep (Adele)"),
+      Question(id: 1682, text: "On the Floor (Jennifer Lopez, Pitbull)"),
+      Question(id: 1683, text: "Born This Way (Lady Gaga)"),
+      Question(id: 1684, text: "Radioactive (Imagine Dragons)"),
+      Question(id: 1685, text: "Girlfriend (Avril Lavigne)"),
+      Question(id: 1686, text: "Don't Cha (The Pussycat Dolls, Busta Rhymes)"),
+      Question(id: 1687, text: "Umbrella (Rihanna, Jay Z)"),
+      Question(id: 1688, text: "Single Ladies (Beyoncé)"),
+      Question(id: 1689, text: "I Kissed a Girl (Katy Perry)"),
+      Question(id: 1690, text: "Party in the U.S.A. (Miley Cyrus)"),
+      Question(id: 1691, text: "Levels (Avicii)"),
+      Question(id: 1692, text: "Stronger (Kelly Clarkson)"),
+//      Question(id: 1693, text: ""),
+//      Question(id: 1694, text: ""),
+//      Question(id: 1695, text: ""),
+//      Question(id: 1696, text: ""),
+//      Question(id: 1697, text: ""),
+//      Question(id: 1698, text: ""),
+//      Question(id: 1699, text: ""),
 
 //      Question(id: 1000, text: ""),
 //      Question(id: 1001, text: ""),
@@ -1792,164 +1897,6 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
     value: (question) => question,
   ),
 );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

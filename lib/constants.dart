@@ -3,8 +3,6 @@ import 'dart:collection';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'analytics.dart';
-
 const Color K_COLOR_PASS = Colors.lightGreen;
 const Color K_COLOR_FAIL = Colors.pink;
 const Color K_COLOR_BACKGROUND = Colors.white;

@@ -1,5 +1,4 @@
 import 'package:act_draw_explain/constants.dart';
-import 'package:act_draw_explain/controllers/score.dart';
 import 'package:act_draw_explain/models/results.dart';
 import 'package:act_draw_explain/screens/game/end_game.dart';
 import 'package:act_draw_explain/screens/game/play/countdown.dart';
