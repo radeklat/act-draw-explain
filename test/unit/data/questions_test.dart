@@ -17,7 +17,7 @@ void main() {
     test('should no have duplicates', () {
       Set<String> questionTexts = Set();
       Map<String, int> duplicates = {};
-      Set<String> exceptions = {"Lov"};
+      Set<String> exceptions = {"Lov", "Kofola"};
 
       for (Question question in questions.values) {
         if (exceptions.contains(question.text)) continue;

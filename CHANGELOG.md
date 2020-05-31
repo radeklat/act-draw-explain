@@ -12,6 +12,14 @@ Types of changes are:
 ## [Unreleased]
 <!-- Don't forget to update version in pubspec.yaml -->
 
+## [0.7.0+10] - 2020-05-31 <a name="0.7.0" />
+### Features
+* New topics "Occupations", "Assigned reading", "Musical instruments", "Best selling singles" and "Czech companies"
+
+### Fixes
+* Typos
+* Duplicate questions removed
+
 ## [0.6.0+9] - 2020-05-24 <a name="0.6.0" />
 ### Features
 * New topics "Videogames" and "Food and drinks"
@@ -71,7 +79,8 @@ Types of changes are:
 ### Features
 * Initial source code
 
-[Unreleased]: https://github.com/radeklat/act-draw-explain/compare/releases/0.6.0+9...HEAD
+[Unreleased]: https://github.com/radeklat/act-draw-explain/compare/releases/0.7.0+10...HEAD
+[0.7.0+10]: https://github.com/radeklat/act-draw-explain/compare/releases/0.6.0+9...releases/0.7.0+10
 [0.6.0+9]: https://github.com/radeklat/act-draw-explain/compare/releases/0.5.0+8...releases/0.6.0+9
 [0.5.0+8]: https://github.com/radeklat/act-draw-explain/compare/releases/0.4.0+7...releases/0.5.0+8
 [0.4.0+7]: https://github.com/radeklat/act-draw-explain/compare/releases/0.3.0+6...releases/0.4.0+7
