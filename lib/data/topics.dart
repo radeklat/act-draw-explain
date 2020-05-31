@@ -252,6 +252,13 @@ UnmodifiableMapView<int, Topic> topics = UnmodifiableMapView(
         icon: Icon(Icons.trending_up),
         questionIDs: range(1613, 1692),
       ),
+      Topic(
+        id: 30,
+        name: "České firmy",
+        color: Colors.lime,
+        icon: Icon(Icons.business_center),
+        questionIDs: range(1693, 1742),
+      ),
     ],
     key: (topic) => topic.id,
     value: (topic) => topic,
