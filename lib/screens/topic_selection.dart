@@ -2,16 +2,16 @@ import 'package:act_draw_explain/analytics.dart';
 import 'package:act_draw_explain/data/game.dart';
 import 'package:act_draw_explain/data/topics.dart';
 import 'package:act_draw_explain/utilities/device_info.dart';
+import 'package:act_draw_explain/utilities/urls.dart';
 import 'package:act_draw_explain/widgets/topic/card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:package_info/package_info.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../constants.dart';
+import 'about.dart';
 import 'help.dart';
 import 'settings.dart';
 
@@ -52,20 +52,6 @@ class AppBarPopupMenu extends StatelessWidget {
   const AppBarPopupMenu({
     Key key,
   }) : super(key: key);
-
-  void openUrl(BuildContext context, String url) async {
-    if (await canLaunch(url)) {
-      launch(url);
-    } else {
-      Scaffold.of(context).showSnackBar(SnackBar(content: Text("Nelze otevřít vychozí webový problížeč.")));
-    }
-  }
-
-  void openChangelog(BuildContext context) async {
-    PackageInfo packageInfo = await PackageInfo.fromPlatform();
-    openUrl(context, "${K.url.changelog}#${packageInfo.version}");
-    Provider.of<Analytics>(context, listen: false).openedChangelog();
-  }
 
   void openFeedback(BuildContext context, FeedbackType feedbackType) async {
     String deviceInfo = await collectDeviceInfo();
@@ -117,9 +103,7 @@ class AppBarPopupMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return PopupMenuButton<String>(
       onSelected: (String screenID) async {
-        if (screenID == "changelog") {
-          openChangelog(context);
-        } else if (screenID == "feedback") {
+        if (screenID == "feedback") {
           chooseFeedback(context);
         } else {
           Navigator.pushNamed(context, screenID);
@@ -129,7 +113,7 @@ class AppBarPopupMenu extends StatelessWidget {
         PopupMenuItem<String>(value: SettingsScreen.ID, child: Text("Nastavení"), key: Key("popup_menu_settings")),
         PopupMenuItem<String>(value: HelpScreen.ID, child: Text("Nápověda"), key: Key("popup_menu_help")),
         PopupMenuItem<String>(value: "feedback", child: Text("Zpětná vazba"), key: Key("popup_menu_feedback"),),
-        PopupMenuItem<String>(value: "changelog", child: Text("Seznam změn"), key: Key("popup_menu_chagelog"),),
+        PopupMenuItem<String>(value: AboutScreen.ID, child: Text("O aplikaci"), key: Key("popup_menu_about")),
       ],
     );
   }

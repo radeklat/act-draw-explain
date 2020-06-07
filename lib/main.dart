@@ -1,5 +1,6 @@
 import 'package:act_draw_explain/constants.dart';
 import 'package:act_draw_explain/models/results.dart';
+import 'package:act_draw_explain/screens/about.dart';
 import 'package:act_draw_explain/screens/game/end_game.dart';
 import 'package:act_draw_explain/screens/game/play/countdown.dart';
 import 'package:act_draw_explain/screens/game/play/explain.dart';
@@ -76,6 +77,8 @@ class MyApp extends StatelessWidget {
                   return SettingsScreen();
                 case HelpScreen.ID:
                   return HelpScreen();
+                case AboutScreen.ID:
+                  return AboutScreen();
               }
               return null;
             },
