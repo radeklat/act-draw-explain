@@ -62,4 +62,13 @@ class Analytics {
   void openedChangelog() {
     _simpleEvent("openedChangelog");
   }
+
+  void clickedLink(String url) async {
+    await analytics.logEvent(
+      name: 'clickedLink',
+      parameters: <String, dynamic>{
+        'url': url,
+      },
+    );
+  }
 }

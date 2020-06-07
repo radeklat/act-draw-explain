@@ -183,7 +183,7 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       Question(id: 170, text: "You're a winner baby"),
       Question(id: 171, text: "Squirrel friends"),
       Question(id: 172, text: "Ruveal"),
-      // Topic 8 - https://play.google.com/store/apps/top?hl=en_GB
+      // Topic 8
       Question(id: 173, text: "Zoom"),
       Question(id: 174, text: "TikTok"),
       Question(id: 175, text: "WhatsApp"),
@@ -280,7 +280,6 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       // Topic 2
       Question(id: 264, text: "Šalina"),
       Question(id: 265, text: "Hády"),
-      // http://www.zpev.hlasujpro.cz/zpevacky.html
       // Topic 11
       Question(id: 266, text: "Karel Gott"),
       Question(id: 267, text: "Lucie Bílá"),
@@ -320,7 +319,6 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       Question(id: 301, text: "Illona Csáková"),
       Question(id: 302, text: "Monika Absolonová"),
 
-      // http://www.herec.hlasujpro.cz/
       // Topic 12
       Question(id: 303, text: "Oldřich Kaiser"),
       Question(id: 304, text: "Karel Roden"),
@@ -464,7 +462,7 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       Question(id: 435, text: "Ornacia"),
       Question(id: 436, text: "Lil' Poundcake"),
 
-      // Topic 15 - https://en.wikipedia.org/wiki/National_dish#By_country
+      // Topic 15
       Question(id: 437, text: "Pavlova (Australia, New Zealand)"),
       Question(id: 438, text: "Vegemite on toast (Australia)"),
       Question(id: 439, text: "Wiener Schnitzel (Austria)"),
@@ -685,7 +683,7 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       Question(id: 648, text: "Lodě"),
       Question(id: 649, text: "Krycí jména"),
 
-      // Topic 20 - https://cs.wikipedia.org/wiki/Kategorie:Um%C4%9Bleck%C3%A9_sm%C4%9Bry
+      // Topic 20
       Question(id: 650, text: "Art deco"),
       Question(id: 651, text: "Baroko"),
       Question(id: 652, text: "Dadaismus"),
@@ -712,7 +710,7 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       Question(id: 673, text: "Surrealismus"),
       Question(id: 674, text: "Art Nouveau"),
 
-      // Topic 21 - https://cs.wikipedia.org/wiki/Seznam_olympijsk%C3%BDch_sport%C5%AF
+      // Topic 21
       Question(id: 675, text: "Plavání"),
       Question(id: 676, text: "Skoky do vody"),
       Question(id: 677, text: "Synchronizované plavání"),
@@ -763,7 +761,7 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       Question(id: 722, text: "Biatlon"),
       Question(id: 723, text: "Boby"),
 
-    // https://cs.wikipedia.org/wiki/Abecedn%C3%AD_seznam_sportovn%C3%ADch_discipl%C3%ADn
+    // source 2
       Question(id: 724, text: "Orientační běh"),
       Question(id: 725, text: "Aerobic"),
       Question(id: 726, text: "Florbal"),
@@ -948,7 +946,7 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       Question(id: 902, text: "Sickening"),
       Question(id: 903, text: "Roast"),
 
-      // Topic 23 - https://en.wikipedia.org/wiki/List_of_hobbies
+      // Topic 23
       // Indoor
       Question(id: 904, text: "Pečení"),
       Question(id: 905, text: "Stolní hry"),
@@ -1078,7 +1076,6 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       Question(id: 1028, text: "Cyklistika"),
 
       // Topic 24
-      // https://en.wikipedia.org/wiki/List_of_best-selling_video_games
       Question(id: 1029, text: "Minecraft"),
       Question(id: 1030, text: "Grand Theft Auto"),
       Question(id: 1031, text: "Tetris"),
@@ -1102,7 +1099,7 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       Question(id: 1049, text: "Brain Age"),
       Question(id: 1050, text: "The Legend of Zelda"),
 
-      // https://en.wikipedia.org/wiki/Arcade_game#List_of_highest-grossing_games
+      // source 2
       Question(id: 1051, text: "Pac-Man"),
       Question(id: 1052, text: "Space Invaders"),
       Question(id: 1053, text: "Asteroids"),
@@ -1114,7 +1111,7 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       Question(id: 1059, text: "Portal"),
       Question(id: 1060, text: "Fallout"),
 
-    // https://en.wikipedia.org/wiki/List_of_video_games_by_monthly_active_player_count
+    // source 3
       Question(id: 1061, text: "League of Legends"),
       Question(id: 1062, text: "FarmVille"),
       Question(id: 1063, text: "CrossFire"),
@@ -1130,7 +1127,7 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       Question(id: 1073, text: "World of Warcraft"),
       Question(id: 1074, text: "World of Tanks"),
 
-      // https://en.wikipedia.org/wiki/List_of_video_games_considered_the_best
+      // source 4
       Question(id: 1075, text: "Pong"),
       Question(id: 1076, text: "Prince of Persia"),
       Question(id: 1077, text: "SimCity"),
@@ -1153,7 +1150,7 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       Question(id: 1094, text: "Assassin's Creed"),
       Question(id: 1095, text: "Mass Effect"),
 
-      // https://en.wikipedia.org/wiki/List_of_best-selling_game_consoles
+      // source 5
       Question(id: 1096, text: "PlayStation"),
       Question(id: 1097, text: "Nintendo"),
       Question(id: 1098, text: "Game Boy"),
@@ -1178,8 +1175,7 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       Question(id: 1115, text: "Sissy that walk!"),
 
       // Topic 25
-      // https://en.wikipedia.org/wiki/Lists_of_foods
-      // https://en.wikipedia.org/wiki/Category:Appetizers
+      // source 1, 2
       Question(id: 1116, text: "Obložené chlebíčky"),
       Question(id: 1117, text: "Carpaccio"),
       Question(id: 1118, text: "Hummus"),
@@ -1200,7 +1196,7 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       Question(id: 1133, text: "Indián"),
       Question(id: 1134, text: "Věneček"),
       Question(id: 1135, text: "Karamelový větrník"),
-      // https://en.wikipedia.org/wiki/Category:Condiments
+      // source 3
       Question(id: 1136, text: "Kečup"),
       Question(id: 1137, text: "Hořčice"),
       Question(id: 1138, text: "Majonéza"),
@@ -1220,7 +1216,7 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       Question(id: 1152, text: "Wasabi"),
       Question(id: 1153, text: "Sushi"),
       Question(id: 1154, text: "Sashimi"),
-    //https://en.wikipedia.org/wiki/Category:Confectionery
+      // source 4
       Question(id: 1155, text: "Dort"),
       Question(id: 1156, text: "Chalva"),
       Question(id: 1157, text: "Lékořice"),
@@ -1229,7 +1225,7 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       Question(id: 1160, text: "Rumové pralinky"),
       Question(id: 1161, text: "Kyselé rybičky"),
       Question(id: 1162, text: "Maršmeloun"),
-      // https://en.wikipedia.org/wiki/Category:Fast_food
+      // source 5
       Question(id: 1163, text: "Párek v rohlíku"),
       Question(id: 1164, text: "Hamburgr"),
       Question(id: 1165, text: "Hranolky"),
@@ -1239,7 +1235,7 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       Question(id: 1169, text: "Smažák"),
       Question(id: 1170, text: "Vepřový řízek"),
       Question(id: 1171, text: "Palačinky"),
-    //https://en.wikipedia.org/wiki/List_of_desserts
+      // source 6
       Question(id: 1172, text: "Bábovka"),
       Question(id: 1173, text: "Žemlovka"),
       Question(id: 1174, text: "Frgál"),
@@ -1261,7 +1257,7 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       Question(id: 1190, text: "Jablečný závin"),
       Question(id: 1191, text: "Baklava"),
       Question(id: 1192, text: "Houskový knedlík"),
-    // https://en.wikipedia.org/wiki/List_of_street_foods
+      // source 7
       Question(id: 1193, text: "Bramborák"),
       Question(id: 1194, text: "Calzone"),
       Question(id: 1195, text: "Currywurst"),
@@ -1270,15 +1266,15 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       Question(id: 1198, text: "Langoš"),
       Question(id: 1199, text: "Panini"),
       Question(id: 1200, text: "Trdelník"),
-    // https://en.wikipedia.org/wiki/Specialty_food
+      // source 8
       Question(id: 1201, text: "Kaviár"),
       Question(id: 1202, text: "Lanýž"),
       Question(id: 1203, text: "Kysané zelí"),
-    // https://en.wikipedia.org/wiki/List_of_drinks
+      // source 9
       Question(id: 1204, text: "Cider"),
       Question(id: 1205, text: "Pivo"),
       Question(id: 1206, text: "Červené víno"),
-    // https://en.wikipedia.org/wiki/List_of_cocktails
+      // source 10
       Question(id: 1207, text: "Caipirinha"),
       Question(id: 1208, text: "Bloody Mary"),
       Question(id: 1209, text: "Long Island Iced Tea"),
@@ -1298,7 +1294,7 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       Question(id: 1223, text: "Espresso martini"),
       Question(id: 1224, text: "Kofola"),
       Question(id: 1225, text: "Tatranský čaj"),
-      // https://en.wikipedia.org/wiki/List_of_alcoholic_drinks
+      // source 11
       Question(id: 1226, text: "Sake"),
       Question(id: 1227, text: "Medovina"),
       Question(id: 1228, text: "Kefír"),
@@ -1321,7 +1317,6 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
 
 
       // Topic 26
-      // https://www.prace.cz/encyklopedie-profesi/
       Question(id: 1240, text: "Advokát"),
       Question(id: 1241, text: "Anesteziolog"),
       Question(id: 1242, text: "Aranžér květin"),
@@ -1517,8 +1512,7 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       Question(id: 1432, text: "Zámečník"),
       Question(id: 1433, text: "Závozník"),
 
-      // Topic 26
-      // https://www.gvm.cz/images/stories/o-studiu/komise/cj/seznam-cetby-maturita-2019-2020.pdf
+      // Topic 27
       Question(id: 1434, text: "Epos o Gilgamešovi"),
       Question(id: 1435, text: "Bible"),
       Question(id: 1436, text: "Král Oidipus (Sofokles)"),
@@ -1654,8 +1648,7 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       Question(id: 1566, text: "Básně (Krchovský)"),
       Question(id: 1567, text: "Hrdý Budžes (Dousková)"),
 
-    // Topic 28
-    // https://cs.wikipedia.org/wiki/Seznam_hudebn%C3%ADch_n%C3%A1stroj%C5%AF
+      // Topic 28
       Question(id: 1568, text: "Akordeon"),
       Question(id: 1569, text: "Banjo"),
       Question(id: 1570, text: "Bongo"),
@@ -1703,7 +1696,6 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       Question(id: 1612, text: "Zvonkohra"),
 
       // Topic 29
-      // https://en.wikipedia.org/wiki/List_of_best-selling_singles
       Question(id: 1613, text: "Yes Sir, I Can Boogie (Baccara)"),
       Question(id: 1614, text: "I Do It for You (Bryan Adams)"),
       Question(id: 1615, text: "I Will Always Love You (Whitney Houston)"),
@@ -1786,7 +1778,6 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       Question(id: 1692, text: "Stronger (Kelly Clarkson)"),
 
       // Topic 30
-      // https://www.czechtop100.cz/cs/projekty/zebricky/100-nejvyznamnejsich
       Question(id: 1693, text: "Škoda Auto"),
       Question(id: 1694, text: "ČEZ"),
       Question(id: 1695, text: "Agrofert"),
@@ -1826,7 +1817,7 @@ UnmodifiableMapView<int, Question> questions = UnmodifiableMapView(
       Question(id: 1729, text: "Plzeňský Prazdroj"),
       Question(id: 1730, text: "Čedok"),
       Question(id: 1731, text: "Madeta"),
-      // https://cs.wikipedia.org/wiki/Kategorie:%C4%8Cesk%C3%A9_firmy
+      // source 2
       Question(id: 1732, text: "Dermacol"),
       Question(id: 1733, text: "KM - PRONA"),
       Question(id: 1734, text: "Liftago"),
