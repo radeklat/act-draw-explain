@@ -1,4 +1,5 @@
 import 'package:act_draw_explain/analytics.dart';
+import 'package:act_draw_explain/generated/l10n.dart';
 import 'package:act_draw_explain/utilities/vibrations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -32,17 +33,25 @@ class _SettingsScreenState extends State<SettingsScreen> {
       body: SafeArea(
         child: PreferencePage(
           [
-            PreferenceTitle('Nastavení hry'),
+            PreferenceTitle(S.of(context).settings_title_options),
             DropdownPreference(
-              'Délka hry',
+              S.of(context).settings_game_length,
               K_SETTINGS_GAME_DURATION,
               defaultVal: K_GAME_DURATION_DEFAULT,
               values: K_GAME_DURATION_VALUES,
-              displayValues: K_GAME_DURATION_DISPLAY,
+              displayValues: [
+                S.of(context).duration_seconds(K_GAME_DURATION_VALUES[0]),
+                S.of(context).duration_seconds(K_GAME_DURATION_VALUES[1]),
+                S.of(context).duration_seconds(K_GAME_DURATION_VALUES[2]),
+                S.of(context).duration_minutes(K_GAME_DURATION_VALUES[3] ~/ 60),
+                S.of(context).duration_minutes(K_GAME_DURATION_VALUES[4] ~/ 60),
+                S.of(context).duration_minutes(K_GAME_DURATION_VALUES[5] ~/ 60),
+                S.of(context).duration_unlimited,
+              ],
               onChange: (_val) => this.onChange(K_SETTINGS_GAME_DURATION),
             ),
             TextFieldPreference(
-              "Počet karet ve hře (0 = neomezeně)",
+              S.of(context).settings_game_card_limit,
               K_SETTINGS_GAME_CARDS_COUNT,
               defaultVal: K_GAME_CARDS_COUNT_DEFAULT.toString(),
               keyboardType: TextInputType.numberWithOptions(),
@@ -50,24 +59,28 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 try {
                   if (int.parse(value) < 0) throw FormatException;
                 } catch (FormatException) {
-                  return "Hodnota musí být celé číslo, větší nebo rovno 0.";
+                  return S.of(context).form_validation_positive_int;
                 }
 
                 return null;
               },
               onChange: (_val) => this.onChange(K_SETTINGS_GAME_CARDS_COUNT),
             ),
-            PreferenceTitle('Rozhraní'),
+            PreferenceTitle(S.of(context).settings_title_interface),
             DropdownPreference(
-              'Přechod na další otázku',
+              S.of(context).settings_interface_next_question,
               K_SETTINGS_GAME_CONTROL,
               defaultVal: K_GAME_CONTROL_DEFAULT,
               values: K_GAME_CONTROL_VALUES,
-              displayValues: K_GAME_CONTROL_DISPLAY,
+              displayValues: [
+                S.of(context).game_control_buttons,
+                S.of(context).game_control_screen_tilt,
+                S.of(context).game_control_buttons_and_tilt,
+              ],
               onChange: (_val) => this.onChange(K_SETTINGS_GAME_CONTROL),
             ),
             SwitchPreference(
-              'Vibrace ve hře',
+              S.of(context).settings_interface_vibrations,
               K_SETTINGS_GAME_VIBRATE,
               defaultVal: K_GAME_VIBRATE_DEFAULT,
               disabled: !GameVibrations.hasVibrator,

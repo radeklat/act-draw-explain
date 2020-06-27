@@ -19,8 +19,25 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'cs';
 
+  static m0(time) => "${Intl.plural(time, zero: '${time} minut', one: '${time} minuta', few: '${time} minuty', other: '${time} minut')}";
+
+  static m1(time) => "${Intl.plural(time, zero: '${time} sekund', one: '${time} sekunda', few: '${time} sekundy', other: '${time} sekund')}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
-    "name" : MessageLookupByLibrary.simpleMessage("Předveď, Nakresli, Popiš")
+    "duration_minutes" : m0,
+    "duration_seconds" : m1,
+    "duration_unlimited" : MessageLookupByLibrary.simpleMessage("Unlimited"),
+    "form_validation_positive_int" : MessageLookupByLibrary.simpleMessage("Hodnota musí být celé číslo, větší nebo rovno 0."),
+    "game_control_buttons" : MessageLookupByLibrary.simpleMessage("Tlačítky"),
+    "game_control_buttons_and_tilt" : MessageLookupByLibrary.simpleMessage("Tlačítky i naklopením"),
+    "game_control_screen_tilt" : MessageLookupByLibrary.simpleMessage("Naklopením telefonu"),
+    "name" : MessageLookupByLibrary.simpleMessage("Předveď, Nakresli, Popiš"),
+    "settings_game_card_limit" : MessageLookupByLibrary.simpleMessage("Počet karet ve hře (0 = neomezeně)"),
+    "settings_game_length" : MessageLookupByLibrary.simpleMessage("Délka hry"),
+    "settings_interface_next_question" : MessageLookupByLibrary.simpleMessage("Přechod na další otázku"),
+    "settings_interface_vibrations" : MessageLookupByLibrary.simpleMessage("Vibrace ve hře"),
+    "settings_title_interface" : MessageLookupByLibrary.simpleMessage("Rozhraní"),
+    "settings_title_options" : MessageLookupByLibrary.simpleMessage("Nastavení hry")
   };
 }

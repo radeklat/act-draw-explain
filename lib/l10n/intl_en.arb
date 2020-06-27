@@ -1,5 +1,62 @@
 {
   "@@locale": "en",
   "name": "Act, Draw, Explain",
-  "@name": {"description": "Name of the app"}
+  "@name": {"description": "Name of the app"},
+
+  "game_control_buttons": "Buttons",
+  "@game_control_buttons": {"description": "Settings / Game control / Buttons"},
+
+  "game_control_screen_tilt": "Screen tilt",
+  "@game_control_screen_tilt": {"description": "Settings / Game control / Screen tilt"},
+
+  "game_control_buttons_and_tilt": "Buttons and screen tilt",
+  "@game_control_buttons_and_tilt": {"description": "Settings / Game control / Buttons and screen tilt"},
+
+  "settings_title_options": "Game options",
+  "@settings_title_options": {"description": "Settings title for game options"},
+
+  "settings_game_length": "Game length",
+  "@settings_game_length": {"description": "Settings description for game length"},
+
+  "duration_seconds": "{time,plural, =0{{time} seconds} =1{{time} second} other{{time} seconds}}",
+  "@duration_seconds": {
+    "description": "Duration in seconds",
+    "placeholders": {
+      "time": {
+        "example": "30",
+        "description": "Time value in seconds"
+      }
+    }
+  },
+
+  "duration_minutes": "{time,plural, =0{{time} minutes} =1{{time} minute} other{{time} minutes}}",
+  "@duration_minutes": {
+    "description": "Duration in minutes",
+    "placeholders": {
+      "time": {
+        "example": "3",
+        "description": "Time value in minutes"
+      }
+    }
+  },
+
+  "duration_unlimited": "Unlimited",
+  "@duration_unlimited": {"description": "Unlimited time duration"},
+
+  "settings_game_card_limit": "Number of card in game (0 = unlimited)",
+  "@settings_game_card_limit": {"description": "Settings description for game cards limits"},
+
+  "form_validation_positive_int": "Value must be an integer, higher or equal to 0.",
+  "@form_validation_positive_int": {"description": "Validation message for positive int"},
+
+  "settings_title_interface": "Interface",
+  "@settings_title_interface": {"description": "Settings title for interface"},
+
+  "settings_interface_next_question": "Next question control",
+  "@settings_interface_next_question": {"description": "Settings description for next questions control drop down box"},
+
+  "settings_interface_vibrations": "In-game vibration",
+  "@settings_interface_vibrations": {"description": "Settings description for in-game vibrations"}
+
+
 }

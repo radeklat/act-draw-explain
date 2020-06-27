@@ -19,8 +19,25 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
+  static m0(time) => "${Intl.plural(time, zero: '${time} minutes', one: '${time} minute', other: '${time} minutes')}";
+
+  static m1(time) => "${Intl.plural(time, zero: '${time} seconds', one: '${time} second', other: '${time} seconds')}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
-    "name" : MessageLookupByLibrary.simpleMessage("Act, Draw, Explain")
+    "duration_minutes" : m0,
+    "duration_seconds" : m1,
+    "duration_unlimited" : MessageLookupByLibrary.simpleMessage("Unlimited"),
+    "form_validation_positive_int" : MessageLookupByLibrary.simpleMessage("Value must be an integer, higher or equal to 0."),
+    "game_control_buttons" : MessageLookupByLibrary.simpleMessage("Buttons"),
+    "game_control_buttons_and_tilt" : MessageLookupByLibrary.simpleMessage("Buttons and screen tilt"),
+    "game_control_screen_tilt" : MessageLookupByLibrary.simpleMessage("Screen tilt"),
+    "name" : MessageLookupByLibrary.simpleMessage("Act, Draw, Explain"),
+    "settings_game_card_limit" : MessageLookupByLibrary.simpleMessage("Number of card in game (0 = unlimited)"),
+    "settings_game_length" : MessageLookupByLibrary.simpleMessage("Game length"),
+    "settings_interface_next_question" : MessageLookupByLibrary.simpleMessage("Next question control"),
+    "settings_interface_vibrations" : MessageLookupByLibrary.simpleMessage("In-game vibration"),
+    "settings_title_interface" : MessageLookupByLibrary.simpleMessage("Interface"),
+    "settings_title_options" : MessageLookupByLibrary.simpleMessage("Game options")
   };
 }
