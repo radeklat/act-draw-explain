@@ -56,7 +56,17 @@
   "@settings_interface_next_question": {"description": "Settings description for next questions control drop down box"},
 
   "settings_interface_vibrations": "In-game vibration",
-  "@settings_interface_vibrations": {"description": "Settings description for in-game vibrations"}
+  "@settings_interface_vibrations": {"description": "Settings description for in-game vibrations"},
 
+  "about_title_version": "Application version",
+  "@about_title_version": {"description": "About screen, application version title"},
 
+  "about_changelog_link": "change log",
+  "@about_changelog_link": {"description": "About screen, external link to change log"},
+
+  "about_sources_title": "Sources",
+  "@about_sources_title": {"description": "About screen, title for sources"},
+
+  "about_packages_title": "Packages",
+  "@about_packages_title": {"description": "About screen, title for packages"}
 }

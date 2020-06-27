@@ -1,6 +1,7 @@
 {
   "@@locale": "cs",
   "name": "Předveď, Nakresli, Popiš",
+
   "game_control_buttons": "Tlačítky",
   "game_control_screen_tilt": "Naklopením telefonu",
   "game_control_buttons_and_tilt": "Tlačítky i naklopením",
@@ -13,5 +14,10 @@
   "form_validation_positive_int": "Hodnota musí být celé číslo, větší nebo rovno 0.",
   "settings_title_interface": "Rozhraní",
   "settings_interface_next_question": "Přechod na další otázku",
-  "settings_interface_vibrations": "Vibrace ve hře"
+  "settings_interface_vibrations": "Vibrace ve hře",
+
+  "about_title_version": "Verze aplikace",
+  "about_changelog_link": "seznam změn",
+  "about_sources_title": "Použité zdroje",
+  "about_packages_title": "Balíčky"
 }

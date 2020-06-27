@@ -1,13 +1,10 @@
-import 'package:act_draw_explain/analytics.dart';
 import 'package:act_draw_explain/constants.dart';
 import 'package:act_draw_explain/data/topics.dart';
-import 'package:act_draw_explain/utilities/urls.dart';
+import 'package:act_draw_explain/generated/l10n.dart';
 import 'package:act_draw_explain/widgets/text.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:package_info/package_info.dart';
-import 'package:provider/provider.dart';
 
 class AboutScreen extends StatefulWidget {
   static const String ID = "about_screen";
@@ -51,10 +48,10 @@ class _AboutScreenState extends State<AboutScreen> {
           children: <Widget>[
             TextCard(
               children: <Widget>[
-                TextTitle("Verze aplikace"),
+                TextTitle(S.of(context).about_title_version),
                 TextSubtitle(appVersion),
                 TextBodyLink(
-                  text: "seznam změn",
+                  text: S.of(context).about_changelog_link,
                   url: "${K.url.changelog}#$appVersion",
                   baseStyle: Theme.of(context).textTheme.headline6,
                 )
@@ -62,8 +59,8 @@ class _AboutScreenState extends State<AboutScreen> {
             ),
             TextCard(
               children: <Widget>[
-                TextTitle("Použité zdroje"),
-                TextSubtitle("Balíčky"),
+                TextTitle(S.of(context).about_sources_title),
+                TextSubtitle(S.of(context).about_packages_title),
                 ...sources(),
               ],
             ),

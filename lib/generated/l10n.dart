@@ -178,6 +178,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Application version`
+  String get about_title_version {
+    return Intl.message(
+      'Application version',
+      name: 'about_title_version',
+      desc: 'About screen, application version title',
+      args: [],
+    );
+  }
+
+  /// `change log`
+  String get about_changelog_link {
+    return Intl.message(
+      'change log',
+      name: 'about_changelog_link',
+      desc: 'About screen, external link to change log',
+      args: [],
+    );
+  }
+
+  /// `Sources`
+  String get about_sources_title {
+    return Intl.message(
+      'Sources',
+      name: 'about_sources_title',
+      desc: 'About screen, title for sources',
+      args: [],
+    );
+  }
+
+  /// `Packages`
+  String get about_packages_title {
+    return Intl.message(
+      'Packages',
+      name: 'about_packages_title',
+      desc: 'About screen, title for packages',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
