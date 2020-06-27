@@ -14,10 +14,12 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:preferences/preferences.dart';
 import 'package:provider/provider.dart';
 
 import 'analytics.dart';
+import 'generated/l10n.dart';
 
 
 main() async {
@@ -39,10 +41,13 @@ class MyApp extends StatelessWidget {
   //    adb shell setprop debug.firebase.analytics.app .none.
   static FirebaseAnalytics analytics = FirebaseAnalytics();
   static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(analytics: analytics);
+  static AppLocalizationDelegate localizationsDelegate = AppLocalizationDelegate();
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    localizationsDelegate.load(Locale("cs"));
+
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<TopicBestScore>(create: (_) => TopicBestScore()),
@@ -51,7 +56,17 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
 //        debugShowCheckedModeBanner: false,
-        title: 'Act, Draw, Explain',
+        supportedLocales: localizationsDelegate.supportedLocales,
+        localizationsDelegates: [
+          localizationsDelegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        localeResolutionCallback: (Locale locale, Iterable<Locale> supportedLocales) {
+          return locale;
+        },
+        onGenerateTitle: (BuildContext context) => S.of(context).name,
         theme: appTheme,
         initialRoute: TopicSelectionScreen.ID,
         navigatorObservers: <NavigatorObserver>[observer],

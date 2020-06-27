@@ -27,6 +27,27 @@ The game data is mostly Czech, with some packages in English.
 
 The development language is English to make this project as available as possible to the development community. This includes commit messages, change log, development documentation and code comments.
 
+#### Translating
+
+The application utilizes [`intl`](https://pub.dev/packages/intl) and [`intl_utils`](https://pub.dev/packages/intl_utils) packages.
+
+Application translations are kept in [ARB files](https://github.com/google/app-resource-bundle/wiki/ApplicationResourceBundleSpecification).
+
+Locale is in form of `<LANGUAGE CODE>` or `<LANGUAGE CODE>_<COUNTRY CODE>`, where:
+* `<LANGUAGE CODE>` is [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) language code
+* `<COUNTRY CODE>` is [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements) country code. This code is optional.
+
+##### Adding new string
+
+1. Add it to `lib/I10n/intl_en.arb` (this is the base language)
+2. Run `flutter pub run intl_utils:generate` to generate boilerplate code
+3. Use the boilerplate in the codebase as `S.of(context).NAME` where `NAME` is name of the string.
+
+#### Adding new language
+
+1. Copy `lib/I10n/intl_en.arb` as `lib/I10n/intl_<LOCALE>.arb` (replace `<LOCALE>` with the actual Locale)
+2. Run `flutter pub run intl_utils:generate` to generate boilerplate code
+
 ### Game data
 
 Topic and questions are at the moment distributed with the app. They are located in `lib/data`.

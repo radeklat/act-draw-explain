@@ -1,6 +1,7 @@
 import 'package:act_draw_explain/analytics.dart';
 import 'package:act_draw_explain/data/game.dart';
 import 'package:act_draw_explain/data/topics.dart';
+import 'package:act_draw_explain/generated/l10n.dart';
 import 'package:act_draw_explain/utilities/device_info.dart';
 import 'package:act_draw_explain/utilities/urls.dart';
 import 'package:act_draw_explain/widgets/topic/card.dart';
@@ -22,7 +23,7 @@ class TopicSelectionScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Act, Draw, Explain"),
+        title: Text(S.of(context).name),
         actions: <Widget>[
           AppBarPopupMenu(key: Key("popup_menu"),),
         ],
