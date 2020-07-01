@@ -31,7 +31,7 @@ The development language is English to make this project as available as possibl
 
 The application utilizes [`intl`](https://pub.dev/packages/intl) and [`intl_utils`](https://pub.dev/packages/intl_utils) packages.
 
-Application translations are kept in [ARB files](https://github.com/google/app-resource-bundle/wiki/ApplicationResourceBundleSpecification).
+Application translations are kept in [ARB files](https://github.com/google/app-resource-bundle/wiki/ApplicationResourceBundleSpecification). See [Plural](https://support.crowdin.com/icu-message-syntax/#plural) and [gender](https://support.crowdin.com/icu-message-syntax/#select) formatting in translations.
 
 Locale is in form of `<LANGUAGE CODE>` or `<LANGUAGE CODE>_<COUNTRY CODE>`, where:
 * `<LANGUAGE CODE>` is [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) language code
