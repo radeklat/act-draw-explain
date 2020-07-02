@@ -31,6 +31,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "about_packages_title" : MessageLookupByLibrary.simpleMessage("Packages"),
     "about_sources_title" : MessageLookupByLibrary.simpleMessage("Sources"),
     "about_title_version" : MessageLookupByLibrary.simpleMessage("Application version"),
+    "button_answer_correct" : MessageLookupByLibrary.simpleMessage("Correct"),
+    "button_answer_wrong" : MessageLookupByLibrary.simpleMessage("Wrong"),
     "duration_minutes" : m0,
     "duration_seconds" : m1,
     "duration_unlimited" : MessageLookupByLibrary.simpleMessage("Unlimited"),

@@ -338,6 +338,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Correct`
+  String get button_answer_correct {
+    return Intl.message(
+      'Correct',
+      name: 'button_answer_correct',
+      desc: 'Button description in the game play for a correct answer',
+      args: [],
+    );
+  }
+
+  /// `Wrong`
+  String get button_answer_wrong {
+    return Intl.message(
+      'Wrong',
+      name: 'button_answer_wrong',
+      desc: 'Button description in the game play for a wrong answer',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

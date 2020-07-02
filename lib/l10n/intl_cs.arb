@@ -59,5 +59,9 @@
   "end_game_score": "Uhodnuto {score}/{total}",
   "@end_game_score": {"placeholders": {"score": {}, "total": {}}},
   "end_game_back_button": "Zpět na výběr témat",
-  "@end_game_back_button": {}
+  "@end_game_back_button": {},
+  "button_answer_correct": "Správně",
+  "@button_answer_correct": {},
+  "button_answer_wrong": "Špatně",
+  "@button_answer_wrong": {}
 }

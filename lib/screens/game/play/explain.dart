@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:act_draw_explain/controllers/score.dart';
 import 'package:act_draw_explain/data/questions.dart';
 import 'package:act_draw_explain/data/topics.dart';
+import 'package:act_draw_explain/generated/l10n.dart';
 import 'package:act_draw_explain/models/results.dart';
 import 'package:act_draw_explain/screens/game/end_game.dart';
 import 'package:act_draw_explain/utilities/orientation.dart';
@@ -156,7 +157,7 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
                 Row(
                   children: <Widget>[
                     ProgressButton(
-                      title: "Správně",
+                      title: S.of(context).button_answer_correct,
                       iconData: Icons.thumb_up,
                       color: K_COLOR_PASS,
                       value: true,
@@ -164,7 +165,7 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
                       key: Key("answer_correct"),
                     ),
                     ProgressButton(
-                      title: "Špatně",
+                      title: S.of(context).button_answer_wrong,
                       iconData: Icons.thumb_down,
                       color: K_COLOR_FAIL,
                       value: false,

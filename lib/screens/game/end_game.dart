@@ -14,8 +14,8 @@ class EndGameScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return OneButtonInfoScreen(
       text: S.of(context).end_game_title +
-          "\n" +
-          S.of(context).end_game_score(lastGameResult.score, lastGameResult.questionsCount),
+          "\n\n" +
+          S.of(context).end_game_score(lastGameResult.score, lastGameResult.questionsCount) + "\n",
       buttonText: S.of(context).end_game_back_button,
       key: Key("end_game"),
       onPressed: () {

@@ -116,5 +116,11 @@
   },
 
   "end_game_back_button": "Back to topic selection",
-  "@end_game_back_button": {"description": "Button to get back to topic selections screen from the end game screen"}
+  "@end_game_back_button": {"description": "Button to get back to topic selections screen from the end game screen"},
+
+  "button_answer_correct": "Correct",
+  "@button_answer_correct": {"description": "Button description in the game play for a correct answer"},
+
+  "button_answer_wrong": "Wrong",
+  "@button_answer_wrong": {"description": "Button description in the game play for a wrong answer"}
 }

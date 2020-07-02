@@ -31,6 +31,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "about_packages_title" : MessageLookupByLibrary.simpleMessage("Balíčky"),
     "about_sources_title" : MessageLookupByLibrary.simpleMessage("Použité zdroje"),
     "about_title_version" : MessageLookupByLibrary.simpleMessage("Verze aplikace"),
+    "button_answer_correct" : MessageLookupByLibrary.simpleMessage("Správně"),
+    "button_answer_wrong" : MessageLookupByLibrary.simpleMessage("Špatně"),
     "duration_minutes" : m0,
     "duration_seconds" : m1,
     "duration_unlimited" : MessageLookupByLibrary.simpleMessage("Neomezeně"),
