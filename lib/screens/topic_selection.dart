@@ -61,7 +61,7 @@ class AppBarPopupMenu extends StatelessWidget {
     Navigator.pop(context, "");
     Clipboard.setData(ClipboardData(text: deviceInfo));
     Fluttertoast.showToast(
-      msg: "Informace o zařízení zkopírována do schránky.",
+      msg: S.of(context).feedback_device_info_msg,
       timeInSecForIosWeb: 5,
     );
     Provider.of<Analytics>(context, listen: false).userFeedback(feedbackType);
@@ -73,7 +73,7 @@ class AppBarPopupMenu extends StatelessWidget {
       builder: (BuildContext context) {
         return SimpleDialog(
           title: Text(
-            'Zpětná vazba',
+            S.of(context).menu_feedback,
           ),
           children: <Widget>[
             SimpleDialogOption(
@@ -82,7 +82,7 @@ class AppBarPopupMenu extends StatelessWidget {
               },
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8),
-                child: Text('Návrh na vylepšení', style: Theme.of(context).textTheme.bodyText1),
+                child: Text(S.of(context).menu_feedback_feature, style: Theme.of(context).textTheme.bodyText1),
               ),
             ),
             SimpleDialogOption(
@@ -91,7 +91,7 @@ class AppBarPopupMenu extends StatelessWidget {
               },
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8),
-                child: Text('Nahlásit chybu', style: Theme.of(context).textTheme.bodyText1),
+                child: Text(S.of(context).menu_feedback_bug_report, style: Theme.of(context).textTheme.bodyText1),
               ),
             ),
           ],
@@ -111,10 +111,10 @@ class AppBarPopupMenu extends StatelessWidget {
         }
       },
       itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-        PopupMenuItem<String>(value: SettingsScreen.ID, child: Text("Nastavení"), key: Key("popup_menu_settings")),
-        PopupMenuItem<String>(value: HelpScreen.ID, child: Text("Nápověda"), key: Key("popup_menu_help")),
-        PopupMenuItem<String>(value: "feedback", child: Text("Zpětná vazba"), key: Key("popup_menu_feedback"),),
-        PopupMenuItem<String>(value: AboutScreen.ID, child: Text("O aplikaci"), key: Key("popup_menu_about")),
+        PopupMenuItem<String>(value: SettingsScreen.ID, child: Text(S.of(context).menu_settings), key: Key("popup_menu_settings")),
+        PopupMenuItem<String>(value: HelpScreen.ID, child: Text(S.of(context).menu_help), key: Key("popup_menu_help")),
+        PopupMenuItem<String>(value: "feedback", child: Text(S.of(context).menu_feedback), key: Key("popup_menu_feedback"),),
+        PopupMenuItem<String>(value: AboutScreen.ID, child: Text(S.of(context).menu_about), key: Key("popup_menu_about")),
       ],
     );
   }

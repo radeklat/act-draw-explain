@@ -218,6 +218,76 @@ class S {
       args: [],
     );
   }
+
+  /// `Device info has been copied to the clipboard`
+  String get feedback_device_info_msg {
+    return Intl.message(
+      'Device info has been copied to the clipboard',
+      name: 'feedback_device_info_msg',
+      desc: 'Toast message displayed when feedback form is opened',
+      args: [],
+    );
+  }
+
+  /// `Feedback`
+  String get menu_feedback {
+    return Intl.message(
+      'Feedback',
+      name: 'menu_feedback',
+      desc: 'Main menu button and dialog title',
+      args: [],
+    );
+  }
+
+  /// `Feature request`
+  String get menu_feedback_feature {
+    return Intl.message(
+      'Feature request',
+      name: 'menu_feedback_feature',
+      desc: 'Main sub-menu button',
+      args: [],
+    );
+  }
+
+  /// `Report a bug`
+  String get menu_feedback_bug_report {
+    return Intl.message(
+      'Report a bug',
+      name: 'menu_feedback_bug_report',
+      desc: 'Main sub-menu button',
+      args: [],
+    );
+  }
+
+  /// `Settings`
+  String get menu_settings {
+    return Intl.message(
+      'Settings',
+      name: 'menu_settings',
+      desc: 'Main menu button',
+      args: [],
+    );
+  }
+
+  /// `Help`
+  String get menu_help {
+    return Intl.message(
+      'Help',
+      name: 'menu_help',
+      desc: 'Main menu button',
+      args: [],
+    );
+  }
+
+  /// `About`
+  String get menu_about {
+    return Intl.message(
+      'About',
+      name: 'menu_about',
+      desc: 'Main menu button',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -35,5 +35,19 @@
   "about_sources_title": "Použité zdroje",
   "@about_sources_title": {},
   "about_packages_title": "Balíčky",
-  "@about_packages_title": {}
+  "@about_packages_title": {},
+  "feedback_device_info_msg": "Informace o zařízení zkopírována do schránky.",
+  "@feedback_device_info_msg": {},
+  "menu_feedback": "Zpětná vazba",
+  "@menu_feedback": {},
+  "menu_feedback_feature": "Návrh na vylepšení",
+  "@menu_feedback_feature": {},
+  "menu_feedback_bug_report": "Nahlásit chybu",
+  "@menu_feedback_bug_report": {},
+  "menu_settings": "Nastavení",
+  "@menu_settings": {},
+  "menu_help": "Nápověda",
+  "@menu_help": {},
+  "menu_about": "O aplikaci",
+  "@menu_about": {}
 }

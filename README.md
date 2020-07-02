@@ -45,8 +45,8 @@ Locale is in form of `<LANGUAGE CODE>` or `<LANGUAGE CODE>_<COUNTRY CODE>`, wher
 
 #### Adding new language
 
-1. Copy `lib/I10n/intl_en.arb` as `lib/I10n/intl_<LOCALE>.arb` (replace `<LOCALE>` with the actual Locale)
-2. Run `flutter pub run intl_utils:generate` to generate boilerplate code
+1. Start new translations in [Weblate](https://weblate.lat.sk/projects/act-draw-explain/) for all components.
+2. Translate strings in all components.
 
 ### Game data
 

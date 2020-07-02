@@ -68,5 +68,26 @@
   "@about_sources_title": {"description": "About screen, title for sources"},
 
   "about_packages_title": "Packages",
-  "@about_packages_title": {"description": "About screen, title for packages"}
+  "@about_packages_title": {"description": "About screen, title for packages"},
+
+  "feedback_device_info_msg": "Device info has been copied to the clipboard",
+  "@feedback_device_info_msg": {"description": "Toast message displayed when feedback form is opened"},
+
+  "menu_feedback": "Feedback",
+  "@menu_feedback": {"description": "Main menu button and dialog title"},
+
+  "menu_feedback_feature": "Feature request",
+  "@menu_feedback_feature": {"description": "Main sub-menu button"},
+
+  "menu_feedback_bug_report": "Report a bug",
+  "@menu_feedback_bug_report": {"description": "Main sub-menu button"},
+
+  "menu_settings": "Settings",
+  "@menu_settings": {"description": "Main menu button"},
+
+  "menu_help": "Help",
+  "@menu_help": {"description": "Main menu button"},
+
+  "menu_about": "About",
+  "@menu_about": {"description": "Main menu button"}
 }
