@@ -25,7 +25,9 @@ class TopicSelectionScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(S.of(context).name),
         actions: <Widget>[
-          AppBarPopupMenu(key: Key("popup_menu"),),
+          AppBarPopupMenu(
+            key: Key("popup_menu"),
+          ),
         ],
       ),
       body: Column(
@@ -36,11 +38,9 @@ class TopicSelectionScreen extends StatelessWidget {
               maxCrossAxisExtent: 150,
               mainAxisSpacing: 10,
               crossAxisSpacing: 10,
-              children: [
-                ...game.topicIDs
-                    .map((topicID) => TopicCard(topic: topics[topicID], key: Key("topic_card_$topicID")))
-                    .toList()
-              ], //AddTopicCard()],
+              children: game.topicIDs
+                  .map((topicID) => TopicCard(topic: topics[topicID], key: Key("topic_card_$topicID")))
+                  .toList(),
             ),
           ),
         ],
@@ -111,10 +111,16 @@ class AppBarPopupMenu extends StatelessWidget {
         }
       },
       itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-        PopupMenuItem<String>(value: SettingsScreen.ID, child: Text(S.of(context).menu_settings), key: Key("popup_menu_settings")),
+        PopupMenuItem<String>(
+            value: SettingsScreen.ID, child: Text(S.of(context).menu_settings), key: Key("popup_menu_settings")),
         PopupMenuItem<String>(value: HelpScreen.ID, child: Text(S.of(context).menu_help), key: Key("popup_menu_help")),
-        PopupMenuItem<String>(value: "feedback", child: Text(S.of(context).menu_feedback), key: Key("popup_menu_feedback"),),
-        PopupMenuItem<String>(value: AboutScreen.ID, child: Text(S.of(context).menu_about), key: Key("popup_menu_about")),
+        PopupMenuItem<String>(
+          value: "feedback",
+          child: Text(S.of(context).menu_feedback),
+          key: Key("popup_menu_feedback"),
+        ),
+        PopupMenuItem<String>(
+            value: AboutScreen.ID, child: Text(S.of(context).menu_about), key: Key("popup_menu_about")),
       ],
     );
   }
