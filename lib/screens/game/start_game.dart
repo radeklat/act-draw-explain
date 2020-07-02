@@ -1,3 +1,4 @@
+import 'package:act_draw_explain/generated/l10n.dart';
 import 'package:act_draw_explain/screens/game/play/countdown.dart';
 import 'package:act_draw_explain/widgets/one_button_info_screen.dart';
 import 'package:flutter/material.dart';
@@ -11,8 +12,8 @@ class StartGameScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return OneButtonInfoScreen(
-      text: "Jste připraveni ke hře?",
-      buttonText: "Start hry",
+      text: S.of(context).start_game_prompt,
+      buttonText: S.of(context).start_game_button,
       key: Key("start_game"),
       onPressed: () {
         Navigator.pushReplacementNamed(context, CountdownScreen.ID, arguments: topicID);

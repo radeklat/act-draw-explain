@@ -49,6 +49,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "settings_interface_next_question" : MessageLookupByLibrary.simpleMessage("Next question control"),
     "settings_interface_vibrations" : MessageLookupByLibrary.simpleMessage("In-game vibration"),
     "settings_title_interface" : MessageLookupByLibrary.simpleMessage("Interface"),
-    "settings_title_options" : MessageLookupByLibrary.simpleMessage("Game options")
+    "settings_title_options" : MessageLookupByLibrary.simpleMessage("Game options"),
+    "start_game_button" : MessageLookupByLibrary.simpleMessage("Start game"),
+    "start_game_prompt" : MessageLookupByLibrary.simpleMessage("Are you ready to play?")
   };
 }

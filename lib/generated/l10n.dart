@@ -288,6 +288,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Are you ready to play?`
+  String get start_game_prompt {
+    return Intl.message(
+      'Are you ready to play?',
+      name: 'start_game_prompt',
+      desc: 'Start game screen prompt',
+      args: [],
+    );
+  }
+
+  /// `Start game`
+  String get start_game_button {
+    return Intl.message(
+      'Start game',
+      name: 'start_game_button',
+      desc: 'Button to start the game on the start game screen',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -49,5 +49,9 @@
   "menu_help": "Nápověda",
   "@menu_help": {},
   "menu_about": "O aplikaci",
-  "@menu_about": {}
+  "@menu_about": {},
+  "start_game_prompt": "Jste připraveni ke hře?",
+  "@start_game_prompt": {},
+  "start_game_button": "Start hry",
+  "@start_game_button": {}
 }

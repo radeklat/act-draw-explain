@@ -89,5 +89,12 @@
   "@menu_help": {"description": "Main menu button"},
 
   "menu_about": "About",
-  "@menu_about": {"description": "Main menu button"}
+  "@menu_about": {"description": "Main menu button"},
+
+  "start_game_prompt": "Are you ready to play?",
+  "@start_game_prompt": {"description": "Start game screen prompt"},
+
+  "start_game_button": "Start game",
+  "@start_game_button": {"description": "Button to start the game on the start game screen"}
+
 }
