@@ -23,6 +23,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m1(time) => "${Intl.plural(time, zero: '${time} sekund', one: '${time} sekunda', few: '${time} sekundy', other: '${time} sekund')}";
 
+  static m2(score, total) => "Uhodnuto ${score}/${total}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
     "about_changelog_link" : MessageLookupByLibrary.simpleMessage("seznam změn"),
@@ -32,6 +34,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "duration_minutes" : m0,
     "duration_seconds" : m1,
     "duration_unlimited" : MessageLookupByLibrary.simpleMessage("Neomezeně"),
+    "end_game_back_button" : MessageLookupByLibrary.simpleMessage("Zpět na výběr témat"),
+    "end_game_score" : m2,
+    "end_game_title" : MessageLookupByLibrary.simpleMessage("Konec hry"),
     "feedback_device_info_msg" : MessageLookupByLibrary.simpleMessage("Informace o zařízení zkopírována do schránky."),
     "form_validation_positive_int" : MessageLookupByLibrary.simpleMessage("Hodnota musí být celé číslo, větší nebo rovno 0."),
     "game_control_buttons" : MessageLookupByLibrary.simpleMessage("Tlačítky"),
@@ -50,7 +55,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "settings_interface_vibrations" : MessageLookupByLibrary.simpleMessage("Vibrace ve hře"),
     "settings_title_interface" : MessageLookupByLibrary.simpleMessage("Rozhraní"),
     "settings_title_options" : MessageLookupByLibrary.simpleMessage("Nastavení hry"),
-    "start_game_button" : MessageLookupByLibrary.simpleMessage(""),
-    "start_game_prompt" : MessageLookupByLibrary.simpleMessage("")
+    "start_game_button" : MessageLookupByLibrary.simpleMessage("Start hry"),
+    "start_game_prompt" : MessageLookupByLibrary.simpleMessage("Jste připraveni ke hře?")
   };
 }

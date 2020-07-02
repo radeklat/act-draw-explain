@@ -308,6 +308,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Game ended`
+  String get end_game_title {
+    return Intl.message(
+      'Game ended',
+      name: 'end_game_title',
+      desc: 'Title of the game end screen',
+      args: [],
+    );
+  }
+
+  /// `Guessed {score}/{total}`
+  String end_game_score(Object score, Object total) {
+    return Intl.message(
+      'Guessed $score/$total',
+      name: 'end_game_score',
+      desc: 'Score in a sentence on the game end screen',
+      args: [score, total],
+    );
+  }
+
+  /// `Back to topic selection`
+  String get end_game_back_button {
+    return Intl.message(
+      'Back to topic selection',
+      name: 'end_game_back_button',
+      desc: 'Button to get back to topic selections screen from the end game screen',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

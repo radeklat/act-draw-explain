@@ -23,6 +23,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m1(time) => "${Intl.plural(time, zero: '${time} seconds', one: '${time} second', other: '${time} seconds')}";
 
+  static m2(score, total) => "Guessed ${score}/${total}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
     "about_changelog_link" : MessageLookupByLibrary.simpleMessage("change log"),
@@ -32,6 +34,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "duration_minutes" : m0,
     "duration_seconds" : m1,
     "duration_unlimited" : MessageLookupByLibrary.simpleMessage("Unlimited"),
+    "end_game_back_button" : MessageLookupByLibrary.simpleMessage("Back to topic selection"),
+    "end_game_score" : m2,
+    "end_game_title" : MessageLookupByLibrary.simpleMessage("Game ended"),
     "feedback_device_info_msg" : MessageLookupByLibrary.simpleMessage("Device info has been copied to the clipboard"),
     "form_validation_positive_int" : MessageLookupByLibrary.simpleMessage("Value must be an integer, higher or equal to 0."),
     "game_control_buttons" : MessageLookupByLibrary.simpleMessage("Buttons"),

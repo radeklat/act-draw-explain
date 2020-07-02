@@ -53,5 +53,11 @@
   "start_game_prompt": "Jste připraveni ke hře?",
   "@start_game_prompt": {},
   "start_game_button": "Start hry",
-  "@start_game_button": {}
+  "@start_game_button": {},
+  "end_game_title": "Konec hry",
+  "@end_game_title": {},
+  "end_game_score": "Uhodnuto {score}/{total}",
+  "@end_game_score": {"placeholders": {"score": {}, "total": {}}},
+  "end_game_back_button": "Zpět na výběr témat",
+  "@end_game_back_button": {}
 }

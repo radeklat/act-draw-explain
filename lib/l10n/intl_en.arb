@@ -95,6 +95,26 @@
   "@start_game_prompt": {"description": "Start game screen prompt"},
 
   "start_game_button": "Start game",
-  "@start_game_button": {"description": "Button to start the game on the start game screen"}
+  "@start_game_button": {"description": "Button to start the game on the start game screen"},
 
+  "end_game_title": "Game ended",
+  "@end_game_title": {"description": "Title of the game end screen"},
+
+  "end_game_score": "Guessed {score}/{total}",
+  "@end_game_score": {
+    "description": "Score in a sentence on the game end screen",
+    "placeholders": {
+      "score": {
+        "example": "12",
+        "description": "How many were guessed correctly"
+      },
+      "total": {
+        "example": "20",
+        "description": "Total questions count"
+      }
+    }
+  },
+
+  "end_game_back_button": "Back to topic selection",
+  "@end_game_back_button": {"description": "Button to get back to topic selections screen from the end game screen"}
 }
