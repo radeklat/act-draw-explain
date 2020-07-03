@@ -13,9 +13,17 @@
   "settings_game_length": "Délka hry",
   "@settings_game_length": {},
   "duration_seconds": "{time,plural, =0{{time} sekund} =1{{time} sekunda} few{{time} sekundy} other{{time} sekund}}",
-  "@duration_seconds": {"placeholders": {"time": {}}},
+  "@duration_seconds": {
+    "placeholders": {
+      "time": {}
+    }
+  },
   "duration_minutes": "{time,plural, =0{{time} minut} =1{{time} minuta} few{{time} minuty} other{{time} minut}}",
-  "@duration_minutes": {"placeholders": {"time": {}}},
+  "@duration_minutes": {
+    "placeholders": {
+      "time": {}
+    }
+  },
   "duration_unlimited": "Neomezeně",
   "@duration_unlimited": {},
   "settings_game_card_limit": "Počet karet ve hře (0 = neomezeně)",
@@ -36,7 +44,7 @@
   "@about_sources_title": {},
   "about_packages_title": "Balíčky",
   "@about_packages_title": {},
-  "feedback_device_info_msg": "Informace o zařízení zkopírována do schránky.",
+  "feedback_device_info_msg": "Informace o zařízení zkopírována do schránky",
   "@feedback_device_info_msg": {},
   "menu_feedback": "Zpětná vazba",
   "@menu_feedback": {},
@@ -57,7 +65,12 @@
   "end_game_title": "Konec hry",
   "@end_game_title": {},
   "end_game_score": "Uhodnuto {score}/{total}",
-  "@end_game_score": {"placeholders": {"score": {}, "total": {}}},
+  "@end_game_score": {
+    "placeholders": {
+      "score": {},
+      "total": {}
+    }
+  },
   "end_game_back_button": "Zpět na výběr témat",
   "@end_game_back_button": {},
   "button_answer_correct": "Správně",
