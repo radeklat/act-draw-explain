@@ -122,5 +122,53 @@
   "@button_answer_correct": {"description": "Button description in the game play for a correct answer"},
 
   "button_answer_wrong": "Wrong",
-  "@button_answer_wrong": {"description": "Button description in the game play for a wrong answer"}
+  "@button_answer_wrong": {"description": "Button description in the game play for a wrong answer"},
+  
+  "help_how_to_play_title": "How to play",
+  "@help_how_to_play_title": {"description": "Section title on the help screen"},
+  
+  "help_how_to_play_par_1": "",
+  "@help_how_to_play_par_1": {"description": "Paragraph of text on the help screen"},
+
+  "help_how_to_play_par_2": "",
+  "@help_how_to_play_par_2": {"description": "Paragraph of text on the help screen"},
+
+  "help_how_to_play_buttons_par_1": "",
+  "@help_how_to_play_buttons_par_1": {"description": "Paragraph of text on the help screen"},
+
+  "help_how_to_play_tilt_par_1": "",
+  "@help_how_to_play_tilt_par_1": {"description": "Paragraph of text on the help screen"},
+
+  "help_game_control_title": "",
+  "@help_game_control_title": {"description": "Section title on the help screen"},
+
+  "help_game_control_blind_title": "",
+  "@help_game_control_blind_title": {"description": "Sub-section title on the help screen"},
+
+  "help_game_control_blind_par_1": "",
+  "@help_game_control_blind_par_1": {"description": "Paragraph of text on the help screen"},
+
+  "help_game_control_narrator_title": "",
+  "@help_game_control_narrator_title": {"description": "Sub-section title on the help screen"},
+
+  "help_game_control_narrator_par_1": "",
+  "@help_game_control_narrator_par_1": {"description": "Paragraph of text on the help screen"},
+
+  "help_game_control_time_title": "",
+  "@help_game_control_time_title": {"description": "Sub-section title on the help screen"},
+
+  "help_game_control_time_par_1": "",
+  "@help_game_control_time_par_1": {"description": "Paragraph of text on the help screen"},
+
+  "help_game_control_score_title": "",
+  "@help_game_control_score_title": {"description": "Sub-section title on the help screen"},
+
+  "help_game_control_score_par_1": "",
+  "@help_game_control_score_par_1": {"description": "Paragraph of text on the help screen"},
+
+  "help_advanced_game_title": "",
+  "@help_advanced_game_title": {"description": "Section title on the help screen"},
+
+  "help_advanced_game_par_1": "",
+  "@help_advanced_game_par_1": {"description": "Paragraph of text on the help screen"}
 }

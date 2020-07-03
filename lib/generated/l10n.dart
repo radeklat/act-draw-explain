@@ -358,6 +358,166 @@ class S {
       args: [],
     );
   }
+
+  /// `How to play`
+  String get help_how_to_play_title {
+    return Intl.message(
+      'How to play',
+      name: 'help_how_to_play_title',
+      desc: 'Section title on the help screen',
+      args: [],
+    );
+  }
+
+  /// ``
+  String get help_how_to_play_par_1 {
+    return Intl.message(
+      '',
+      name: 'help_how_to_play_par_1',
+      desc: 'Paragraph of text on the help screen',
+      args: [],
+    );
+  }
+
+  /// ``
+  String get help_how_to_play_par_2 {
+    return Intl.message(
+      '',
+      name: 'help_how_to_play_par_2',
+      desc: 'Paragraph of text on the help screen',
+      args: [],
+    );
+  }
+
+  /// ``
+  String get help_how_to_play_buttons_par_1 {
+    return Intl.message(
+      '',
+      name: 'help_how_to_play_buttons_par_1',
+      desc: 'Paragraph of text on the help screen',
+      args: [],
+    );
+  }
+
+  /// ``
+  String get help_how_to_play_tilt_par_1 {
+    return Intl.message(
+      '',
+      name: 'help_how_to_play_tilt_par_1',
+      desc: 'Paragraph of text on the help screen',
+      args: [],
+    );
+  }
+
+  /// ``
+  String get help_game_control_title {
+    return Intl.message(
+      '',
+      name: 'help_game_control_title',
+      desc: 'Section title on the help screen',
+      args: [],
+    );
+  }
+
+  /// ``
+  String get help_game_control_blind_title {
+    return Intl.message(
+      '',
+      name: 'help_game_control_blind_title',
+      desc: 'Sub-section title on the help screen',
+      args: [],
+    );
+  }
+
+  /// ``
+  String get help_game_control_blind_par_1 {
+    return Intl.message(
+      '',
+      name: 'help_game_control_blind_par_1',
+      desc: 'Paragraph of text on the help screen',
+      args: [],
+    );
+  }
+
+  /// ``
+  String get help_game_control_narrator_title {
+    return Intl.message(
+      '',
+      name: 'help_game_control_narrator_title',
+      desc: 'Sub-section title on the help screen',
+      args: [],
+    );
+  }
+
+  /// ``
+  String get help_game_control_narrator_par_1 {
+    return Intl.message(
+      '',
+      name: 'help_game_control_narrator_par_1',
+      desc: 'Paragraph of text on the help screen',
+      args: [],
+    );
+  }
+
+  /// ``
+  String get help_game_control_time_title {
+    return Intl.message(
+      '',
+      name: 'help_game_control_time_title',
+      desc: 'Sub-section title on the help screen',
+      args: [],
+    );
+  }
+
+  /// ``
+  String get help_game_control_time_par_1 {
+    return Intl.message(
+      '',
+      name: 'help_game_control_time_par_1',
+      desc: 'Paragraph of text on the help screen',
+      args: [],
+    );
+  }
+
+  /// ``
+  String get help_game_control_score_title {
+    return Intl.message(
+      '',
+      name: 'help_game_control_score_title',
+      desc: 'Sub-section title on the help screen',
+      args: [],
+    );
+  }
+
+  /// ``
+  String get help_game_control_score_par_1 {
+    return Intl.message(
+      '',
+      name: 'help_game_control_score_par_1',
+      desc: 'Paragraph of text on the help screen',
+      args: [],
+    );
+  }
+
+  /// ``
+  String get help_advanced_game_title {
+    return Intl.message(
+      '',
+      name: 'help_advanced_game_title',
+      desc: 'Section title on the help screen',
+      args: [],
+    );
+  }
+
+  /// ``
+  String get help_advanced_game_par_1 {
+    return Intl.message(
+      '',
+      name: 'help_advanced_game_par_1',
+      desc: 'Paragraph of text on the help screen',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
