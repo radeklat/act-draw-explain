@@ -358,6 +358,166 @@ class S {
       args: [],
     );
   }
+
+  /// `How to play`
+  String get help_how_to_play_title {
+    return Intl.message(
+      'How to play',
+      name: 'help_how_to_play_title',
+      desc: 'Section title on the help screen',
+      args: [],
+    );
+  }
+
+  /// `The game is designed for 2 or more players. In case of multiple players, it is possible to divide into several teams of at least two players. The principle of the game is to guess as many terms as possible. Words with the same root as the guessed term must not be used. The guessing player can try until they answer correctly. However, if the game is time limited or the term is too difficult, it is possible to skip it.`
+  String get help_how_to_play_par_1 {
+    return Intl.message(
+      'The game is designed for 2 or more players. In case of multiple players, it is possible to divide into several teams of at least two players. The principle of the game is to guess as many terms as possible. Words with the same root as the guessed term must not be used. The guessing player can try until they answer correctly. However, if the game is time limited or the term is too difficult, it is possible to skip it.',
+      name: 'help_how_to_play_par_1',
+      desc: 'Paragraph of text on the help screen',
+      args: [],
+    );
+  }
+
+  /// `The method of answering questions can be changed in the settings.`
+  String get help_how_to_play_par_2 {
+    return Intl.message(
+      'The method of answering questions can be changed in the settings.',
+      name: 'help_how_to_play_par_2',
+      desc: 'Paragraph of text on the help screen',
+      args: [],
+    );
+  }
+
+  /// `The correct and wrong answer buttons are displayed on the guessing screen.`
+  String get help_how_to_play_buttons_par_1 {
+    return Intl.message(
+      'The correct and wrong answer buttons are displayed on the guessing screen.',
+      name: 'help_how_to_play_buttons_par_1',
+      desc: 'Paragraph of text on the help screen',
+      args: [],
+    );
+  }
+
+  /// `The phone should placed on you forehead. The correct answer is chosen by tilting the display down, the wrong one by tilting up.`
+  String get help_how_to_play_tilt_par_1 {
+    return Intl.message(
+      'The phone should placed on you forehead. The correct answer is chosen by tilting the display down, the wrong one by tilting up.',
+      name: 'help_how_to_play_tilt_par_1',
+      desc: 'Paragraph of text on the help screen',
+      args: [],
+    );
+  }
+
+  /// `Game styles`
+  String get help_game_control_title {
+    return Intl.message(
+      'Game styles',
+      name: 'help_game_control_title',
+      desc: 'Section title on the help screen',
+      args: [],
+    );
+  }
+
+  /// `Blind`
+  String get help_game_control_blind_title {
+    return Intl.message(
+      'Blind',
+      name: 'help_game_control_blind_title',
+      desc: 'Sub-section title on the help screen',
+      args: [],
+    );
+  }
+
+  /// `One of the players guesses the term and does not see it, the others see it and try to describe it. Whether the answer was correct or incorrect can be indicated by tilting the phone.`
+  String get help_game_control_blind_par_1 {
+    return Intl.message(
+      'One of the players guesses the term and does not see it, the others see it and try to describe it. Whether the answer was correct or incorrect can be indicated by tilting the phone.',
+      name: 'help_game_control_blind_par_1',
+      desc: 'Paragraph of text on the help screen',
+      args: [],
+    );
+  }
+
+  /// `Narrator`
+  String get help_game_control_narrator_title {
+    return Intl.message(
+      'Narrator',
+      name: 'help_game_control_narrator_title',
+      desc: 'Sub-section title on the help screen',
+      args: [],
+    );
+  }
+
+  /// `One of the players sees the guessed term and describes it, the others do not see and guess it. The answer can be marked with the buttons.`
+  String get help_game_control_narrator_par_1 {
+    return Intl.message(
+      'One of the players sees the guessed term and describes it, the others do not see and guess it. The answer can be marked with the buttons.',
+      name: 'help_game_control_narrator_par_1',
+      desc: 'Paragraph of text on the help screen',
+      args: [],
+    );
+  }
+
+  /// `Time limited`
+  String get help_game_control_time_title {
+    return Intl.message(
+      'Time limited',
+      name: 'help_game_control_time_title',
+      desc: 'Sub-section title on the help screen',
+      args: [],
+    );
+  }
+
+  /// `Select the length of the game in the settings. Who will get the most answers in the time limit?`
+  String get help_game_control_time_par_1 {
+    return Intl.message(
+      'Select the length of the game in the settings. Who will get the most answers in the time limit?',
+      name: 'help_game_control_time_par_1',
+      desc: 'Paragraph of text on the help screen',
+      args: [],
+    );
+  }
+
+  /// `Highest score`
+  String get help_game_control_score_title {
+    return Intl.message(
+      'Highest score',
+      name: 'help_game_control_score_title',
+      desc: 'Sub-section title on the help screen',
+      args: [],
+    );
+  }
+
+  /// `In the settings, select an unlimited length of play. The game lasts until the time run out. Who has the most correct answers?`
+  String get help_game_control_score_par_1 {
+    return Intl.message(
+      'In the settings, select an unlimited length of play. The game lasts until the time run out. Who has the most correct answers?',
+      name: 'help_game_control_score_par_1',
+      desc: 'Paragraph of text on the help screen',
+      args: [],
+    );
+  }
+
+  /// `Advanced games`
+  String get help_advanced_game_title {
+    return Intl.message(
+      'Advanced games',
+      name: 'help_advanced_game_title',
+      desc: 'Section title on the help screen',
+      args: [],
+    );
+  }
+
+  /// `Although the application does not yet prompt this and has not optimized question selection process, it is possible to guess by demonstration (pantomime) or drawing.`
+  String get help_advanced_game_par_1 {
+    return Intl.message(
+      'Although the application does not yet prompt this and has not optimized question selection process, it is possible to guess by demonstration (pantomime) or drawing.',
+      name: 'help_advanced_game_par_1',
+      desc: 'Paragraph of text on the help screen',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

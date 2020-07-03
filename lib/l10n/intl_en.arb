@@ -122,5 +122,53 @@
   "@button_answer_correct": {"description": "Button description in the game play for a correct answer"},
 
   "button_answer_wrong": "Wrong",
-  "@button_answer_wrong": {"description": "Button description in the game play for a wrong answer"}
+  "@button_answer_wrong": {"description": "Button description in the game play for a wrong answer"},
+  
+  "help_how_to_play_title": "How to play",
+  "@help_how_to_play_title": {"description": "Section title on the help screen"},
+  
+  "help_how_to_play_par_1": "The game is designed for 2 or more players. In case of multiple players, it is possible to divide into several teams of at least two players. The principle of the game is to guess as many terms as possible. Words with the same root as the guessed term must not be used. The guessing player can try until they answer correctly. However, if the game is time limited or the term is too difficult, it is possible to skip it.",
+  "@help_how_to_play_par_1": {"description": "Paragraph of text on the help screen"},
+
+  "help_how_to_play_par_2": "The method of answering questions can be changed in the settings.",
+  "@help_how_to_play_par_2": {"description": "Paragraph of text on the help screen"},
+
+  "help_how_to_play_buttons_par_1": "The correct and wrong answer buttons are displayed on the guessing screen.",
+  "@help_how_to_play_buttons_par_1": {"description": "Paragraph of text on the help screen"},
+
+  "help_how_to_play_tilt_par_1": "The phone should placed on you forehead. The correct answer is chosen by tilting the display down, the wrong one by tilting up.",
+  "@help_how_to_play_tilt_par_1": {"description": "Paragraph of text on the help screen"},
+
+  "help_game_control_title": "Game styles",
+  "@help_game_control_title": {"description": "Section title on the help screen"},
+
+  "help_game_control_blind_title": "Blind",
+  "@help_game_control_blind_title": {"description": "Sub-section title on the help screen"},
+
+  "help_game_control_blind_par_1": "One of the players guesses the term and does not see it, the others see it and try to describe it. Whether the answer was correct or incorrect can be indicated by tilting the phone.",
+  "@help_game_control_blind_par_1": {"description": "Paragraph of text on the help screen"},
+
+  "help_game_control_narrator_title": "Narrator",
+  "@help_game_control_narrator_title": {"description": "Sub-section title on the help screen"},
+
+  "help_game_control_narrator_par_1": "One of the players sees the guessed term and describes it, the others do not see and guess it. The answer can be marked with the buttons.",
+  "@help_game_control_narrator_par_1": {"description": "Paragraph of text on the help screen"},
+
+  "help_game_control_time_title": "Time limited",
+  "@help_game_control_time_title": {"description": "Sub-section title on the help screen"},
+
+  "help_game_control_time_par_1": "Select the length of the game in the settings. Who will get the most answers in the time limit?",
+  "@help_game_control_time_par_1": {"description": "Paragraph of text on the help screen"},
+
+  "help_game_control_score_title": "Highest score",
+  "@help_game_control_score_title": {"description": "Sub-section title on the help screen"},
+
+  "help_game_control_score_par_1": "In the settings, select an unlimited length of play. The game lasts until the time run out. Who has the most correct answers?",
+  "@help_game_control_score_par_1": {"description": "Paragraph of text on the help screen"},
+
+  "help_advanced_game_title": "Advanced games",
+  "@help_advanced_game_title": {"description": "Section title on the help screen"},
+
+  "help_advanced_game_par_1": "Although the application does not yet prompt this and has not optimized question selection process, it is possible to guess by demonstration (pantomime) or drawing.",
+  "@help_advanced_game_par_1": {"description": "Paragraph of text on the help screen"}
 }
