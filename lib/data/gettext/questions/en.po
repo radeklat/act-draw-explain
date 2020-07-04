@@ -1,0 +1,61 @@
+msgid "1"
+msgstr "The Shawshank Redemption (1994)"
+
+msgid "2"
+msgstr "The Godfather (1972)"
+
+#. note 3
+msgid "3"
+msgstr "The Godfather: Part II (1974)"
+
+msgid "4"
+msgstr "The Dark Knight (2008)"
+
+#. note 555
+msgid "5"
+msgstr "12 Angry Men (1957)"
+
+msgid "6"
+msgstr "Schindler's List (1993)"
+
+msgid "7"
+msgstr "The Lord of the Rings: The Return of the King (2003)"
+
+msgid "8"
+msgstr "Pulp Fiction (1994)"
+
+msgid "9"
+msgstr "The Good, the Bad and the Ugly (1966)"
+
+msgid "10"
+msgstr "The Lord of the Rings: The Fellowship of the Ring (2001)"
+
+msgid "11"
+msgstr "Fight Club (1999)"
+
+msgid "12"
+msgstr "Forrest Gump (1994)"
+
+msgid "13"
+msgstr "Inception (2010)"
+
+msgid "14"
+msgstr "Star Wars: Episode V - The Empire Strikes Back (1980)"
+
+msgid "15"
+msgstr "The Lord of the Rings: The Two Towers (2002)"
+
+msgid "16"
+msgstr "The Matrix (1999)"
+
+msgid "17"
+msgstr "Goodfellas (1990)"
+
+msgid "18"
+msgstr "One Flew Over the Cuckoo's Nest (1975)"
+
+msgid "19"
+msgstr "Seven Samurai (1954)"
+
+msgid "20"
+msgstr ""

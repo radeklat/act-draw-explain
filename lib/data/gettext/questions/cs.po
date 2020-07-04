@@ -1,0 +1,64 @@
+msgid "1"
+msgstr "Vykoupení z věznice Shawshank (1994)"
+
+#. note 2
+msgid "2"
+msgstr "Kmotr (1972)"
+
+msgid "3"
+msgstr "Kmotr II (1974)"
+
+#. note 4
+msgid "4"
+msgstr "Temný rytíř (2008)"
+
+#. note 55
+msgid "5"
+msgstr "Dvanáct rozhněvaných mužů (1957)"
+
+msgid "6"
+msgstr "Schindlerův seznam (1993)"
+
+msgid "7"
+msgstr "Pán prstenů: Návrat krále (2003)"
+
+msgid "8"
+msgstr "Pulp Fiction: Historky z podsvětí (1994)"
+
+msgid "9"
+msgstr "Hodný, zlý a ošklivý (1966)"
+
+msgid "10"
+msgstr "Pán prstenů: Společenstvo Prstenu (2001)"
+
+msgid "11"
+msgstr "Klub rváčů (1999)"
+
+#, ignore-same
+msgid "12"
+msgstr "Forrest Gump (1994)"
+
+msgid "13"
+msgstr "Počátek (2010)"
+
+msgid "14"
+msgstr "Star Wars: Epizoda V - Impérium vrací úder (1980)"
+
+msgid "15"
+msgstr "Pán prstenů: Dvě věže (2002)"
+
+msgid "16"
+msgstr "Matrix (1999)"
+
+msgid "17"
+msgstr "Mafiáni (1990)"
+
+msgid "18"
+msgstr ""
+
+msgid "19"
+msgstr "Sedm samurajů (1954)"
+
+msgid "20"
+msgstr ""
+
