@@ -3,17 +3,19 @@
   <file original="1" target-language="en">
     <body>
       <trans-unit id="1">
-        <source></source>
+        <source />
         <target>The Shawshank Redemption (1994)</target>
       </trans-unit>
       <trans-unit id="2">
+        <source />
         <target>The Godfather (1972)</target>
       </trans-unit>
       <trans-unit id="3">
-        <source></source>
+        <source />
         <target>The Godfather: Part II (1974)</target>
       </trans-unit>
       <trans-unit id="4">
+        <source />
         <target>The Dark Knight (2008)</target>
       </trans-unit>
       <trans-unit id="5">
