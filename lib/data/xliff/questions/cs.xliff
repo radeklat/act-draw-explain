@@ -1,16 +1,17 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <xliff version="1.2">
-  <file datatype="photoshop" original="Graphic Example.psd" tool="Rainbow" target-language="cs">
+  <file original="1" target-language="cs">
     <body>
       <trans-unit id="1">
+        <source></source>
         <target>Vykoupení z věznice Shawshank (1994)</target>
-        <target> Vykoupení z věznice Shawshank (1994)</target>
       </trans-unit>
       <trans-unit id="2">
+        <source></source>
         <target>Kmotr (1972)</target>
-        <target> Kmotr (1972)</target>
       </trans-unit>
       <trans-unit id="3">
+        <source />
         <target>Kmotr II (1974)</target>
       </trans-unit>
       <trans-unit id="4">

@@ -1,18 +1,17 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <xliff version="1.2">
-  <file datatype="photoshop" original="Graphic Example.psd" tool="Rainbow" target-language="en">
+  <file original="1" target-language="en">
     <body>
       <trans-unit id="1">
+        <source></source>
         <target>The Shawshank Redemption (1994)</target>
-        <source> The Shawshank Redemption (1994)</source>
       </trans-unit>
       <trans-unit id="2">
         <target>The Godfather (1972)</target>
-        <source> The Godfather (1972)</source>
       </trans-unit>
       <trans-unit id="3">
+        <source></source>
         <target>The Godfather: Part II (1974)</target>
-        <source> The Godfather: Part II (1974)</source>
       </trans-unit>
       <trans-unit id="4">
         <target>The Dark Knight (2008)</target>
