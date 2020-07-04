@@ -1,26 +1,68 @@
+<?xml version='1.0' encoding='UTF-8'?>
 <xliff version="1.2">
-  <file datatype="photoshop" original="Graphic Example.psd" tool="Rainbow">
+  <file datatype="photoshop" original="Graphic Example.psd" tool="Rainbow" target-language="en">
     <body>
-      <trans-unit  id="1"><target>The Shawshank Redemption (1994)</target></trans-unit>
-      <trans-unit  id="2"><target>The Godfather (1972)</target></trans-unit>
-      <trans-unit  id="3"><target>The Godfather: Part II (1974)</target></trans-unit>
-      <trans-unit  id="4"><target>The Dark Knight (2008)</target></trans-unit>
-      <trans-unit  id="5"><target>12 Angry Men (1957)</target></trans-unit>
-      <trans-unit  id="6"><target>Schindler's List (1993)</target></trans-unit>
-      <trans-unit  id="7"><target>The Lord of the Rings: The Return of the King (2003)</target></trans-unit>
-      <trans-unit  id="8"><target>Pulp Fiction (1994)</target></trans-unit>
-      <trans-unit  id="9"><target>The Good, the Bad and the Ugly (1966)</target></trans-unit>
-      <trans-unit id="10"><target>The Lord of the Rings: The Fellowship of the Ring (2001)</target></trans-unit>
-      <trans-unit id="11"><target>Fight Club (1999)</target></trans-unit>
-      <trans-unit id="12"><target>Forrest Gump (1994)</target></trans-unit>
-      <trans-unit id="13"><target>Inception (2010)</target></trans-unit>
-      <trans-unit id="14"><target>Star Wars: Episode V - The Empire Strikes Back (1980)</target></trans-unit>
-      <trans-unit id="15"><target>The Lord of the Rings: The Two Towers (2002)</target></trans-unit>
-      <trans-unit id="16"><target>The Matrix (1999)</target></trans-unit>
-      <trans-unit id="17"><target>Goodfellas (1990)</target></trans-unit>
-      <trans-unit id="18"><target>One Flew Over the Cuckoo's Nest (1975)</target></trans-unit>
-      <trans-unit id="19"><target>Seven Samurai (1954)</target></trans-unit>
-      <trans-unit id="20"><target>Se7en (1995)</target></trans-unit>
+      <trans-unit id="1">
+        <target>The Shawshank Redemption (1994)</target>
+        <source> The Shawshank Redemption (1994)</source>
+      </trans-unit>
+      <trans-unit id="2">
+        <target>The Godfather (1972)</target>
+      </trans-unit>
+      <trans-unit id="3">
+        <target>The Godfather: Part II (1974)</target>
+      </trans-unit>
+      <trans-unit id="4">
+        <target>The Dark Knight (2008)</target>
+      </trans-unit>
+      <trans-unit id="5">
+        <target>12 Angry Men (1957)</target>
+      </trans-unit>
+      <trans-unit id="6">
+        <target>Schindler's List (1993)</target>
+      </trans-unit>
+      <trans-unit id="7">
+        <target>The Lord of the Rings: The Return of the King (2003)</target>
+      </trans-unit>
+      <trans-unit id="8">
+        <target>Pulp Fiction (1994)</target>
+      </trans-unit>
+      <trans-unit id="9">
+        <target>The Good, the Bad and the Ugly (1966)</target>
+      </trans-unit>
+      <trans-unit id="10">
+        <target>The Lord of the Rings: The Fellowship of the Ring (2001)</target>
+      </trans-unit>
+      <trans-unit id="11">
+        <target>Fight Club (1999)</target>
+      </trans-unit>
+      <trans-unit id="12">
+        <target>Forrest Gump (1994)</target>
+      </trans-unit>
+      <trans-unit id="13">
+        <target>Inception (2010)</target>
+      </trans-unit>
+      <trans-unit id="14">
+        <target>Star Wars: Episode V - The Empire Strikes Back (1980)</target>
+      </trans-unit>
+      <trans-unit id="15">
+        <target>The Lord of the Rings: The Two Towers (2002)</target>
+      </trans-unit>
+      <trans-unit id="16">
+        <target>The Matrix (1999)</target>
+      </trans-unit>
+      <trans-unit id="17">
+        <target>Goodfellas (1990)</target>
+      </trans-unit>
+      <trans-unit id="18">
+        <target>One Flew Over the Cuckoo's Nest (1975)</target>
+      </trans-unit>
+      <trans-unit id="19">
+        <target>Seven Samurai (1954)</target>
+      </trans-unit>
+      <trans-unit id="20">
+        <target>Se7en (1995)</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
