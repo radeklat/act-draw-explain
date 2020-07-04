@@ -47,7 +47,7 @@ Locale is in form of `<LANGUAGE CODE>` or `<LANGUAGE CODE>_<COUNTRY CODE>`, wher
 
 ##### Adding new string
 
-1. Add it to `lib/I10n/intl_en.arb` (this is the base language)
+1. Add it to `lib/I10n/intl_en.arb` (this is the base language). See also  [Plural](https://support.crowdin.com/icu-message-syntax/#plural) and [gender](https://support.crowdin.com/icu-message-syntax/#select) formatting in translations.
 2. Run `flutter pub run intl_utils:generate` to generate boilerplate code
 3. Use the boilerplate in the codebase as `S.of(context).NAME` where `NAME` is name of the string.
 
