@@ -123,10 +123,10 @@
 
   "button_answer_wrong": "Wrong",
   "@button_answer_wrong": {"description": "Button description in the game play for a wrong answer"},
-  
+
   "help_how_to_play_title": "How to play",
   "@help_how_to_play_title": {"description": "Section title on the help screen"},
-  
+
   "help_how_to_play_par_1": "The game is designed for 2 or more players. In case of multiple players, it is possible to divide into several teams of at least two players. The principle of the game is to guess as many terms as possible. Words with the same root as the guessed term must not be used. The guessing player can try until they answer correctly. However, if the game is time limited or the term is too difficult, it is possible to skip it.",
   "@help_how_to_play_par_1": {"description": "Paragraph of text on the help screen"},
 
