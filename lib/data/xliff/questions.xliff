@@ -1,15 +1,15 @@
 <xliff version="1.2">
   <file original="1" category="Top IMDB Movies">
     <body>
-      <trans-unit  id="1"><source>The Shawshank Redemption (1994)</source></trans-unit>
-      <trans-unit  id="2"><source>The Godfather (1972)</source></trans-unit>
-      <trans-unit  id="3"><source>The Godfather: Part II (1974)</source></trans-unit>
-      <trans-unit  id="4"><source>The Dark Knight (2008)</source></trans-unit>
-      <trans-unit  id="5"><source>12 Angry Men (1957)</source></trans-unit>
-      <trans-unit  id="6"><source>Schindler's List (1993)</source></trans-unit>
-      <trans-unit  id="7"><source>The Lord of the Rings: The Return of the King (2003)</source></trans-unit>
-      <trans-unit  id="8"><source>Pulp Fiction (1994)</source></trans-unit>
-      <trans-unit  id="9"><source>The Good, the Bad and the Ugly (1966)</source></trans-unit>
+      <trans-unit id="1" note="note 1"><source>The Shawshank Redemption (1994)</source></trans-unit>
+      <trans-unit id="2"><source>The Godfather (1972)</source></trans-unit>
+      <trans-unit id="3"><source>The Godfather: Part II (1974)</source></trans-unit>
+      <trans-unit id="4"><source>The Dark Knight (2008)</source></trans-unit>
+      <trans-unit id="5" note="note 5"><source>12 Angry Men (1957)</source></trans-unit>
+      <trans-unit id="6"><source>Schindler's List (1993)</source></trans-unit>
+      <trans-unit id="7"><source>The Lord of the Rings: The Return of the King (2003)</source></trans-unit>
+      <trans-unit id="8"><source>Pulp Fiction (1994)</source></trans-unit>
+      <trans-unit id="9"><source>The Good, the Bad and the Ugly (1966)</source></trans-unit>
       <trans-unit id="10"><source>The Lord of the Rings: The Fellowship of the Ring (2001)</source></trans-unit>
       <trans-unit id="11"><source>Fight Club (1999)</source></trans-unit>
       <trans-unit id="12"><source>Forrest Gump (1994)</source></trans-unit>

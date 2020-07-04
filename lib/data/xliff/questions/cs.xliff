@@ -6,7 +6,7 @@
         <source />
         <target>Vykoupení z věznice Shawshank (1994)</target>
       </trans-unit>
-      <trans-unit id="2">
+      <trans-unit id="2" note="note 2">
         <source />
         <target>Kmotr (1972)</target>
       </trans-unit>
@@ -18,7 +18,7 @@
         <source />
         <target>Temný rytíř (2008)</target>
       </trans-unit>
-      <trans-unit id="5">
+      <trans-unit id="5" note="note 55">
         <source />
         <target>Dvanáct rozhněvaných mužů (1957)</target>
       </trans-unit>
