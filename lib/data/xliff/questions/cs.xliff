@@ -48,7 +48,7 @@
       </trans-unit>
       <trans-unit id="12">
         <source />
-        <target>Forrest Gump (1994)</target>
+        <target weblate-flags="ignore-same">Forrest Gump (1994)</target>
       </trans-unit>
       <trans-unit id="13">
         <source />
