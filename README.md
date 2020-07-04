@@ -1,5 +1,7 @@
 # Act, Draw, Explain
 
+[![Translation status](https://weblate.lat.sk/widgets/act-draw-explain/-/svg-badge.svg)](https://weblate.lat.sk/engage/act-draw-explain/?utm_source=widget)
+
 A multi-player game based on popular games, such as Charades, Heads-up and Pictionary.
 
 # How to contribute
@@ -8,26 +10,32 @@ This is an open source project and everyone is welcome to contribute to the game
 
 1. [Report bugs](https://github.com/radeklat/act-draw-explain/issues/new/choose)
 2. [Suggest new features](https://github.com/radeklat/act-draw-explain/issues/new/choose)
-3. Create new topics (see [Game data](#game-data) below)
-4. Add more questions into existing topics
-5. Fix typos
-6. Improve the code base via Pull requests
+3. Create new topics, add more questions into existing topics or fix typos (see [Game data](#game-data) below)
+4. Translate the app into more languages (see [Translating via translation system](#translating-via-translation-system) below)
+5. Improve the code base via Pull requests
 
-You don't have to be a Flutter developer to contribute. Files are editable in GitHub directly. So easier things like fixing a typo are a matter of a few click.
+You don't have to be a Flutter developer to contribute. Files are editable in GitHub directly and translations are handled by a translation system. Easier task, such as fixing a typo, are a matter of a few click.
 
 ## Development
 
 This project is written in Flutter and at the moment being built and distributed only on Android. However, the language was chosen with long term intention to distribute the project to other platforms as well.
 
+The development language is English to make this project as widely available as possible to the development community. This includes commit messages, change logs, development documentation and code comments.
+
 ### Languages
 
-The ultimate goal of the app is to be multi-lingual. As a Czech/English bilingual author, it was easier for me to start with Czech interface and game data. The near future intention to be multi-lingual with initial support of Czech and English.
+Current support:
 
-The game data is mostly Czech, with some packages in English.
+[![Translation status](https://weblate.lat.sk/widgets/act-draw-explain/-/multi-auto.svg)](https://weblate.lat.sk/engage/act-draw-explain/?utm_source=widget)
 
-The development language is English to make this project as available as possible to the development community. This includes commit messages, change log, development documentation and code comments.
+The application UI can be translated to any number of languages. The game data is at the moment static, mostly Czech, with some packages in English. Integration with the translation system is planned in the near future.
 
-#### Translating
+#### Translating via translation system
+
+1. Register to [Weblate](https://weblate.lat.sk/engage/act-draw-explain/) for the Act, Draw, Explain app.
+2. Translate the UI in the [Flutter app component](https://weblate.lat.sk/projects/act-draw-explain/flutter-app/).
+
+#### Translation support in code
 
 The application utilizes [`intl`](https://pub.dev/packages/intl) and [`intl_utils`](https://pub.dev/packages/intl_utils) packages.
 
