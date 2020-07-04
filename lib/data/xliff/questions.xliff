@@ -1,6 +1,8 @@
 <xliff version="1.2">
   <file category="Top IMDB Movies" original="1">
+      <note>file note</note>
     <body>
+        <note>body note</note>
       <trans-unit id="1">
         <note>note 1</note>
         <source>The Shawshank Redemption (1994)</source>
