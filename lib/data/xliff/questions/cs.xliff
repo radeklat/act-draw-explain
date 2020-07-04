@@ -46,9 +46,9 @@
         <source />
         <target>Klub rváčů (1999)</target>
       </trans-unit>
-      <trans-unit id="12">
+      <trans-unit id="12" weblate-flags="ignore-same">
         <source />
-        <target weblate-flags="ignore-same">Forrest Gump (1994)</target>
+        <target>Forrest Gump (1994)</target>
       </trans-unit>
       <trans-unit id="13">
         <source />
