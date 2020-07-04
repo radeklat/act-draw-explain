@@ -1,19 +1,20 @@
-location,source,target,ID,fuzzy,context,translator_comments,developer_comments
-,1,"Vykoupení z věznice Shawshank (1994)",,1,some_context,some_translator_comment,some_developer_comment,
-,2,"Kmotr (1972)",,True,,,
-,3,"Kmotr II (1974)",,true,,,
-,4,"Temný rytíř (2008)",,,,,
-,5,"Dvanáct rozhněvaných mužů (1957)",,,,,
-,6,"Schindlerův seznam (1993)",,,,,
-,7,"Pán prstenů: Návrat krále (2003)",,,,,
-,8,"Pulp Fiction: Historky z podsvětí (1994)",,,,,
-,9,"Hodný, zlý a ošklivý (1966)",,,,,
-,10,"Pán prstenů: Společenstvo Prstenu (2001)",,,,,
-,11,"Klub rváčů (1999)",,,,,
-,12,"Forrest Gump (1994)",,,,,
-,13,"Počátek (2010)",,,,,
-,14,"Star Wars: Epizoda V - Impérium vrací úder (1980)",,,,,
-,15,"Pán prstenů: Dvě věže (2002)",,,,,
-,16,"Matrix (1999)",,,,,
-,17,"Mafiáni (1990)",,,,,
-,20,"Sedm (1995)",,,,,
+"location","source","target","ID","fuzzy","context","translator_comments","developer_comments"
+"","1","Vykoupení z věznice Shawshank (1994)","","1","some_context","some_translator_comment","some_developer_comment"
+"","2","Kmotr (1972)","","True","","",""
+"","3","Kmotr II (1974)","","true","","",""
+"","4","Temný rytíř (2008)","","","","",""
+"","5","Dvanáct rozhněvaných mužů (1957)","","","","",""
+"","6","Schindlerův seznam (1993)","","","","",""
+"","7","Pán prstenů: Návrat krále (2003)","","","","",""
+"","8","Pulp Fiction: Historky z podsvětí (1994)","","","","",""
+"","9","Hodný, zlý a ošklivý (1966)","","","","",""
+"","10","Pán prstenů: Společenstvo Prstenu (2001)","","","","",""
+"","11","Klub rváčů (1999)","","","","",""
+"","12","Forrest Gump (1994)","","","","",""
+"","13","Počátek (2010)","","","","",""
+"","14","Star Wars: Epizoda V - Impérium vrací úder (1980)","","","","",""
+"","15","Pán prstenů: Dvě věže (2002)","","","","",""
+"","16","Matrix (1999)","","","","",""
+"","17","Mafiáni (1990)","","","","",""
+"","20","Sedm (1995)","","","","",""
+"","19","Sedm samurajů (1954)","","False","","",""
