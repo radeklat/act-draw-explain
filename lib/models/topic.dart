@@ -9,6 +9,7 @@ class Topic {
   final Icon icon;
   final UnmodifiableListView<int> questionIDs;
   final List<String> sources;
+  final bool migrated;
 
   const Topic({
     this.id,
@@ -17,6 +18,7 @@ class Topic {
     this.icon,
     this.questionIDs,
     this.sources = const [],
+    this.migrated = false,
   });
 
   List<int> asShuffledQuestionIDs() {

@@ -73,6 +73,7 @@ flutter:
 
   assets:
     - assets/sounds/
+    - assets/data/
     - assets/
 
 flutter_intl:
