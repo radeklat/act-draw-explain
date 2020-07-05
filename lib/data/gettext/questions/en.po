@@ -4,14 +4,14 @@ msgstr "The Shawshank Redemption (1994)"
 msgid "2"
 msgstr "The Godfather (1972)"
 
-#. note 3
+# note 3
 msgid "3"
 msgstr "The Godfather: Part II (1974)"
 
 msgid "4"
 msgstr "The Dark Knight (2008)"
 
-#. note 555
+# note 555
 msgid "5"
 msgstr "12 Angry Men (1957)"
 

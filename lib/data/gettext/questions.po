@@ -1,4 +1,4 @@
-#. note 1
+# note 1
 msgid "1"
 msgstr ""
 
@@ -8,11 +8,11 @@ msgstr ""
 msgid "3"
 msgstr ""
 
-#. note 4
+# note 4
 msgid "4"
 msgstr ""
 
-#. note 5
+# note 5
 msgid "5"
 msgstr ""
 

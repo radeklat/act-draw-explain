@@ -1,18 +1,18 @@
 msgid "1"
 msgstr "Vykoupení z věznice Shawshank (1994)"
 
-#. note 2
+# note 2
 msgid "2"
 msgstr "Kmotr (1972)"
 
 msgid "3"
 msgstr "Kmotr II (1974)"
 
-#. note 4
+# note 4
 msgid "4"
 msgstr "Temný rytíř (2008)"
 
-#. note 55
+# note 55
 msgid "5"
 msgstr "Dvanáct rozhněvaných mužů (1957)"
 
