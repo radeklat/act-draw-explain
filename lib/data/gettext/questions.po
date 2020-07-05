@@ -1,10 +1,13 @@
 # note 1
+msgctxt "11"
 msgid "1"
 msgstr ""
 
+msgctxt "22"
 msgid "2"
 msgstr ""
 
+msgctxt "33"
 msgid "3"
 msgstr ""
 
@@ -56,7 +59,7 @@ msgid "18"
 msgstr ""
 
 msgid "19"
-msgstr ""
+msgstr "Seven Samurai (1954)"
 
 msgid "20"
 msgstr "Se7en (1995)"

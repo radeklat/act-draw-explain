@@ -5,6 +5,7 @@ msgid "2"
 msgstr "The Godfather (1972)"
 
 # note 3
+msgctxt "33"
 msgid "3"
 msgstr "The Godfather: Part II (1974)"
 
@@ -55,7 +56,7 @@ msgid "18"
 msgstr "One Flew Over the Cuckoo's Nest (1975)"
 
 msgid "19"
-msgstr "Seven Samurai (1954)"
+msgstr ""
 
 msgid "20"
 msgstr ""
