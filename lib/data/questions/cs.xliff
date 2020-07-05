@@ -7,7 +7,6 @@
         <target>Vykoupení z věznice Shawshank (1994)</target>
       </trans-unit>
       <trans-unit id="2">
-        <note>note 2</note>
         <source />
         <target>Kmotr (1972)</target>
       </trans-unit>
@@ -16,12 +15,10 @@
         <target>Kmotr II (1974)</target>
       </trans-unit>
       <trans-unit id="4">
-        <note>note 4</note>
         <source />
         <target>Temný rytíř (2008)</target>
       </trans-unit>
       <trans-unit id="5">
-        <note>note 55</note>
         <source />
         <target>Dvanáct rozhněvaných mužů (1957)</target>
       </trans-unit>
@@ -75,7 +72,7 @@
       </trans-unit>
       <trans-unit id="18">
         <source />
-        <target/>
+        <target>Přelet nad kukaččím hnízdem (1975)</target>
       </trans-unit>
       <trans-unit id="19">
         <source />
@@ -83,7 +80,7 @@
       </trans-unit>
       <trans-unit id="20">
         <source />
-        <target/>
+        <target>Sedm (1995)</target>
       </trans-unit>
     </body>
   </file>

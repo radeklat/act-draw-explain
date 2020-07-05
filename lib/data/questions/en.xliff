@@ -11,7 +11,6 @@
         <target>The Godfather (1972)</target>
       </trans-unit>
       <trans-unit id="3">
-        <note>note 3</note>
         <source />
         <target>The Godfather: Part II (1974)</target>
       </trans-unit>
@@ -20,7 +19,6 @@
         <target>The Dark Knight (2008)</target>
       </trans-unit>
       <trans-unit id="5">
-        <note>note 555</note>
         <source />
         <target>12 Angry Men (1957)</target>
       </trans-unit>
@@ -82,7 +80,7 @@
       </trans-unit>
       <trans-unit id="20">
         <source />
-        <target />
+        <target>Se7en (1995)</target>
       </trans-unit>
     </body>
   </file>

@@ -1,10 +1,7 @@
 <xliff version="1.2">
   <file category="Top IMDB Movies" original="1">
-      <note>file note</note>
     <body>
-        <note>body note</note>
       <trans-unit id="1">
-        <note>note 1</note>
         <source>The Shawshank Redemption (1994)</source>
       </trans-unit>
       <trans-unit id="2">
@@ -14,11 +11,9 @@
         <source>The Godfather: Part II (1974)</source>
       </trans-unit>
       <trans-unit id="4">
-        <note>note 4</note>
         <source>The Dark Knight (2008)</source>
       </trans-unit>
       <trans-unit id="5">
-          <note>note 5</note>
         <source>12 Angry Men (1957)</source>
       </trans-unit>
       <trans-unit id="6">
