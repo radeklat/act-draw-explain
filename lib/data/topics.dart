@@ -37,6 +37,7 @@ UnmodifiableMapView<int, Topic> topics = UnmodifiableMapView(
         color: Colors.amber,
         icon: Icon(Icons.movie),
         questionIDs: range(65, 84),
+        migrated: true,
       ),
       Topic(
         id: 5,
