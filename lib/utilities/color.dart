@@ -93,5 +93,7 @@ Color colorByName(String name) {
   if (_SIMPLE_COLORS.contains(colorName)) {
     return _STRING_TO_COLOR[name];
   }
-  return _STRING_TO_COLOR_SWATCH[colorName][colorShade];
+
+  ColorSwatch baseColor = _STRING_TO_COLOR_SWATCH[colorName];
+  return (baseColor == null) ? null : baseColor[colorShade];
 }
