@@ -10,7 +10,6 @@ class Topic {
   final Icon icon;
   final UnmodifiableListView<int> questionIDs;
   final List<String> sources;
-  final bool migrated;
   HashMap<String, String> localizedNames = HashMap();
 
   Topic({
@@ -20,7 +19,6 @@ class Topic {
     this.icon,
     this.questionIDs,
     this.sources = const [],
-    this.migrated = false,
   }) {
     if (name != null) {
       localizedNames[_DEFAULT_LOCALE] = name;

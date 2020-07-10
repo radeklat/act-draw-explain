@@ -37,15 +37,6 @@ Map<int, Topic> _legacyTopics = Map.fromIterable(
       questionIDs: range(50, 64),
     ),
     Topic(
-      id: 4,
-      name: "IMDb Top 20 Movies",
-      color: Colors.amber,
-      icon: Icon(Icons.movie),
-      questionIDs: range(65, 84),
-      migrated: true,
-      sources: ["https://www.imdb.com/chart/top/?ref_=nv_mv_250"],
-    ),
-    Topic(
       id: 5,
       name: "ČSFD Top 20 Filmů",
       color: Colors.redAccent,
@@ -296,7 +287,7 @@ Map<int, Topic> _legacyTopics = Map.fromIterable(
   ],
   key: (topic) => topic.id,
   value: (topic) => topic,
-)..removeWhere((key, value) => value.migrated);
+);
 
 final UnmodifiableListView<String> _SUPPORTED_LOCALES = UnmodifiableListView(["cs", "en"]);
 
