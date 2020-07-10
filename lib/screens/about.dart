@@ -29,7 +29,7 @@ class _AboutScreenState extends State<AboutScreen> {
   List<Widget> sources() {
     List<String> allHosts = [];
 
-    topics.values.forEach(
+    GameData.topics.values.forEach(
       (topic) => allHosts.addAll(
         topic.sources.map(
           (url) => Uri.parse(url).host.replaceFirst("www.", ""),

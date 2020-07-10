@@ -32,7 +32,7 @@ void main() {
 
     test('should should belong to at least one topic', () {
       Set<int> allTopicIDs = {};
-      topics.values.map((topic) => allTopicIDs.addAll(topic.questionIDs)).toList();
+      GameData.topics.values.map((topic) => allTopicIDs.addAll(topic.questionIDs)).toList();
 
       Set<int> allQuestionIDs = {};
       questions.values.map((question) => allQuestionIDs.add(question.id)).toList();

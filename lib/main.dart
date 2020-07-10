@@ -1,4 +1,5 @@
 import 'package:act_draw_explain/constants.dart';
+import 'package:act_draw_explain/data/topics.dart';
 import 'package:act_draw_explain/models/results.dart';
 import 'package:act_draw_explain/screens/about.dart';
 import 'package:act_draw_explain/screens/game/end_game.dart';
@@ -29,6 +30,7 @@ main() async {
 
   await PrefService.init();
   GameVibrations.init();
+  await GameData.initialize();
 
   runApp(MyApp());
 }

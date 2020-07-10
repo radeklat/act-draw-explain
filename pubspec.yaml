@@ -44,6 +44,8 @@ dependencies:
   equatable: ^1.1.1
   collection: ^1.14.11
   intl: ^0.16.1
+  xml: ^3.6.1
+  xml2json: ^4.2.0
 
 dev_dependencies:
   flutter_test:
@@ -73,6 +75,8 @@ flutter:
 
   assets:
     - assets/sounds/
+    - assets/data/topics/
+    - assets/data/questions/
     - assets/data/
     - assets/
 

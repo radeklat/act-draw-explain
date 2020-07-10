@@ -7,7 +7,7 @@ void main() {
   group('Topics', () {
     test('should contain only existing questions', () {
       Set<int> allTopicIDs = {};
-      topics.values.map((topic) => allTopicIDs.addAll(topic.questionIDs)).toList();
+      GameData.topics.values.map((topic) => allTopicIDs.addAll(topic.questionIDs)).toList();
 
       Set<int> allQuestionIDs = {};
       questions.values.map((question) => allQuestionIDs.add(question.id)).toList();

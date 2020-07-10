@@ -39,7 +39,7 @@ class TopicSelectionScreen extends StatelessWidget {
               mainAxisSpacing: 10,
               crossAxisSpacing: 10,
               children: game.topicIDs
-                  .map((topicID) => TopicCard(topic: topics[topicID], key: Key("topic_card_$topicID")))
+                  .map((topicID) => TopicCard(topic: GameData.topics[topicID], key: Key("topic_card_$topicID")))
                   .toList(),
             ),
           ),

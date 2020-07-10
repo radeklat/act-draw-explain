@@ -79,7 +79,7 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
       },
     );
     scoreController = ScoreController(
-      topic: topics[widget.topicID],
+      topic: GameData.topics[widget.topicID],
       questions: questions,
       onNextQuestion: (newQuestion) {
         setState(() {
@@ -89,7 +89,8 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
       logQuestion: (topic, question, duration, state) =>
           Provider.of<Analytics>(context, listen: false).playedQuestion(topic, question, duration, state, gameDuration),
       onGameEnd: (gameResult) {
-        Provider.of<Analytics>(context, listen: false).playedGame(topics[widget.topicID], gameDuration, gameResult);
+        Provider.of<Analytics>(context, listen: false)
+            .playedGame(GameData.topics[widget.topicID], gameDuration, gameResult);
         Navigator.pushReplacementNamed(context, EndGameScreen.ID, arguments: gameResult);
       },
       setNewScore: (newScore) {
