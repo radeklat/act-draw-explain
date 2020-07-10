@@ -1,6 +1,6 @@
 import 'package:act_draw_explain/constants.dart';
-import 'package:act_draw_explain/data/topics.dart';
 import 'package:act_draw_explain/generated/l10n.dart';
+import 'package:act_draw_explain/models/game.dart';
 import 'package:act_draw_explain/widgets/text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

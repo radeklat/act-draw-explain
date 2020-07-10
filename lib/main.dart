@@ -1,5 +1,4 @@
 import 'package:act_draw_explain/constants.dart';
-import 'package:act_draw_explain/data/topics.dart';
 import 'package:act_draw_explain/models/results.dart';
 import 'package:act_draw_explain/screens/about.dart';
 import 'package:act_draw_explain/screens/game/end_game.dart';
@@ -20,6 +19,7 @@ import 'package:provider/provider.dart';
 
 import 'analytics.dart';
 import 'generated/l10n.dart';
+import 'models/game.dart';
 
 
 main() async {

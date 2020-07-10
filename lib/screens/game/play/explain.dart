@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:act_draw_explain/controllers/score.dart';
 import 'package:act_draw_explain/data/questions.dart';
-import 'package:act_draw_explain/data/topics.dart';
 import 'package:act_draw_explain/generated/l10n.dart';
+import 'package:act_draw_explain/models/game.dart';
 import 'package:act_draw_explain/models/results.dart';
 import 'package:act_draw_explain/screens/game/end_game.dart';
 import 'package:act_draw_explain/utilities/orientation.dart';

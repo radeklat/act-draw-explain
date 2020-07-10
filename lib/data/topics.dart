@@ -1,19 +1,13 @@
 import 'dart:collection';
-import 'dart:convert';
-import 'dart:io';
 
 import 'package:act_draw_explain/models/topic.dart';
-import 'package:act_draw_explain/utilities/color.dart';
-import 'package:act_draw_explain/utilities/icons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:xml2json/xml2json.dart';
 
 UnmodifiableListView<int> range(int min, int max, {List<int> extra}) {
   return UnmodifiableListView([for (var i = min; i <= max; i += 1) i, ...(extra ?? [])]);
 }
 
-Map<int, Topic> _legacyTopics = Map.fromIterable(
+Map<int, Topic> legacyTopics = Map.fromIterable(
   [
     Topic(
       id: 2,
@@ -288,89 +282,3 @@ Map<int, Topic> _legacyTopics = Map.fromIterable(
   key: (topic) => topic.id,
   value: (topic) => topic,
 );
-
-final UnmodifiableListView<String> _SUPPORTED_LOCALES = UnmodifiableListView(["cs", "en"]);
-
-class GameData {
-  static const String _TOPICS = "topics";
-  static const String _QUESTIONS = "questions";
-
-  static final _xmlToJson = Xml2Json();
-
-  static Map<int, Topic> topics = {};
-
-  /// Returns XLIFF document as JSON in Badgerfish Convention
-  /// See: http://wiki.open311.org/JSON_and_XML_Conversion/
-  static Future<Map<String, dynamic>> _loadXliffAssetAsJson(String type, [String locale]) async {
-    locale = (locale == null) ? "" : "/$locale";
-    String xmlContent = await rootBundle.loadString('assets/data/$type$locale.xliff');
-    _xmlToJson.parse(xmlContent);
-    return jsonDecode(_xmlToJson.toBadgerfish());
-  }
-
-  static List<int> _range(Map<String, dynamic> range) {
-    int min = int.parse(range["@min"]);
-    int max = int.parse(range["@max"]);
-    return [for (var i = min; i <= max; i += 1) i];
-  }
-
-  static List<dynamic> _ensureList(dynamic value) {
-    if (value == null) return [];
-    return (value is Map) ? [value] : value;
-  }
-
-  static _loadTopics() async {
-    Map<String, dynamic> topicsJson = await _loadXliffAssetAsJson(_TOPICS);
-
-    _ensureList(topicsJson["xliff"]["file"]["body"]["trans-unit"]).forEach(
-      (topic) {
-        int id = int.parse(topic["@id"]);
-        List<String> sources = _ensureList(topic["attribution"])
-            .map(
-              (attribution) => attribution["@url"].toString(),
-            )
-            .toList();
-        List<int> questionIDs = [];
-
-        topic["question-ids"].forEach((String key, dynamic value) {
-          if (key == "list") {
-            _ensureList(value).forEach(
-              (list) => list["\$"].split(",").forEach(
-                    (questionID) => questionIDs.add(int.parse(questionID)),
-                  ),
-            );
-          } else if (key == "range") {
-            _ensureList(value).forEach(
-              (range) => questionIDs.addAll(_range(range)),
-            );
-          }
-        });
-
-        topics[id] = Topic(
-          id: id,
-          name: topic["source"]["\$"],
-          color: colorByName(topic["@color"]),
-          icon: iconByName(topic["@icon"]),
-          questionIDs: UnmodifiableListView(questionIDs),
-          sources: sources,
-        );
-      },
-    );
-
-    _SUPPORTED_LOCALES.forEach((String locale) async {
-      Map<String, dynamic> localizedTopicsJson = await _loadXliffAssetAsJson(_TOPICS, locale);
-      Map<String, dynamic> file = localizedTopicsJson["xliff"]["file"];
-      _ensureList(file["body"]["trans-unit"]).forEach(
-        (topic) {
-          topics[int.parse(topic["@id"])].setName(topic["target"]["\$"], file["@target-language"]);
-        },
-      );
-    });
-
-    topics.addAll(_legacyTopics);
-  }
-
-  static initialize() {
-    _loadTopics();
-  }
-}
