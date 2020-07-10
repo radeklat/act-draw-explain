@@ -1,11 +1,12 @@
 import 'dart:collection';
 
+import 'package:act_draw_explain/models/translation_file.dart';
 import 'package:act_draw_explain/utilities/color.dart';
 import 'package:act_draw_explain/utilities/icons.dart';
 import 'package:act_draw_explain/utilities/iter.dart';
 import 'package:flutter/material.dart';
 
-class Topic {
+class Topic implements LocalizedItem {
   static const _DEFAULT_LOCALE = 'cs'; // TODO: Remove when migration is finished
 
   final int id;
@@ -32,11 +33,6 @@ class Topic {
     return localizedNames[locale];
   }
 
-  /// topicJSON is a "trans-unit" from "topics/<LOCALE>.xliff"
-  updateWithLocalizedJSON(Map<String, dynamic> topicJson, String locale) {
-    localizedNames[locale] = topicJson["target"]["\$"];
-  }
-
   List<int> asShuffledQuestionIDs() {
     List<int> questionsCopy = List.from(questionIDs);
     questionsCopy.shuffle();
@@ -47,6 +43,11 @@ class Topic {
     int min = int.parse(range["@min"]);
     int max = int.parse(range["@max"]);
     return [for (var i = min; i <= max; i += 1) i];
+  }
+
+  /// topicJSON is a "trans-unit" from "topics/<LOCALE>.xliff"
+  updateWithLocalizedJSON(Map<String, dynamic> topicJson, String locale) {
+    localizedNames[locale] = topicJson["target"]["\$"];
   }
 
   /// topicJSON is a "trans-unit" from "topics.xliff" or "topics/<LOCALE>.xliff"
