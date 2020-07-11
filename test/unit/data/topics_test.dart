@@ -1,5 +1,4 @@
 // Import the test package and Counter class
-import 'package:act_draw_explain/data/questions.dart';
 import 'package:act_draw_explain/models/game.dart';
 import 'package:test/test.dart';
 
@@ -10,7 +9,7 @@ void main() {
       GameData.topics.values.map((topic) => allTopicIDs.addAll(topic.questionIDs)).toList();
 
       Set<int> allQuestionIDs = {};
-      questions.values.map((question) => allQuestionIDs.add(question.id)).toList();
+      GameData.questions.values.map((question) => allQuestionIDs.add(question.id)).toList();
 
       expect(allTopicIDs.difference(allQuestionIDs), isEmpty);
     });

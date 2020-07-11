@@ -1,6 +1,15 @@
-class Question {
-  final int id;
-  final String text;
+import 'package:act_draw_explain/models/translation_file.dart';
 
-  const Question({this.id, this.text});
+class Question extends LocalizedItem {
+  final int id;
+
+  Question({this.id, String text}): super(text);
+
+  /// questionJson is a "trans-unit" from "topics.xliff"
+  static Question fromJson(Map<String, dynamic> questionJson) {
+    return Question(
+      id: LocalizedItem.idFromJson(questionJson),
+      text: questionJson["source"]["\$"],
+    );
+  }
 }

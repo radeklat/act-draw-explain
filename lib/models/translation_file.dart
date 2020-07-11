@@ -20,13 +20,13 @@ Future<Map<String, dynamic>> _loadXliffAssetAsJson(String type, [String locale])
   return jsonDecode(xmlToJson.toBadgerfish());
 }
 
-Future<Map<int, Item>> loadTranslationFile<Item extends LocalizedItem>(
+Future<HashMap<int, Item>> loadTranslationFile<Item extends LocalizedItem>(
   String baseFileName,
   Function itemFromJson,
   Function idFromJson,
 ) async {
   Map<String, dynamic> _jsonRoot = await _loadXliffAssetAsJson(baseFileName);
-  Map<int, Item> items = {};
+  HashMap<int, Item> items = HashMap();
 
   ensureList(_jsonRoot["xliff"]["file"]["body"]["trans-unit"]).forEach(
     (itemJson) {
@@ -54,9 +54,13 @@ abstract class LocalizedItem {
   final int id = null;
   HashMap<String, String> localizedTexts = HashMap();
 
+  String _unquote(String text) {
+    return text.replaceAll("\\'", "'");
+  }
+
   LocalizedItem(String text){
     if (text != null) {
-      localizedTexts[K.defaultLocale.languageCode] = text;
+      localizedTexts[K.defaultLocale.languageCode] = _unquote(text);
     }
   }
 
@@ -66,7 +70,7 @@ abstract class LocalizedItem {
 
   /// itemJson is a "trans-unit" from "<TYPE>/<LOCALE>.xliff"
   updateWithLocalizedJSON(Map<String, dynamic> itemJson, String locale) {
-    localizedTexts[locale] = itemJson["target"]["\$"];
+    localizedTexts[locale] = _unquote(itemJson["target"]["\$"]);
   }
 
   /// topicJSON is a "trans-unit" from "<TYPE>.xliff" or "<TYPE>/<LOCALE>.xliff"

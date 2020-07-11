@@ -21,7 +21,7 @@ class Analytics {
         'topicID': topic.id,
         'topicName': topic.text(),
         'questionID': question.id,
-        'questionText': question.text,
+        'questionText': question.text(),
         'durationSeconds': duration.inMilliseconds / 1000,
         'state': describeEnum(state),
         'timeLimitSeconds': timeLimit.inSeconds,

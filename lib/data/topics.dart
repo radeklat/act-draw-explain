@@ -7,7 +7,7 @@ UnmodifiableListView<int> range(int min, int max, {List<int> extra}) {
   return UnmodifiableListView([for (var i = min; i <= max; i += 1) i, ...(extra ?? [])]);
 }
 
-Map<int, Topic> legacyTopics = Map.fromIterable(
+HashMap<int, Topic> legacyTopics = HashMap.fromIterable(
   [
     Topic(
       id: 2,

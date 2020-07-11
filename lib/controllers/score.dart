@@ -12,7 +12,7 @@ import 'package:flutter/foundation.dart';
 
 class ScoreController {
   final Topic topic;
-  final UnmodifiableMapView<int, Question> questions;
+  final HashMap<int, Question> questions;
   List<int> _questionIDs;
   int _currentQuestionID;
   Stopwatch _stopwatch = Stopwatch();
@@ -45,7 +45,7 @@ class ScoreController {
       return;
     }
 
-    onNextQuestion?.call(questions[_currentQuestionID].text);
+    onNextQuestion?.call(questions[_currentQuestionID].text());
     _stopwatch.start();
   }
 
@@ -92,7 +92,7 @@ class ScoreController {
     _score = newScore;
     _currentQuestionID = newQuestionID;
     _stopwatch.reset();
-    onNextQuestion?.call(questions[_currentQuestionID].text);
+    onNextQuestion?.call(questions[_currentQuestionID].text());
   }
 
   bool get hasMoreQuestions {

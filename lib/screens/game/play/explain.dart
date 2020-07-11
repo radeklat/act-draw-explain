@@ -80,7 +80,7 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
     );
     scoreController = ScoreController(
       topic: GameData.topics[widget.topicID],
-      questions: questions,
+      questions: GameData.questions,
       onNextQuestion: (newQuestion) {
         setState(() {
           questionText = newQuestion;
