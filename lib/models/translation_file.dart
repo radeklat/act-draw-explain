@@ -5,7 +5,10 @@ import 'package:act_draw_explain/utilities/iter.dart';
 import 'package:flutter/services.dart';
 import 'package:xml2json/xml2json.dart';
 
-UnmodifiableListView<String> _SUPPORTED_LOCALES = UnmodifiableListView(["cs", "en"]);
+import '../constants.dart';
+
+// TODO: Replace with `localizationsDelegate.supportedLocales`
+UnmodifiableListView<String> _supportedLocales = UnmodifiableListView(["cs", "en"]);
 
 /// Returns XLIFF document as JSON in Badgerfish Convention
 /// See: http://wiki.open311.org/JSON_and_XML_Conversion/
@@ -32,7 +35,7 @@ Future<Map<int, Item>> loadTranslationFile<Item extends LocalizedItem>(
     },
   );
 
-  _SUPPORTED_LOCALES.forEach(
+  _supportedLocales.forEach(
     (String locale) async {
       Map<String, dynamic> localizedItemJson = await _loadXliffAssetAsJson(baseFileName, locale);
       Map<String, dynamic> file = localizedItemJson["xliff"]["file"];
@@ -47,10 +50,27 @@ Future<Map<int, Item>> loadTranslationFile<Item extends LocalizedItem>(
   return items;
 }
 
-class LocalizedItem {
+abstract class LocalizedItem {
   final int id = null;
   HashMap<String, String> localizedNames = HashMap();
 
-  /// topicJSON is a "trans-unit" from "topics/<LOCALE>.xliff"
-  updateWithLocalizedJSON(Map<String, dynamic> topicJson, String locale) {}
+  LocalizedItem(String name){
+    if (name != null) {
+      localizedNames[K.defaultLocale.languageCode] = name;
+    }
+  }
+
+  String name([String locale]) {
+    return localizedNames[locale??K.defaultLocale.languageCode];
+  }
+
+  /// itemJson is a "trans-unit" from "<TYPE>/<LOCALE>.xliff"
+  updateWithLocalizedJSON(Map<String, dynamic> itemJson, String locale) {
+    localizedNames[locale] = itemJson["target"]["\$"];
+  }
+
+  /// topicJSON is a "trans-unit" from "<TYPE>.xliff" or "<TYPE>/<LOCALE>.xliff"
+  static int idFromJson(Map<String, dynamic> itemJson) {
+    return int.parse(itemJson["@id"]);
+  }
 }

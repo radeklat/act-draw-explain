@@ -6,32 +6,21 @@ import 'package:act_draw_explain/utilities/icons.dart';
 import 'package:act_draw_explain/utilities/iter.dart';
 import 'package:flutter/material.dart';
 
-class Topic implements LocalizedItem {
-  static const _DEFAULT_LOCALE = 'cs'; // TODO: Remove when migration is finished
-
+class Topic extends LocalizedItem {
   final int id;
   final Color color;
   final Icon icon;
   final UnmodifiableListView<int> questionIDs;
   final List<String> sources;
-  HashMap<String, String> localizedNames = HashMap();
 
   Topic({
     this.id,
-    name, // TODO: Remove when migration is finished
+    String name, // TODO: Remove when migration is finished
     this.color,
     this.icon,
     this.questionIDs,
     this.sources = const [],
-  }) {
-    if (name != null) {
-      localizedNames[_DEFAULT_LOCALE] = name;
-    }
-  }
-
-  String name([String locale = _DEFAULT_LOCALE]) {
-    return localizedNames[locale];
-  }
+  }) : super(name);
 
   List<int> asShuffledQuestionIDs() {
     List<int> questionsCopy = List.from(questionIDs);
@@ -43,16 +32,6 @@ class Topic implements LocalizedItem {
     int min = int.parse(range["@min"]);
     int max = int.parse(range["@max"]);
     return [for (var i = min; i <= max; i += 1) i];
-  }
-
-  /// topicJSON is a "trans-unit" from "topics/<LOCALE>.xliff"
-  updateWithLocalizedJSON(Map<String, dynamic> topicJson, String locale) {
-    localizedNames[locale] = topicJson["target"]["\$"];
-  }
-
-  /// topicJSON is a "trans-unit" from "topics.xliff" or "topics/<LOCALE>.xliff"
-  static int idFromJson(Map<String, dynamic> topicJson) {
-    return int.parse(topicJson["@id"]);
   }
 
   /// topicJSON is a "trans-unit" from "topics.xliff"
@@ -79,7 +58,7 @@ class Topic implements LocalizedItem {
     });
 
     return Topic(
-      id: idFromJson(topicJson),
+      id: LocalizedItem.idFromJson(topicJson),
       name: topicJson["source"]["\$"],
       color: colorByName(topicJson["@color"]),
       icon: iconByName(topicJson["@icon"]),

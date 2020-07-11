@@ -79,10 +79,10 @@ const Map<String, Color> _STRING_TO_COLOR = {
 
 const Set<String> _SIMPLE_COLORS = {"black", "white"};
 
-RegExp _color_regex = RegExp(r"(?<name>[a-zA-Z]+)(?<shade>[0-9]*)");
+RegExp _colorRegex = RegExp(r"(?<name>[a-zA-Z]+)(?<shade>[0-9]*)");
 
 Color colorByName(String name) {
-  RegExpMatch match = _color_regex.firstMatch(name);
+  RegExpMatch match = _colorRegex.firstMatch(name);
 
   if (match == null) return null;
 

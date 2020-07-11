@@ -18,7 +18,7 @@ Topic fakeTopic = Topic(
 
 Topic fakeEmptyTopic = Topic(
   id: fakeTopic.id,
-  name: fakeTopic.name,
+  name: fakeTopic.name(),
   color: fakeTopic.color,
   icon: fakeTopic.icon,
   questionIDs: UnmodifiableListView([]),
