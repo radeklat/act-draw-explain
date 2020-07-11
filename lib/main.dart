@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:act_draw_explain/constants.dart';
 import 'package:act_draw_explain/models/results.dart';
 import 'package:act_draw_explain/screens/about.dart';
@@ -15,7 +17,6 @@ import 'package:firebase_analytics/observer.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:intl/intl.dart';
 import 'package:preferences/preferences.dart';
 import 'package:provider/provider.dart';
 
@@ -47,7 +48,7 @@ class MyApp extends StatelessWidget {
   static AppLocalizationDelegate localizationsDelegate = AppLocalizationDelegate();
 
   Locale getLocale() {
-    Locale systemLocale = localeFromString(Intl.systemLocale);
+    Locale systemLocale = localeFromString(Platform.localeName);
     return (localeLanguageCodeIn(systemLocale, localizationsDelegate.supportedLocales)) ? systemLocale : K.defaultLocale;
   }
 

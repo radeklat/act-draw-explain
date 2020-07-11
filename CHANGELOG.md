@@ -12,7 +12,7 @@ Types of changes are:
 ## [Unreleased]
 <!-- Don't forget to update version in pubspec.yaml -->
 
-## [1.1.1+14] - 2020-07-11 <a name="1.1.1" />
+## [1.1.1+15] - 2020-07-11 <a name="1.1.1" />
 ### Fixes
 * Crash when system language was not available among translations. Now the app UI will default to English.
 
@@ -97,8 +97,8 @@ Types of changes are:
 ### Features
 * Initial source code
 
-[Unreleased]: https://github.com/radeklat/act-draw-explain/compare/releases/1.1.1+14...HEAD
-[1.1.1+14]: https://github.com/radeklat/act-draw-explain/compare/releases/1.1.0+13...releases/1.1.1+14
+[Unreleased]: https://github.com/radeklat/act-draw-explain/compare/releases/1.1.1+15...HEAD
+[1.1.1+15]: https://github.com/radeklat/act-draw-explain/compare/releases/1.1.0+13...releases/1.1.1+15
 [1.1.0+13]: https://github.com/radeklat/act-draw-explain/compare/releases/1.0.0+11...releases/1.1.0+13
 [1.0.0+11]: https://github.com/radeklat/act-draw-explain/compare/releases/0.7.0+10...releases/1.0.0+11
 [0.7.0+10]: https://github.com/radeklat/act-draw-explain/compare/releases/0.6.0+9...releases/0.7.0+10
