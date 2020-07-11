@@ -8,12 +8,14 @@ import 'package:act_draw_explain/screens/game/start_game.dart';
 import 'package:act_draw_explain/screens/help.dart';
 import 'package:act_draw_explain/screens/settings.dart';
 import 'package:act_draw_explain/screens/topic_selection.dart';
+import 'package:act_draw_explain/utilities/intl.dart';
 import 'package:act_draw_explain/utilities/vibrations.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:intl/intl.dart';
 import 'package:preferences/preferences.dart';
 import 'package:provider/provider.dart';
 
@@ -42,11 +44,14 @@ class MyApp extends StatelessWidget {
   static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(analytics: analytics);
   static AppLocalizationDelegate localizationsDelegate = AppLocalizationDelegate();
 
+  Locale getLocale() {
+    Locale systemLocale = localeFromString(Intl.systemLocale);
+    return (localeLanguageCodeIn(systemLocale, localizationsDelegate.supportedLocales)) ? systemLocale : K.defaultLocale;
+  }
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    localizationsDelegate.load(Locale("cs"));
-
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<TopicBestScore>(create: (_) => TopicBestScore()),
@@ -55,6 +60,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
 //        debugShowCheckedModeBanner: false,
+        locale: getLocale(),
         supportedLocales: localizationsDelegate.supportedLocales,
         localizationsDelegates: [
           localizationsDelegate,

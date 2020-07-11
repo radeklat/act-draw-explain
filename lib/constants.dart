@@ -71,4 +71,5 @@ class _URL {
 
 class K {
   static final url = _URL();
+  static final defaultLocale = Locale("en");
 }
