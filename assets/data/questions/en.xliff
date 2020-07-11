@@ -82,10 +82,6 @@
         <source/>
         <target>Se7en (1995)</target>
       </trans-unit>
-      <trans-unit id="1">
-        <source>The Shawshank Redemption (1994)</source>
-        <target>The Shawshank Redemption (1994)</target>
-      </trans-unit>
     </body>
   </file>
 </xliff>
