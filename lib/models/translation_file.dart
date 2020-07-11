@@ -10,7 +10,6 @@ import '../constants.dart';
 // TODO: Replace with `localizationsDelegate.supportedLocales`
 UnmodifiableListView<String> _supportedLocales = UnmodifiableListView(["cs", "en"]);
 
-
 class AssetLoader {
   Future<String> loadString(filename) async {
     return await rootBundle.loadString(filename);
@@ -32,25 +31,28 @@ class TranslationsLoader {
     return jsonDecode(xmlToJson.toBadgerfish());
   }
 
-  Future<HashMap<int, Item>> load<Item extends LocalizedItem>(String baseFileName,
-      Function itemFromJson,
-      Function idFromJson,) async {
-    Map<String, dynamic> _jsonRoot = await _loadXliffAssetAsJson(baseFileName);
+  Future<HashMap<int, Item>> load<Item extends LocalizedItem>(
+    String itemType,
+    Function itemFromJson,
+    Function idFromJson,
+  ) async {
+    Map<String, dynamic> _jsonRoot = await _loadXliffAssetAsJson(itemType);
     HashMap<int, Item> items = HashMap();
 
     ensureList(_jsonRoot["xliff"]["file"]["body"]["trans-unit"]).forEach(
-          (itemJson) {
+      (itemJson) {
         Item item = itemFromJson(itemJson);
+        assert (!items.containsKey(item.id), "$itemType with ID '${item.id}' appear in the source file more than once");
         items[item.id] = item;
       },
     );
 
     _supportedLocales.forEach(
-          (String locale) async {
-        Map<String, dynamic> localizedItemJson = await _loadXliffAssetAsJson(baseFileName, locale);
+      (String locale) async {
+        Map<String, dynamic> localizedItemJson = await _loadXliffAssetAsJson(itemType, locale);
         Map<String, dynamic> file = localizedItemJson["xliff"]["file"];
         ensureList(file["body"]["trans-unit"]).forEach(
-              (itemJson) {
+          (itemJson) {
             items[idFromJson(itemJson)].updateWithLocalizedJSON(itemJson, file["@target-language"]);
           },
         );
@@ -69,14 +71,14 @@ abstract class LocalizedItem {
     return text.replaceAll("\\'", "'");
   }
 
-  LocalizedItem(String text){
+  LocalizedItem(String text) {
     if (text != null) {
       localizedTexts[K.defaultLocale.languageCode] = _unquote(text);
     }
   }
 
   String text([String locale]) {
-    return localizedTexts[locale??K.defaultLocale.languageCode];
+    return localizedTexts[locale ?? K.defaultLocale.languageCode];
   }
 
   /// itemJson is a "trans-unit" from "<TYPE>/<LOCALE>.xliff"
