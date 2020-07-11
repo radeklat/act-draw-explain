@@ -1,10 +1,23 @@
 // Import the test package and Counter class
 import 'package:act_draw_explain/models/game.dart';
 import 'package:act_draw_explain/models/question.dart';
+import 'package:act_draw_explain/models/translation_file.dart';
+import 'package:flutter/material.dart';
+import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
+
+import '../../mock_data.dart';
 
 void main() {
   group('Questions', () {
+    setUpAll(() async {
+      await GameData.initialize(LocalAssetLoader());
+    });
+
+    test('should should not be empty', () async {
+      expect(GameData.questions, isNotEmpty);
+    });
+
     test('should have a closing bracket when there is an opening one', () {
       for (Question question in GameData.questions.values) {
         if (question.text().contains("(")) {
@@ -21,7 +34,7 @@ void main() {
       for (Question question in GameData.questions.values) {
         if (exceptions.contains(question.text)) continue;
         if (questionTexts.contains(question.text)) {
-          duplicates.update(question.text(), (value) => value+1, ifAbsent: () => 2);
+          duplicates.update(question.text(), (value) => value + 1, ifAbsent: () => 2);
         }
         questionTexts.add(question.text());
       }

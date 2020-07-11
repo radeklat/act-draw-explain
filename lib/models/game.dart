@@ -10,11 +10,12 @@ class GameData {
   static HashMap<int, Topic> topics = HashMap();
   static HashMap<int, Question> questions = HashMap();
 
-  static initialize() async {
-    topics = await loadTranslationFile<Topic>("topics", Topic.fromJson, LocalizedItem.idFromJson);
+  static initialize([AssetLoader assetLoader]) async {
+    TranslationsLoader translationsLoader = TranslationsLoader(assetLoader??AssetLoader());
+    topics = await translationsLoader.load<Topic>("topics", Topic.fromJson, LocalizedItem.idFromJson);
     topics.addAll(legacyTopics);
 
-    questions = await loadTranslationFile<Question>("questions", Question.fromJson, LocalizedItem.idFromJson);
+    questions = await translationsLoader.load<Question>("questions", Question.fromJson, LocalizedItem.idFromJson);
     questions.addAll(legacyQuestions);
   }
 

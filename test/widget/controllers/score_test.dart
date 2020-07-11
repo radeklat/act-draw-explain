@@ -24,17 +24,10 @@ Topic fakeEmptyTopic = Topic(
   questionIDs: UnmodifiableListView([]),
 );
 
-UnmodifiableMapView<int, Question> fakeQuestions = UnmodifiableMapView(
-  Map.fromIterable(
-    [
-      Question(id: 1, text: "q1"),
-      Question(id: 2, text: "q2"),
-      Question(id: 3, text: "q3"),
-      Question(id: 4, text: "q4")
-    ],
-    key: (question) => question.id,
-    value: (question) => question,
-  ),
+HashMap<int, Question> fakeQuestions = HashMap.fromIterable(
+  [Question(id: 1, text: "q1"), Question(id: 2, text: "q2"), Question(id: 3, text: "q3"), Question(id: 4, text: "q4")],
+  key: (question) => question.id,
+  value: (question) => question,
 );
 
 void main() {

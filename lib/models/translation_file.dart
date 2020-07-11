@@ -10,44 +10,55 @@ import '../constants.dart';
 // TODO: Replace with `localizationsDelegate.supportedLocales`
 UnmodifiableListView<String> _supportedLocales = UnmodifiableListView(["cs", "en"]);
 
-/// Returns XLIFF document as JSON in Badgerfish Convention
-/// See: http://wiki.open311.org/JSON_and_XML_Conversion/
-Future<Map<String, dynamic>> _loadXliffAssetAsJson(String type, [String locale]) async {
-  locale = (locale == null) ? "" : "/$locale";
-  String xmlContent = await rootBundle.loadString('assets/data/$type$locale.xliff');
-  var xmlToJson = Xml2Json();
-  xmlToJson.parse(xmlContent);
-  return jsonDecode(xmlToJson.toBadgerfish());
+
+class AssetLoader {
+  Future<String> loadString(filename) async {
+    return await rootBundle.loadString(filename);
+  }
 }
 
-Future<HashMap<int, Item>> loadTranslationFile<Item extends LocalizedItem>(
-  String baseFileName,
-  Function itemFromJson,
-  Function idFromJson,
-) async {
-  Map<String, dynamic> _jsonRoot = await _loadXliffAssetAsJson(baseFileName);
-  HashMap<int, Item> items = HashMap();
+class TranslationsLoader {
+  final AssetLoader assetFileLoader;
 
-  ensureList(_jsonRoot["xliff"]["file"]["body"]["trans-unit"]).forEach(
-    (itemJson) {
-      Item item = itemFromJson(itemJson);
-      items[item.id] = item;
-    },
-  );
+  TranslationsLoader(this.assetFileLoader);
 
-  _supportedLocales.forEach(
-    (String locale) async {
-      Map<String, dynamic> localizedItemJson = await _loadXliffAssetAsJson(baseFileName, locale);
-      Map<String, dynamic> file = localizedItemJson["xliff"]["file"];
-      ensureList(file["body"]["trans-unit"]).forEach(
-        (itemJson) {
-          items[idFromJson(itemJson)].updateWithLocalizedJSON(itemJson, file["@target-language"]);
-        },
-      );
-    },
-  );
+  /// Returns XLIFF document as JSON in Badgerfish Convention
+  /// See: http://wiki.open311.org/JSON_and_XML_Conversion/
+  Future<Map<String, dynamic>> _loadXliffAssetAsJson(String type, [String locale]) async {
+    locale = (locale == null) ? "" : "/$locale";
+    String xmlContent = await assetFileLoader.loadString('assets/data/$type$locale.xliff');
+    var xmlToJson = Xml2Json();
+    xmlToJson.parse(xmlContent);
+    return jsonDecode(xmlToJson.toBadgerfish());
+  }
 
-  return items;
+  Future<HashMap<int, Item>> load<Item extends LocalizedItem>(String baseFileName,
+      Function itemFromJson,
+      Function idFromJson,) async {
+    Map<String, dynamic> _jsonRoot = await _loadXliffAssetAsJson(baseFileName);
+    HashMap<int, Item> items = HashMap();
+
+    ensureList(_jsonRoot["xliff"]["file"]["body"]["trans-unit"]).forEach(
+          (itemJson) {
+        Item item = itemFromJson(itemJson);
+        items[item.id] = item;
+      },
+    );
+
+    _supportedLocales.forEach(
+          (String locale) async {
+        Map<String, dynamic> localizedItemJson = await _loadXliffAssetAsJson(baseFileName, locale);
+        Map<String, dynamic> file = localizedItemJson["xliff"]["file"];
+        ensureList(file["body"]["trans-unit"]).forEach(
+              (itemJson) {
+            items[idFromJson(itemJson)].updateWithLocalizedJSON(itemJson, file["@target-language"]);
+          },
+        );
+      },
+    );
+
+    return items;
+  }
 }
 
 abstract class LocalizedItem {
