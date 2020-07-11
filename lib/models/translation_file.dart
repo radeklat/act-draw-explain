@@ -52,21 +52,21 @@ Future<Map<int, Item>> loadTranslationFile<Item extends LocalizedItem>(
 
 abstract class LocalizedItem {
   final int id = null;
-  HashMap<String, String> localizedNames = HashMap();
+  HashMap<String, String> localizedTexts = HashMap();
 
-  LocalizedItem(String name){
-    if (name != null) {
-      localizedNames[K.defaultLocale.languageCode] = name;
+  LocalizedItem(String text){
+    if (text != null) {
+      localizedTexts[K.defaultLocale.languageCode] = text;
     }
   }
 
-  String name([String locale]) {
-    return localizedNames[locale??K.defaultLocale.languageCode];
+  String text([String locale]) {
+    return localizedTexts[locale??K.defaultLocale.languageCode];
   }
 
   /// itemJson is a "trans-unit" from "<TYPE>/<LOCALE>.xliff"
   updateWithLocalizedJSON(Map<String, dynamic> itemJson, String locale) {
-    localizedNames[locale] = itemJson["target"]["\$"];
+    localizedTexts[locale] = itemJson["target"]["\$"];
   }
 
   /// topicJSON is a "trans-unit" from "<TYPE>.xliff" or "<TYPE>/<LOCALE>.xliff"

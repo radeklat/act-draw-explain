@@ -15,12 +15,12 @@ class Topic extends LocalizedItem {
 
   Topic({
     this.id,
-    String name, // TODO: Remove when migration is finished
+    String text, // TODO: Remove when migration is finished
     this.color,
     this.icon,
     this.questionIDs,
     this.sources = const [],
-  }) : super(name);
+  }) : super(text);
 
   List<int> asShuffledQuestionIDs() {
     List<int> questionsCopy = List.from(questionIDs);
@@ -59,7 +59,7 @@ class Topic extends LocalizedItem {
 
     return Topic(
       id: LocalizedItem.idFromJson(topicJson),
-      name: topicJson["source"]["\$"],
+      text: topicJson["source"]["\$"],
       color: colorByName(topicJson["@color"]),
       icon: iconByName(topicJson["@icon"]),
       questionIDs: UnmodifiableListView(questionIDs),

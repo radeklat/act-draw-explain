@@ -19,7 +19,7 @@ class Analytics {
       name: 'playedQuestion',
       parameters: <String, dynamic>{
         'topicID': topic.id,
-        'topicName': topic.name,
+        'topicName': topic.text(),
         'questionID': question.id,
         'questionText': question.text,
         'durationSeconds': duration.inMilliseconds / 1000,
@@ -34,7 +34,7 @@ class Analytics {
       name: 'playedGame',
       parameters: <String, dynamic>{
         'topicID': topic.id,
-        'topicName': topic.name,
+        'topicName': topic.text(),
         'timeLimitSeconds': timeLimit.inSeconds,
         ...gameResult.toMap(),
       },

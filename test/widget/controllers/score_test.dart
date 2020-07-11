@@ -10,7 +10,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 Topic fakeTopic = Topic(
   id: 1,
-  name: "Fake topic",
+  text: "Fake topic",
   color: Colors.black,
   icon: Icon(Icons.score),
   questionIDs: UnmodifiableListView([1, 2, 3, 4]),
@@ -18,7 +18,7 @@ Topic fakeTopic = Topic(
 
 Topic fakeEmptyTopic = Topic(
   id: fakeTopic.id,
-  name: fakeTopic.name(),
+  text: fakeTopic.text(),
   color: fakeTopic.color,
   icon: fakeTopic.icon,
   questionIDs: UnmodifiableListView([]),

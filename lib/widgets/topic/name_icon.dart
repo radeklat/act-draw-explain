@@ -39,7 +39,7 @@ class TopicNameIcon extends StatelessWidget {
               padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10, top: 5),
               child: Center(
                 child: AutoSizeText(
-                  topic.name(),
+                  topic.text(),
                   style: Theme.of(context).textTheme.button.copyWith(color: foregroundColor),
                   textAlign: TextAlign.center,
                   maxLines: 3,
