@@ -1,10 +1,11 @@
 import 'dart:collection';
 
 import 'package:act_draw_explain/models/topic.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 
-UnmodifiableListView<int> range(int min, int max, {List<int> extra}) {
-  return UnmodifiableListView([for (var i = min; i <= max; i += 1) i, ...(extra ?? [])]);
+UnmodifiableSetView<int> range(int min, int max, {Set<int> extra}) {
+  return UnmodifiableSetView(Set.from([for (var i = min; i <= max; i += 1) i, ...(extra ?? {})]));
 }
 
 HashMap<int, Topic> legacyTopics = HashMap.fromIterable(
@@ -14,7 +15,7 @@ HashMap<int, Topic> legacyTopics = HashMap.fromIterable(
       text: "Brno",
       color: Colors.red,
       icon: Icon(Icons.location_city),
-      questionIDs: range(21, 49, extra: [264, 265]),
+      questionIDs: range(21, 49, extra: {264, 265}),
     ),
     Topic(
       id: 1,
@@ -35,7 +36,7 @@ HashMap<int, Topic> legacyTopics = HashMap.fromIterable(
       text: "ČSFD Top 20 Filmů",
       color: Colors.redAccent,
       icon: Icon(Icons.tv),
-      questionIDs: range(85, 103, extra: [76]),
+      questionIDs: range(85, 103, extra: {76}),
     ),
     Topic(
       id: 6,
@@ -49,7 +50,7 @@ HashMap<int, Topic> legacyTopics = HashMap.fromIterable(
       text: "RuPaul's Drag Race",
       color: Colors.pinkAccent,
       icon: Icon(Icons.looks),
-      questionIDs: range(125, 172, extra: [435, 436, 901, 902, 903, 1109, 1110, 1111, 1112, 1113, 1114, 1115]),
+      questionIDs: range(125, 172, extra: {435, 436, 901, 902, 903, 1109, 1110, 1111, 1112, 1113, 1114, 1115}),
     ),
     Topic(
         id: 8,
@@ -70,7 +71,7 @@ HashMap<int, Topic> legacyTopics = HashMap.fromIterable(
       text: "České památky",
       color: Colors.blue,
       icon: Icon(Icons.account_balance),
-      questionIDs: range(241, 263, extra: [41, 46, 203, 204, 207, 221]),
+      questionIDs: range(241, 263, extra: {41, 46, 203, 204, 207, 221}),
     ),
     Topic(
         id: 11,
@@ -84,7 +85,7 @@ HashMap<int, Topic> legacyTopics = HashMap.fromIterable(
         text: "Čeští herci a herečky",
         color: Colors.lime,
         icon: Icon(Icons.theaters),
-        questionIDs: range(303, 342, extra: [292, 302]),
+        questionIDs: range(303, 342, extra: {292, 302}),
         sources: ["http://www.herec.hlasujpro.cz"]),
     Topic(
       id: 13,
@@ -126,7 +127,7 @@ HashMap<int, Topic> legacyTopics = HashMap.fromIterable(
       text: "Nejkrásnější města ČR",
       color: Colors.pinkAccent,
       icon: Icon(Icons.location_city),
-      questionIDs: range(591, 628, extra: [243]),
+      questionIDs: range(591, 628, extra: {243}),
     ),
     Topic(
       id: 19,
@@ -147,7 +148,7 @@ HashMap<int, Topic> legacyTopics = HashMap.fromIterable(
         text: "Sporty",
         color: Colors.purple,
         icon: Icon(Icons.pool),
-        questionIDs: range(675, 751, extra: [919, 955, 973, 980, 981, 983, 989, 991, 996, 1000, 1010, 1028]),
+        questionIDs: range(675, 751, extra: {919, 955, 973, 980, 981, 983, 989, 991, 996, 1000, 1010, 1028}),
         sources: [
           "https://cs.wikipedia.org/wiki/Seznam_olympijsk%C3%BDch_sport%C5%AF",
           "https://cs.wikipedia.org/wiki/Abecedn%C3%AD_seznam_sportovn%C3%ADch_discipl%C3%ADn",
@@ -164,7 +165,7 @@ HashMap<int, Topic> legacyTopics = HashMap.fromIterable(
       text: "Koníčky",
       color: Colors.pinkAccent,
       icon: Icon(Icons.favorite),
-      questionIDs: range(904, 1028, extra: [
+      questionIDs: range(904, 1028, extra: {
         675,
         679,
         680,
@@ -203,7 +204,7 @@ HashMap<int, Topic> legacyTopics = HashMap.fromIterable(
         748,
         749,
         750,
-      ]),
+      }),
       sources: ["https://en.wikipedia.org/wiki/List_of_hobbies"],
     ),
     Topic(

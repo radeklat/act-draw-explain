@@ -5,6 +5,7 @@ import 'package:act_draw_explain/controllers/score.dart';
 import 'package:act_draw_explain/models/game_result.dart';
 import 'package:act_draw_explain/models/question.dart';
 import 'package:act_draw_explain/models/topic.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -13,7 +14,7 @@ Topic fakeTopic = Topic(
   text: "Fake topic",
   color: Colors.black,
   icon: Icon(Icons.score),
-  questionIDs: UnmodifiableListView([1, 2, 3, 4]),
+  questionIDs: UnmodifiableSetView({1, 2, 3, 4}),
 );
 
 Topic fakeEmptyTopic = Topic(
@@ -21,7 +22,7 @@ Topic fakeEmptyTopic = Topic(
   text: fakeTopic.text(),
   color: fakeTopic.color,
   icon: fakeTopic.icon,
-  questionIDs: UnmodifiableListView([]),
+  questionIDs: UnmodifiableSetView({}),
 );
 
 HashMap<int, Question> fakeQuestions = HashMap.fromIterable(

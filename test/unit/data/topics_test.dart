@@ -16,12 +16,42 @@ void main() {
 
     test('should contain only existing questions', () {
       Set<int> allTopicIDs = {};
-      GameData.topics.values.map((topic) => allTopicIDs.addAll(topic.questionIDs)).toList();
+      GameData.topics.values.forEach((topic) => allTopicIDs.addAll(topic.questionIDs));
 
       Set<int> allQuestionIDs = {};
-      GameData.questions.values.map((question) => allQuestionIDs.add(question.id)).toList();
+      GameData.questions.values.forEach((question) => allQuestionIDs.add(question.id));
 
       expect(allTopicIDs.difference(allQuestionIDs), isEmpty);
+    });
+
+    test('should have a color', () {
+      GameData.topics.values.forEach(
+        (topic) => expect(
+          topic.color,
+          isNotNull,
+          reason: "Topic ${topic.id} '${topic.text()}' has no or invalid color set",
+        ),
+      );
+    });
+
+    test('should have an icon', () {
+      GameData.topics.values.forEach(
+        (topic) => expect(
+          topic.icon,
+          isNotNull,
+          reason: "Topic ${topic.id} '${topic.text()}' has no or invalid icon set",
+        ),
+      );
+    });
+
+    test('should contain some questions', () {
+      GameData.topics.values.forEach(
+        (topic) => expect(
+          topic.questionIDs,
+          isNotEmpty,
+          reason: "Topic ${topic.id} '${topic.text()}' contains no questions IDs",
+        ),
+      );
     });
   });
 }

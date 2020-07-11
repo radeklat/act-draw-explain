@@ -4,13 +4,14 @@ import 'package:act_draw_explain/models/translation_file.dart';
 import 'package:act_draw_explain/utilities/color.dart';
 import 'package:act_draw_explain/utilities/icons.dart';
 import 'package:act_draw_explain/utilities/iter.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 
 class Topic extends LocalizedItem {
   final int id;
   final Color color;
   final Icon icon;
-  final UnmodifiableListView<int> questionIDs;
+  final UnmodifiableSetView<int> questionIDs;
   final List<String> sources;
 
   Topic({
@@ -42,7 +43,7 @@ class Topic extends LocalizedItem {
         )
         .toList();
 
-    List<int> questionIDs = [];
+    Set<int> questionIDs = {};
     topicJson["question-ids"].forEach((String key, dynamic value) {
       if (key == "list") {
         ensureList(value).forEach(
@@ -60,9 +61,9 @@ class Topic extends LocalizedItem {
     return Topic(
       id: LocalizedItem.idFromJson(topicJson),
       text: topicJson["source"]["\$"],
-      color: colorByName(topicJson["@color"]),
-      icon: iconByName(topicJson["@icon"]),
-      questionIDs: UnmodifiableListView(questionIDs),
+      color: colorByName(topicJson["@color"]??""),
+      icon: iconByName(topicJson["@icon"]??""),
+      questionIDs: UnmodifiableSetView(questionIDs),
       sources: sources,
     );
   }
