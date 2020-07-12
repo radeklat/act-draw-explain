@@ -1,8 +1,17 @@
-# Act, Draw, Explain
+<h1 align="center" style="border-bottom: none;">:ok_person::crayon::speech_balloon:&nbsp;&nbsp; Act, Draw, Explain &nbsp;&nbsp;:speech_balloon::crayon::ok_person:</h1>
+<h3 align="center">A multi-player game based on popular games, such as Charades, Heads-up and Pictionary</h3>
 
-[![Translation status](https://weblate.lat.sk/widgets/act-draw-explain/-/svg-badge.svg)](https://weblate.lat.sk/engage/act-draw-explain/?utm_source=widget)
-
-A multi-player game based on popular games, such as Charades, Heads-up and Pictionary.
+<p align="center">
+    <img alt="License" src="https://img.shields.io/github/license/radeklat/act-draw-explain">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/radeklat/act-draw-explain">
+    <img alt="App version" src="https://img.shields.io/badge/dynamic/yaml?color=informational&label=version&query=version&url=https%3A%2F%2Fraw.githubusercontent.com%2Fradeklat%2Fact-draw-explain%2Fmaster%2Fpubspec.yaml">
+    <a href="https://codecov.io/gh/radeklat/act-draw-explain">
+        <img alt="codecov" src="https://codecov.io/gh/radeklat/act-draw-explain/branch/master/graph/badge.svg">
+    </a>
+    <a href="https://weblate.lat.sk/engage/act-draw-explain/?utm_source=github">
+        <img alt="Translation status" src="https://weblate.lat.sk/widgets/act-draw-explain/-/svg-badge.svg">
+    </a>
+</p>
 
 # How to contribute
 
