@@ -14,6 +14,8 @@ class Topic extends LocalizedItem {
   final UnmodifiableSetView<int> questionIDs;
   final List<String> sources;
 
+  static RegExp _idRegExp = RegExp(r"[0-9]+");
+
   Topic({
     this.id,
     String text, // TODO: Remove when migration is finished
@@ -44,11 +46,12 @@ class Topic extends LocalizedItem {
         .toList();
 
     Set<int> questionIDs = {};
+
     topicJson["question-ids"].forEach((String key, dynamic value) {
       if (key == "list") {
         ensureList(value).forEach(
-          (list) => list["\$"].split(",").forEach(
-                (questionID) => questionIDs.add(int.parse(questionID)),
+          (list) => _idRegExp.allMatches(list["\$"]).forEach(
+                (match) => questionIDs.add(int.parse(match.group(0))),
               ),
         );
       } else if (key == "range") {
@@ -61,8 +64,8 @@ class Topic extends LocalizedItem {
     return Topic(
       id: LocalizedItem.idFromJson(topicJson),
       text: topicJson["source"]["\$"],
-      color: colorByName(topicJson["@color"]??""),
-      icon: iconByName(topicJson["@icon"]??""),
+      color: colorByName(topicJson["@color"] ?? ""),
+      icon: iconByName(topicJson["@icon"] ?? ""),
       questionIDs: UnmodifiableSetView(questionIDs),
       sources: sources,
     );

@@ -2,9 +2,125 @@
 <xliff version="1.2">
   <file original="game topics" target-language="en">
     <body>
+      <trans-unit id="1">
+        <source />
+        <target>DISABLED</target>
+      </trans-unit>
+      <trans-unit id="2">
+        <source />
+        <target>DISABLED</target>
+      </trans-unit>
+      <trans-unit id="3">
+        <source />
+        <target>DISABLED</target>
+      </trans-unit>
       <trans-unit id="4">
         <source />
         <target>Top 20 IMDB Movies</target>
+      </trans-unit>
+      <trans-unit id="5">
+        <source />
+        <target>DISABLED</target>
+      </trans-unit>
+      <trans-unit id="6">
+        <source />
+        <target>DISABLED</target>
+      </trans-unit>
+      <trans-unit id="7">
+        <source />
+        <target>RuPaul's Drag Race</target>
+      </trans-unit>
+      <trans-unit id="8">
+        <source />
+        <target>Top Android Apps</target>
+      </trans-unit>
+      <trans-unit id="9">
+        <source />
+        <target>DISABLED</target>
+      </trans-unit>
+      <trans-unit id="10">
+        <source />
+        <target>DISABLED</target>
+      </trans-unit>
+      <trans-unit id="11">
+        <source />
+        <target>DISABLED</target>
+      </trans-unit>
+      <trans-unit id="12">
+        <source />
+        <target>DISABLED</target>
+      </trans-unit>
+      <trans-unit id="13">
+        <source />
+        <target>DISABLED</target>
+      </trans-unit>
+      <trans-unit id="14">
+        <source />
+        <target>Countries of Europe</target>
+      </trans-unit>
+      <trans-unit id="15">
+        <source />
+        <target>National dishes</target>
+      </trans-unit>
+      <trans-unit id="16">
+        <source />
+        <target>Best paid actors</target>
+      </trans-unit>
+      <trans-unit id="17">
+        <source />
+        <target>Best paid musicians</target>
+      </trans-unit>
+      <trans-unit id="18">
+        <source />
+        <target>DISABLED</target>
+      </trans-unit>
+      <trans-unit id="19">
+        <source />
+        <target>Board games</target>
+      </trans-unit>
+      <trans-unit id="20">
+        <source />
+        <target>Visual styles</target>
+      </trans-unit>
+      <trans-unit id="21">
+        <source />
+        <target>Sports</target>
+      </trans-unit>
+      <trans-unit id="22">
+        <source />
+        <target>Animals</target>
+      </trans-unit>
+      <trans-unit id="23">
+        <source />
+        <target>Hobbies</target>
+      </trans-unit>
+      <trans-unit id="24">
+        <source />
+        <target>Video games</target>
+      </trans-unit>
+      <trans-unit id="25">
+        <source />
+        <target>Food and drinks</target>
+      </trans-unit>
+      <trans-unit id="26">
+        <source />
+        <target>Occupations</target>
+      </trans-unit>
+      <trans-unit id="27">
+        <source />
+        <target>DISABLED</target>
+      </trans-unit>
+      <trans-unit id="28">
+        <source />
+        <target>Musical instruments</target>
+      </trans-unit>
+      <trans-unit id="29">
+        <source />
+        <target>Best selling singles</target>
+      </trans-unit>
+      <trans-unit id="30">
+        <source />
+        <target>DISABLED</target>
       </trans-unit>
     </body>
   </file>

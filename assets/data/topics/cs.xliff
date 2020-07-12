@@ -2,9 +2,125 @@
 <xliff version="1.2">
   <file original="game topics" target-language="cs">
     <body>
+      <trans-unit id="1">
+        <source />
+        <target>České Pohádky</target>
+      </trans-unit>
+      <trans-unit id="2">
+        <source />
+        <target>Brno</target>
+      </trans-unit>
+      <trans-unit id="3">
+        <source />
+        <target>Zahraniční seriály</target>
+      </trans-unit>
       <trans-unit id="4">
         <source />
         <target>Top 20 IMDB Filmů</target>
+      </trans-unit>
+      <trans-unit id="5">
+        <source />
+        <target>ČSFD Top 20 Filmů</target>
+      </trans-unit>
+      <trans-unit id="6">
+        <source />
+        <target>ČSFD Top 20 Seriálů</target>
+      </trans-unit>
+      <trans-unit id="7">
+        <source />
+        <target>DISABLED</target>
+      </trans-unit>
+      <trans-unit id="8">
+        <source />
+        <target>Top Android Aplikace</target>
+      </trans-unit>
+      <trans-unit id="9">
+        <source />
+        <target>Praha</target>
+      </trans-unit>
+      <trans-unit id="10">
+        <source />
+        <target>České památky</target>
+      </trans-unit>
+      <trans-unit id="11">
+        <source />
+        <target>Čeští interpreti</target>
+      </trans-unit>
+      <trans-unit id="12">
+        <source />
+        <target>Čeští herci a herečky</target>
+      </trans-unit>
+      <trans-unit id="13">
+        <source />
+        <target>Prezidenti ČR a ČS</target>
+      </trans-unit>
+      <trans-unit id="14">
+        <source />
+        <target>Státy Evropy</target>
+      </trans-unit>
+      <trans-unit id="15">
+        <source />
+        <target>Národní pokrmy</target>
+      </trans-unit>
+      <trans-unit id="16">
+        <source />
+        <target>Nejlépe placení herci</target>
+      </trans-unit>
+      <trans-unit id="17">
+        <source />
+        <target>Nejlépe placení hudebníci</target>
+      </trans-unit>
+      <trans-unit id="18">
+        <source />
+        <target>Nejkrásnější města ČR</target>
+      </trans-unit>
+      <trans-unit id="19">
+        <source />
+        <target>Společenské hry</target>
+      </trans-unit>
+      <trans-unit id="20">
+        <source />
+        <target>Umělecké slohy</target>
+      </trans-unit>
+      <trans-unit id="21">
+        <source />
+        <target>Sporty</target>
+      </trans-unit>
+      <trans-unit id="22">
+        <source />
+        <target>Zvířata</target>
+      </trans-unit>
+      <trans-unit id="23">
+        <source />
+        <target>Koníčky</target>
+      </trans-unit>
+      <trans-unit id="24">
+        <source />
+        <target>Videohry</target>
+      </trans-unit>
+      <trans-unit id="25">
+        <source />
+        <target>Jídlo a pití</target>
+      </trans-unit>
+      <trans-unit id="26">
+        <source />
+        <target>Povolání</target>
+      </trans-unit>
+      <trans-unit id="27">
+        <source />
+        <target>Povinná četba</target>
+      </trans-unit>
+      <trans-unit id="28">
+        <source />
+        <target>Hudební nástroje</target>
+      </trans-unit>
+      <trans-unit id="29">
+        <source />
+        <target>Nejprodávanější singly</target>
+      </trans-unit>
+      <trans-unit id="30">
+        <source />
+        <target>České firmy</target>
       </trans-unit>
     </body>
   </file>
