@@ -64,6 +64,7 @@ class TranslationsLoader {
 }
 
 abstract class LocalizedItem {
+  static const DISABLED = "DISABLED";
   final int id = null;
   HashMap<String, String> localizedTexts = HashMap();
 
@@ -79,6 +80,12 @@ abstract class LocalizedItem {
 
   String text([String locale]) {
     return localizedTexts[locale ?? K.defaultLocale.languageCode];
+  }
+
+  bool isDisabled([String locale]) {
+    String itemText = text(locale);
+    // Explicitly disabled or missing translation
+    return itemText == DISABLED || itemText == "";
   }
 
   /// itemJson is a "trans-unit" from "<TYPE>/<LOCALE>.xliff"
