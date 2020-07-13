@@ -1,5 +1,3 @@
-import 'dart:collection';
-
 import 'package:act_draw_explain/models/translation_file.dart';
 import 'package:act_draw_explain/utilities/color.dart';
 import 'package:act_draw_explain/utilities/icons.dart';

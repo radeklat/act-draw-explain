@@ -1,5 +1,4 @@
 // Import the test package and Counter class
-import 'package:act_draw_explain/models/game.dart';
 import 'package:act_draw_explain/models/topic.dart';
 import 'package:act_draw_explain/models/translation_file.dart';
 import 'package:flutter/material.dart';

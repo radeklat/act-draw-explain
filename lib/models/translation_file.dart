@@ -39,23 +39,27 @@ class TranslationsLoader {
     Map<String, dynamic> _jsonRoot = await _loadXliffAssetAsJson(itemType);
     HashMap<int, Item> items = HashMap();
 
-    ensureList(_jsonRoot["xliff"]["file"]["body"]["trans-unit"]).forEach(
-      (itemJson) {
-        Item item = itemFromJson(itemJson);
-        assert (!items.containsKey(item.id), "$itemType with ID '${item.id}' appear in the source file more than once");
-        items[item.id] = item;
-      },
-    );
+    ensureList(_jsonRoot["xliff"]["file"]).forEach((fileJson) {
+      ensureList(fileJson["body"]["trans-unit"]).forEach(
+        (itemJson) {
+          Item item = itemFromJson(itemJson);
+          assert(
+              !items.containsKey(item.id), "$itemType with ID '${item.id}' appear in the source file more than once");
+          items[item.id] = item;
+        },
+      );
+    });
 
     _supportedLocales.forEach(
       (String locale) async {
         Map<String, dynamic> localizedItemJson = await _loadXliffAssetAsJson(itemType, locale);
-        Map<String, dynamic> file = localizedItemJson["xliff"]["file"];
-        ensureList(file["body"]["trans-unit"]).forEach(
-          (itemJson) {
-            items[idFromJson(itemJson)].updateWithLocalizedJSON(itemJson, file["@target-language"]);
-          },
-        );
+        ensureList(localizedItemJson["xliff"]["file"]).forEach((jsonFile) {
+          ensureList(jsonFile["body"]["trans-unit"]).forEach(
+            (itemJson) {
+              items[idFromJson(itemJson)].updateWithLocalizedJSON(itemJson, jsonFile["@target-language"]);
+            },
+          );
+        });
       },
     );
 

@@ -1,9 +1,6 @@
 // Import the test package and Counter class
 import 'package:act_draw_explain/models/game.dart';
 import 'package:act_draw_explain/models/question.dart';
-import 'package:act_draw_explain/models/translation_file.dart';
-import 'package:flutter/material.dart';
-import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
 
 import '../../mock_data.dart';
