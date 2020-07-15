@@ -22,6 +22,36 @@
     <trans-unit id="18"><source/><target>Krakonoš</target></trans-unit>
     <trans-unit id="19"><source/><target>Jeníček a Mařenka</target></trans-unit>
     <trans-unit id="20"><source/><target>Rumcajs</target></trans-unit>
+    <trans-unit id="355"><source/><target>Lotrando a Zubejda</target></trans-unit>
+    <trans-unit id="356"><source/><target>Anděl Páně</target></trans-unit>
+    <trans-unit id="357"><source/><target>Prinzecna ze mlejna</target></trans-unit>
+    <trans-unit id="358"><source/><target>Nesmrtelná teta</target></trans-unit>
+    <trans-unit id="359"><source/><target>S čerty nejsou žerty</target></trans-unit>
+    <trans-unit id="360"><source/><target>Byl jednou jeden král</target></trans-unit>
+    <trans-unit id="361"><source/><target>Tři veteráni</target></trans-unit>
+    <trans-unit id="362"><source/><target>Šíleně smutná princezna</target></trans-unit>
+    <trans-unit id="363"><source/><target>Dařbuján a Pandrhola</target></trans-unit>
+    <trans-unit id="364"><source/><target>Dívka na koštěti</target></trans-unit>
+    <trans-unit id="365"><source/><target>Pyšná princezna</target></trans-unit>
+    <trans-unit id="366"><source/><target>Jak se budí princezny</target></trans-unit>
+    <trans-unit id="367"><source/><target>Princezna se zlatou hvězdou</target></trans-unit>
+    <trans-unit id="368"><source/><target>Princ a Večernice</target></trans-unit>
+    <trans-unit id="369"><source/><target>Obušku, z pytle ven!</target></trans-unit>
+    <trans-unit id="370"><source/><target>O princezně Jasněnce a létajícím ševci</target></trans-unit>
+    <trans-unit id="371"><source/><target>Třetí princ</target></trans-unit>
+    <trans-unit id="372"><source/><target>Sůl nad zlato</target></trans-unit>
+    <trans-unit id="373"><source/><target>Broučci</target></trans-unit>
+    <trans-unit id="374"><source/><target>Arabela</target></trans-unit>
+    <trans-unit id="375"><source/><target>Rumburak</target></trans-unit>
+    <trans-unit id="376"><source/><target>Maxipes Fík</target></trans-unit>
+    <trans-unit id="377"><source/><target>Mach a Šebestová</target></trans-unit>
+    <trans-unit id="378"><source/><target>Utržené sluchátko</target></trans-unit>
+    <trans-unit id="379"><source/><target>O pejskovi a kočičce</target></trans-unit>
+    <trans-unit id="380"><source/><target>Jája a Pája</target></trans-unit>
+    <trans-unit id="381"><source/><target>Brouk Pytlík</target></trans-unit>
+    <trans-unit id="382"><source/><target>Pojďte pane, budeme si hrát</target></trans-unit>
+    <trans-unit id="383"><source/><target>Káťa a Škubánek</target></trans-unit>
+    <trans-unit id="384"><source/><target>Sedmero krkavců</target></trans-unit>
   </body>
 </file>
 <file category="Brno" original="2" target-language="cs">
@@ -411,40 +441,6 @@
     <trans-unit id="351"><source/><target>Gustáv Husák</target></trans-unit>
     <trans-unit id="352"><source/><target>Václav Havel</target></trans-unit>
     <trans-unit id="353"><source/><target>Václav Klaus</target></trans-unit>
-  </body>
-</file>
-<file category="České Pohádky" original="1" target-language="cs">
-  <body>
-    <trans-unit id="355"><source/><target>Lotrando a Zubejda</target></trans-unit>
-    <trans-unit id="356"><source/><target>Anděl Páně</target></trans-unit>
-    <trans-unit id="357"><source/><target>Prinzecna ze mlejna</target></trans-unit>
-    <trans-unit id="358"><source/><target>Nesmrtelná teta</target></trans-unit>
-    <trans-unit id="359"><source/><target>S čerty nejsou žerty</target></trans-unit>
-    <trans-unit id="360"><source/><target>Byl jednou jeden král</target></trans-unit>
-    <trans-unit id="361"><source/><target>Tři veteráni</target></trans-unit>
-    <trans-unit id="362"><source/><target>Šíleně smutná princezna</target></trans-unit>
-    <trans-unit id="363"><source/><target>Dařbuján a Pandrhola</target></trans-unit>
-    <trans-unit id="364"><source/><target>Dívka na koštěti</target></trans-unit>
-    <trans-unit id="365"><source/><target>Pyšná princezna</target></trans-unit>
-    <trans-unit id="366"><source/><target>Jak se budí princezny</target></trans-unit>
-    <trans-unit id="367"><source/><target>Princezna se zlatou hvězdou</target></trans-unit>
-    <trans-unit id="368"><source/><target>Princ a Večernice</target></trans-unit>
-    <trans-unit id="369"><source/><target>Obušku, z pytle ven!</target></trans-unit>
-    <trans-unit id="370"><source/><target>O princezně Jasněnce a létajícím ševci</target></trans-unit>
-    <trans-unit id="371"><source/><target>Třetí princ</target></trans-unit>
-    <trans-unit id="372"><source/><target>Sůl nad zlato</target></trans-unit>
-    <trans-unit id="373"><source/><target>Broučci</target></trans-unit>
-    <trans-unit id="374"><source/><target>Arabela</target></trans-unit>
-    <trans-unit id="375"><source/><target>Rumburak</target></trans-unit>
-    <trans-unit id="376"><source/><target>Maxipes Fík</target></trans-unit>
-    <trans-unit id="377"><source/><target>Mach a Šebestová</target></trans-unit>
-    <trans-unit id="378"><source/><target>Utržené sluchátko</target></trans-unit>
-    <trans-unit id="379"><source/><target>O pejskovi a kočičce</target></trans-unit>
-    <trans-unit id="380"><source/><target>Jája a Pája</target></trans-unit>
-    <trans-unit id="381"><source/><target>Brouk Pytlík</target></trans-unit>
-    <trans-unit id="382"><source/><target>Pojďte pane, budeme si hrát</target></trans-unit>
-    <trans-unit id="383"><source/><target>Káťa a Škubánek</target></trans-unit>
-    <trans-unit id="384"><source/><target>Sedmero krkavců</target></trans-unit>
   </body>
 </file>
 <file category="Státy Evropy" original="14" target-language="cs">

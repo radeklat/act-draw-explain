@@ -22,6 +22,36 @@
     <trans-unit id="18"><source/><target>DISABLED</target></trans-unit>
     <trans-unit id="19"><source/><target>DISABLED</target></trans-unit>
     <trans-unit id="20"><source/><target>DISABLED</target></trans-unit>
+    <trans-unit id="355"><source/><target>DISABLED</target></trans-unit>
+    <trans-unit id="356"><source/><target>DISABLED</target></trans-unit>
+    <trans-unit id="357"><source/><target>DISABLED</target></trans-unit>
+    <trans-unit id="358"><source/><target>DISABLED</target></trans-unit>
+    <trans-unit id="359"><source/><target>DISABLED</target></trans-unit>
+    <trans-unit id="360"><source/><target>DISABLED</target></trans-unit>
+    <trans-unit id="361"><source/><target>DISABLED</target></trans-unit>
+    <trans-unit id="362"><source/><target>DISABLED</target></trans-unit>
+    <trans-unit id="363"><source/><target>DISABLED</target></trans-unit>
+    <trans-unit id="364"><source/><target>DISABLED</target></trans-unit>
+    <trans-unit id="365"><source/><target>DISABLED</target></trans-unit>
+    <trans-unit id="366"><source/><target>DISABLED</target></trans-unit>
+    <trans-unit id="367"><source/><target>DISABLED</target></trans-unit>
+    <trans-unit id="368"><source/><target>DISABLED</target></trans-unit>
+    <trans-unit id="369"><source/><target>DISABLED</target></trans-unit>
+    <trans-unit id="370"><source/><target>DISABLED</target></trans-unit>
+    <trans-unit id="371"><source/><target>DISABLED</target></trans-unit>
+    <trans-unit id="372"><source/><target>DISABLED</target></trans-unit>
+    <trans-unit id="373"><source/><target>DISABLED</target></trans-unit>
+    <trans-unit id="374"><source/><target>DISABLED</target></trans-unit>
+    <trans-unit id="375"><source/><target>DISABLED</target></trans-unit>
+    <trans-unit id="376"><source/><target>DISABLED</target></trans-unit>
+    <trans-unit id="377"><source/><target>DISABLED</target></trans-unit>
+    <trans-unit id="378"><source/><target>DISABLED</target></trans-unit>
+    <trans-unit id="379"><source/><target>DISABLED</target></trans-unit>
+    <trans-unit id="380"><source/><target>DISABLED</target></trans-unit>
+    <trans-unit id="381"><source/><target>DISABLED</target></trans-unit>
+    <trans-unit id="382"><source/><target>DISABLED</target></trans-unit>
+    <trans-unit id="383"><source/><target>DISABLED</target></trans-unit>
+    <trans-unit id="384"><source/><target>DISABLED</target></trans-unit>
   </body>
 </file>
 <file category="Brno" original="2" target-language="cs">
@@ -411,40 +441,6 @@
     <trans-unit id="351"><source/><target>DISABLED</target></trans-unit>
     <trans-unit id="352"><source/><target>DISABLED</target></trans-unit>
     <trans-unit id="353"><source/><target>DISABLED</target></trans-unit>
-  </body>
-</file>
-<file category="České Pohádky" original="1" target-language="cs">
-  <body>
-    <trans-unit id="355"><source/><target>DISABLED</target></trans-unit>
-    <trans-unit id="356"><source/><target>DISABLED</target></trans-unit>
-    <trans-unit id="357"><source/><target>DISABLED</target></trans-unit>
-    <trans-unit id="358"><source/><target>DISABLED</target></trans-unit>
-    <trans-unit id="359"><source/><target>DISABLED</target></trans-unit>
-    <trans-unit id="360"><source/><target>DISABLED</target></trans-unit>
-    <trans-unit id="361"><source/><target>DISABLED</target></trans-unit>
-    <trans-unit id="362"><source/><target>DISABLED</target></trans-unit>
-    <trans-unit id="363"><source/><target>DISABLED</target></trans-unit>
-    <trans-unit id="364"><source/><target>DISABLED</target></trans-unit>
-    <trans-unit id="365"><source/><target>DISABLED</target></trans-unit>
-    <trans-unit id="366"><source/><target>DISABLED</target></trans-unit>
-    <trans-unit id="367"><source/><target>DISABLED</target></trans-unit>
-    <trans-unit id="368"><source/><target>DISABLED</target></trans-unit>
-    <trans-unit id="369"><source/><target>DISABLED</target></trans-unit>
-    <trans-unit id="370"><source/><target>DISABLED</target></trans-unit>
-    <trans-unit id="371"><source/><target>DISABLED</target></trans-unit>
-    <trans-unit id="372"><source/><target>DISABLED</target></trans-unit>
-    <trans-unit id="373"><source/><target>DISABLED</target></trans-unit>
-    <trans-unit id="374"><source/><target>DISABLED</target></trans-unit>
-    <trans-unit id="375"><source/><target>DISABLED</target></trans-unit>
-    <trans-unit id="376"><source/><target>DISABLED</target></trans-unit>
-    <trans-unit id="377"><source/><target>DISABLED</target></trans-unit>
-    <trans-unit id="378"><source/><target>DISABLED</target></trans-unit>
-    <trans-unit id="379"><source/><target>DISABLED</target></trans-unit>
-    <trans-unit id="380"><source/><target>DISABLED</target></trans-unit>
-    <trans-unit id="381"><source/><target>DISABLED</target></trans-unit>
-    <trans-unit id="382"><source/><target>DISABLED</target></trans-unit>
-    <trans-unit id="383"><source/><target>DISABLED</target></trans-unit>
-    <trans-unit id="384"><source/><target>DISABLED</target></trans-unit>
   </body>
 </file>
 <file category="Státy Evropy" original="14" target-language="cs">
