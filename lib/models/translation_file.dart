@@ -82,19 +82,23 @@ abstract class LocalizedItem {
   static const DISABLED = "DISABLED";
   final int id = null;
   HashMap<String, String> localizedTexts = HashMap();
+  static List<String> _displayLanguages = [K.defaultLocale.languageCode];
+
+  static set displayLanguages(List<String> displayLanguages) {
+    assert (displayLanguages.length >= 1);
+    _displayLanguages = displayLanguages;
+  }
+
+  static List<String> get displayLanguages {
+    return _displayLanguages;
+  }
 
   String _unquote(String text) {
     return text.replaceAll("\\'", "'");
   }
 
-  LocalizedItem(String text) {
-    if (text != null) {
-      localizedTexts[K.defaultLocale.languageCode] = _unquote(text);
-    }
-  }
-
   String text([String locale]) {
-    return localizedTexts[locale ?? K.defaultLocale.languageCode];
+    return localizedTexts[locale ?? _displayLanguages[0]];
   }
 
   bool isDisabled([String locale]) {

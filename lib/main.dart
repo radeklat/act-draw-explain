@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:act_draw_explain/constants.dart';
 import 'package:act_draw_explain/models/results.dart';
+import 'package:act_draw_explain/models/translation_file.dart';
 import 'package:act_draw_explain/screens/about.dart';
 import 'package:act_draw_explain/screens/game/end_game.dart';
 import 'package:act_draw_explain/screens/game/play/countdown.dart';
@@ -55,6 +56,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    Locale locale = getLocale();
+    LocalizedItem.displayLanguages = [locale.languageCode];  // TODO: Change to be dynamic
+
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<TopicBestScore>(create: (_) => TopicBestScore()),
@@ -63,7 +67,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
 //        debugShowCheckedModeBanner: false,
-        locale: getLocale(),
+        locale: locale,
         supportedLocales: localizationsDelegate.supportedLocales,
         localizationsDelegates: [
           localizationsDelegate,

@@ -16,7 +16,7 @@ void main() {
 
     test('should contain only existing questions', () {
       Set<int> allTopicIDs = {};
-      GameData.topics.values.forEach((topic) => allTopicIDs.addAll(topic.questionIDs));
+      GameData.topics.values.forEach((topic) => allTopicIDs.addAll(topic.questions.keys));
 
       Set<int> allQuestionIDs = {};
       GameData.questions.values.forEach((question) => allQuestionIDs.add(question.id));
@@ -47,7 +47,7 @@ void main() {
     test('should contain some questions', () {
       GameData.topics.values.forEach(
         (topic) => expect(
-          topic.questionIDs,
+          topic.questions.keys,
           isNotEmpty,
           reason: "Topic ${topic.id} '${topic.text()}' contains no questions IDs",
         ),

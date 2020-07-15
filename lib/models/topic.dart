@@ -1,3 +1,7 @@
+import 'dart:collection';
+
+import 'package:act_draw_explain/models/game.dart';
+import 'package:act_draw_explain/models/question.dart';
 import 'package:act_draw_explain/models/translation_file.dart';
 import 'package:act_draw_explain/utilities/color.dart';
 import 'package:act_draw_explain/utilities/icons.dart';
@@ -9,19 +13,24 @@ class Topic extends LocalizedItem {
   final int id;
   final Color color;
   final Icon icon;
-  final UnmodifiableSetView<int> questionIDs;
+  final UnmodifiableMapView<int, Question> questions;
   final List<String> sources;
 
   static RegExp _idRegExp = RegExp(r"[0-9]+");
 
   Topic({
     this.id,
-    String text, // TODO: Remove when migration is finished
     this.color,
     this.icon,
-    this.questionIDs,
+    this.questions,
     this.sources = const [],
-  }) : super(text);
+  });
+
+  UnmodifiableSetView<int> get questionIDs {
+    return UnmodifiableSetView(
+      questions.values.where((question) => !question.isDisabled()).map((question) => question.id).toSet(),
+    );
+  }
 
   List<int> asShuffledQuestionIDs() {
     List<int> questionsCopy = List.from(questionIDs);
@@ -43,28 +52,32 @@ class Topic extends LocalizedItem {
         )
         .toList();
 
-    Set<int> questionIDs = {};
+    HashMap<int, Question> questions = HashMap();
 
     topicJson["question-ids"].forEach((String key, dynamic value) {
       if (key == "list") {
         ensureList(value).forEach(
           (list) => _idRegExp.allMatches(list["\$"]).forEach(
-                (match) => questionIDs.add(int.parse(match.group(0))),
-              ),
+            (match) {
+              int questionID = int.parse(match.group(0));
+              questions[questionID] = GameData.questions[questionID];
+            },
+          ),
         );
       } else if (key == "range") {
         ensureList(value).forEach(
-          (range) => questionIDs.addAll(_range(range)),
+          (range) => _range(range).forEach((questionID) {
+            questions[questionID] = GameData.questions[questionID];
+          }),
         );
       }
     });
 
     return Topic(
       id: LocalizedItem.idFromJson(topicJson),
-      text: topicJson["source"]["\$"],
       color: colorByName(topicJson["@color"] ?? ""),
       icon: iconByName(topicJson["@icon"] ?? ""),
-      questionIDs: UnmodifiableSetView(questionIDs),
+      questions: UnmodifiableMapView(questions),
       sources: sources,
     );
   }

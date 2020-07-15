@@ -1,6 +1,7 @@
 import 'dart:collection';
 
 import 'package:act_draw_explain/analytics.dart';
+import 'package:act_draw_explain/constants.dart';
 import 'package:act_draw_explain/controllers/score.dart';
 import 'package:act_draw_explain/models/game_result.dart';
 import 'package:act_draw_explain/models/question.dart';
@@ -9,39 +10,46 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+HashMap<int, Question> fakeQuestions = HashMap.from(
+  {1: fakeQuestion(1), 2: fakeQuestion(2), 3: fakeQuestion(3), 4: fakeQuestion(4)},
+);
+
 Topic fakeTopic = Topic(
   id: 1,
-  text: "Fake topic",
   color: Colors.black,
   icon: Icon(Icons.score),
-  questionIDs: UnmodifiableSetView({1, 2, 3, 4}),
-);
+  questions: UnmodifiableMapView(fakeQuestions),
+)..updateWithLocalizedJSON({
+    "target": {"\$": "Fake topic"}
+  }, K.defaultLocale.languageCode);
 
 Topic fakeEmptyTopic = Topic(
   id: fakeTopic.id,
-  text: fakeTopic.text(),
   color: fakeTopic.color,
   icon: fakeTopic.icon,
-  questionIDs: UnmodifiableSetView({}),
+  questions: UnmodifiableMapView({}),
 );
 
-HashMap<int, Question> fakeQuestions = HashMap.fromIterable(
-  [Question(id: 1, text: "q1"), Question(id: 2, text: "q2"), Question(id: 3, text: "q3"), Question(id: 4, text: "q4")],
-  key: (question) => question.id,
-  value: (question) => question,
-);
+Question fakeQuestion(int id, [String text]) {
+  return Question(id: id)
+    ..updateWithLocalizedJSON({
+      "target": {"\$": text ?? "Question $id"}
+    }, K.defaultLocale.languageCode);
+}
 
 void main() {
   group('ScoreController', () {
     testWidgets('should generate next question text', (WidgetTester tester) async {
       String nextQuestion;
-      ScoreController(
+      var sc = ScoreController(
         topic: fakeTopic,
         questions: fakeQuestions,
         onNextQuestion: (str) {
           nextQuestion = str;
         },
-      ).nextQuestion(passed: true);
+      );
+
+      sc.nextQuestion(passed: true);
 
       expect(nextQuestion, isNotNull, reason: "nextQuestion");
       expect(nextQuestion.length, isPositive, reason: "nextQuestion.length");

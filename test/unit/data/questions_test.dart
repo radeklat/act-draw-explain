@@ -1,6 +1,7 @@
 // Import the test package and Counter class
 import 'package:act_draw_explain/models/game.dart';
 import 'package:act_draw_explain/models/question.dart';
+import 'package:act_draw_explain/models/translation_file.dart';
 import 'package:test/test.dart';
 
 import '../../mock_data.dart';
@@ -16,35 +17,42 @@ void main() {
     });
 
     test('should have a closing bracket when there is an opening one', () {
-      for (Question question in GameData.questions.values) {
-        if (question.text().contains("(")) {
-          expect(question.text(), contains(")"), reason: question.text());
-        }
-      }
+      GameData.questions.values.forEach((question) {
+        question.localizedTexts.forEach((language, text) {
+          if (text.contains("(")) {
+            expect(text, contains(")"), reason: "$language: $text");
+          }
+        });
+      });
     });
 
-    test('should no have duplicates', () {
+    test('should not have duplicates', () {
       Set<String> questionTexts = Set();
       Map<String, int> duplicates = {};
-      Set<String> exceptions = {"Lov", "Kofola"};
+      Set<String> exceptions = {"cs/Lov", "cs/Kofola"};
 
-      for (Question question in GameData.questions.values) {
-        if (exceptions.contains(question.text)) continue;
-        if (questionTexts.contains(question.text)) {
-          duplicates.update(question.text(), (value) => value + 1, ifAbsent: () => 2);
-        }
-        questionTexts.add(question.text());
-      }
+      GameData.questions.values.forEach((question) {
+        question.localizedTexts.forEach((language, text) {
+          String localisedText = "$language/$text";
+
+          if (!exceptions.contains(localisedText) && text != LocalizedItem.DISABLED) {
+            if (questionTexts.contains(localisedText)) {
+              duplicates.update(localisedText, (value) => value + 1, ifAbsent: () => 2);
+            }
+            questionTexts.add(localisedText);
+          }
+        });
+      });
 
       expect(duplicates, isEmpty, reason: "Listed items appear more than once.");
     });
 
     test('should should belong to at least one topic', () {
       Set<int> allTopicIDs = {};
-      GameData.topics.values.map((topic) => allTopicIDs.addAll(topic.questionIDs)).toList();
+      GameData.topics.values.forEach((topic) => allTopicIDs.addAll(topic.questions.keys));
 
       Set<int> allQuestionIDs = {};
-      GameData.questions.values.map((question) => allQuestionIDs.add(question.id)).toList();
+      GameData.questions.values.forEach((question) => allQuestionIDs.add(question.id));
 
       expect(allQuestionIDs.difference(allTopicIDs), isEmpty);
     });
