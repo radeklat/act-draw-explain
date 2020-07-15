@@ -1,11 +1,12 @@
 import 'dart:collection';
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:xml/xml.dart';
-import 'package:xml2json/xml2json.dart';
 
-const ASSETS_DIR = "assets/data";
+const String ASSETS_DIR = "assets/data";
+const String DISABLED_TRANSLATION = "DISABLED";
+const String TYPE_QUESTIONS = "questions";
+const String TYPE_TOPICS = "topics";
 const Map<int, String> LEVEL_TO_PADDING_CHAR = {1: "#", 2: "=", 3: "-"};
 
 printHeading(String text, {int level = 1}) {
@@ -33,14 +34,14 @@ injectCategoryNames() async {
     topicIdToName[topicXml.getAttribute("id")] = topicXml.findAllElements("source").single.text;
   });
 
-  Directory("${Directory.current.path}/$ASSETS_DIR/questions").listSync(followLinks: false).forEach(
+  Directory("${Directory.current.path}/$ASSETS_DIR/$TYPE_QUESTIONS").listSync(followLinks: false).forEach(
     (FileSystemEntity questionFile) async {
       if (questionFile is File) {
         String fileName = questionFile.path.split(Platform.pathSeparator).last;
         String languageCode = fileName.replaceAll(".xliff", "");
-        print(' * Updating "$languageCode" questions');
+        print(' * Updating "$languageCode" $TYPE_QUESTIONS');
 
-        var questionsXml = await loadXliffAsset("questions", languageCode);
+        var questionsXml = await loadXliffAsset(TYPE_QUESTIONS, languageCode);
         questionsXml.findAllElements("file").forEach((fileXml) {
           fileXml.getAttributeNode("category").value = topicIdToName[fileXml.getAttribute("original")] ?? "";
         });
@@ -54,7 +55,39 @@ injectCategoryNames() async {
 injectDisabled() {
   printHeading("Injecting 'DISABLED' as `target` into questions for disabled language variants");
 
+  Directory("${Directory.current.path}/$ASSETS_DIR/$TYPE_TOPICS").listSync(followLinks: false).forEach(
+    (FileSystemEntity topicsFile) async {
+      if (topicsFile is File) {
+        String fileName = topicsFile.path.split(Platform.pathSeparator).last;
+        String languageCode = fileName.replaceAll(".xliff", "");
+        print(' * Updating "$languageCode" $TYPE_QUESTIONS');
 
+        var topicsXml = await loadXliffAsset(TYPE_TOPICS, languageCode);
+        Set<String> disabledTopicIDs = {};
+        topicsXml.findAllElements("trans-unit").forEach((XmlElement topicXml) {
+          if (topicXml.findAllElements("target").single.text == DISABLED_TRANSLATION) {
+            disabledTopicIDs.add(topicXml.getAttribute("id"));
+          }
+        });
+
+        if (disabledTopicIDs.isNotEmpty) {
+          var questionsXml = await loadXliffAsset(TYPE_QUESTIONS, languageCode);
+          disabledTopicIDs.forEach((String topicID) {
+            questionsXml.findAllElements("file").forEach((fileXml) {
+              if (disabledTopicIDs.contains(fileXml.getAttribute("original"))) {
+                fileXml.findAllElements("target").forEach((targetXml) {
+                  (targetXml.descendants.single as XmlText).text = DISABLED_TRANSLATION;
+                });
+              }
+            });
+          });
+          File(
+            "${Directory.current.path}/$ASSETS_DIR/$TYPE_QUESTIONS/$languageCode.xliff",
+          ).writeAsString(questionsXml.toXmlString());
+        }
+      }
+    },
+  );
 }
 
 main() async {
