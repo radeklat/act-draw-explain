@@ -55,6 +55,8 @@ dev_dependencies:
   test: any
   intl_utils: ^1.6.2
   mockito: ^4.1.1
+  sync_translation_files:
+    path: scripts/sync_translation_files
 
 flutter_icons:
   android: "launcher_icon"
