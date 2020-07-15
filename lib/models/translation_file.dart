@@ -44,7 +44,9 @@ class TranslationsLoader {
         (itemJson) {
           Item item = itemFromJson(itemJson);
           assert(
-              !items.containsKey(item.id), "$itemType with ID '${item.id}' appear in the source file more than once");
+            !items.containsKey(item.id),
+            "$itemType with ID '${item.id}' appear in the source file more than once",
+          );
           items[item.id] = item;
         },
       );
@@ -53,7 +55,16 @@ class TranslationsLoader {
     _supportedLocales.forEach(
       (String locale) async {
         Map<String, dynamic> localizedItemJson = await _loadXliffAssetAsJson(itemType, locale);
+        Set<String> seenFileOriginals = {};
+
         ensureList(localizedItemJson["xliff"]["file"]).forEach((jsonFile) {
+          String original = jsonFile["@original"];
+          assert(
+            !seenFileOriginals.contains(original),
+            "<file original='$original'> appear in the $itemType/$locale file more than once",
+          );
+          seenFileOriginals.add(original);
+
           ensureList(jsonFile["body"]["trans-unit"]).forEach(
             (itemJson) {
               items[idFromJson(itemJson)].updateWithLocalizedJSON(itemJson, jsonFile["@target-language"]);
