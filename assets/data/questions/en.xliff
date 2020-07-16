@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <xliff version="1.2">
-<file category="České Pohádky" original="1" target-language="cs">
+<file category="České Pohádky" original="1" target-language="en">
   <body>
     <trans-unit id="1"><source/><target>DISABLED</target></trans-unit>
     <trans-unit id="2"><source/><target>DISABLED</target></trans-unit>
@@ -54,7 +54,7 @@
     <trans-unit id="384"><source/><target>DISABLED</target></trans-unit>
   </body>
 </file>
-<file category="Brno" original="2" target-language="cs">
+<file category="Brno" original="2" target-language="en">
   <body>
     <trans-unit id="21"><source/><target>DISABLED</target></trans-unit>
     <trans-unit id="22"><source/><target>DISABLED</target></trans-unit>
@@ -89,7 +89,7 @@
     <trans-unit id="265"><source/><target>DISABLED</target></trans-unit>
   </body>
 </file>
-<file category="Zahraniční seriály" original="3" target-language="cs">
+<file category="Zahraniční seriály" original="3" target-language="en">
   <body>
     <trans-unit id="50"><source/><target>DISABLED</target></trans-unit>
     <trans-unit id="51"><source/><target>DISABLED</target></trans-unit>
@@ -108,7 +108,7 @@
     <trans-unit id="64"><source/><target>DISABLED</target></trans-unit>
   </body>
 </file>
-<file category="Top 20 IMDB Movies" original="4" target-language="cs">
+<file category="Top 20 IMDB Movies" original="4" target-language="en">
   <body>
     <trans-unit id="65"><source/><target>The Shawshank Redemption (1994)</target></trans-unit>
     <trans-unit id="66"><source/><target>The Godfather (1972)</target></trans-unit>
@@ -132,30 +132,18 @@
     <trans-unit id="84"><source/><target>Se7en (1995)</target></trans-unit>
   </body>
 </file>
-<file category="ČSFD Top 20 Filmů" original="5" target-language="cs">
+<file category="ČSFD Top 20 Filmů" original="5" target-language="en">
   <body>
-    <trans-unit id="85"><source/><target>DISABLED</target></trans-unit>
-    <trans-unit id="86"><source/><target>DISABLED</target></trans-unit>
     <trans-unit id="87"><source/><target>DISABLED</target></trans-unit>
-    <trans-unit id="88"><source/><target>DISABLED</target></trans-unit>
-    <trans-unit id="89"><source/><target>DISABLED</target></trans-unit>
-    <trans-unit id="90"><source/><target>DISABLED</target></trans-unit>
-    <trans-unit id="91"><source/><target>DISABLED</target></trans-unit>
     <trans-unit id="92"><source/><target>DISABLED</target></trans-unit>
-    <trans-unit id="93"><source/><target>DISABLED</target></trans-unit>
     <trans-unit id="94"><source/><target>DISABLED</target></trans-unit>
-    <trans-unit id="95"><source/><target>DISABLED</target></trans-unit>
     <trans-unit id="96"><source/><target>DISABLED</target></trans-unit>
-    <trans-unit id="97"><source/><target>DISABLED</target></trans-unit>
     <trans-unit id="98"><source/><target>DISABLED</target></trans-unit>
     <trans-unit id="99"><source/><target>DISABLED</target></trans-unit>
-    <trans-unit id="100"><source/><target>DISABLED</target></trans-unit>
-    <trans-unit id="101"><source/><target>DISABLED</target></trans-unit>
     <trans-unit id="102"><source/><target>DISABLED</target></trans-unit>
-    <trans-unit id="103"><source/><target>DISABLED</target></trans-unit>
   </body>
 </file>
-<file category="ČSFD Top 20 Seriálů" original="6" target-language="cs">
+<file category="ČSFD Top 20 Seriálů" original="6" target-language="en">
   <body>
     <trans-unit id="105"><source/><target>DISABLED</target></trans-unit>
     <trans-unit id="106"><source/><target>DISABLED</target></trans-unit>
@@ -179,7 +167,7 @@
     <trans-unit id="124"><source/><target>DISABLED</target></trans-unit>
   </body>
 </file>
-<file category="RuPaul's Drag Race" original="7" target-language="cs">
+<file category="RuPaul's Drag Race" original="7" target-language="en">
   <body>
     <trans-unit id="125"><source/><target>BeBe Zahara Benet</target></trans-unit>
     <trans-unit id="126"><source/><target>Tyra Sanchez</target></trans-unit>
@@ -240,7 +228,7 @@
     <trans-unit id="1115"><source/><target>Sissy that walk!</target></trans-unit>
   </body>
 </file>
-<file category="Top Android Apps" original="8" target-language="cs">
+<file category="Top Android Apps" original="8" target-language="en">
   <body>
     <trans-unit id="173"><source/><target>Zoom</target></trans-unit>
     <trans-unit id="174"><source/><target>TikTok</target></trans-unit>
@@ -273,7 +261,7 @@
     <trans-unit id="201"><source/><target>Google Drive</target></trans-unit>
   </body>
 </file>
-<file category="Praha" original="9" target-language="cs">
+<file category="Praha" original="9" target-language="en">
   <body>
     <trans-unit id="202"><source/><target>DISABLED</target></trans-unit>
     <trans-unit id="203"><source/><target>DISABLED</target></trans-unit>
@@ -316,7 +304,7 @@
     <trans-unit id="240"><source/><target>DISABLED</target></trans-unit>
   </body>
 </file>
-<file category="České památky" original="10" target-language="cs">
+<file category="České památky" original="10" target-language="en">
   <body>
     <trans-unit id="241"><source/><target>DISABLED</target></trans-unit>
     <trans-unit id="242"><source/><target>DISABLED</target></trans-unit>
@@ -343,7 +331,7 @@
     <trans-unit id="263"><source/><target>DISABLED</target></trans-unit>
   </body>
 </file>
-<file category="Čeští interpreti" original="11" target-language="cs">
+<file category="Čeští interpreti" original="11" target-language="en">
   <body>
     <trans-unit id="266"><source/><target>DISABLED</target></trans-unit>
     <trans-unit id="267"><source/><target>DISABLED</target></trans-unit>
@@ -384,7 +372,7 @@
     <trans-unit id="302"><source/><target>DISABLED</target></trans-unit>
   </body>
 </file>
-<file category="Čeští herci a herečky" original="12" target-language="cs">
+<file category="Čeští herci a herečky" original="12" target-language="en">
   <body>
     <trans-unit id="303"><source/><target>DISABLED</target></trans-unit>
     <trans-unit id="304"><source/><target>DISABLED</target></trans-unit>
@@ -428,7 +416,7 @@
     <trans-unit id="342"><source/><target>DISABLED</target></trans-unit>
   </body>
 </file>
-<file category="Prezidenti ČR a ČS" original="13" target-language="cs">
+<file category="Prezidenti ČR a ČS" original="13" target-language="en">
   <body>
     <trans-unit id="343"><source/><target>DISABLED</target></trans-unit>
     <trans-unit id="344"><source/><target>DISABLED</target></trans-unit>
@@ -443,7 +431,7 @@
     <trans-unit id="353"><source/><target>DISABLED</target></trans-unit>
   </body>
 </file>
-<file category="Státy Evropy" original="14" target-language="cs">
+<file category="Státy Evropy" original="14" target-language="en">
   <body>
     <trans-unit id="385"><source/><target>Albánie</target></trans-unit>
     <trans-unit id="386"><source/><target>Andorra</target></trans-unit>
@@ -497,7 +485,7 @@
     <trans-unit id="434"><source/><target>Vatikán</target></trans-unit>
   </body>
 </file>
-<file category="National dishes" original="15" target-language="cs">
+<file category="National dishes" original="15" target-language="en">
   <body>
     <trans-unit id="437"><source/><target>Pavlova (Australia, New Zealand)</target></trans-unit>
     <trans-unit id="438"><source/><target>Vegemite on toast (Australia)</target></trans-unit>
@@ -568,7 +556,7 @@
     <trans-unit id="503"><source/><target>Phở (Vietnam)</target></trans-unit>
   </body>
 </file>
-<file category="Nejlépe placení herci" original="16" target-language="cs">
+<file category="Nejlépe placení herci" original="16" target-language="en">
   <body>
     <trans-unit id="504"><source/><target>Chris Evans</target></trans-unit>
     <trans-unit id="505"><source/><target>Salman Khan</target></trans-unit>
@@ -617,7 +605,7 @@
     <trans-unit id="548"><source/><target>Arnold Schwarzenegger</target></trans-unit>
   </body>
 </file>
-<file category="Nejlépe placení hudebníci" original="17" target-language="cs">
+<file category="Nejlépe placení hudebníci" original="17" target-language="en">
   <body>
     <trans-unit id="550"><source/><target>Migos</target></trans-unit>
     <trans-unit id="551"><source/><target>U2</target></trans-unit>
@@ -661,7 +649,7 @@
     <trans-unit id="589"><source/><target>Taylor Swift</target></trans-unit>
   </body>
 </file>
-<file category="Nejkrásnější města ČR" original="18" target-language="cs">
+<file category="Nejkrásnější města ČR" original="18" target-language="en">
   <body>
     <trans-unit id="591"><source/><target>DISABLED</target></trans-unit>
     <trans-unit id="592"><source/><target>DISABLED</target></trans-unit>
@@ -703,7 +691,7 @@
     <trans-unit id="628"><source/><target>DISABLED</target></trans-unit>
   </body>
 </file>
-<file category="Společenské hry" original="19" target-language="cs">
+<file category="Společenské hry" original="19" target-language="en">
   <body>
     <trans-unit id="629"><source/><target>Šachy</target></trans-unit>
     <trans-unit id="630"><source/><target>Dáma</target></trans-unit>
@@ -728,7 +716,7 @@
     <trans-unit id="649"><source/><target>Krycí jména</target></trans-unit>
   </body>
 </file>
-<file category="Umělecké slohy" original="20" target-language="cs">
+<file category="Umělecké slohy" original="20" target-language="en">
   <body>
     <trans-unit id="650"><source/><target>Art deco</target></trans-unit>
     <trans-unit id="651"><source/><target>Baroko</target></trans-unit>
@@ -757,7 +745,7 @@
     <trans-unit id="674"><source/><target>Art Nouveau</target></trans-unit>
   </body>
 </file>
-<file category="Sporty" original="21" target-language="cs">
+<file category="Sporty" original="21" target-language="en">
   <body>
     <trans-unit id="675"><source/><target>Plavání</target></trans-unit>
     <trans-unit id="676"><source/><target>Skoky do vody</target></trans-unit>
@@ -838,7 +826,7 @@
     <trans-unit id="751"><source/><target>Zorbing</target></trans-unit>
   </body>
 </file>
-<file category="Zvířata" original="22" target-language="cs">
+<file category="Zvířata" original="22" target-language="en">
   <body>
     <trans-unit id="752"><source/><target>Žába</target></trans-unit>
     <trans-unit id="753"><source/><target>Alpaka</target></trans-unit>
@@ -994,7 +982,7 @@
     <trans-unit id="903"><source/><target>Roast</target></trans-unit>
   </body>
 </file>
-<file category="Koníčky" original="23" target-language="cs">
+<file category="Koníčky" original="23" target-language="en">
   <body>
     <trans-unit id="904"><source/><target>Pečení</target></trans-unit>
     <trans-unit id="905"><source/><target>Stolní hry</target></trans-unit>
@@ -1123,7 +1111,7 @@
     <trans-unit id="1028"><source/><target>Cyklistika</target></trans-unit>
   </body>
 </file>
-<file category="Videohry" original="24" target-language="cs">
+<file category="Videohry" original="24" target-language="en">
   <body>
     <trans-unit id="1029"><source/><target>Minecraft</target></trans-unit>
     <trans-unit id="1030"><source/><target>Grand Theft Auto</target></trans-unit>
@@ -1207,7 +1195,7 @@
     <trans-unit id="1108"><source/><target>Age of Empires</target></trans-unit>
   </body>
 </file>
-<file category="Jídlo a pití" original="25" target-language="cs">
+<file category="Jídlo a pití" original="25" target-language="en">
   <body>
     <trans-unit id="1116"><source/><target>Obložené chlebíčky</target></trans-unit>
     <trans-unit id="1117"><source/><target>Carpaccio</target></trans-unit>
@@ -1335,7 +1323,7 @@
     <trans-unit id="1239"><source/><target>Ouzo</target></trans-unit>
   </body>
 </file>
-<file category="Povolání" original="26" target-language="cs">
+<file category="Povolání" original="26" target-language="en">
   <body>
     <trans-unit id="1240"><source/><target>Advokát</target></trans-unit>
     <trans-unit id="1241"><source/><target>Anesteziolog</target></trans-unit>
@@ -1533,7 +1521,7 @@
     <trans-unit id="1433"><source/><target>Závozník</target></trans-unit>
   </body>
 </file>
-<file category="Povinná četba" original="27" target-language="cs">
+<file category="Povinná četba" original="27" target-language="en">
   <body>
     <trans-unit id="1434"><source/><target>DISABLED</target></trans-unit>
     <trans-unit id="1435"><source/><target>DISABLED</target></trans-unit>
@@ -1671,7 +1659,7 @@
     <trans-unit id="1567"><source/><target>DISABLED</target></trans-unit>
   </body>
 </file>
-<file category="Hudební nástroje" original="28" target-language="cs">
+<file category="Hudební nástroje" original="28" target-language="en">
   <body>
     <trans-unit id="1568"><source/><target>Akordeon</target></trans-unit>
     <trans-unit id="1569"><source/><target>Banjo</target></trans-unit>
@@ -1720,7 +1708,7 @@
     <trans-unit id="1612"><source/><target>Zvonkohra</target></trans-unit>
   </body>
 </file>
-<file category="Nejprodávanější singly" original="29" target-language="cs">
+<file category="Nejprodávanější singly" original="29" target-language="en">
   <body>
     <trans-unit id="1613"><source/><target>Yes Sir, I Can Boogie (Baccara)</target></trans-unit>
     <trans-unit id="1614"><source/><target>I Do It for You (Bryan Adams)</target></trans-unit>
@@ -1804,7 +1792,7 @@
     <trans-unit id="1692"><source/><target>Stronger (Kelly Clarkson)</target></trans-unit>
   </body>
 </file>
-<file category="České firmy" original="30" target-language="cs">
+<file category="České firmy" original="30" target-language="en">
   <body>
     <trans-unit id="1693"><source/><target>DISABLED</target></trans-unit>
     <trans-unit id="1694"><source/><target>DISABLED</target></trans-unit>

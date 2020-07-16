@@ -38,7 +38,7 @@ class TopicSelectionScreen extends StatelessWidget {
               maxCrossAxisExtent: 150,
               mainAxisSpacing: 10,
               crossAxisSpacing: 10,
-              children: GameData.enabledTopics
+              children: GameData.enabledTopics(Localizations.localeOf(context).languageCode)
                   .map((Topic topic) => TopicCard(topic: topic, key: Key("topic_card_${topic.id}")))
                   .toList(),
             ),

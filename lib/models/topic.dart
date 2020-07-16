@@ -20,20 +20,21 @@ class Topic extends LocalizedItem {
 
   Topic({
     this.id,
+    String baseText,
     this.color,
     this.icon,
     this.questions,
     this.sources = const [],
-  });
+  }) : super(baseText);
 
-  UnmodifiableSetView<int> get questionIDs {
+  UnmodifiableSetView<int> questionIDs(String languageCode) {
     return UnmodifiableSetView(
-      questions.values.where((question) => !question.isDisabled()).map((question) => question.id).toSet(),
+      questions.values.where((question) => !question.isDisabled(languageCode)).map((question) => question.id).toSet(),
     );
   }
 
-  List<int> asShuffledQuestionIDs() {
-    List<int> questionsCopy = List.from(questionIDs);
+  List<int> asShuffledQuestionIDs(String languageCode) {
+    List<int> questionsCopy = List.from(questionIDs(languageCode));
     questionsCopy.shuffle();
     return questionsCopy;
   }
@@ -75,6 +76,7 @@ class Topic extends LocalizedItem {
 
     return Topic(
       id: LocalizedItem.idFromJson(topicJson),
+      baseText: topicJson["source"]["\$"],
       color: colorByName(topicJson["@color"] ?? ""),
       icon: iconByName(topicJson["@icon"] ?? ""),
       questions: UnmodifiableMapView(questions),

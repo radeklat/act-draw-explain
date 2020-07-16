@@ -29,7 +29,7 @@ void main() {
         (topic) => expect(
           topic.color,
           isNotNull,
-          reason: "Topic ${topic.id} '${topic.text()}' has no or invalid color set",
+          reason: "Topic '$topic' has no or invalid color set",
         ),
       );
     });
@@ -39,7 +39,7 @@ void main() {
         (topic) => expect(
           topic.icon,
           isNotNull,
-          reason: "Topic ${topic.id} '${topic.text()}' has no or invalid icon set",
+          reason: "Topic '$topic' has no or invalid icon set",
         ),
       );
     });
@@ -49,7 +49,7 @@ void main() {
         (topic) => expect(
           topic.questions.keys,
           isNotEmpty,
-          reason: "Topic ${topic.id} '${topic.text()}' contains no questions IDs",
+          reason: "Topic '$topic' contains no questions IDs",
         ),
       );
     });

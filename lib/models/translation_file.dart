@@ -1,5 +1,6 @@
 import 'dart:collection';
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:act_draw_explain/utilities/iter.dart';
 import 'package:flutter/services.dart';
@@ -53,21 +54,28 @@ class TranslationsLoader {
     });
 
     _supportedLocales.forEach(
-      (String locale) async {
-        Map<String, dynamic> localizedItemJson = await _loadXliffAssetAsJson(itemType, locale);
+      (String languageCode) async {
+        Map<String, dynamic> localizedItemJson = await _loadXliffAssetAsJson(itemType, languageCode);
         Set<String> seenFileOriginals = {};
 
         ensureList(localizedItemJson["xliff"]["file"]).forEach((jsonFile) {
+          String transItemLanguageCode = jsonFile["@target-language"];
+          assert(
+            transItemLanguageCode == languageCode,
+            "<trans-item target-language='$transItemLanguageCode'> does not match "
+            "the $itemType/$languageCode file language code '$languageCode'",
+          );
+
           String original = jsonFile["@original"];
           assert(
             !seenFileOriginals.contains(original),
-            "<file original='$original'> appear in the $itemType/$locale file more than once",
+            "<file original='$original'> appear in the $itemType/$languageCode file more than once",
           );
           seenFileOriginals.add(original);
 
           ensureList(jsonFile["body"]["trans-unit"]).forEach(
             (itemJson) {
-              items[idFromJson(itemJson)].updateWithLocalizedJSON(itemJson, jsonFile["@target-language"]);
+              items[idFromJson(itemJson)].updateWithLocalizedJSON(itemJson, languageCode);
             },
           );
         });
@@ -81,28 +89,24 @@ class TranslationsLoader {
 abstract class LocalizedItem {
   static const DISABLED = "DISABLED";
   final int id = null;
+  final String baseText;
   HashMap<String, String> localizedTexts = HashMap();
-  static List<String> _displayLanguages = [K.defaultLocale.languageCode];
 
-  static set displayLanguages(List<String> displayLanguages) {
-    assert (displayLanguages.length >= 1);
-    _displayLanguages = displayLanguages;
-  }
-
-  static List<String> get displayLanguages {
-    return _displayLanguages;
-  }
+  LocalizedItem(this.baseText);
 
   String _unquote(String text) {
     return text.replaceAll("\\'", "'");
   }
 
-  String text([String locale]) {
-    return localizedTexts[locale ?? _displayLanguages[0]];
+  String text(String languageCode) {
+    if (!localizedTexts.containsKey(languageCode)) {
+      stderr.write("'$languageCode' translation for '$baseText' is not available");
+    }
+    return localizedTexts[languageCode];
   }
 
-  bool isDisabled([String locale]) {
-    String itemText = text(locale);
+  bool isDisabled(String languageCode) {
+    String itemText = text(languageCode);
     // Explicitly disabled or missing translation
     return itemText == DISABLED || itemText == "";
   }
@@ -115,5 +119,10 @@ abstract class LocalizedItem {
   /// topicJSON is a "trans-unit" from "<TYPE>.xliff" or "<TYPE>/<LOCALE>.xliff"
   static int idFromJson(Map<String, dynamic> itemJson) {
     return int.parse(itemJson["@id"]);
+  }
+
+  @override
+  String toString() {
+    return "$id: $baseText";
   }
 }

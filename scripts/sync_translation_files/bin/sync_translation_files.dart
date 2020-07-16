@@ -90,7 +90,30 @@ injectDisabled() {
   );
 }
 
+listFreeIDs() {
+  printHeading("List of free IDs");
+
+  [TYPE_TOPICS, TYPE_QUESTIONS].forEach((fileType) async {
+    Set<int> seenIDs = {};
+    int maxID = 0;
+    var questionsXml = await loadXliffAsset(fileType);
+    questionsXml.findAllElements("trans-unit").forEach((topic) {
+      var id = int.parse(topic.getAttribute("id"));
+      seenIDs.add(id);
+      if (id > maxID) maxID = id;
+    });
+    var freeIDs = ({for (var i = 1; i <= maxID; i += 1) i}).difference(seenIDs).toList();
+
+    printHeading(fileType, level: 2);
+    if (freeIDs.isNotEmpty) {
+      print("Free IDs out of sequence: ${freeIDs.join(", ")}");
+    }
+    print("First free sequential ID: ${maxID + 1}");
+  });
+}
+
 main() async {
   await injectCategoryNames();
   injectDisabled();
+  listFreeIDs();
 }

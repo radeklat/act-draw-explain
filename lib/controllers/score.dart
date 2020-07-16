@@ -13,6 +13,7 @@ import 'package:flutter/foundation.dart';
 class ScoreController {
   final Topic topic;
   final HashMap<int, Question> questions;
+  final String languageCode;
   List<int> _questionIDs;
   int _currentQuestionID;
   Stopwatch _stopwatch = Stopwatch();
@@ -28,13 +29,14 @@ class ScoreController {
   ScoreController({
     @required this.topic,
     @required this.questions,
+    @required this.languageCode,
     this.onNextQuestion,
     this.onGameEnd,
     this.setNewScore,
     this.logQuestion,
     maxQuestions,
   }) {
-    _questionIDs = topic.asShuffledQuestionIDs();
+    _questionIDs = topic.asShuffledQuestionIDs(languageCode);
     _maxQuestions = min(((maxQuestions ?? 0) == 0) ? _questionIDs.length : maxQuestions, _questionIDs.length);
     _questionIDs = _questionIDs.sublist(0, _maxQuestions);
 
@@ -45,7 +47,7 @@ class ScoreController {
       return;
     }
 
-    onNextQuestion?.call(questions[_currentQuestionID].text());
+    onNextQuestion?.call(questions[_currentQuestionID].text(languageCode));
     _stopwatch.start();
   }
 
@@ -92,7 +94,7 @@ class ScoreController {
     _score = newScore;
     _currentQuestionID = newQuestionID;
     _stopwatch.reset();
-    onNextQuestion?.call(questions[_currentQuestionID].text());
+    onNextQuestion?.call(questions[_currentQuestionID].text(languageCode));
   }
 
   bool get hasMoreQuestions {

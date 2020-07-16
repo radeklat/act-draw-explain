@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:act_draw_explain/constants.dart';
 import 'package:act_draw_explain/models/results.dart';
-import 'package:act_draw_explain/models/translation_file.dart';
 import 'package:act_draw_explain/screens/about.dart';
 import 'package:act_draw_explain/screens/game/end_game.dart';
 import 'package:act_draw_explain/screens/game/play/countdown.dart';
@@ -25,21 +24,16 @@ import 'analytics.dart';
 import 'generated/l10n.dart';
 import 'models/game.dart';
 
-
 main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   Crashlytics.instance.enableInDevMode = false; // Pass all uncaught errors from the framework to Crashlytics.
   FlutterError.onError = Crashlytics.instance.recordFlutterError;
 
-  await PrefService.init();
-  GameVibrations.init();
-  await GameData.initialize();
-
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   // To enable Analytics Debug mode on an emulated Android device, execute the following command line:
   //    adb shell setprop debug.firebase.analytics.app sk.lat.act_draw_explain.debug
   // This behavior persists until you explicitly disable Debug mode by executing the following command line:
@@ -48,29 +42,52 @@ class MyApp extends StatelessWidget {
   static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(analytics: analytics);
   static AppLocalizationDelegate localizationsDelegate = AppLocalizationDelegate();
 
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  bool initialized = false;
+
   Locale getLocale() {
-    Locale systemLocale = localeFromString(Platform.localeName);
-    return (localeLanguageCodeIn(systemLocale, localizationsDelegate.supportedLocales)) ? systemLocale : K.defaultLocale;
+    Locale requestedLocale = localeFromString(PrefService.getString('locale') ?? Platform.localeName);
+
+    if (localeLanguageCodeIn(requestedLocale, MyApp.localizationsDelegate.supportedLocales)) {
+      return requestedLocale;
+    }
+
+    return K.defaultLocale;
   }
 
-  // This widget is the root of your application.
+  @override
+  void initState() {
+    super.initState();
+    List<Future> initializedComponents = [PrefService.init(), GameData.initialize(), GameVibrations.init()];
+    Future.wait(initializedComponents).then((value) {
+      setState(() {
+        initialized = true;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    Locale locale = getLocale();
-    LocalizedItem.displayLanguages = [locale.languageCode];  // TODO: Change to be dynamic
+    if (!this.initialized) {
+      return LoadingScreen();
+    }
 
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<TopicBestScore>(create: (_) => TopicBestScore()),
-        Provider<Analytics>(create: (_) => Analytics(analytics)),
-        Provider<FirebaseAnalyticsObserver>.value(value: observer),
+        Provider<Analytics>(create: (_) => Analytics(MyApp.analytics)),
+        Provider<FirebaseAnalyticsObserver>.value(value: MyApp.observer),
       ],
       child: MaterialApp(
 //        debugShowCheckedModeBanner: false,
-        locale: locale,
-        supportedLocales: localizationsDelegate.supportedLocales,
+        locale: getLocale(),
+        supportedLocales: MyApp.localizationsDelegate.supportedLocales,
         localizationsDelegates: [
-          localizationsDelegate,
+          MyApp.localizationsDelegate,
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
@@ -81,7 +98,7 @@ class MyApp extends StatelessWidget {
         onGenerateTitle: (BuildContext context) => S.of(context).name,
         theme: appTheme,
         initialRoute: TopicSelectionScreen.ID,
-        navigatorObservers: <NavigatorObserver>[observer],
+        navigatorObservers: <NavigatorObserver>[MyApp.observer],
         onGenerateRoute: (settings) {
           final arguments = settings.arguments;
           return MaterialPageRoute(
@@ -111,5 +128,16 @@ class MyApp extends StatelessWidget {
         },
       ),
     );
+  }
+}
+
+class LoadingScreen extends StatelessWidget {
+  const LoadingScreen({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(home: Scaffold(body: SafeArea(child: Center(child: CircularProgressIndicator()))));
   }
 }
