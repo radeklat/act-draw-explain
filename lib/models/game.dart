@@ -1,4 +1,5 @@
 import 'dart:collection';
+import 'dart:ui';
 
 import 'package:act_draw_explain/models/question.dart';
 import 'package:act_draw_explain/models/topic.dart';
@@ -13,9 +14,10 @@ class GameData {
     return _initialized;
   }
 
-  static Future initialize([AssetLoader assetLoader]) async {
+  static Future initialize(List<Locale> supportedLocales, [AssetLoader assetLoader]) async {
     if (!_initialized) {
-      TranslationsLoader translationsLoader = TranslationsLoader(assetLoader ?? AssetLoader());
+      List<String> supportedLanguageCodes = supportedLocales.map((locale) => locale.languageCode).toList();
+      TranslationsLoader translationsLoader = TranslationsLoader(supportedLanguageCodes, assetLoader ?? AssetLoader());
 
       questions = await translationsLoader.load<Question>("questions", Question.fromJson, LocalizedItem.idFromJson);
       topics = await translationsLoader.load<Topic>("topics", Topic.fromJson, LocalizedItem.idFromJson);

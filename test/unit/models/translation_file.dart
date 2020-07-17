@@ -1,11 +1,12 @@
 // Import the test package and Counter class
+import 'package:act_draw_explain/constants.dart';
 import 'package:act_draw_explain/models/topic.dart';
 import 'package:act_draw_explain/models/translation_file.dart';
 import 'package:flutter/material.dart';
 import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
 
-import '../../mock_data.dart';
+import '../../utils/game_data.dart';
 
 const String MOCK_DUPLICATE_TOPIC_XLIFF = """
   <?xml version='1.0' encoding='UTF-8'?>
@@ -26,7 +27,7 @@ void main() {
       var assetLoader = MockAssetLoader();
       when(assetLoader.loadString("assets/data/topics.xliff"))
           .thenAnswer((_) => Future.value(MOCK_DUPLICATE_TOPIC_XLIFF));
-      var loader = TranslationsLoader(assetLoader);
+      var loader = TranslationsLoader([K.defaultLocale.languageCode], assetLoader);
 
       expect(
         () async {

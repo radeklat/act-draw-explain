@@ -62,7 +62,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    List<Future> initializedComponents = [PrefService.init(), GameData.initialize(), GameVibrations.init()];
+    List<Future> initializedComponents = [PrefService.init(), GameData.initialize(MyApp.localizationsDelegate.supportedLocales), GameVibrations.init()];
     Future.wait(initializedComponents).then((value) {
       setState(() {
         initialized = true;

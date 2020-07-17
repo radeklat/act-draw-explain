@@ -2,12 +2,13 @@
 import 'package:act_draw_explain/models/game.dart';
 import 'package:test/test.dart';
 
-import '../../mock_data.dart';
+import '../../utils/game_data.dart';
 
 void main() {
   group('Topics', () {
     setUpAll(() async {
-      await GameData.initialize(LocalAssetLoader());
+      var loader = LocalAssetLoader();
+      await GameData.initialize(loader.supportedLocales, loader);
     });
 
     test('should should not be empty', () async {

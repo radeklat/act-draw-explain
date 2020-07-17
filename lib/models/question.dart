@@ -7,6 +7,6 @@ class Question extends LocalizedItem {
 
   /// questionJson is a "trans-unit" from "topics.xliff"
   static Question fromJson(Map<String, dynamic> questionJson) {
-    return Question(id: LocalizedItem.idFromJson(questionJson));
+    return Question(id: LocalizedItem.idFromJson(questionJson), baseText: questionJson["source"]["\$"]);
   }
 }

@@ -12,6 +12,7 @@ import 'package:act_draw_explain/widgets/progress_button.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:preferences/preference_service.dart';
 import 'package:provider/provider.dart';
 import 'package:wakelock/wakelock.dart';
@@ -77,27 +78,33 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
         });
       },
     );
-    scoreController = ScoreController(
-      topic: GameData.topics[widget.topicID],
-      questions: GameData.questions,
-      languageCode: Localizations.localeOf(context).languageCode,
-      onNextQuestion: (newQuestion) {
-        setState(() {
-          questionText = newQuestion;
-        });
-      },
-      logQuestion: (topic, question, duration, state) =>
-          Provider.of<Analytics>(context, listen: false).playedQuestion(topic, question, duration, state, gameDuration),
-      onGameEnd: (gameResult) {
-        Provider.of<Analytics>(context, listen: false)
-            .playedGame(GameData.topics[widget.topicID], gameDuration, gameResult);
-        Navigator.pushReplacementNamed(context, EndGameScreen.ID, arguments: gameResult);
-      },
-      setNewScore: (newScore) {
-        Provider.of<TopicBestScore>(context, listen: false).record(topicID: widget.topicID, newScore: newScore);
-      },
-      maxQuestions: int.parse(PrefService.getString(K_SETTINGS_GAME_CARDS_COUNT) ?? "$K_GAME_CARDS_COUNT_DEFAULT"),
-    );
+
+    // `Localizations.localeOf(context).languageCode` is not available directly in initState
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      setState(() {
+        scoreController = ScoreController(
+          topic: GameData.topics[widget.topicID],
+          questions: GameData.questions,
+          languageCode: Localizations.localeOf(context).languageCode,
+          onNextQuestion: (newQuestion) {
+            setState(() {
+              questionText = newQuestion;
+            });
+          },
+          logQuestion: (topic, question, duration, state) => Provider.of<Analytics>(context, listen: false)
+              .playedQuestion(topic, question, duration, state, gameDuration),
+          onGameEnd: (gameResult) {
+            Provider.of<Analytics>(context, listen: false)
+                .playedGame(GameData.topics[widget.topicID], gameDuration, gameResult);
+            Navigator.pushReplacementNamed(context, EndGameScreen.ID, arguments: gameResult);
+          },
+          setNewScore: (newScore) {
+            Provider.of<TopicBestScore>(context, listen: false).record(topicID: widget.topicID, newScore: newScore);
+          },
+          maxQuestions: int.parse(PrefService.getString(K_SETTINGS_GAME_CARDS_COUNT) ?? "$K_GAME_CARDS_COUNT_DEFAULT"),
+        );
+      });
+    });
   }
 
   @override
@@ -129,7 +136,7 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
                     CountdownText(
-                      onFinished: scoreController.endGame,
+                      onFinished: scoreController?.endGame,
                       duration: gameDuration,
                       style: Theme.of(context).textTheme.headline4,
                     ),

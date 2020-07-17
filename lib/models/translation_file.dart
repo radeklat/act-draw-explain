@@ -8,25 +8,29 @@ import 'package:xml2json/xml2json.dart';
 
 import '../constants.dart';
 
-// TODO: Replace with `localizationsDelegate.supportedLocales`
-UnmodifiableListView<String> _supportedLocales = UnmodifiableListView(["cs", "en"]);
-
 class AssetLoader {
-  Future<String> loadString(filename) async {
-    return await rootBundle.loadString(filename);
+  static const String ASSETS_DIR = "assets/data";
+
+  Future<String> loadString(String type, [String locale]) async {
+    return await rootBundle.loadString(languageFile(type, locale));
+  }
+
+  String languageFile(String type, [String locale]) {
+    locale = (locale == null) ? "" : "/$locale";
+    return '$ASSETS_DIR/$type$locale.xliff';
   }
 }
 
 class TranslationsLoader {
   final AssetLoader assetFileLoader;
+  final List<String> supportedLanguageCodes;
 
-  TranslationsLoader(this.assetFileLoader);
+  TranslationsLoader(this.supportedLanguageCodes, this.assetFileLoader);
 
   /// Returns XLIFF document as JSON in Badgerfish Convention
   /// See: http://wiki.open311.org/JSON_and_XML_Conversion/
   Future<Map<String, dynamic>> _loadXliffAssetAsJson(String type, [String locale]) async {
-    locale = (locale == null) ? "" : "/$locale";
-    String xmlContent = await assetFileLoader.loadString('assets/data/$type$locale.xliff');
+    String xmlContent = await assetFileLoader.loadString(type, locale);
     var xmlToJson = Xml2Json();
     xmlToJson.parse(xmlContent);
     return jsonDecode(xmlToJson.toBadgerfish());
@@ -53,7 +57,7 @@ class TranslationsLoader {
       );
     });
 
-    _supportedLocales.forEach(
+    supportedLanguageCodes.forEach(
       (String languageCode) async {
         Map<String, dynamic> localizedItemJson = await _loadXliffAssetAsJson(itemType, languageCode);
         Set<String> seenFileOriginals = {};
