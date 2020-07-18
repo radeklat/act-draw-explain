@@ -179,5 +179,8 @@
   "@help_advanced_game_title": {"description": "Section title on the help screen"},
 
   "help_advanced_game_par_1": "Although the application does not yet prompt this and has not optimized question selection process, it is possible to guess by demonstration (pantomime) or drawing.",
-  "@help_advanced_game_par_1": {"description": "Paragraph of text on the help screen"}
+  "@help_advanced_game_par_1": {"description": "Paragraph of text on the help screen"},
+
+  "loading_data": "Loading game data",
+  "@loading_data": {"description": "Message displayed when game data are loading"}
 }

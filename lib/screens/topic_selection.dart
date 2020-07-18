@@ -73,7 +73,16 @@ class LoadingAnimation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: CircularProgressIndicator());
+    return Center(child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Text(S.of(context).loading_data, style: Theme.of(context).textTheme.headline6),
+        Padding(
+          padding: const EdgeInsets.only(top: 64, bottom: 128),
+          child: CircularProgressIndicator(),
+        ),
+      ],
+    ));
   }
 }
 

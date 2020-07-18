@@ -11,10 +11,12 @@ import 'package:act_draw_explain/screens/help.dart';
 import 'package:act_draw_explain/screens/settings.dart';
 import 'package:act_draw_explain/screens/topic_selection.dart';
 import 'package:act_draw_explain/utilities/intl.dart';
+import 'package:act_draw_explain/utilities/logging.dart';
 import 'package:act_draw_explain/utilities/vibrations.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:preferences/preferences.dart';
@@ -30,6 +32,8 @@ main() async {
   FlutterError.onError = Crashlytics.instance.recordFlutterError;
   await PrefService.init();
   await GameVibrations.init();
+  Logger.logLevel = (kReleaseMode) ? Logger.WARNING : Logger.DEBUG;
+  Logger.blacklist = {"TiltEvent.other", "TiltEvent.movement", "TiltEvent.detection"};
 
   runApp(MyApp());
 }

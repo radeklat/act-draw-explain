@@ -1,12 +1,11 @@
 import 'dart:collection';
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:act_draw_explain/utilities/iter.dart';
+import 'package:act_draw_explain/utilities/logging.dart';
 import 'package:flutter/services.dart';
 import 'package:xml2json/xml2json.dart';
 
-import '../constants.dart';
 
 class AssetLoader {
   static const String ASSETS_DIR = "assets/data";
@@ -24,6 +23,8 @@ class AssetLoader {
 class TranslationsLoader {
   final AssetLoader assetFileLoader;
   final List<String> supportedLanguageCodes;
+  final _log = Logger("TranslationsLoader");
+  final _xmlToJson = Xml2Json();
 
   TranslationsLoader(this.supportedLanguageCodes, this.assetFileLoader);
 
@@ -31,9 +32,15 @@ class TranslationsLoader {
   /// See: http://wiki.open311.org/JSON_and_XML_Conversion/
   Future<Map<String, dynamic>> _loadXliffAssetAsJson(String type, [String locale]) async {
     String xmlContent = await assetFileLoader.loadString(type, locale);
-    var xmlToJson = Xml2Json();
-    xmlToJson.parse(xmlContent);
-    return jsonDecode(xmlToJson.toBadgerfish());
+    _log.debug("XML loaded");
+
+    _xmlToJson.parse(xmlContent);
+    _log.debug("XML parsed");
+    var jsonString = _xmlToJson.toBadgerfish();
+    _log.debug("XML converted to JSON");
+    var decodedJson = jsonDecode(jsonString);
+    _log.debug("JSON decoded");
+    return decodedJson;
   }
 
   Future<HashMap<int, Item>> load<Item extends LocalizedItem>(
@@ -41,16 +48,18 @@ class TranslationsLoader {
     Function itemFromJson,
     Function idFromJson,
   ) async {
+    _log.debug("Loading file with $itemType");
     Map<String, dynamic> _jsonRoot = await _loadXliffAssetAsJson(itemType);
+    _log.debug("Processing $itemType");
     HashMap<int, Item> items = HashMap();
 
     ensureList(_jsonRoot["xliff"]["file"]).forEach((fileJson) {
       ensureList(fileJson["body"]["trans-unit"]).forEach(
-            (itemJson) {
+        (itemJson) {
           Item item = itemFromJson(itemJson);
           assert(
-          !items.containsKey(item.id),
-          "$itemType with ID '${item.id}' appear in the source file more than once",
+            !items.containsKey(item.id),
+            "$itemType with ID '${item.id}' appear in the source file more than once",
           );
           items[item.id] = item;
         },
@@ -58,32 +67,36 @@ class TranslationsLoader {
     });
 
     for (String languageCode in supportedLanguageCodes) {
+      _log.debug("Loading file with $itemType/$languageCode");
       Map<String, dynamic> localizedItemJson = await _loadXliffAssetAsJson(itemType, languageCode);
+      _log.debug("Processing $itemType/$languageCode");
       Set<String> seenFileOriginals = {};
 
       ensureList(localizedItemJson["xliff"]["file"]).forEach((jsonFile) {
         String transItemLanguageCode = jsonFile["@target-language"];
         assert(
-        transItemLanguageCode == languageCode,
-        "<trans-item target-language='$transItemLanguageCode'> does not match "
-            "the $itemType/$languageCode file language code '$languageCode'",
+          transItemLanguageCode == languageCode,
+          "<trans-item target-language='$transItemLanguageCode'> does not match "
+          "the $itemType/$languageCode file language code '$languageCode'",
         );
 
         String original = jsonFile["@original"];
         assert(
-        !seenFileOriginals.contains(original),
-        "<file original='$original'> appear in the $itemType/$languageCode file more than once",
+          !seenFileOriginals.contains(original),
+          "<file original='$original'> appear in the $itemType/$languageCode file more than once",
         );
         seenFileOriginals.add(original);
 
         ensureList(jsonFile["body"]["trans-unit"]).forEach(
-              (itemJson) {
+          (itemJson) {
             items[idFromJson(itemJson)].updateWithLocalizedJSON(itemJson, languageCode);
           },
         );
       });
-  };
+      _log.debug("File with $itemType/$languageCode loaded");
+    }
 
+    _log.debug("File with $itemType loaded");
     return items;
   }
 }
@@ -92,6 +105,7 @@ abstract class LocalizedItem {
   static const DISABLED = "DISABLED";
   final int id = null;
   final String baseText;
+  final _log = Logger("LocalizedItem");
   HashMap<String, String> localizedTexts = HashMap();
 
   LocalizedItem(this.baseText);
@@ -101,6 +115,8 @@ abstract class LocalizedItem {
   }
 
   String text(String languageCode) {
+    _log.when(!localizedTexts.containsKey(languageCode)).error("'$this' does not exist in '$languageCode'");
+    _log.when(localizedTexts[languageCode] == null).error("'$this' is set to 'null' in '$languageCode'");
     return localizedTexts[languageCode];
   }
 

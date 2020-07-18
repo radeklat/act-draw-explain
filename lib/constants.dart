@@ -48,7 +48,7 @@ const K_TILT_THROTTLE = Duration(seconds: 1);
 enum DebugLevel { all, movement, none }
 enum FeedbackType { bug, feature }
 
-const DebugLevel K_DEBUG_TILT_SENSORS = DebugLevel.none;
+const DebugLevel K_DEBUG_TILT_SENSORS = DebugLevel.movement;
 
 class _URL {
   static const String REPO = "https://github.com/radeklat/act-draw-explain";

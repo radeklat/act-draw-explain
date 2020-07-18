@@ -60,6 +60,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "help_how_to_play_par_2" : MessageLookupByLibrary.simpleMessage("Způsob odpovídání na otázky lze změnit v nastaveních."),
     "help_how_to_play_tilt_par_1" : MessageLookupByLibrary.simpleMessage("Telefon je nutné mít přitisknutý na čele. Správná odpověď se zvolí naklopením displeje dolu, špatná naklopením nahoru."),
     "help_how_to_play_title" : MessageLookupByLibrary.simpleMessage("Jak hrát"),
+    "loading_data" : MessageLookupByLibrary.simpleMessage("Načítání herních dat"),
     "menu_about" : MessageLookupByLibrary.simpleMessage("O aplikaci"),
     "menu_feedback" : MessageLookupByLibrary.simpleMessage("Zpětná vazba"),
     "menu_feedback_bug_report" : MessageLookupByLibrary.simpleMessage("Nahlásit chybu"),

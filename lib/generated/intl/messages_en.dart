@@ -60,6 +60,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "help_how_to_play_par_2" : MessageLookupByLibrary.simpleMessage("The method of answering questions can be changed in the settings."),
     "help_how_to_play_tilt_par_1" : MessageLookupByLibrary.simpleMessage("The phone should placed on you forehead. The correct answer is chosen by tilting the display down, the wrong one by tilting up."),
     "help_how_to_play_title" : MessageLookupByLibrary.simpleMessage("How to play"),
+    "loading_data" : MessageLookupByLibrary.simpleMessage("Loading game data"),
     "menu_about" : MessageLookupByLibrary.simpleMessage("About"),
     "menu_feedback" : MessageLookupByLibrary.simpleMessage("Feedback"),
     "menu_feedback_bug_report" : MessageLookupByLibrary.simpleMessage("Report a bug"),

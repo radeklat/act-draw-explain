@@ -114,5 +114,7 @@
   "help_advanced_game_title": "Hry pro pokročilé",
   "@help_advanced_game_title": {},
   "help_advanced_game_par_1": "I když k tomu aplikace zatím nevybízí a není k tomu optimalizovaná při výběru otázek, je možné hádat i předvedením (pantomimou) nebo nakreslením.",
-  "@help_advanced_game_par_1": {}
+  "@help_advanced_game_par_1": {},
+  "loading_data": "Načítání herních dat",
+  "@loading_data": {}
 }

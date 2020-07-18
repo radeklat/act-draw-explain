@@ -548,6 +548,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Loading game data`
+  String get loading_data {
+    return Intl.message(
+      'Loading game data',
+      name: 'loading_data',
+      desc: 'Message displayed when game data are loading',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
