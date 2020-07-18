@@ -27,7 +27,7 @@ void main() {
       var assetLoader = MockAssetLoader();
       when(assetLoader.loadString("assets/data/topics.xliff"))
           .thenAnswer((_) => Future.value(MOCK_DUPLICATE_TOPIC_XLIFF));
-      var loader = TranslationsLoader([K.defaultLocale.languageCode], assetLoader);
+      var loader = TranslationsLoader([K.settings.locales.defaultValue], assetLoader);
 
       expect(
         () async {

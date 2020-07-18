@@ -43,7 +43,7 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
   StreamSubscription<dynamic> sensorStream;
 
   void initGameControl() {
-    final String gameControlType = PrefService.getString(K_SETTINGS_GAME_CONTROL);
+    final String gameControlType = PrefService.getString(K.settings.game.control.key);
 
     if (gameControlType == K_GAME_CONTROL_SCREEN_TILT) {
       setPreferredOrientationsLandscape();
@@ -67,7 +67,7 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
     initGameControl();
 
     gameDuration = Duration(
-      seconds: PrefService.getInt(K_SETTINGS_GAME_DURATION) ?? K_GAME_DURATION_DEFAULT,
+      seconds: PrefService.getInt(K.settings.game.duration.key) ?? K.settings.game.duration.defaultValue,
     );
 
     answerColorAnimation = AnswerColorAnimation(
@@ -101,7 +101,7 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
           setNewScore: (newScore) {
             Provider.of<TopicBestScore>(context, listen: false).record(topicID: widget.topicID, newScore: newScore);
           },
-          maxQuestions: int.parse(PrefService.getString(K_SETTINGS_GAME_CARDS_COUNT) ?? "$K_GAME_CARDS_COUNT_DEFAULT"),
+          maxQuestions: int.parse(PrefService.getString(K.settings.game.cardsCount.key) ?? "${K.settings.game.cardsCount.defaultValue}"),
         );
       });
     });

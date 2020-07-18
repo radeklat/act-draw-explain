@@ -71,6 +71,7 @@ Locale is in form of `<LANGUAGE CODE>` or `<LANGUAGE CODE>_<COUNTRY CODE>`, wher
 1. Add the string into `lib/I10n/intl_en.arb` (this is the base language). See also  [Plurals and genders](#plurals-and-genders).
 2. Run `flutter pub run intl_utils:generate` to generate boilerplate code
 3. Use the boilerplate in the codebase as `S.of(context).NAME` where `NAME` is name of the string.
+4. Translate the string to other languages.
 
 ## Game data
 

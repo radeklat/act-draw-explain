@@ -71,7 +71,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "settings_game_length" : MessageLookupByLibrary.simpleMessage("Délka hry"),
     "settings_interface_next_question" : MessageLookupByLibrary.simpleMessage("Přechod na další otázku"),
     "settings_interface_vibrations" : MessageLookupByLibrary.simpleMessage("Vibrace ve hře"),
+    "settings_language" : MessageLookupByLibrary.simpleMessage("Jazyk"),
+    "settings_language_description" : MessageLookupByLibrary.simpleMessage("Ovlivňuje rozhraní aplikace, témata a otázky. Vyžaduje restart."),
     "settings_title_interface" : MessageLookupByLibrary.simpleMessage("Rozhraní"),
+    "settings_title_languages" : MessageLookupByLibrary.simpleMessage("Jazyky"),
     "settings_title_options" : MessageLookupByLibrary.simpleMessage("Nastavení hry"),
     "start_game_button" : MessageLookupByLibrary.simpleMessage("Start hry"),
     "start_game_prompt" : MessageLookupByLibrary.simpleMessage("Jste připraveni ke hře?")

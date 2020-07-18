@@ -35,22 +35,12 @@ const Duration K_DURATION_START_GAME = Duration(seconds: (kReleaseMode) ? 5 : 5)
 const Duration K_DURATION_PASS_FAIL_ANIMATION = Duration(milliseconds: 500);
 
 const List<int> K_GAME_DURATION_VALUES = [30, 60, 90, 2 * 60, 3 * 60, 5 * 60, 0];
-const int K_GAME_DURATION_DEFAULT = 90;
 
 const String K_GAME_CONTROL_BUTTONS = "buttons";
 const String K_GAME_CONTROL_SCREEN_TILT = "screen_tilt";
 const String K_GAME_CONTROL_BOTH = "buttons_and_tilt";
 
 const List<String> K_GAME_CONTROL_VALUES = [K_GAME_CONTROL_BUTTONS, K_GAME_CONTROL_SCREEN_TILT, K_GAME_CONTROL_BOTH];
-const String K_GAME_CONTROL_DEFAULT = K_GAME_CONTROL_BOTH;
-const bool K_GAME_VIBRATE_DEFAULT = true;
-const int K_GAME_CARDS_COUNT_DEFAULT = 20;
-
-const String K_SETTINGS_PREFIX = "settings.";
-const String K_SETTINGS_GAME_DURATION = "${K_SETTINGS_PREFIX}game.duration";
-const String K_SETTINGS_GAME_CARDS_COUNT = "${K_SETTINGS_PREFIX}game.cards.count";
-const String K_SETTINGS_GAME_CONTROL = "${K_SETTINGS_PREFIX}game.control";
-const String K_SETTINGS_GAME_VIBRATE = "${K_SETTINGS_PREFIX}game.vibrate";
 
 const K_SENSORS_THROTTLE = Duration(milliseconds: 100);
 const K_TILT_THROTTLE = Duration(seconds: 1);
@@ -69,7 +59,32 @@ class _URL {
   });
 }
 
+class KeyDefault {
+  final String key;
+  final dynamic defaultValue;
+
+  KeyDefault(this.key, this.defaultValue);
+
+  String get keyUnderscored {
+    return key.replaceAll(".", "_");
+  }
+}
+
+class _Settings {
+  static const _PREFIX = "settings";
+  final locales = KeyDefault("$_PREFIX.locales", "en");
+  final game = _Game();
+}
+
+class _Game {
+  static const _PREFIX = "game";
+  final duration = KeyDefault("${_Settings._PREFIX}$_PREFIX.duration", 90);
+  final cardsCount = KeyDefault("${_Settings._PREFIX}$_PREFIX.card.count", 20);
+  final control = KeyDefault("${_Settings._PREFIX}$_PREFIX.control", K_GAME_CONTROL_BOTH);
+  final vibrate = KeyDefault("${_Settings._PREFIX}$_PREFIX.vibrate", true);
+}
+
 class K {
   static final url = _URL();
-  static final defaultLocale = Locale("en");
+  static final settings = _Settings();
 }

@@ -43,6 +43,36 @@ class S {
     );
   }
 
+  /// `Languages`
+  String get settings_title_languages {
+    return Intl.message(
+      'Languages',
+      name: 'settings_title_languages',
+      desc: 'Settings title for laguages',
+      args: [],
+    );
+  }
+
+  /// `Language`
+  String get settings_language {
+    return Intl.message(
+      'Language',
+      name: 'settings_language',
+      desc: 'Settings / Laguage',
+      args: [],
+    );
+  }
+
+  /// `Affects app UI, topics and questions. Requires restart.`
+  String get settings_language_description {
+    return Intl.message(
+      'Affects app UI, topics and questions. Requires restart.',
+      name: 'settings_language_description',
+      desc: 'Settings / Laguage',
+      args: [],
+    );
+  }
+
   /// `Buttons`
   String get game_control_buttons {
     return Intl.message(

@@ -1,5 +1,6 @@
 import 'package:act_draw_explain/analytics.dart';
 import 'package:act_draw_explain/generated/l10n.dart';
+import 'package:act_draw_explain/utilities/intl.dart';
 import 'package:act_draw_explain/utilities/vibrations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,21 +11,30 @@ import '../constants.dart';
 
 class SettingsScreen extends StatefulWidget {
   static const String ID = "settings_screen";
+  final List<Locale> supportedLocales;
+
+  const SettingsScreen({Key key, this.supportedLocales}) : super(key: key);
 
   @override
   _SettingsScreenState createState() => _SettingsScreenState();
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  void onChange(String settingsKey) {
+  void onChange(KeyDefault setting) {
     final allSettings = {
-      K_SETTINGS_GAME_DURATION: PrefService.getInt(K_SETTINGS_GAME_DURATION) ?? K_GAME_DURATION_DEFAULT,
-      K_SETTINGS_GAME_CARDS_COUNT: PrefService.getString(K_SETTINGS_GAME_CARDS_COUNT) ?? K_GAME_CARDS_COUNT_DEFAULT,
-      K_SETTINGS_GAME_CONTROL: PrefService.getString(K_SETTINGS_GAME_CONTROL) ?? K_GAME_CONTROL_DEFAULT,
-      K_SETTINGS_GAME_VIBRATE: PrefService.getBool(K_SETTINGS_GAME_VIBRATE) ?? K_GAME_VIBRATE_DEFAULT,
-    }.map((key, value) => MapEntry(key.replaceAll(".", "_"), value));
+      K.settings.game.duration: PrefService.getInt,
+      K.settings.game.cardsCount: PrefService.getString,
+      K.settings.game.control: PrefService.getString,
+      K.settings.game.vibrate: PrefService.getBool,
+      K.settings.locales: PrefService.getString
+    }.map(
+      (_setting, getFunc) => MapEntry(
+        _setting.keyUnderscored,
+        getFunc(_setting.key) ?? _setting.defaultValue,
+      ),
+    );
 
-    Provider.of<Analytics>(context, listen: false).settingsChanged(settingsKey.replaceAll(".", "_"), allSettings);
+    Provider.of<Analytics>(context, listen: false).settingsChanged(setting.keyUnderscored, allSettings);
   }
 
   @override
@@ -33,11 +43,23 @@ class _SettingsScreenState extends State<SettingsScreen> {
       body: SafeArea(
         child: PreferencePage(
           [
+            PreferenceTitle(S.of(context).settings_title_languages),
+            DropdownPreference(
+              S.of(context).settings_language,
+              K.settings.locales.key,
+              desc: S.of(context).settings_language_description,
+              defaultVal: Localizations.localeOf(context).toString(),
+              values: widget.supportedLocales.map((locale) => locale.languageCode).toList(),
+              displayValues: widget.supportedLocales
+                  .map((locale) => isoLanguages[locale.languageCode].nativeName)
+                  .toList(),
+              onChange: (_val) => this.onChange(K.settings.locales),
+            ),
             PreferenceTitle(S.of(context).settings_title_options),
             DropdownPreference(
               S.of(context).settings_game_length,
-              K_SETTINGS_GAME_DURATION,
-              defaultVal: K_GAME_DURATION_DEFAULT,
+              K.settings.game.duration.key,
+              defaultVal: K.settings.game.duration.defaultValue,
               values: K_GAME_DURATION_VALUES,
               displayValues: [
                 S.of(context).duration_seconds(K_GAME_DURATION_VALUES[0]),
@@ -48,12 +70,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 S.of(context).duration_minutes(K_GAME_DURATION_VALUES[5] ~/ 60),
                 S.of(context).duration_unlimited,
               ],
-              onChange: (_val) => this.onChange(K_SETTINGS_GAME_DURATION),
+              onChange: (_val) => this.onChange(K.settings.game.duration),
             ),
             TextFieldPreference(
               S.of(context).settings_game_card_limit,
-              K_SETTINGS_GAME_CARDS_COUNT,
-              defaultVal: K_GAME_CARDS_COUNT_DEFAULT.toString(),
+              K.settings.game.cardsCount.key,
+              defaultVal: K.settings.game.cardsCount.defaultValue.toString(),
               keyboardType: TextInputType.numberWithOptions(),
               validator: (value) {
                 try {
@@ -64,27 +86,27 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
                 return null;
               },
-              onChange: (_val) => this.onChange(K_SETTINGS_GAME_CARDS_COUNT),
+              onChange: (_val) => this.onChange(K.settings.game.cardsCount),
             ),
             PreferenceTitle(S.of(context).settings_title_interface),
             DropdownPreference(
               S.of(context).settings_interface_next_question,
-              K_SETTINGS_GAME_CONTROL,
-              defaultVal: K_GAME_CONTROL_DEFAULT,
+              K.settings.game.control.key,
+              defaultVal: K.settings.game.control.defaultValue,
               values: K_GAME_CONTROL_VALUES,
               displayValues: [
                 S.of(context).game_control_buttons,
                 S.of(context).game_control_screen_tilt,
                 S.of(context).game_control_buttons_and_tilt,
               ],
-              onChange: (_val) => this.onChange(K_SETTINGS_GAME_CONTROL),
+              onChange: (_val) => this.onChange(K.settings.game.control),
             ),
             SwitchPreference(
               S.of(context).settings_interface_vibrations,
-              K_SETTINGS_GAME_VIBRATE,
-              defaultVal: K_GAME_VIBRATE_DEFAULT,
+              K.settings.game.vibrate.key,
+              defaultVal: K.settings.game.vibrate.defaultValue,
               disabled: !GameVibrations.hasVibrator,
-              onChange: () => this.onChange(K_SETTINGS_GAME_VIBRATE),
+              onChange: () => this.onChange(K.settings.game.vibrate),
             ),
           ],
         ),

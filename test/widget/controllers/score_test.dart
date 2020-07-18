@@ -21,7 +21,7 @@ Topic fakeTopic = Topic(
   questions: UnmodifiableMapView(fakeQuestions),
 )..updateWithLocalizedJSON({
     "target": {"\$": "Fake topic"}
-  }, K.defaultLocale.languageCode);
+  }, K.settings.locales.defaultValue);
 
 Topic fakeEmptyTopic = Topic(
   id: fakeTopic.id,
@@ -34,7 +34,7 @@ Question fakeQuestion(int id, [String text]) {
   return Question(id: id)
     ..updateWithLocalizedJSON({
       "target": {"\$": text ?? "Question $id"}
-    }, K.defaultLocale.languageCode);
+    }, K.settings.locales.defaultValue);
 }
 
 void main() {
@@ -44,7 +44,7 @@ void main() {
       var sc = ScoreController(
         topic: fakeTopic,
         questions: fakeQuestions,
-        languageCode: K.defaultLocale.languageCode,
+        languageCode: K.settings.locales.defaultValue,
         onNextQuestion: (str) {
           nextQuestion = str;
         },
@@ -62,7 +62,7 @@ void main() {
       ScoreController sc = ScoreController(
         topic: fakeTopic,
         questions: fakeQuestions,
-        languageCode: K.defaultLocale.languageCode,
+        languageCode: K.settings.locales.defaultValue,
         onGameEnd: (gameResult) {
           result = gameResult;
         },
@@ -94,7 +94,7 @@ void main() {
       ScoreController(
         topic: fakeEmptyTopic,
         questions: fakeQuestions,
-        languageCode: K.defaultLocale.languageCode,
+        languageCode: K.settings.locales.defaultValue,
         onGameEnd: (gameResult) {
           result = gameResult;
         },
@@ -108,7 +108,7 @@ void main() {
       ScoreController(
         topic: fakeTopic,
         questions: fakeQuestions,
-        languageCode: K.defaultLocale.languageCode,
+        languageCode: K.settings.locales.defaultValue,
         onGameEnd: (gameResult) {
           result = gameResult;
         },
@@ -123,7 +123,7 @@ void main() {
       ScoreController sc = ScoreController(
         topic: fakeTopic,
         questions: fakeQuestions,
-        languageCode: K.defaultLocale.languageCode,
+        languageCode: K.settings.locales.defaultValue,
       );
       List.generate(fakeQuestions.length - 1, (index) {
         expect(sc.hasMoreQuestions, true, reason: "hasMoreQuestions during round ${index + 1}/${fakeQuestions.length}");
@@ -139,7 +139,7 @@ void main() {
       ScoreController sc = ScoreController(
         topic: fakeTopic,
         questions: fakeQuestions,
-        languageCode: K.defaultLocale.languageCode,
+        languageCode: K.settings.locales.defaultValue,
         logQuestion: (Topic t, Question q, Duration d, QuestionState qs) {
           expect(t, fakeTopic, reason: "Topic in $expectedState");
           expect(q, isIn(fakeQuestions.values), reason: "Question in $expectedState");

@@ -50,13 +50,13 @@ class _MyAppState extends State<MyApp> {
   bool initialized = false;
 
   Locale getLocale() {
-    Locale requestedLocale = localeFromString(PrefService.getString('locale') ?? Platform.localeName);
+    Locale requestedLocale = localeFromString(PrefService.getString(K.settings.locales.key) ?? Platform.localeName);
 
     if (localeLanguageCodeIn(requestedLocale, MyApp.localizationsDelegate.supportedLocales)) {
       return requestedLocale;
     }
 
-    return K.defaultLocale;
+    return Locale(K.settings.locales.defaultValue);
   }
 
   @override
@@ -116,7 +116,7 @@ class _MyAppState extends State<MyApp> {
                 case CountdownScreen.ID:
                   return CountdownScreen(topicID: arguments);
                 case SettingsScreen.ID:
-                  return SettingsScreen();
+                  return SettingsScreen(supportedLocales: MyApp.localizationsDelegate.supportedLocales,);
                 case HelpScreen.ID:
                   return HelpScreen();
                 case AboutScreen.ID:
