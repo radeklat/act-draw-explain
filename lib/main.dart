@@ -22,13 +22,14 @@ import 'package:provider/provider.dart';
 
 import 'analytics.dart';
 import 'generated/l10n.dart';
-import 'models/game.dart';
 
 main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   Crashlytics.instance.enableInDevMode = false; // Pass all uncaught errors from the framework to Crashlytics.
   FlutterError.onError = Crashlytics.instance.recordFlutterError;
+  await PrefService.init();
+  await GameVibrations.init();
 
   runApp(MyApp());
 }
@@ -55,30 +56,10 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  bool initialized = false;
   Locale locale;
 
   @override
-  void initState() {
-    super.initState();
-    List<Future> initializedComponents = [
-      PrefService.init(),
-      GameData.initialize(MyApp.localizationsDelegate.supportedLocales),
-      GameVibrations.init()
-    ];
-    Future.wait(initializedComponents).then((value) {
-      setState(() {
-        initialized = true;
-      });
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
-    if (!this.initialized) {
-      return LoadingScreen();
-    }
-
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<TopicBestScore>(create: (_) => TopicBestScore()),
@@ -140,16 +121,5 @@ class _MyAppState extends State<MyApp> {
         },
       ),
     );
-  }
-}
-
-class LoadingScreen extends StatelessWidget {
-  const LoadingScreen({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(home: Scaffold(body: SafeArea(child: Center(child: CircularProgressIndicator()))));
   }
 }

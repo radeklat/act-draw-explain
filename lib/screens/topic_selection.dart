@@ -4,6 +4,7 @@ import 'package:act_draw_explain/models/game.dart';
 import 'package:act_draw_explain/models/topic.dart';
 import 'package:act_draw_explain/utilities/device_info.dart';
 import 'package:act_draw_explain/utilities/urls.dart';
+import 'package:act_draw_explain/utilities/vibrations.dart';
 import 'package:act_draw_explain/widgets/topic/card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,12 +13,30 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 
 import '../constants.dart';
+import '../main.dart';
 import 'about.dart';
 import 'help.dart';
 import 'settings.dart';
 
-class TopicSelectionScreen extends StatelessWidget {
+class TopicSelectionScreen extends StatefulWidget {
   static const String ID = "topic_selection_screen";
+
+  @override
+  _TopicSelectionScreenState createState() => _TopicSelectionScreenState();
+}
+
+class _TopicSelectionScreenState extends State<TopicSelectionScreen> {
+  bool initialized = false;
+
+  @override
+  void initState() {
+    super.initState();
+    GameData.initialize(MyApp.localizationsDelegate.supportedLocales).then((value) {
+      setState(() {
+        initialized = true;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +49,7 @@ class TopicSelectionScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Column(
+      body: (!this.initialized) ? LoadingAnimation() : Column(
         children: <Widget>[
           Expanded(
             child: GridView.extent(
@@ -46,6 +65,15 @@ class TopicSelectionScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class LoadingAnimation extends StatelessWidget {
+  const LoadingAnimation({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(child: CircularProgressIndicator());
   }
 }
 

@@ -46,45 +46,43 @@ class TranslationsLoader {
 
     ensureList(_jsonRoot["xliff"]["file"]).forEach((fileJson) {
       ensureList(fileJson["body"]["trans-unit"]).forEach(
-        (itemJson) {
+            (itemJson) {
           Item item = itemFromJson(itemJson);
           assert(
-            !items.containsKey(item.id),
-            "$itemType with ID '${item.id}' appear in the source file more than once",
+          !items.containsKey(item.id),
+          "$itemType with ID '${item.id}' appear in the source file more than once",
           );
           items[item.id] = item;
         },
       );
     });
 
-    supportedLanguageCodes.forEach(
-      (String languageCode) async {
-        Map<String, dynamic> localizedItemJson = await _loadXliffAssetAsJson(itemType, languageCode);
-        Set<String> seenFileOriginals = {};
+    for (String languageCode in supportedLanguageCodes) {
+      Map<String, dynamic> localizedItemJson = await _loadXliffAssetAsJson(itemType, languageCode);
+      Set<String> seenFileOriginals = {};
 
-        ensureList(localizedItemJson["xliff"]["file"]).forEach((jsonFile) {
-          String transItemLanguageCode = jsonFile["@target-language"];
-          assert(
-            transItemLanguageCode == languageCode,
-            "<trans-item target-language='$transItemLanguageCode'> does not match "
+      ensureList(localizedItemJson["xliff"]["file"]).forEach((jsonFile) {
+        String transItemLanguageCode = jsonFile["@target-language"];
+        assert(
+        transItemLanguageCode == languageCode,
+        "<trans-item target-language='$transItemLanguageCode'> does not match "
             "the $itemType/$languageCode file language code '$languageCode'",
-          );
+        );
 
-          String original = jsonFile["@original"];
-          assert(
-            !seenFileOriginals.contains(original),
-            "<file original='$original'> appear in the $itemType/$languageCode file more than once",
-          );
-          seenFileOriginals.add(original);
+        String original = jsonFile["@original"];
+        assert(
+        !seenFileOriginals.contains(original),
+        "<file original='$original'> appear in the $itemType/$languageCode file more than once",
+        );
+        seenFileOriginals.add(original);
 
-          ensureList(jsonFile["body"]["trans-unit"]).forEach(
-            (itemJson) {
-              items[idFromJson(itemJson)].updateWithLocalizedJSON(itemJson, languageCode);
-            },
-          );
-        });
-      },
-    );
+        ensureList(jsonFile["body"]["trans-unit"]).forEach(
+              (itemJson) {
+            items[idFromJson(itemJson)].updateWithLocalizedJSON(itemJson, languageCode);
+          },
+        );
+      });
+  };
 
     return items;
   }
@@ -103,9 +101,6 @@ abstract class LocalizedItem {
   }
 
   String text(String languageCode) {
-    if (!localizedTexts.containsKey(languageCode)) {
-      stderr.write("'$languageCode' translation for '$baseText' is not available");
-    }
     return localizedTexts[languageCode];
   }
 
