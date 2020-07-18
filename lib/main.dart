@@ -42,27 +42,30 @@ class MyApp extends StatefulWidget {
   static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(analytics: analytics);
   static AppLocalizationDelegate localizationsDelegate = AppLocalizationDelegate();
 
+  static void setLocale(BuildContext context, Locale newLocale) {
+    _MyAppState state = context.findAncestorStateOfType<_MyAppState>();
+
+    state.setState(() {
+      state.locale = newLocale;
+    });
+  }
+
   @override
   _MyAppState createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
   bool initialized = false;
-
-  Locale getLocale() {
-    Locale requestedLocale = localeFromString(PrefService.getString(K.settings.locales.key) ?? Platform.localeName);
-
-    if (localeLanguageCodeIn(requestedLocale, MyApp.localizationsDelegate.supportedLocales)) {
-      return requestedLocale;
-    }
-
-    return Locale(K.settings.locales.defaultValue);
-  }
+  Locale locale;
 
   @override
   void initState() {
     super.initState();
-    List<Future> initializedComponents = [PrefService.init(), GameData.initialize(MyApp.localizationsDelegate.supportedLocales), GameVibrations.init()];
+    List<Future> initializedComponents = [
+      PrefService.init(),
+      GameData.initialize(MyApp.localizationsDelegate.supportedLocales),
+      GameVibrations.init()
+    ];
     Future.wait(initializedComponents).then((value) {
       setState(() {
         initialized = true;
@@ -84,7 +87,7 @@ class _MyAppState extends State<MyApp> {
       ],
       child: MaterialApp(
 //        debugShowCheckedModeBanner: false,
-        locale: getLocale(),
+        locale: locale ?? localeFromString(Platform.localeName),
         supportedLocales: MyApp.localizationsDelegate.supportedLocales,
         localizationsDelegates: [
           MyApp.localizationsDelegate,
@@ -92,8 +95,15 @@ class _MyAppState extends State<MyApp> {
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
-        localeResolutionCallback: (Locale locale, Iterable<Locale> supportedLocales) {
-          return locale;
+        localeResolutionCallback: (Locale deviceLocale, Iterable<Locale> supportedLocales) {
+          Locale requestedLocale =
+              this.locale ?? localeFromString(PrefService.getString(K.settings.locales.key) ?? deviceLocale);
+
+          if (localeLanguageCodeIn(requestedLocale, supportedLocales)) {
+            return requestedLocale;
+          }
+
+          return Locale(K.settings.locales.defaultValue);
         },
         onGenerateTitle: (BuildContext context) => S.of(context).name,
         theme: appTheme,
@@ -116,7 +126,9 @@ class _MyAppState extends State<MyApp> {
                 case CountdownScreen.ID:
                   return CountdownScreen(topicID: arguments);
                 case SettingsScreen.ID:
-                  return SettingsScreen(supportedLocales: MyApp.localizationsDelegate.supportedLocales,);
+                  return SettingsScreen(
+                    supportedLocales: MyApp.localizationsDelegate.supportedLocales,
+                  );
                 case HelpScreen.ID:
                   return HelpScreen();
                 case AboutScreen.ID:

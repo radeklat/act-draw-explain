@@ -6,7 +6,7 @@
   "@settings_title_languages": {},
   "settings_language": "Jazyk",
   "@settings_language": {},
-  "settings_language_description": "Ovlivňuje rozhraní aplikace, témata a otázky. Vyžaduje restart.",
+  "settings_language_description": "Ovlivňuje rozhraní aplikace, témata a otázky",
   "@settings_language_description": {"description": "Settings / Laguage"},
   "game_control_buttons": "Tlačítky",
   "@game_control_buttons": {},

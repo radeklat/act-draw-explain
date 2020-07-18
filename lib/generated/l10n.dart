@@ -63,10 +63,10 @@ class S {
     );
   }
 
-  /// `Affects app UI, topics and questions. Requires restart.`
+  /// `Affects app UI, topics and questions`
   String get settings_language_description {
     return Intl.message(
-      'Affects app UI, topics and questions. Requires restart.',
+      'Affects app UI, topics and questions',
       name: 'settings_language_description',
       desc: 'Settings / Laguage',
       args: [],

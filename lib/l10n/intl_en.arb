@@ -9,7 +9,7 @@
   "settings_language": "Language",
   "@settings_language": {"description": "Settings / Laguage"},
 
-  "settings_language_description": "Affects app UI, topics and questions. Requires restart.",
+  "settings_language_description": "Affects app UI, topics and questions",
   "@settings_language_description": {"description": "Settings / Laguage"},
 
   "game_control_buttons": "Buttons",

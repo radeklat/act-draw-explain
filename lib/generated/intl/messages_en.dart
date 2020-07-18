@@ -72,7 +72,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "settings_interface_next_question" : MessageLookupByLibrary.simpleMessage("Next question control"),
     "settings_interface_vibrations" : MessageLookupByLibrary.simpleMessage("In-game vibration"),
     "settings_language" : MessageLookupByLibrary.simpleMessage("Language"),
-    "settings_language_description" : MessageLookupByLibrary.simpleMessage("Affects app UI, topics and questions. Requires restart."),
+    "settings_language_description" : MessageLookupByLibrary.simpleMessage("Affects app UI, topics and questions"),
     "settings_title_interface" : MessageLookupByLibrary.simpleMessage("Interface"),
     "settings_title_languages" : MessageLookupByLibrary.simpleMessage("Languages"),
     "settings_title_options" : MessageLookupByLibrary.simpleMessage("Game options"),

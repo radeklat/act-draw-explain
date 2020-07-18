@@ -8,6 +8,7 @@ import 'package:preferences/preferences.dart';
 import 'package:provider/provider.dart';
 
 import '../constants.dart';
+import '../main.dart';
 
 class SettingsScreen extends StatefulWidget {
   static const String ID = "settings_screen";
@@ -53,7 +54,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
               displayValues: widget.supportedLocales
                   .map((locale) => isoLanguages[locale.languageCode].nativeName)
                   .toList(),
-              onChange: (_val) => this.onChange(K.settings.locales),
+              onChange: (languageCode) {
+                MyApp.setLocale(context, Locale(languageCode));
+                this.onChange(K.settings.locales);
+              },
             ),
             PreferenceTitle(S.of(context).settings_title_options),
             DropdownPreference(
