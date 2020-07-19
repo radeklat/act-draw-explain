@@ -1,4 +1,4 @@
-import 'package:act_draw_explain/models/translation_file.dart';
+import 'package:act_draw_explain/models/localized_item.dart';
 import 'package:xml/xml.dart';
 
 class Question extends LocalizedItem {

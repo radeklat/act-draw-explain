@@ -1,6 +1,6 @@
 import 'package:act_draw_explain/analytics.dart';
 import 'package:act_draw_explain/generated/l10n.dart';
-import 'package:act_draw_explain/utilities/intl.dart';
+import 'package:act_draw_explain/utilities/intl/languages.dart';
 import 'package:act_draw_explain/utilities/vibrations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

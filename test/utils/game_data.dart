@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'dart:ui';
 
-import 'package:act_draw_explain/models/translation_file.dart';
-import 'package:act_draw_explain/utilities/intl.dart';
+import 'package:act_draw_explain/utilities/intl/languages.dart';
+import 'package:act_draw_explain/utilities/intl/localized_assets.dart';
 import 'package:mockito/mockito.dart';
 
 /// Loads files from local filesystem

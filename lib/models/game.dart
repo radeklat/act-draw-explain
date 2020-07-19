@@ -3,7 +3,8 @@ import 'dart:ui';
 
 import 'package:act_draw_explain/models/question.dart';
 import 'package:act_draw_explain/models/topic.dart';
-import 'package:act_draw_explain/models/translation_file.dart';
+import 'package:act_draw_explain/models/localized_item.dart';
+import 'package:act_draw_explain/utilities/intl/localized_assets.dart';
 import 'package:act_draw_explain/utilities/logging.dart';
 import 'package:xml/xml.dart';
 

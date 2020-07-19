@@ -1,6 +1,6 @@
 // Import the test package and Counter class
 import 'package:act_draw_explain/models/game.dart';
-import 'package:act_draw_explain/models/translation_file.dart';
+import 'package:act_draw_explain/models/localized_item.dart';
 import 'package:test/test.dart';
 
 import '../../utils/game_data.dart';

@@ -10,7 +10,7 @@ import 'package:act_draw_explain/screens/game/start_game.dart';
 import 'package:act_draw_explain/screens/help.dart';
 import 'package:act_draw_explain/screens/settings.dart';
 import 'package:act_draw_explain/screens/topic_selection.dart';
-import 'package:act_draw_explain/utilities/intl.dart';
+import 'package:act_draw_explain/utilities/intl/languages.dart';
 import 'package:act_draw_explain/utilities/logging.dart';
 import 'package:act_draw_explain/utilities/vibrations.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
