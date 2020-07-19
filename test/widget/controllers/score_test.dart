@@ -30,6 +30,9 @@ Topic fakeEmptyTopic = Topic(
   color: fakeTopic.color,
   icon: fakeTopic.icon,
   questions: UnmodifiableMapView({}),
+)..updateWithLocalizedXmlElement(
+  XmlElement(XmlName("trans-unit"), [], [XmlElement(XmlName("target"), [], [XmlText("Fake topic")])]),
+  K.settings.locales.defaultValue,
 );
 
 Question fakeQuestion(int id, [String text]) {

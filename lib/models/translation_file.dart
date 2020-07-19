@@ -126,8 +126,8 @@ abstract class LocalizedItem {
   }
 
   /// itemJson is a "trans-unit" from "<TYPE>/<LOCALE>.xliff"
-  updateWithLocalizedXmlElement(XmlElement xmlItem, String locale) {
-    localizedTexts[locale] = xmlItem.findElements("target").first.text;
+  updateWithLocalizedXmlElement(XmlElement xmlItem, String languageCode) {
+    localizedTexts[languageCode] = xmlItem.findElements("target").first.text;
   }
 
   /// topicJSON is a "trans-unit" from "<TYPE>.xliff" or "<TYPE>/<LOCALE>.xliff"

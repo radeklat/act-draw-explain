@@ -4,6 +4,7 @@ import 'package:act_draw_explain/models/question.dart';
 import 'package:act_draw_explain/models/translation_file.dart';
 import 'package:act_draw_explain/utilities/color.dart';
 import 'package:act_draw_explain/utilities/icons.dart';
+import 'package:act_draw_explain/utilities/logging.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:xml/xml.dart';
@@ -17,6 +18,8 @@ class Topic extends LocalizedItem {
 
   static RegExp _idRegExp = RegExp(r"[0-9]+");
 
+  HashMap<String, UnmodifiableSetView<int>> _enabledQuestionIDs = HashMap();
+
   Topic({
     this.id,
     String baseText,
@@ -26,10 +29,16 @@ class Topic extends LocalizedItem {
     this.sources = const [],
   }) : super(baseText);
 
-  UnmodifiableSetView<int> questionIDs(String languageCode) {
-    return UnmodifiableSetView(
+  /// itemJson is a "trans-unit" from "<TYPE>/<LOCALE>.xliff"
+  updateWithLocalizedXmlElement(XmlElement xmlItem, String languageCode) {
+    super.updateWithLocalizedXmlElement(xmlItem, languageCode);
+    _enabledQuestionIDs[languageCode] = UnmodifiableSetView(
       questions.values.where((question) => !question.isDisabled(languageCode)).map((question) => question.id).toSet(),
     );
+  }
+
+  UnmodifiableSetView<int> questionIDs(String languageCode) {
+    return _enabledQuestionIDs[languageCode];
   }
 
   List<int> asShuffledQuestionIDs(String languageCode) {
