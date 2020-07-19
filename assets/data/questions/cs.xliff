@@ -431,7 +431,7 @@
     <trans-unit id="353"><source/><target>Václav Klaus</target></trans-unit>
   </body>
 </file>
-<file category="Státy Evropy" original="14" target-language="cs">
+<file category="Countries of Europe" original="14" target-language="cs">
   <body>
     <trans-unit id="385"><source/><target>Albánie</target></trans-unit>
     <trans-unit id="386"><source/><target>Andorra</target></trans-unit>
@@ -556,7 +556,7 @@
     <trans-unit id="503"><source/><target>Phở (Vietnam)</target></trans-unit>
   </body>
 </file>
-<file category="Nejlépe placení herci" original="16" target-language="cs">
+<file category="Best paid actors" original="16" target-language="cs">
   <body>
     <trans-unit id="504"><source/><target>Chris Evans</target></trans-unit>
     <trans-unit id="505"><source/><target>Salman Khan</target></trans-unit>
@@ -605,7 +605,7 @@
     <trans-unit id="548"><source/><target>Arnold Schwarzenegger</target></trans-unit>
   </body>
 </file>
-<file category="Nejlépe placení hudebníci" original="17" target-language="cs">
+<file category="Best paid musicians" original="17" target-language="cs">
   <body>
     <trans-unit id="550"><source/><target>Migos</target></trans-unit>
     <trans-unit id="551"><source/><target>U2</target></trans-unit>
@@ -691,7 +691,7 @@
     <trans-unit id="628"><source/><target>Mariánské lázně</target></trans-unit>
   </body>
 </file>
-<file category="Společenské hry" original="19" target-language="cs">
+<file category="Board games" original="19" target-language="cs">
   <body>
     <trans-unit id="629"><source/><target>Šachy</target></trans-unit>
     <trans-unit id="630"><source/><target>Dáma</target></trans-unit>
@@ -716,7 +716,7 @@
     <trans-unit id="649"><source/><target>Krycí jména</target></trans-unit>
   </body>
 </file>
-<file category="Umělecké slohy" original="20" target-language="cs">
+<file category="Visual styles" original="20" target-language="cs">
   <body>
     <trans-unit id="650"><source/><target>Art deco</target></trans-unit>
     <trans-unit id="651"><source/><target>Baroko</target></trans-unit>
@@ -745,7 +745,7 @@
     <trans-unit id="674"><source/><target>Art Nouveau</target></trans-unit>
   </body>
 </file>
-<file category="Sporty" original="21" target-language="cs">
+<file category="Sports" original="21" target-language="cs">
   <body>
     <trans-unit id="675"><source/><target>Plavání</target></trans-unit>
     <trans-unit id="676"><source/><target>Skoky do vody</target></trans-unit>
@@ -826,7 +826,7 @@
     <trans-unit id="751"><source/><target>Zorbing</target></trans-unit>
   </body>
 </file>
-<file category="Zvířata" original="22" target-language="cs">
+<file category="Animals" original="22" target-language="cs">
   <body>
     <trans-unit id="752"><source/><target>Žába</target></trans-unit>
     <trans-unit id="753"><source/><target>Alpaka</target></trans-unit>
@@ -982,7 +982,7 @@
     <trans-unit id="903"><source/><target>Roast</target></trans-unit>
   </body>
 </file>
-<file category="Koníčky" original="23" target-language="cs">
+<file category="Hobbies" original="23" target-language="cs">
   <body>
     <trans-unit id="904"><source/><target>Pečení</target></trans-unit>
     <trans-unit id="905"><source/><target>Stolní hry</target></trans-unit>
@@ -1111,7 +1111,7 @@
     <trans-unit id="1028"><source/><target>Cyklistika</target></trans-unit>
   </body>
 </file>
-<file category="Videohry" original="24" target-language="cs">
+<file category="Video games" original="24" target-language="cs">
   <body>
     <trans-unit id="1029"><source/><target>Minecraft</target></trans-unit>
     <trans-unit id="1030"><source/><target>Grand Theft Auto</target></trans-unit>
@@ -1195,7 +1195,7 @@
     <trans-unit id="1108"><source/><target>Age of Empires</target></trans-unit>
   </body>
 </file>
-<file category="Jídlo a pití" original="25" target-language="cs">
+<file category="Food and drinks" original="25" target-language="cs">
   <body>
     <trans-unit id="1116"><source/><target>Obložené chlebíčky</target></trans-unit>
     <trans-unit id="1117"><source/><target>Carpaccio</target></trans-unit>
@@ -1323,7 +1323,7 @@
     <trans-unit id="1239"><source/><target>Ouzo</target></trans-unit>
   </body>
 </file>
-<file category="Povolání" original="26" target-language="cs">
+<file category="Occupations" original="26" target-language="cs">
   <body>
     <trans-unit id="1240"><source/><target>Advokát</target></trans-unit>
     <trans-unit id="1241"><source/><target>Anesteziolog</target></trans-unit>
@@ -1659,7 +1659,7 @@
     <trans-unit id="1567"><source/><target>Hrdý Budžes (Dousková)</target></trans-unit>
   </body>
 </file>
-<file category="Hudební nástroje" original="28" target-language="cs">
+<file category="Musical instruments" original="28" target-language="cs">
   <body>
     <trans-unit id="1568"><source/><target>Akordeon</target></trans-unit>
     <trans-unit id="1569"><source/><target>Banjo</target></trans-unit>
@@ -1708,7 +1708,7 @@
     <trans-unit id="1612"><source/><target>Zvonkohra</target></trans-unit>
   </body>
 </file>
-<file category="Nejprodávanější singly" original="29" target-language="cs">
+<file category="Best selling singles" original="29" target-language="cs">
   <body>
     <trans-unit id="1613"><source/><target>Yes Sir, I Can Boogie (Baccara)</target></trans-unit>
     <trans-unit id="1614"><source/><target>I Do It for You (Bryan Adams)</target></trans-unit>
