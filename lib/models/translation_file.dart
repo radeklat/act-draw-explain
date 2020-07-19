@@ -109,10 +109,6 @@ abstract class LocalizedItem {
 
   LocalizedItem(this.baseText);
 
-  String _unquote(String text) {
-    return text.replaceAll("\\'", "'");
-  }
-
   String text(String languageCode) {
     _log.when(!localizedTexts.containsKey(languageCode)).error("'$this' does not exist in '$languageCode'");
     _log.when(localizedTexts[languageCode] == null).error("'$this' is set to 'null' in '$languageCode'");
