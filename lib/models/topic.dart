@@ -36,6 +36,10 @@ class Topic extends LocalizedItem {
     );
   }
 
+  bool isDisabled(String languageCode) {
+    return super.isDisabled(languageCode) || _enabledQuestionIDs[languageCode].isEmpty;
+  }
+
   UnmodifiableSetView<int> questionIDs(String languageCode) {
     return _enabledQuestionIDs[languageCode];
   }
