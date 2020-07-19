@@ -19,9 +19,9 @@ class Analytics {
       name: 'playedQuestion',
       parameters: <String, dynamic>{
         'topicID': topic.id,
-        'topicName': topic.name,
+        'topicName': topic.baseText,
         'questionID': question.id,
-        'questionText': question.text,
+        'questionText': question.baseText,
         'durationSeconds': duration.inMilliseconds / 1000,
         'state': describeEnum(state),
         'timeLimitSeconds': timeLimit.inSeconds,
@@ -34,7 +34,7 @@ class Analytics {
       name: 'playedGame',
       parameters: <String, dynamic>{
         'topicID': topic.id,
-        'topicName': topic.name,
+        'topicName': topic.baseText,
         'timeLimitSeconds': timeLimit.inSeconds,
         ...gameResult.toMap(),
       },

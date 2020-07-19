@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="TerminalProjectOptionsProvider">
+    <envs>
+      <env key="CODECOV_TOKEN" value="ee8adc69-885b-40fa-a1d4-699b00a0aad6" />
+    </envs>
+  </component>
+</project>

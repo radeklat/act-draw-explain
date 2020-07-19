@@ -1,9 +1,8 @@
 import 'dart:async';
 
 import 'package:act_draw_explain/controllers/score.dart';
-import 'package:act_draw_explain/data/questions.dart';
-import 'package:act_draw_explain/data/topics.dart';
 import 'package:act_draw_explain/generated/l10n.dart';
+import 'package:act_draw_explain/models/game.dart';
 import 'package:act_draw_explain/models/results.dart';
 import 'package:act_draw_explain/screens/game/end_game.dart';
 import 'package:act_draw_explain/utilities/orientation.dart';
@@ -13,6 +12,7 @@ import 'package:act_draw_explain/widgets/progress_button.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:preferences/preference_service.dart';
 import 'package:provider/provider.dart';
 import 'package:wakelock/wakelock.dart';
@@ -43,7 +43,7 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
   StreamSubscription<dynamic> sensorStream;
 
   void initGameControl() {
-    final String gameControlType = PrefService.getString(K_SETTINGS_GAME_CONTROL);
+    final String gameControlType = PrefService.getString(K.settings.game.control.key);
 
     if (gameControlType == K_GAME_CONTROL_SCREEN_TILT) {
       setPreferredOrientationsLandscape();
@@ -67,7 +67,7 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
     initGameControl();
 
     gameDuration = Duration(
-      seconds: PrefService.getInt(K_SETTINGS_GAME_DURATION) ?? K_GAME_DURATION_DEFAULT,
+      seconds: PrefService.getInt(K.settings.game.duration.key) ?? K.settings.game.duration.defaultValue,
     );
 
     answerColorAnimation = AnswerColorAnimation(
@@ -78,25 +78,33 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
         });
       },
     );
-    scoreController = ScoreController(
-      topic: topics[widget.topicID],
-      questions: questions,
-      onNextQuestion: (newQuestion) {
-        setState(() {
-          questionText = newQuestion;
-        });
-      },
-      logQuestion: (topic, question, duration, state) =>
-          Provider.of<Analytics>(context, listen: false).playedQuestion(topic, question, duration, state, gameDuration),
-      onGameEnd: (gameResult) {
-        Provider.of<Analytics>(context, listen: false).playedGame(topics[widget.topicID], gameDuration, gameResult);
-        Navigator.pushReplacementNamed(context, EndGameScreen.ID, arguments: gameResult);
-      },
-      setNewScore: (newScore) {
-        Provider.of<TopicBestScore>(context, listen: false).record(topicID: widget.topicID, newScore: newScore);
-      },
-      maxQuestions: int.parse(PrefService.getString(K_SETTINGS_GAME_CARDS_COUNT) ?? "$K_GAME_CARDS_COUNT_DEFAULT"),
-    );
+
+    // `Localizations.localeOf(context).languageCode` is not available directly in initState
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      setState(() {
+        scoreController = ScoreController(
+          topic: GameData.topics[widget.topicID],
+          questions: GameData.questions,
+          languageCode: Localizations.localeOf(context).languageCode,
+          onNextQuestion: (newQuestion) {
+            setState(() {
+              questionText = newQuestion;
+            });
+          },
+          logQuestion: (topic, question, duration, state) => Provider.of<Analytics>(context, listen: false)
+              .playedQuestion(topic, question, duration, state, gameDuration),
+          onGameEnd: (gameResult) {
+            Provider.of<Analytics>(context, listen: false)
+                .playedGame(GameData.topics[widget.topicID], gameDuration, gameResult);
+            Navigator.pushReplacementNamed(context, EndGameScreen.ID, arguments: gameResult);
+          },
+          setNewScore: (newScore) {
+            Provider.of<TopicBestScore>(context, listen: false).record(topicID: widget.topicID, newScore: newScore);
+          },
+          maxQuestions: int.parse(PrefService.getString(K.settings.game.cardsCount.key) ?? "${K.settings.game.cardsCount.defaultValue}"),
+        );
+      });
+    });
   }
 
   @override
@@ -128,7 +136,7 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
                     CountdownText(
-                      onFinished: scoreController.endGame,
+                      onFinished: scoreController?.endGame,
                       duration: gameDuration,
                       style: Theme.of(context).textTheme.headline4,
                     ),

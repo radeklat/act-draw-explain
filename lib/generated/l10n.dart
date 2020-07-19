@@ -43,6 +43,36 @@ class S {
     );
   }
 
+  /// `Languages`
+  String get settings_title_languages {
+    return Intl.message(
+      'Languages',
+      name: 'settings_title_languages',
+      desc: 'Settings title for laguages',
+      args: [],
+    );
+  }
+
+  /// `Language`
+  String get settings_language {
+    return Intl.message(
+      'Language',
+      name: 'settings_language',
+      desc: 'Settings / Laguage',
+      args: [],
+    );
+  }
+
+  /// `Affects app UI, topics and questions`
+  String get settings_language_description {
+    return Intl.message(
+      'Affects app UI, topics and questions',
+      name: 'settings_language_description',
+      desc: 'Settings / Laguage',
+      args: [],
+    );
+  }
+
   /// `Buttons`
   String get game_control_buttons {
     return Intl.message(
@@ -515,6 +545,16 @@ class S {
       'Although the application does not yet prompt this and has not optimized question selection process, it is possible to guess by demonstration (pantomime) or drawing.',
       name: 'help_advanced_game_par_1',
       desc: 'Paragraph of text on the help screen',
+      args: [],
+    );
+  }
+
+  /// `Loading game data`
+  String get loading_data {
+    return Intl.message(
+      'Loading game data',
+      name: 'loading_data',
+      desc: 'Message displayed when game data are loading',
       args: [],
     );
   }

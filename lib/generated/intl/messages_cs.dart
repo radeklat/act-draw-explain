@@ -60,6 +60,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "help_how_to_play_par_2" : MessageLookupByLibrary.simpleMessage("Způsob odpovídání na otázky lze změnit v nastaveních."),
     "help_how_to_play_tilt_par_1" : MessageLookupByLibrary.simpleMessage("Telefon je nutné mít přitisknutý na čele. Správná odpověď se zvolí naklopením displeje dolu, špatná naklopením nahoru."),
     "help_how_to_play_title" : MessageLookupByLibrary.simpleMessage("Jak hrát"),
+    "loading_data" : MessageLookupByLibrary.simpleMessage("Načítání herních dat"),
     "menu_about" : MessageLookupByLibrary.simpleMessage("O aplikaci"),
     "menu_feedback" : MessageLookupByLibrary.simpleMessage("Zpětná vazba"),
     "menu_feedback_bug_report" : MessageLookupByLibrary.simpleMessage("Nahlásit chybu"),
@@ -71,7 +72,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "settings_game_length" : MessageLookupByLibrary.simpleMessage("Délka hry"),
     "settings_interface_next_question" : MessageLookupByLibrary.simpleMessage("Přechod na další otázku"),
     "settings_interface_vibrations" : MessageLookupByLibrary.simpleMessage("Vibrace ve hře"),
+    "settings_language" : MessageLookupByLibrary.simpleMessage("Jazyk"),
+    "settings_language_description" : MessageLookupByLibrary.simpleMessage("Ovlivňuje rozhraní aplikace, témata a otázky"),
     "settings_title_interface" : MessageLookupByLibrary.simpleMessage("Rozhraní"),
+    "settings_title_languages" : MessageLookupByLibrary.simpleMessage("Jazyky"),
     "settings_title_options" : MessageLookupByLibrary.simpleMessage("Nastavení hry"),
     "start_game_button" : MessageLookupByLibrary.simpleMessage("Start hry"),
     "start_game_prompt" : MessageLookupByLibrary.simpleMessage("Jste připraveni ke hře?")

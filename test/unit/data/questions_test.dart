@@ -1,41 +1,58 @@
 // Import the test package and Counter class
-import 'package:act_draw_explain/data/questions.dart';
-import 'package:act_draw_explain/data/topics.dart';
-import 'package:act_draw_explain/models/question.dart';
+import 'package:act_draw_explain/models/game.dart';
+import 'package:act_draw_explain/models/localized_item.dart';
 import 'package:test/test.dart';
+
+import '../../utils/game_data.dart';
 
 void main() {
   group('Questions', () {
-    test('should have a closing bracket when there is an opening one', () {
-      for (Question question in questions.values) {
-        if (question.text.contains("(")) {
-          expect(question.text, contains(")"), reason: question.text);
-        }
-      }
+    setUpAll(() async {
+      var loader = LocalAssetLoader();
+      await GameData.initialize(loader.supportedLocales, loader);
     });
 
-    test('should no have duplicates', () {
+    test('should should not be empty', () async {
+      expect(GameData.questions, isNotEmpty);
+    });
+
+    test('should have a closing bracket when there is an opening one', () {
+      GameData.questions.values.forEach((question) {
+        question.localizedTexts.forEach((language, text) {
+          if (text.contains("(")) {
+            expect(text, contains(")"), reason: "$language: $text");
+          }
+        });
+      });
+    });
+
+    test('should not have duplicates', () {
       Set<String> questionTexts = Set();
       Map<String, int> duplicates = {};
-      Set<String> exceptions = {"Lov", "Kofola"};
+      Set<String> exceptions = {"cs/Lov", "cs/Kofola"};
 
-      for (Question question in questions.values) {
-        if (exceptions.contains(question.text)) continue;
-        if (questionTexts.contains(question.text)) {
-          duplicates.update(question.text, (value) => value+1, ifAbsent: () => 2);
-        }
-        questionTexts.add(question.text);
-      }
+      GameData.questions.values.forEach((question) {
+        question.localizedTexts.forEach((language, text) {
+          String localisedText = "$language/$text";
+
+          if (!exceptions.contains(localisedText) && text != LocalizedItem.DISABLED && text != "") {
+            if (questionTexts.contains(localisedText)) {
+              duplicates.update(localisedText, (value) => value + 1, ifAbsent: () => 2);
+            }
+            questionTexts.add(localisedText);
+          }
+        });
+      });
 
       expect(duplicates, isEmpty, reason: "Listed items appear more than once.");
     });
 
     test('should should belong to at least one topic', () {
       Set<int> allTopicIDs = {};
-      topics.values.map((topic) => allTopicIDs.addAll(topic.questionIDs)).toList();
+      GameData.topics.values.forEach((topic) => allTopicIDs.addAll(topic.questions.keys));
 
       Set<int> allQuestionIDs = {};
-      questions.values.map((question) => allQuestionIDs.add(question.id)).toList();
+      GameData.questions.values.forEach((question) => allQuestionIDs.add(question.id));
 
       expect(allQuestionIDs.difference(allTopicIDs), isEmpty);
     });

@@ -10,11 +10,13 @@ import 'package:act_draw_explain/screens/game/start_game.dart';
 import 'package:act_draw_explain/screens/help.dart';
 import 'package:act_draw_explain/screens/settings.dart';
 import 'package:act_draw_explain/screens/topic_selection.dart';
-import 'package:act_draw_explain/utilities/intl.dart';
+import 'package:act_draw_explain/utilities/intl/languages.dart';
+import 'package:act_draw_explain/utilities/logging.dart';
 import 'package:act_draw_explain/utilities/vibrations.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:preferences/preferences.dart';
@@ -23,20 +25,20 @@ import 'package:provider/provider.dart';
 import 'analytics.dart';
 import 'generated/l10n.dart';
 
-
 main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   Crashlytics.instance.enableInDevMode = false; // Pass all uncaught errors from the framework to Crashlytics.
   FlutterError.onError = Crashlytics.instance.recordFlutterError;
-
   await PrefService.init();
-  GameVibrations.init();
+  await GameVibrations.init();
+  Logger.logLevel = (kReleaseMode) ? Logger.WARNING : Logger.DEBUG;
+  Logger.blacklist = {"TiltEvent.other", "TiltEvent.movement", "TiltEvent.detection"};
 
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   // To enable Analytics Debug mode on an emulated Android device, execute the following command line:
   //    adb shell setprop debug.firebase.analytics.app sk.lat.act_draw_explain.debug
   // This behavior persists until you explicitly disable Debug mode by executing the following command line:
@@ -45,37 +47,53 @@ class MyApp extends StatelessWidget {
   static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(analytics: analytics);
   static AppLocalizationDelegate localizationsDelegate = AppLocalizationDelegate();
 
-  Locale getLocale() {
-    Locale systemLocale = localeFromString(Platform.localeName);
-    return (localeLanguageCodeIn(systemLocale, localizationsDelegate.supportedLocales)) ? systemLocale : K.defaultLocale;
+  static void setLocale(BuildContext context, Locale newLocale) {
+    _MyAppState state = context.findAncestorStateOfType<_MyAppState>();
+
+    state.setState(() {
+      state.locale = newLocale;
+    });
   }
 
-  // This widget is the root of your application.
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  Locale locale;
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<TopicBestScore>(create: (_) => TopicBestScore()),
-        Provider<Analytics>(create: (_) => Analytics(analytics)),
-        Provider<FirebaseAnalyticsObserver>.value(value: observer),
+        Provider<Analytics>(create: (_) => Analytics(MyApp.analytics)),
+        Provider<FirebaseAnalyticsObserver>.value(value: MyApp.observer),
       ],
       child: MaterialApp(
 //        debugShowCheckedModeBanner: false,
-        locale: getLocale(),
-        supportedLocales: localizationsDelegate.supportedLocales,
+        locale: locale ?? localeFromString(Platform.localeName),
+        supportedLocales: MyApp.localizationsDelegate.supportedLocales,
         localizationsDelegates: [
-          localizationsDelegate,
+          MyApp.localizationsDelegate,
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
-        localeResolutionCallback: (Locale locale, Iterable<Locale> supportedLocales) {
-          return locale;
+        localeResolutionCallback: (Locale deviceLocale, Iterable<Locale> supportedLocales) {
+          Locale requestedLocale =
+              this.locale ?? localeFromString(PrefService.getString(K.settings.locales.key) ?? deviceLocale);
+
+          if (localeLanguageCodeIn(requestedLocale, supportedLocales)) {
+            return requestedLocale;
+          }
+
+          return Locale(K.settings.locales.defaultValue);
         },
         onGenerateTitle: (BuildContext context) => S.of(context).name,
         theme: appTheme,
         initialRoute: TopicSelectionScreen.ID,
-        navigatorObservers: <NavigatorObserver>[observer],
+        navigatorObservers: <NavigatorObserver>[MyApp.observer],
         onGenerateRoute: (settings) {
           final arguments = settings.arguments;
           return MaterialPageRoute(
@@ -93,7 +111,9 @@ class MyApp extends StatelessWidget {
                 case CountdownScreen.ID:
                   return CountdownScreen(topicID: arguments);
                 case SettingsScreen.ID:
-                  return SettingsScreen();
+                  return SettingsScreen(
+                    supportedLocales: MyApp.localizationsDelegate.supportedLocales,
+                  );
                 case HelpScreen.ID:
                   return HelpScreen();
                 case AboutScreen.ID:

@@ -2,12 +2,272 @@
 <xliff version="1.2">
   <file original="game topics">
     <body>
-      <trans-unit id="4" color="amber500" icon="movie">
+      <trans-unit color="lightBlueAccent" icon="ac_unit" id="1">
+        <attribution url="" />
         <question-ids>
-          <range min="65" max="80"/>
+          <range max="20" min="1" />
+          <range max="384" min="355" />
+        </question-ids>
+        <source>České Pohádky</source>
+      </trans-unit>
+
+      <trans-unit color="red" icon="location_city" id="2">
+        <attribution url="" />
+        <question-ids>
+          <list>264, 265</list>
+          <range max="49" min="21" />
+        </question-ids>
+        <source>Brno</source>
+      </trans-unit>
+
+      <trans-unit color="deepPurple" icon="tv" id="3">
+        <attribution url="" />
+        <question-ids>
+          <range max="64" min="50" />
+        </question-ids>
+        <source>Zahraniční seriály</source>
+      </trans-unit>
+
+      <trans-unit color="amber" icon="movie" id="4">
+        <attribution url="https://www.imdb.com/chart/top/?ref_=nv_mv_250" />
+        <question-ids>
           <list>81,82,83,84</list>
+          <range max="80" min="65" />
         </question-ids>
         <source>Top 20 IMDB Movies</source>
+      </trans-unit>
+
+      <trans-unit color="redAccent" icon="tv" id="5">
+        <attribution url="" />
+        <question-ids>
+          <list>65,66,67,68,69,70,71,72,74,76,80,82,84,87,92,94,96,98,99,102</list>
+        </question-ids>
+        <source>ČSFD Top 20 Filmů</source>
+      </trans-unit>
+
+      <trans-unit color="redAccent" icon="tv" id="6">
+        <attribution url="" />
+        <question-ids>
+          <range max="124" min="105" />
+        </question-ids>
+        <source>ČSFD Top 20 Seriálů</source>
+      </trans-unit>
+
+      <trans-unit color="pinkAccent" icon="looks" id="7">
+        <attribution url="" />
+        <question-ids>
+          <list>435, 436, 901, 902, 903, 1109, 1110, 1111, 1112, 1113, 1114, 1115</list>
+          <range max="172" min="125" />
+        </question-ids>
+        <source>RuPaul's Drag Race</source>
+      </trans-unit>
+
+      <trans-unit color="green" icon="android" id="8">
+        <attribution url="https://play.google.com/store/apps/top?hl=en_GB" />
+        <question-ids>
+          <range max="201" min="173" />
+        </question-ids>
+        <source>Top Android Apps</source>
+      </trans-unit>
+
+      <trans-unit color="amberAccent" icon="location_city" id="9">
+        <attribution url="" />
+        <question-ids>
+          <range max="240" min="202" />
+        </question-ids>
+        <source>Praha</source>
+      </trans-unit>
+
+      <trans-unit color="blue" icon="account_balance" id="10">
+        <attribution url="" />
+        <question-ids>
+          <list>41, 46, 203, 204, 207, 221</list>
+          <range max="263" min="241" />
+        </question-ids>
+        <source>České památky</source>
+      </trans-unit>
+
+      <trans-unit color="purpleAccent" icon="music_note" id="11">
+        <attribution url="http://www.zpev.hlasujpro.cz/zpevacky.html" />
+        <question-ids>
+          <range max="302" min="266" />
+        </question-ids>
+        <source>Čeští interpreti</source>
+      </trans-unit>
+
+      <trans-unit color="lime" icon="theaters" id="12">
+        <attribution url="http://www.herec.hlasujpro.cz" />
+        <question-ids>
+          <list>292, 302</list>
+          <range max="342" min="303" />
+        </question-ids>
+        <source>Čeští herci a herečky</source>
+      </trans-unit>
+
+      <trans-unit color="yellow" icon="person" id="13">
+        <attribution url="" />
+        <question-ids>
+          <range max="353" min="343" />
+        </question-ids>
+        <source>Prezidenti ČR a ČS</source>
+      </trans-unit>
+
+      <trans-unit color="blueAccent" icon="public" id="14">
+        <attribution url="" />
+        <question-ids>
+          <range max="434" min="385" />
+        </question-ids>
+        <source>Countries of Europe</source>
+      </trans-unit>
+
+      <trans-unit color="brown" icon="restaurant" id="15">
+        <attribution url="https://en.wikipedia.org/wiki/National_dish#By_country" />
+        <question-ids>
+          <range max="503" min="437" />
+        </question-ids>
+        <source>National dishes</source>
+      </trans-unit>
+
+      <trans-unit color="amber" icon="star" id="16">
+        <attribution url="" />
+        <question-ids>
+          <range max="548" min="504" />
+        </question-ids>
+        <source>Best paid actors</source>
+      </trans-unit>
+
+      <trans-unit color="lightGreenAccent" icon="headset" id="17">
+        <attribution url="" />
+        <question-ids>
+          <range max="589" min="550" />
+        </question-ids>
+        <source>Best paid musicians</source>
+      </trans-unit>
+
+      <trans-unit color="pinkAccent" icon="location_city" id="18">
+        <attribution url="" />
+        <question-ids>
+          <list>243</list>
+          <range max="628" min="591" />
+        </question-ids>
+        <source>Nejkrásnější města ČR</source>
+      </trans-unit>
+
+      <trans-unit color="lightBlue" icon="extension" id="19">
+        <attribution url="" />
+        <question-ids>
+          <range max="649" min="629" />
+        </question-ids>
+        <source>Board games</source>
+      </trans-unit>
+
+      <trans-unit color="tealAccent" icon="palette" id="20">
+        <attribution url="https://cs.wikipedia.org/wiki/Kategorie:Um%C4%9Bleck%C3%A9_sm%C4%9Bry" />
+        <question-ids>
+          <range max="674" min="650" />
+        </question-ids>
+        <source>Visual styles</source>
+      </trans-unit>
+
+      <trans-unit color="purple" icon="pool" id="21">
+        <attribution url="https://cs.wikipedia.org/wiki/Seznam_olympijsk%C3%BDch_sport%C5%AF" />
+        <attribution url="https://cs.wikipedia.org/wiki/Abecedn%C3%AD_seznam_sportovn%C3%ADch_discipl%C3%ADn" />
+        <question-ids>
+          <list>919, 955, 973, 980, 981, 983, 989, 991, 996, 1000, 1010, 1028</list>
+          <range max="751" min="675" />
+        </question-ids>
+        <source>Sports</source>
+      </trans-unit>
+
+      <trans-unit color="green" icon="pets" id="22">
+        <attribution url="" />
+        <question-ids>
+          <range max="900" min="752" />
+        </question-ids>
+        <source>Animals</source>
+      </trans-unit>
+
+      <trans-unit color="pinkAccent" icon="favorite" id="23">
+        <attribution url="https://en.wikipedia.org/wiki/List_of_hobbies" />
+        <question-ids>
+          <list>
+            675,679,680,682,684,688,690,691,692,695,696,701,703,705,707,708,710,719,724,726,727,728,730,731,732,733,
+            734,735,736,737,742,743,744,745,746,748,749,750
+          </list>
+          <range max="1028" min="904" />
+        </question-ids>
+        <source>Hobbies</source>
+      </trans-unit>
+
+      <trans-unit color="yellow" icon="games" id="24">
+        <attribution url="https://en.wikipedia.org/wiki/List_of_best-selling_video_games" />
+        <attribution url="https://en.wikipedia.org/wiki/Arcade_game#List_of_highest-grossing_games" />
+        <attribution url="https://en.wikipedia.org/wiki/List_of_video_games_by_monthly_active_player_count" />
+        <attribution url="https://en.wikipedia.org/wiki/List_of_video_games_considered_the_best" />
+        <attribution url="https://en.wikipedia.org/wiki/List_of_best-selling_game_consoles" />
+        <question-ids>
+          <range max="1108" min="1029" />
+        </question-ids>
+        <source>Video games</source>
+      </trans-unit>
+
+      <trans-unit color="brown" icon="restaurant_menu" id="25">
+        <attribution url="https//en.wikipedia.org/wiki/Lists_of_foods" />
+        <attribution url="https://en.wikipedia.org/wiki/Category:Appetizers" />
+        <attribution url="https://en.wikipedia.org/wiki/Category:Condiments" />
+        <attribution url="https://en.wikipedia.org/wiki/Category:Confectionery" />
+        <attribution url="https://en.wikipedia.org/wiki/Category:Fast_food" />
+        <attribution url="https://en.wikipedia.org/wiki/List_of_desserts" />
+        <attribution url="https://en.wikipedia.org/wiki/List_of_street_foods" />
+        <attribution url="https://en.wikipedia.org/wiki/Specialty_food" />
+        <attribution url="https://en.wikipedia.org/wiki/List_of_drinks" />
+        <attribution url="https://en.wikipedia.org/wiki/List_of_cocktails" />
+        <attribution url="https://en.wikipedia.org/wiki/List_of_alcoholic_drinks" />
+        <question-ids>
+          <range max="1239" min="1116" />
+        </question-ids>
+        <source>Food and drinks</source>
+      </trans-unit>
+
+      <trans-unit color="limeAccent" icon="work" id="26">
+        <attribution url="https://www.prace.cz/encyklopedie-profesi/" />
+        <question-ids>
+          <range max="1433" min="1240" />
+        </question-ids>
+        <source>Occupations</source>
+      </trans-unit>
+
+      <trans-unit color="lightBlueAccent" icon="import_contacts" id="27">
+        <attribution url="https//www.gvm.cz/images/stories/o-studiu/komise/cj/seznam-cetby-maturita-2019-2020.pdf" />
+        <question-ids>
+          <range max="1567" min="1434" />
+        </question-ids>
+        <source>Povinná četba</source>
+      </trans-unit>
+
+      <trans-unit color="redAccent" icon="audiotrack" id="28">
+        <attribution url="https://cs.wikipedia.org/wiki/Seznam_hudebn%C3%ADch_n%C3%A1stroj%C5%AF" />
+        <question-ids>
+          <range max="1612" min="1568" />
+        </question-ids>
+        <source>Musical instruments</source>
+      </trans-unit>
+
+      <trans-unit color="amber" icon="trending_up" id="29">
+        <attribution url="https://en.wikipedia.org/wiki/List_of_best-selling_singles" />
+        <question-ids>
+          <range max="1692" min="1613" />
+        </question-ids>
+        <source>Best selling singles</source>
+      </trans-unit>
+
+      <trans-unit color="lime" icon="business_center" id="30">
+        <attribution url="https//www.czechtop100.cz/cs/projekty/zebricky/100-nejvyznamnejsich" />
+        <attribution url="https://cs.wikipedia.org/wiki/Kategorie:%C4%8Cesk%C3%A9_firmy" />
+        <question-ids>
+          <range max="1742" min="1693" />
+        </question-ids>
+        <source>České firmy</source>
       </trans-unit>
     </body>
   </file>

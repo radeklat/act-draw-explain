@@ -60,6 +60,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "help_how_to_play_par_2" : MessageLookupByLibrary.simpleMessage("The method of answering questions can be changed in the settings."),
     "help_how_to_play_tilt_par_1" : MessageLookupByLibrary.simpleMessage("The phone should placed on you forehead. The correct answer is chosen by tilting the display down, the wrong one by tilting up."),
     "help_how_to_play_title" : MessageLookupByLibrary.simpleMessage("How to play"),
+    "loading_data" : MessageLookupByLibrary.simpleMessage("Loading game data"),
     "menu_about" : MessageLookupByLibrary.simpleMessage("About"),
     "menu_feedback" : MessageLookupByLibrary.simpleMessage("Feedback"),
     "menu_feedback_bug_report" : MessageLookupByLibrary.simpleMessage("Report a bug"),
@@ -71,7 +72,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "settings_game_length" : MessageLookupByLibrary.simpleMessage("Game length"),
     "settings_interface_next_question" : MessageLookupByLibrary.simpleMessage("Next question control"),
     "settings_interface_vibrations" : MessageLookupByLibrary.simpleMessage("In-game vibration"),
+    "settings_language" : MessageLookupByLibrary.simpleMessage("Language"),
+    "settings_language_description" : MessageLookupByLibrary.simpleMessage("Affects app UI, topics and questions"),
     "settings_title_interface" : MessageLookupByLibrary.simpleMessage("Interface"),
+    "settings_title_languages" : MessageLookupByLibrary.simpleMessage("Languages"),
     "settings_title_options" : MessageLookupByLibrary.simpleMessage("Game options"),
     "start_game_button" : MessageLookupByLibrary.simpleMessage("Start game"),
     "start_game_prompt" : MessageLookupByLibrary.simpleMessage("Are you ready to play?")

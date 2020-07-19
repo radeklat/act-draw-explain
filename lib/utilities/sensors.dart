@@ -1,3 +1,4 @@
+import 'package:act_draw_explain/utilities/logging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:sensors/sensors.dart';
 import 'package:sprintf/sprintf.dart';
@@ -40,17 +41,15 @@ class TiltEvent {
 
   final AccelerometerEvent acc;
   final GyroscopeEvent gyro;
+  final _logMovement = Logger("TiltEvent.movement");
+  final _logOther = Logger("TiltEvent.other");
 
   TiltEvent(this.acc, this.gyro);
 
   TiltDirection get direction {
     TiltDirection tilt;
 
-    List<int> gyroMoving = [
-      _noChange(gyro.x),
-      _inRange(gyro.y.abs(), 2, _MAX_VAL),
-      _noChange(gyro.z)
-    ];
+    List<int> gyroMoving = [_noChange(gyro.x), _inRange(gyro.y.abs(), 2, _MAX_VAL), _noChange(gyro.z)];
 
     int downMovement = _inRange(acc.z, _MIN_VAL, -8);
     int upMovement = _inRange(acc.z, 7, _MAX_VAL);
@@ -63,35 +62,19 @@ class TiltEvent {
       }
     }
 
-    debugSensors(acc, gyro, gyroMoving, downMovement, upMovement, tilt);
+    ((gyroMoving[2] == 0) ? _logMovement : _logOther).debug(() {
+      var gyroMoveDebug = sprintf(MOVEMENT_TEMPLATE, gyroMoving);
+      var accDebug = sprintf(SENSOR_TEMPLATE, [acc.x, acc.y, acc.z]);
+      var gyroDebug = sprintf(SENSOR_TEMPLATE, [gyro.x, gyro.y, gyro.z]);
+
+      return "Gyro: $gyroMoveDebug | Down: $downMovement | Up: $upMovement | Acc $accDebug | Gyro $gyroDebug | $tilt";
+    });
+
     return tilt;
   }
-
-  void debugSensors(
-    AccelerometerEvent _acc,
-    GyroscopeEvent _gyro,
-    List<int> gyroMoving,
-    int downMovement,
-    int upMovement,
-    TiltDirection tilt,
-  ) {
-    if (!kReleaseMode) {
-      if (K_DEBUG_TILT_SENSORS == DebugLevel.none) {
-        return;
-      }
-
-      if (K_DEBUG_TILT_SENSORS == DebugLevel.movement && gyroMoving[2] == 0) {
-        return;
-      }
-
-      var gyroMoveDebug = sprintf(MOVEMENT_TEMPLATE, gyroMoving);
-      var accDebug = sprintf(SENSOR_TEMPLATE, [_acc.x, _acc.y, _acc.z]);
-      var gyroDebug = sprintf(SENSOR_TEMPLATE, [_gyro.x, _gyro.y, _gyro.z]);
-
-      print("Gyro: $gyroMoveDebug | Down: $downMovement | Up: $upMovement | Acc $accDebug | Gyro $gyroDebug | $tilt");
-    }
-  }
 }
+
+Logger _log = Logger("TiltEvent.detection");
 
 Stream<TiltEvent> tiltStream = accelerometerEvents
     .throttle(K_SENSORS_THROTTLE)
@@ -107,6 +90,6 @@ Stream<TiltEvent> tiltStream = accelerometerEvents
     .throttle(K_TILT_THROTTLE)
     .tap((tilt) {
       if (K_DEBUG_TILT_SENSORS != DebugLevel.none) {
-        print("########## EVENT ${tilt?.direction} ############");
+        _log.info("########## ${tilt?.direction} ############");
       }
     });

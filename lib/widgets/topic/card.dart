@@ -32,7 +32,7 @@ class TopicCard extends StatelessWidget {
               TopicCounter(
                 alignment: Alignment.topRight,
                 valueTop: "${bestScore ?? 0}",
-                valueBottom: "${topic.questionIDs.length}",
+                valueBottom: "${topic.questionIDs(Localizations.localeOf(context).languageCode).length}",
                 foregroundColor: foregroundColor,
               ),
             ],

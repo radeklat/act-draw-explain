@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/act_draw_explain.iml" filepath="$PROJECT_DIR$/act_draw_explain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/act_draw_explain_android.iml" filepath="$PROJECT_DIR$/android/act_draw_explain_android.iml" />
+    </modules>
+  </component>
+</project>

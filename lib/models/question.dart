@@ -1,6 +1,16 @@
-class Question {
-  final int id;
-  final String text;
+import 'package:act_draw_explain/models/localized_item.dart';
+import 'package:xml/xml.dart';
 
-  const Question({this.id, this.text});
+class Question extends LocalizedItem {
+  final int id;
+
+  Question({this.id, String baseText}) : super(baseText);
+
+  /// questionJson is a "trans-unit" from "topics.xliff"
+  static Question fromXmlElement(XmlElement xmlQuestion) {
+    return Question(
+      id: LocalizedItem.idFromXmlElement(xmlQuestion),
+      baseText: xmlQuestion.findElements("source").first.text,
+    );
+  }
 }

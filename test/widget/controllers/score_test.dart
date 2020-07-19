@@ -1,53 +1,38 @@
 import 'dart:collection';
 
 import 'package:act_draw_explain/analytics.dart';
+import 'package:act_draw_explain/constants.dart';
 import 'package:act_draw_explain/controllers/score.dart';
 import 'package:act_draw_explain/models/game_result.dart';
 import 'package:act_draw_explain/models/question.dart';
 import 'package:act_draw_explain/models/topic.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:xml/xml.dart';
 
-Topic fakeTopic = Topic(
-  id: 1,
-  name: "Fake topic",
-  color: Colors.black,
-  icon: Icon(Icons.score),
-  questionIDs: UnmodifiableListView([1, 2, 3, 4]),
-);
+import '../../utils/fakers.dart';
 
-Topic fakeEmptyTopic = Topic(
-  id: fakeTopic.id,
-  name: fakeTopic.name,
-  color: fakeTopic.color,
-  icon: fakeTopic.icon,
-  questionIDs: UnmodifiableListView([]),
+HashMap<int, Question> fakeQuestions = HashMap.from(
+  {1: fakeQuestion(1), 2: fakeQuestion(2), 3: fakeQuestion(3), 4: fakeQuestion(4)},
 );
-
-UnmodifiableMapView<int, Question> fakeQuestions = UnmodifiableMapView(
-  Map.fromIterable(
-    [
-      Question(id: 1, text: "q1"),
-      Question(id: 2, text: "q2"),
-      Question(id: 3, text: "q3"),
-      Question(id: 4, text: "q4")
-    ],
-    key: (question) => question.id,
-    value: (question) => question,
-  ),
-);
+Topic fakeNonEmptyTopic = fakeTopic(questions: fakeQuestions);
+Topic fakeEmptyTopic = fakeTopic();
 
 void main() {
   group('ScoreController', () {
     testWidgets('should generate next question text', (WidgetTester tester) async {
       String nextQuestion;
-      ScoreController(
-        topic: fakeTopic,
+      var sc = ScoreController(
+        topic: fakeNonEmptyTopic,
         questions: fakeQuestions,
+        languageCode: K.settings.locales.defaultValue,
         onNextQuestion: (str) {
           nextQuestion = str;
         },
-      ).nextQuestion(passed: true);
+      );
+
+      sc.nextQuestion(passed: true);
 
       expect(nextQuestion, isNotNull, reason: "nextQuestion");
       expect(nextQuestion.length, isPositive, reason: "nextQuestion.length");
@@ -57,8 +42,9 @@ void main() {
       if (answers == null) answers = List.generate(fakeQuestions.length, (_) => true);
       GameResult result;
       ScoreController sc = ScoreController(
-        topic: fakeTopic,
+        topic: fakeNonEmptyTopic,
         questions: fakeQuestions,
+        languageCode: K.settings.locales.defaultValue,
         onGameEnd: (gameResult) {
           result = gameResult;
         },
@@ -90,6 +76,7 @@ void main() {
       ScoreController(
         topic: fakeEmptyTopic,
         questions: fakeQuestions,
+        languageCode: K.settings.locales.defaultValue,
         onGameEnd: (gameResult) {
           result = gameResult;
         },
@@ -101,8 +88,9 @@ void main() {
     testWidgets('should return current score when game is ended externally', (WidgetTester tester) async {
       GameResult result;
       ScoreController(
-        topic: fakeTopic,
+        topic: fakeNonEmptyTopic,
         questions: fakeQuestions,
+        languageCode: K.settings.locales.defaultValue,
         onGameEnd: (gameResult) {
           result = gameResult;
         },
@@ -114,7 +102,11 @@ void main() {
     });
 
     testWidgets('should expose if it has more questions', (WidgetTester tester) async {
-      ScoreController sc = ScoreController(topic: fakeTopic, questions: fakeQuestions);
+      ScoreController sc = ScoreController(
+        topic: fakeNonEmptyTopic,
+        questions: fakeQuestions,
+        languageCode: K.settings.locales.defaultValue,
+      );
       List.generate(fakeQuestions.length - 1, (index) {
         expect(sc.hasMoreQuestions, true, reason: "hasMoreQuestions during round ${index + 1}/${fakeQuestions.length}");
         sc.nextQuestion(passed: true);
@@ -127,10 +119,11 @@ void main() {
       int logsCount = 0;
       QuestionState expectedState = QuestionState.pass;
       ScoreController sc = ScoreController(
-        topic: fakeTopic,
+        topic: fakeNonEmptyTopic,
         questions: fakeQuestions,
+        languageCode: K.settings.locales.defaultValue,
         logQuestion: (Topic t, Question q, Duration d, QuestionState qs) {
-          expect(t, fakeTopic, reason: "Topic in $expectedState");
+          expect(t, fakeNonEmptyTopic, reason: "Topic in $expectedState");
           expect(q, isIn(fakeQuestions.values), reason: "Question in $expectedState");
           expect(d.inMicroseconds, isPositive, reason: "Duration in $expectedState");
           expect(qs, expectedState, reason: "QuestionState");

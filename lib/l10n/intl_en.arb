@@ -3,6 +3,15 @@
   "name": "Act, Draw, Explain",
   "@name": {"description": "Name of the app"},
 
+  "settings_title_languages": "Languages",
+  "@settings_title_languages": {"description": "Settings title for laguages"},
+
+  "settings_language": "Language",
+  "@settings_language": {"description": "Settings / Laguage"},
+
+  "settings_language_description": "Affects app UI, topics and questions",
+  "@settings_language_description": {"description": "Settings / Laguage"},
+
   "game_control_buttons": "Buttons",
   "@game_control_buttons": {"description": "Settings / Game control / Buttons"},
 
@@ -170,5 +179,8 @@
   "@help_advanced_game_title": {"description": "Section title on the help screen"},
 
   "help_advanced_game_par_1": "Although the application does not yet prompt this and has not optimized question selection process, it is possible to guess by demonstration (pantomime) or drawing.",
-  "@help_advanced_game_par_1": {"description": "Paragraph of text on the help screen"}
+  "@help_advanced_game_par_1": {"description": "Paragraph of text on the help screen"},
+
+  "loading_data": "Loading game data",
+  "@loading_data": {"description": "Message displayed when game data are loading"}
 }
