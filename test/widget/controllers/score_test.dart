@@ -9,6 +9,7 @@ import 'package:act_draw_explain/models/topic.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:xml/xml.dart';
 
 HashMap<int, Question> fakeQuestions = HashMap.from(
   {1: fakeQuestion(1), 2: fakeQuestion(2), 3: fakeQuestion(3), 4: fakeQuestion(4)},
@@ -19,9 +20,10 @@ Topic fakeTopic = Topic(
   color: Colors.black,
   icon: Icon(Icons.score),
   questions: UnmodifiableMapView(fakeQuestions),
-)..updateWithLocalizedJSON({
-    "target": {"\$": "Fake topic"}
-  }, K.settings.locales.defaultValue);
+)..updateWithLocalizedXmlElement(
+  XmlElement(XmlName("trans-unit"), [], [XmlElement(XmlName("target"), [], [XmlText("Fake topic")])]),
+    K.settings.locales.defaultValue,
+  );
 
 Topic fakeEmptyTopic = Topic(
   id: fakeTopic.id,
@@ -32,9 +34,10 @@ Topic fakeEmptyTopic = Topic(
 
 Question fakeQuestion(int id, [String text]) {
   return Question(id: id)
-    ..updateWithLocalizedJSON({
-      "target": {"\$": text ?? "Question $id"}
-    }, K.settings.locales.defaultValue);
+    ..updateWithLocalizedXmlElement(
+      XmlElement(XmlName("trans-unit"), [], [XmlElement(XmlName("target"), [], [XmlText(text ?? "Question $id")])]),
+      K.settings.locales.defaultValue,
+    );
 }
 
 void main() {

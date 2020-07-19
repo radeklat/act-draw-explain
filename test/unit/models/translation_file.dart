@@ -31,7 +31,7 @@ void main() {
 
       expect(
         () async {
-          await loader.load("topics", Topic.fromJson, LocalizedItem.idFromJson);
+          await loader.load("topics", Topic.fromXmlElement, LocalizedItem.idFromXmlElement);
         },
         throwsA(isA<AssertionError>()),
       );

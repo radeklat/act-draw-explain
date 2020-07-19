@@ -36,14 +36,15 @@ class Logger {
   }
 
   log(int logLevel, dynamic message) {
+    DateTime datetime = DateTime.now();
     assertValidLogLevel(logLevel);
     if (logLevel < _logLevel || (name != null && _blacklist.contains(name))) return;
 
     String output = ((message is Function) ? message() : message).toString();
     String logName = (name == null) ? "" : "($name) ";
-    String datetime = DateTime.now().toString();
+    String duration = (this is _TimingLogger) ? " in ${datetime.difference((this as _TimingLogger).start)}" : "";
 
-    print("$datetime $logName[${logLevels[logLevel]}]: $output");
+    print("$datetime $logName[${logLevels[logLevel]}]: $output$duration");
   }
 
   debug(dynamic message) {
@@ -70,6 +71,14 @@ class Logger {
   Logger when(bool condition) {
     return (condition) ? this : _disabledLogger;
   }
+
+  Logger time(DateTime start) {
+    return _TimingLogger(start, name);
+  }
+
+  Logger subLogger(String name) {
+    return (name == null) ? this : Logger("${this.name}.$name");
+  }
 }
 
 final _disabledLogger = _DisabledLogger();
@@ -79,4 +88,10 @@ class _DisabledLogger extends Logger {
   log(int logLevel, message) {
     return;
   }
+}
+
+class _TimingLogger extends Logger {
+  final DateTime start;
+
+  _TimingLogger(this.start, name) : super(name);
 }

@@ -6,5 +6,4 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
-  xml: ^3.6.1
-  xml2json: ^4.2.0
+  xml: any

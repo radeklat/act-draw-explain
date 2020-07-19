@@ -14,7 +14,7 @@ description: A new Flutter application.
 version: 1.1.1+15
 
 environment:
-  sdk: ">=2.6.0 <3.0.0"
+  sdk: ">=2.8.4 <3.0.0"
 
 # `flutter pub outdated` to see what can be upgraded
 dependencies:
@@ -40,19 +40,18 @@ dependencies:
   url_launcher: ^5.4.5
   package_info: ^0.4.0+17
   device_info: ">=0.4.2+4 <2.0.0"
-  fluttertoast: ^4.0.1
+  fluttertoast: ^7.0.1
   equatable: ^1.1.1
   collection: ^1.14.11
   intl: ^0.16.1
   xml: ^3.6.1
-  xml2json: ^4.2.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_driver:
-    sdk: flutter
-  test: any
+#  flutter_driver:
+#    sdk: flutter
+  test: ^1.14.4
   intl_utils: ^1.6.2
   mockito: ^4.1.1
   sync_translation_files:

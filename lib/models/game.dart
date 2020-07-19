@@ -4,17 +4,21 @@ import 'dart:ui';
 import 'package:act_draw_explain/models/question.dart';
 import 'package:act_draw_explain/models/topic.dart';
 import 'package:act_draw_explain/models/translation_file.dart';
+import 'package:act_draw_explain/utilities/logging.dart';
 
 class GameData {
   static HashMap<int, Topic> topics = HashMap();
   static HashMap<int, Question> questions = HashMap();
+  static Logger _log = Logger("GameData");
 
   static Future<bool> initialize(List<Locale> supportedLocales, [AssetLoader assetLoader]) async {
     List<String> supportedLanguageCodes = supportedLocales.map((locale) => locale.languageCode).toList();
     TranslationsLoader translationsLoader = TranslationsLoader(supportedLanguageCodes, assetLoader ?? AssetLoader());
 
-    questions = await translationsLoader.load<Question>("questions", Question.fromJson, LocalizedItem.idFromJson);
-    topics = await translationsLoader.load<Topic>("topics", Topic.fromJson, LocalizedItem.idFromJson);
+    DateTime start = DateTime.now();
+    questions = await translationsLoader.load<Question>("questions", Question.fromXmlElement, LocalizedItem.idFromXmlElement);
+    topics = await translationsLoader.load<Topic>("topics", Topic.fromXmlElement, LocalizedItem.idFromXmlElement);
+    _log.time(start).debug("Loaded");
 
     return true;
   }

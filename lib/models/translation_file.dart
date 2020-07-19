@@ -1,11 +1,8 @@
 import 'dart:collection';
-import 'dart:convert';
 
-import 'package:act_draw_explain/utilities/iter.dart';
 import 'package:act_draw_explain/utilities/logging.dart';
 import 'package:flutter/services.dart';
-import 'package:xml2json/xml2json.dart';
-
+import 'package:xml/xml.dart';
 
 class AssetLoader {
   static const String ASSETS_DIR = "assets/data";
@@ -24,39 +21,39 @@ class TranslationsLoader {
   final AssetLoader assetFileLoader;
   final List<String> supportedLanguageCodes;
   final _log = Logger("TranslationsLoader");
-  final _xmlToJson = Xml2Json();
 
   TranslationsLoader(this.supportedLanguageCodes, this.assetFileLoader);
 
   /// Returns XLIFF document as JSON in Badgerfish Convention
   /// See: http://wiki.open311.org/JSON_and_XML_Conversion/
-  Future<Map<String, dynamic>> _loadXliffAssetAsJson(String type, [String locale]) async {
+  Future<XmlDocument> _loadXliffAsset(String type, [String locale]) async {
+    DateTime start = DateTime.now();
+    var log = _log.subLogger(type).subLogger(locale);
     String xmlContent = await assetFileLoader.loadString(type, locale);
-    _log.debug("XML loaded");
+    log.time(start).debug("File content loaded");
 
-    _xmlToJson.parse(xmlContent);
-    _log.debug("XML parsed");
-    var jsonString = _xmlToJson.toBadgerfish();
-    _log.debug("XML converted to JSON");
-    var decodedJson = jsonDecode(jsonString);
-    _log.debug("JSON decoded");
-    return decodedJson;
+    start = DateTime.now();
+    XmlDocument parsedXml = parse(xmlContent);
+    log.time(start).debug("XML parsed");
+
+    return parsedXml;
   }
 
   Future<HashMap<int, Item>> load<Item extends LocalizedItem>(
     String itemType,
-    Function itemFromJson,
-    Function idFromJson,
+    Function(XmlElement) itemFromXmlElement,
+    Function(XmlElement) idFromXmlElement,
   ) async {
-    _log.debug("Loading file with $itemType");
-    Map<String, dynamic> _jsonRoot = await _loadXliffAssetAsJson(itemType);
-    _log.debug("Processing $itemType");
+    DateTime start = DateTime.now();
+    XmlDocument xmlRoot = await _loadXliffAsset(itemType);
+    var log = _log.subLogger(itemType);
+    log.time(start).debug("String loaded");
     HashMap<int, Item> items = HashMap();
 
-    ensureList(_jsonRoot["xliff"]["file"]).forEach((fileJson) {
-      ensureList(fileJson["body"]["trans-unit"]).forEach(
-        (itemJson) {
-          Item item = itemFromJson(itemJson);
+    xmlRoot.findAllElements("file").forEach((XmlElement xmlFile) {
+      xmlFile.findAllElements("trans-unit").forEach(
+        (XmlElement xmlItem) {
+          Item item = itemFromXmlElement(xmlItem);
           assert(
             !items.containsKey(item.id),
             "$itemType with ID '${item.id}' appear in the source file more than once",
@@ -66,37 +63,39 @@ class TranslationsLoader {
       );
     });
 
+    log.time(start).debug("File loaded");
+
     for (String languageCode in supportedLanguageCodes) {
-      _log.debug("Loading file with $itemType/$languageCode");
-      Map<String, dynamic> localizedItemJson = await _loadXliffAssetAsJson(itemType, languageCode);
-      _log.debug("Processing $itemType/$languageCode");
+      start = DateTime.now();
+      XmlDocument xmlLocalizedItem = await _loadXliffAsset(itemType, languageCode);
+      var langLog = log.subLogger(languageCode);
+      langLog.time(start).debug("String loaded");
+
       Set<String> seenFileOriginals = {};
 
-      ensureList(localizedItemJson["xliff"]["file"]).forEach((jsonFile) {
-        String transItemLanguageCode = jsonFile["@target-language"];
-        assert(
-          transItemLanguageCode == languageCode,
-          "<trans-item target-language='$transItemLanguageCode'> does not match "
-          "the $itemType/$languageCode file language code '$languageCode'",
-        );
+      xmlLocalizedItem.findAllElements("file").forEach((XmlElement xmlFile) {
+        String transItemLanguageCode = xmlFile.getAttribute("target-language");
+        langLog.when(transItemLanguageCode != languageCode).error(
+              "<trans-item target-language='$transItemLanguageCode'> does not match "
+              "the file language code",
+            );
 
-        String original = jsonFile["@original"];
-        assert(
-          !seenFileOriginals.contains(original),
-          "<file original='$original'> appear in the $itemType/$languageCode file more than once",
-        );
+        String original = xmlFile.getAttribute("original");
+        langLog.when(seenFileOriginals.contains(original)).error(
+              "<file original='$original'> appear in the $itemType/$languageCode file more than once",
+            );
         seenFileOriginals.add(original);
 
-        ensureList(jsonFile["body"]["trans-unit"]).forEach(
-          (itemJson) {
-            items[idFromJson(itemJson)].updateWithLocalizedJSON(itemJson, languageCode);
+        xmlFile.findAllElements("trans-unit").forEach(
+          (XmlElement xmlItem) {
+            items[idFromXmlElement(xmlItem)].updateWithLocalizedXmlElement(xmlItem, languageCode);
           },
         );
       });
-      _log.debug("File with $itemType/$languageCode loaded");
+      langLog.time(start).debug("File loaded");
     }
 
-    _log.debug("File with $itemType loaded");
+
     return items;
   }
 }
@@ -127,13 +126,13 @@ abstract class LocalizedItem {
   }
 
   /// itemJson is a "trans-unit" from "<TYPE>/<LOCALE>.xliff"
-  updateWithLocalizedJSON(Map<String, dynamic> itemJson, String locale) {
-    localizedTexts[locale] = _unquote(itemJson["target"]["\$"]);
+  updateWithLocalizedXmlElement(XmlElement xmlItem, String locale) {
+    localizedTexts[locale] = xmlItem.findElements("target").first.text;
   }
 
   /// topicJSON is a "trans-unit" from "<TYPE>.xliff" or "<TYPE>/<LOCALE>.xliff"
-  static int idFromJson(Map<String, dynamic> itemJson) {
-    return int.parse(itemJson["@id"]);
+  static int idFromXmlElement(XmlElement xmlItem) {
+    return int.parse(xmlItem.getAttribute("id"));
   }
 
   @override

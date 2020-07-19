@@ -85,9 +85,7 @@ Running `flutter pub run sync_translation_files` from the repository source will
 
 Since testing tools for Flutter are still in their infancy, the tooling is often broken, too simple or non-existent. To see test coverage, the project utilizes codecov.io for visualisation.
 
-Unit tests are located in `test/unit`, widget tests in `test/widget`. Rudimentary application tests are located in `test_driver`. However, as they are not stable and too simplistic, they are not used to verify correct app behaviour.
-
-To generate a combined test/widget tests coverage report, run:
+Unit tests are located in `test/unit`, widget tests in `test/widget`. To generate a combined test/widget tests coverage report, run:
 
 ```bash
 flutter test --coverage && bash <(curl -s https://codecov.io/bash) -f coverage/lcov.info
