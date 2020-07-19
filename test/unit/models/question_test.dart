@@ -13,14 +13,14 @@ void main() {
       question = fakeQuestion(1, localisations: {"en": "enabled", "cs": LocalizedItem.DISABLED});
     });
 
-    test('should identify disabled question', () async {
-      expect(question.isDisabled("en"), false, reason: "Question was expected to be enabled.");
-      expect(question.isDisabled("cs"), true, reason: "Question was expected to be disabled.");
+    group('should identify disabled question for', () {
+      test("enabled translation", () => expect(question.isDisabled("en"), false));
+      test("disabled translation", () => expect(question.isDisabled("cs"), true));
     });
 
-    test('should return correct translation', () async {
-      expect(question.text("en"), "enabled");
-      expect(question.text("cs"), LocalizedItem.DISABLED);
+    group('should return correct translation for', () {
+      test("enabled translation", () => expect(question.text("en"), "enabled"));
+      test("disabled translation", () => expect(question.text("cs"), LocalizedItem.DISABLED));
     });
   });
 }

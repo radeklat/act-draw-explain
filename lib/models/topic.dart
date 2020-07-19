@@ -4,7 +4,6 @@ import 'package:act_draw_explain/models/question.dart';
 import 'package:act_draw_explain/models/localized_item.dart';
 import 'package:act_draw_explain/utilities/color.dart';
 import 'package:act_draw_explain/utilities/icons.dart';
-import 'package:act_draw_explain/utilities/logging.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:xml/xml.dart';
