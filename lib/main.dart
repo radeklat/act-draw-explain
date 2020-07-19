@@ -1,8 +1,10 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:act_draw_explain/constants.dart';
 import 'package:act_draw_explain/models/results.dart';
 import 'package:act_draw_explain/screens/about.dart';
+import 'package:act_draw_explain/screens/crash.dart';
 import 'package:act_draw_explain/screens/game/end_game.dart';
 import 'package:act_draw_explain/screens/game/play/countdown.dart';
 import 'package:act_draw_explain/screens/game/play/explain.dart';
@@ -29,13 +31,19 @@ main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   Crashlytics.instance.enableInDevMode = false; // Pass all uncaught errors from the framework to Crashlytics.
-  FlutterError.onError = Crashlytics.instance.recordFlutterError;
+  FlutterError.onError = (details) {
+    Zone.current.handleUncaughtError(details.exception, details.stack);
+    Crashlytics.instance.recordFlutterError(details);
+  };
+  ErrorWidget.builder = (FlutterErrorDetails details) => CrashScreen(details: details);
   await PrefService.init();
   await GameVibrations.init();
   Logger.logLevel = (kReleaseMode) ? Logger.WARNING : Logger.DEBUG;
   Logger.blacklist = {"TiltEvent.other", "TiltEvent.movement", "TiltEvent.detection"};
 
-  runApp(MyApp());
+  runZoned(() {
+    runApp(MyApp());
+  }, onError: Crashlytics.instance.recordError);
 }
 
 class MyApp extends StatefulWidget {
