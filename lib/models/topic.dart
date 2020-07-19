@@ -1,11 +1,9 @@
 import 'dart:collection';
 
-import 'package:act_draw_explain/models/game.dart';
 import 'package:act_draw_explain/models/question.dart';
 import 'package:act_draw_explain/models/translation_file.dart';
 import 'package:act_draw_explain/utilities/color.dart';
 import 'package:act_draw_explain/utilities/icons.dart';
-import 'package:act_draw_explain/utilities/iter.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:xml/xml.dart';
@@ -47,7 +45,7 @@ class Topic extends LocalizedItem {
   }
 
   /// topicJSON is a "trans-unit" from "topics.xliff"
-  static Topic fromXmlElement(XmlElement xmlTopic) {
+  static Topic fromXmlElement(HashMap<int, Question> allQuestions, XmlElement xmlTopic) {
     List<String> sources = xmlTopic
         .findElements("attribution")
         .map(
@@ -55,7 +53,7 @@ class Topic extends LocalizedItem {
         )
         .toList();
 
-    HashMap<int, Question> questions = HashMap();
+    HashMap<int, Question> topicQuestions = HashMap();
 
     xmlTopic.findElements("question-ids").forEach((XmlElement xmlQuestionIDs) {
       xmlQuestionIDs.descendants.forEach((XmlNode xmlQuestionIDsItem) {
@@ -63,11 +61,11 @@ class Topic extends LocalizedItem {
           if (xmlQuestionIDsItem.name.local == "list") {
             _idRegExp.allMatches(xmlQuestionIDsItem.text).forEach((match) {
               int questionID = int.parse(match.group(0));
-              questions[questionID] = GameData.questions[questionID];
+              topicQuestions[questionID] = allQuestions[questionID];
             });
           } else if (xmlQuestionIDsItem.name.local == "range") {
             _range(xmlQuestionIDsItem).forEach((questionID) {
-              questions[questionID] = GameData.questions[questionID];
+              topicQuestions[questionID] = allQuestions[questionID];
             });
           }
         }
@@ -79,7 +77,7 @@ class Topic extends LocalizedItem {
       baseText: xmlTopic.findElements("source").first.text,
       color: colorByName(xmlTopic.getAttribute("color") ?? ""),
       icon: iconByName(xmlTopic.getAttribute("icon") ?? ""),
-      questions: UnmodifiableMapView(questions),
+      questions: UnmodifiableMapView(topicQuestions),
       sources: sources,
     );
   }

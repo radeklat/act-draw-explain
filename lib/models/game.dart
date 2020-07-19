@@ -5,6 +5,7 @@ import 'package:act_draw_explain/models/question.dart';
 import 'package:act_draw_explain/models/topic.dart';
 import 'package:act_draw_explain/models/translation_file.dart';
 import 'package:act_draw_explain/utilities/logging.dart';
+import 'package:xml/xml.dart';
 
 class GameData {
   static HashMap<int, Topic> topics = HashMap();
@@ -16,8 +17,18 @@ class GameData {
     TranslationsLoader translationsLoader = TranslationsLoader(supportedLanguageCodes, assetLoader ?? AssetLoader());
 
     DateTime start = DateTime.now();
-    questions = await translationsLoader.load<Question>("questions", Question.fromXmlElement, LocalizedItem.idFromXmlElement);
-    topics = await translationsLoader.load<Topic>("topics", Topic.fromXmlElement, LocalizedItem.idFromXmlElement);
+
+    questions = await translationsLoader.load<Question>(
+      "questions",
+      Question.fromXmlElement,
+      LocalizedItem.idFromXmlElement,
+    );
+    topics = await translationsLoader.load<Topic>(
+      "topics",
+      (XmlElement topicXml) => Topic.fromXmlElement(questions, topicXml),
+      LocalizedItem.idFromXmlElement,
+    );
+
     _log.time(start).debug("Loaded");
 
     return true;
