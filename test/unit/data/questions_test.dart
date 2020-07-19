@@ -35,7 +35,7 @@ void main() {
         question.localizedTexts.forEach((language, text) {
           String localisedText = "$language/$text";
 
-          if (!exceptions.contains(localisedText) && text != LocalizedItem.DISABLED) {
+          if (!exceptions.contains(localisedText) && text != LocalizedItem.DISABLED && text != "") {
             if (questionTexts.contains(localisedText)) {
               duplicates.update(localisedText, (value) => value + 1, ifAbsent: () => 2);
             }
