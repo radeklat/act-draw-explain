@@ -21,7 +21,9 @@ Topic fakeTopic = Topic(
   icon: Icon(Icons.score),
   questions: UnmodifiableMapView(fakeQuestions),
 )..updateWithLocalizedXmlElement(
-  XmlElement(XmlName("trans-unit"), [], [XmlElement(XmlName("target"), [], [XmlText("Fake topic")])]),
+    XmlElement(XmlName("trans-unit"), [], [
+      XmlElement(XmlName("target"), [], [XmlText("Fake topic")])
+    ]),
     K.settings.locales.defaultValue,
   );
 
@@ -31,16 +33,25 @@ Topic fakeEmptyTopic = Topic(
   icon: fakeTopic.icon,
   questions: UnmodifiableMapView({}),
 )..updateWithLocalizedXmlElement(
-  XmlElement(XmlName("trans-unit"), [], [XmlElement(XmlName("target"), [], [XmlText("Fake topic")])]),
-  K.settings.locales.defaultValue,
-);
+    XmlElement(XmlName("trans-unit"), [], [
+      XmlElement(XmlName("target"), [], [XmlText("Fake topic")])
+    ]),
+    K.settings.locales.defaultValue,
+  );
 
-Question fakeQuestion(int id, [String text]) {
-  return Question(id: id)
-    ..updateWithLocalizedXmlElement(
-      XmlElement(XmlName("trans-unit"), [], [XmlElement(XmlName("target"), [], [XmlText(text ?? "Question $id")])]),
-      K.settings.locales.defaultValue,
+Question fakeQuestion(int id, {String baseText, Map<String, String> localisations}) {
+  var question = Question(id: id, baseText: "Fake question");
+
+  (localisations ?? {K.settings.locales.defaultValue: null}).forEach((languageCode, text) {
+    question.updateWithLocalizedXmlElement(
+      XmlElement(XmlName("trans-unit"), [], [
+        XmlElement(XmlName("target"), [], [XmlText(text ?? "Question $id")])
+      ]),
+      languageCode,
     );
+  });
+
+  return question;
 }
 
 void main() {
