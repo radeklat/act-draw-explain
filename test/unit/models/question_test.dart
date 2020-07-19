@@ -2,6 +2,7 @@ import 'package:act_draw_explain/models/localized_item.dart';
 import 'package:act_draw_explain/models/question.dart';
 import 'package:test/test.dart';
 
+import '../../utils/fakers.dart';
 import '../../widget/controllers/score_test.dart';
 
 void main() {

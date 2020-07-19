@@ -11,55 +11,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:xml/xml.dart';
 
+import '../../utils/fakers.dart';
+
 HashMap<int, Question> fakeQuestions = HashMap.from(
   {1: fakeQuestion(1), 2: fakeQuestion(2), 3: fakeQuestion(3), 4: fakeQuestion(4)},
 );
-
-Topic fakeTopic = Topic(
-  id: 1,
-  color: Colors.black,
-  icon: Icon(Icons.score),
-  questions: UnmodifiableMapView(fakeQuestions),
-)..updateWithLocalizedXmlElement(
-    XmlElement(XmlName("trans-unit"), [], [
-      XmlElement(XmlName("target"), [], [XmlText("Fake topic")])
-    ]),
-    K.settings.locales.defaultValue,
-  );
-
-Topic fakeEmptyTopic = Topic(
-  id: fakeTopic.id,
-  color: fakeTopic.color,
-  icon: fakeTopic.icon,
-  questions: UnmodifiableMapView({}),
-)..updateWithLocalizedXmlElement(
-    XmlElement(XmlName("trans-unit"), [], [
-      XmlElement(XmlName("target"), [], [XmlText("Fake topic")])
-    ]),
-    K.settings.locales.defaultValue,
-  );
-
-Question fakeQuestion(int id, {String baseText, Map<String, String> localisations}) {
-  var question = Question(id: id, baseText: "Fake question");
-
-  (localisations ?? {K.settings.locales.defaultValue: null}).forEach((languageCode, text) {
-    question.updateWithLocalizedXmlElement(
-      XmlElement(XmlName("trans-unit"), [], [
-        XmlElement(XmlName("target"), [], [XmlText(text ?? "Question $id")])
-      ]),
-      languageCode,
-    );
-  });
-
-  return question;
-}
+Topic fakeNonEmptyTopic = fakeTopic(questions: fakeQuestions);
+Topic fakeEmptyTopic = fakeTopic();
 
 void main() {
   group('ScoreController', () {
     testWidgets('should generate next question text', (WidgetTester tester) async {
       String nextQuestion;
       var sc = ScoreController(
-        topic: fakeTopic,
+        topic: fakeNonEmptyTopic,
         questions: fakeQuestions,
         languageCode: K.settings.locales.defaultValue,
         onNextQuestion: (str) {
@@ -77,7 +42,7 @@ void main() {
       if (answers == null) answers = List.generate(fakeQuestions.length, (_) => true);
       GameResult result;
       ScoreController sc = ScoreController(
-        topic: fakeTopic,
+        topic: fakeNonEmptyTopic,
         questions: fakeQuestions,
         languageCode: K.settings.locales.defaultValue,
         onGameEnd: (gameResult) {
@@ -123,7 +88,7 @@ void main() {
     testWidgets('should return current score when game is ended externally', (WidgetTester tester) async {
       GameResult result;
       ScoreController(
-        topic: fakeTopic,
+        topic: fakeNonEmptyTopic,
         questions: fakeQuestions,
         languageCode: K.settings.locales.defaultValue,
         onGameEnd: (gameResult) {
@@ -138,7 +103,7 @@ void main() {
 
     testWidgets('should expose if it has more questions', (WidgetTester tester) async {
       ScoreController sc = ScoreController(
-        topic: fakeTopic,
+        topic: fakeNonEmptyTopic,
         questions: fakeQuestions,
         languageCode: K.settings.locales.defaultValue,
       );
@@ -154,11 +119,11 @@ void main() {
       int logsCount = 0;
       QuestionState expectedState = QuestionState.pass;
       ScoreController sc = ScoreController(
-        topic: fakeTopic,
+        topic: fakeNonEmptyTopic,
         questions: fakeQuestions,
         languageCode: K.settings.locales.defaultValue,
         logQuestion: (Topic t, Question q, Duration d, QuestionState qs) {
-          expect(t, fakeTopic, reason: "Topic in $expectedState");
+          expect(t, fakeNonEmptyTopic, reason: "Topic in $expectedState");
           expect(q, isIn(fakeQuestions.values), reason: "Question in $expectedState");
           expect(d.inMicroseconds, isPositive, reason: "Duration in $expectedState");
           expect(qs, expectedState, reason: "QuestionState");
