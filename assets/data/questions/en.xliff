@@ -751,8 +751,8 @@
         <target>$100,000</target>
       </trans-unit>
       <trans-unit id="163">
-        <source/>
-        <target>Gentlemen, Start Your Engines... and May the Best Woman Win.</target>
+        <source>Gentlemen, Start Your Engines… and May the Best Woman Win.</source>
+        <target>Gentlemen, Start Your Engines… and May the Best Woman Win.</target>
       </trans-unit>
       <trans-unit id="164">
         <source/>
@@ -6547,8 +6547,8 @@
         <target>Believe (Cher)</target>
       </trans-unit>
       <trans-unit id="1625">
-        <source/>
-        <target>...Baby One More Time (Britney Spears)</target>
+        <source>…Baby One More Time (Britney Spears)</source>
+        <target>…Baby One More Time (Britney Spears)</target>
       </trans-unit>
       <trans-unit id="1626">
         <source/>
