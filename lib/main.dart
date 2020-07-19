@@ -81,8 +81,9 @@ class _MyAppState extends State<MyApp> {
           GlobalCupertinoLocalizations.delegate,
         ],
         localeResolutionCallback: (Locale deviceLocale, Iterable<Locale> supportedLocales) {
-          Locale requestedLocale =
-              this.locale ?? localeFromString(PrefService.getString(K.settings.locales.key) ?? deviceLocale);
+          Locale requestedLocale = this.locale ??
+              localeFromString(PrefService.getString(K.settings.locales.key) ?? deviceLocale.toString(),
+                  );
 
           if (localeLanguageCodeIn(requestedLocale, supportedLocales)) {
             return requestedLocale;
