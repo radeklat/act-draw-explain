@@ -12,6 +12,17 @@ Types of changes are:
 ## [Unreleased]
 <!-- Don't forget to update version in pubspec.yaml -->
 
+## [2.0.0+16] - 2020-07-19 <a name="2.0.0" />
+### Features
+* Translate application to English
+* Allow choosing language for the app UI and game data
+* Translate some topics into English
+* Game data can be 
+
+### BREAKING CHANGES
+* Topics that have no translations in selected language are hidden
+* Topics disabled for selected language are hidden
+
 ## [1.1.1+15] - 2020-07-11 <a name="1.1.1" />
 ### Fixes
 * Crash when system language was not available among translations. Now the app UI will default to English.
@@ -97,7 +108,8 @@ Types of changes are:
 ### Features
 * Initial source code
 
-[Unreleased]: https://github.com/radeklat/act-draw-explain/compare/releases/1.1.1+15...HEAD
+[Unreleased]: https://github.com/radeklat/act-draw-explain/compare/releases/2.0.0+16...HEAD
+[2.0.0+16]: https://github.com/radeklat/act-draw-explain/compare/releases/1.1.1+15...releases/2.0.0+16
 [1.1.1+15]: https://github.com/radeklat/act-draw-explain/compare/releases/1.1.0+13...releases/1.1.1+15
 [1.1.0+13]: https://github.com/radeklat/act-draw-explain/compare/releases/1.0.0+11...releases/1.1.0+13
 [1.0.0+11]: https://github.com/radeklat/act-draw-explain/compare/releases/0.7.0+10...releases/1.0.0+11
