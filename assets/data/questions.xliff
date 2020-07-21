@@ -756,9 +756,8 @@
       <trans-unit id="669"><source>Rokoko</source></trans-unit>
       <trans-unit id="670"><source>Románský sloh</source></trans-unit>
       <trans-unit id="671"><source>Romantismus</source></trans-unit>
-      <trans-unit id="672"><source>Secese</source></trans-unit>
+      <trans-unit id="672"><source>Secese / Art Nouveau</source></trans-unit>
       <trans-unit id="673"><source>Surrealismus</source></trans-unit>
-      <trans-unit id="674"><source>Art Nouveau</source></trans-unit>
     </body>
   </file>
   <file category="" original="21">
@@ -771,7 +770,7 @@
       <trans-unit id="680"><source>Kanoistika</source></trans-unit>
       <trans-unit id="681"><source>Vodní slalom</source></trans-unit>
       <trans-unit id="682"><source>BMX</source></trans-unit>
-      <trans-unit id="683"><source>Jízda na kole</source></trans-unit>
+      <trans-unit id="683"><source>Cyklistika</source></trans-unit>
       <trans-unit id="684"><source>In-line Skating</source></trans-unit>
       <trans-unit id="685"><source>Gymnastika</source></trans-unit>
       <trans-unit id="686"><source>Trampolína</source></trans-unit>
@@ -1082,7 +1081,6 @@
       <trans-unit id="986"><source>Včelařství</source></trans-unit>
       <trans-unit id="987"><source>Pozorování ptáků</source></trans-unit>
       <trans-unit id="988"><source>Sbírání propisek</source></trans-unit>
-      <trans-unit id="989"><source>Serfování</source></trans-unit>
       <trans-unit id="990"><source>Sbírání ubrousků</source></trans-unit>
       <trans-unit id="991"><source>Longboarding</source></trans-unit>
       <trans-unit id="992"><source>Bonsaj</source></trans-unit>
@@ -1121,7 +1119,6 @@
       <trans-unit id="1025"><source>Infiltrátorství</source></trans-unit>
       <trans-unit id="1026"><source>Numismatika</source></trans-unit>
       <trans-unit id="1027"><source>Filokartie</source></trans-unit>
-      <trans-unit id="1028"><source>Cyklistika</source></trans-unit>
     </body>
   </file>
   <file category="" original="24">

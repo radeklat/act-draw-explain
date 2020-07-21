@@ -745,7 +745,6 @@
       <trans-unit id="671"><source/><target>Romanticism</target></trans-unit>
       <trans-unit id="672"><source/><target>Art Nouveau</target></trans-unit>
       <trans-unit id="673"><source/><target>Surrealism</target></trans-unit>
-      <trans-unit id="674"><source/><target>Art Nouveau</target></trans-unit>
     </body>
   </file>
   <file category="Sports" original="21" target-language="en">
@@ -846,7 +845,7 @@
       <trans-unit id="764"><source/><target>Hystrix, Porcupine</target></trans-unit>
       <trans-unit id="765"><source/><target>Dingo</target></trans-unit>
       <trans-unit id="766"><source/><target>Ferret</target></trans-unit>
-      <trans-unit id="767"><source/><target>Shrimp</target></trans-unit>
+      <trans-unit id="767"><source/><target>Brown shrimp</target></trans-unit>
       <trans-unit id="768"><source/><target>Gecko</target></trans-unit>
       <trans-unit id="769"><source/><target>Gorilla</target></trans-unit>
       <trans-unit id="770"><source/><target>Snake</target></trans-unit>
@@ -922,7 +921,7 @@
       <trans-unit id="840"><source/><target>Dog</target></trans-unit>
       <trans-unit id="841"><source/><target>Flamingo</target></trans-unit>
       <trans-unit id="842"><source/><target>Blue whale</target></trans-unit>
-      <trans-unit id="843"><source/><target>Rat</target></trans-unit>
+      <trans-unit id="843"><source/><target>Brown rat</target></trans-unit>
       <trans-unit id="844"><source/><target>Pig</target></trans-unit>
       <trans-unit id="845"><source/><target>Puma</target></trans-unit>
       <trans-unit id="846"><source/><target>Peacock</target></trans-unit>
@@ -937,7 +936,7 @@
       <trans-unit id="855"><source/><target>Grasshopper</target></trans-unit>
       <trans-unit id="856"><source/><target>Sardine</target></trans-unit>
       <trans-unit id="857"><source/><target>Sea anemone</target></trans-unit>
-      <trans-unit id="858"><source/><target>Tarantula</target></trans-unit>
+      <trans-unit id="858"><source/><target>DISABLED</target><note>Mygalomorphs, not likely to be known</note></trans-unit>
       <trans-unit id="859"><source/><target>Slowworm, Deaf adder, Blindworm</target></trans-unit>
       <trans-unit id="860"><source/><target>Slug</target></trans-unit>
       <trans-unit id="861"><source/><target>Elephant</target></trans-unit>
@@ -1069,7 +1068,6 @@
       <trans-unit id="986"><source/><target>Beekeeping</target></trans-unit>
       <trans-unit id="987"><source/><target>Bird watching</target></trans-unit>
       <trans-unit id="988"><source/><target>Collecting pens</target></trans-unit>
-      <trans-unit id="989"><source/><target>Surfing</target></trans-unit>
       <trans-unit id="990"><source/><target>Collecting napkins</target></trans-unit>
       <trans-unit id="991"><source/><target>Longboarding</target></trans-unit>
       <trans-unit id="992"><source/><target>Bonsai</target></trans-unit>
@@ -1108,7 +1106,6 @@
      <trans-unit id="1025"><source/><target>Infiltration</target></trans-unit>
      <trans-unit id="1026"><source/><target>Numismatics</target></trans-unit>
      <trans-unit id="1027"><source/><target>Philocardia</target></trans-unit>
-     <trans-unit id="1028"><source/><target>Cycling</target></trans-unit>
     </body>
   </file>
   <file category="Video games" original="24" target-language="en">
@@ -1253,7 +1250,7 @@
       <trans-unit id="1169"><source/><target>Fried cheese</target></trans-unit>
       <trans-unit id="1170"><source/><target>Schnitzel</target></trans-unit>
       <trans-unit id="1171"><source/><target>Pancakes</target></trans-unit>
-      <trans-unit id="1172"><source/><target>Cake</target></trans-unit>
+      <trans-unit id="1172"><source/><target>Gugelhupf</target></trans-unit>
       <trans-unit id="1173"><source/><target>DISABLED</target></trans-unit>
       <trans-unit id="1174"><source/><target>DISABLED</target></trans-unit>
       <trans-unit id="1175"><source/><target>Brownie</target></trans-unit>
@@ -1311,7 +1308,7 @@
       <trans-unit id="1227"><source/><target>Mead</target></trans-unit>
       <trans-unit id="1228"><source/><target>Kefir</target></trans-unit>
       <trans-unit id="1229"><source/><target>Rum</target></trans-unit>
-      <trans-unit id="1230"><source/><target>Gin</target></trans-unit>
+      <trans-unit id="1230"><source/><target>Juniper brandy</target></trans-unit>
       <trans-unit id="1231"><source/><target>Plum brandy</target></trans-unit>
       <trans-unit id="1232"><source/><target>Metaxa</target></trans-unit>
       <trans-unit id="1233"><source/><target>Cognac</target></trans-unit>
@@ -1325,7 +1322,7 @@
   </file>
   <file category="Occupations" original="26" target-language="en">
     <body>
-      <trans-unit id="1240"><source/><target>Lawyer</target></trans-unit>
+      <trans-unit id="1240"><source/><target>Advocate</target></trans-unit>
       <trans-unit id="1241"><source/><target>Anesthetist</target></trans-unit>
       <trans-unit id="1242"><source/><target>Flower arranger</target></trans-unit>
       <trans-unit id="1243"><source/><target>Archaeologist</target></trans-unit>
@@ -1376,9 +1373,9 @@
       <trans-unit id="1288"><source/><target>Cameraman</target></trans-unit>
       <trans-unit id="1289"><source/><target>Cardiologist</target></trans-unit>
       <trans-unit id="1290"><source/><target>Ceramist</target></trans-unit>
-      <trans-unit id="1291"><source/><target>Plumber</target></trans-unit>
+      <trans-unit id="1291"><source/><target>Tinsmith</target></trans-unit>
       <trans-unit id="1292"><source/><target>Librarian</target></trans-unit>
-      <trans-unit id="1293"><source/><target>Designer</target></trans-unit>
+      <trans-unit id="1293"><source/><target>Design engineer</target></trans-unit>
       <trans-unit id="1294"><source/><target>Beautician</target></trans-unit>
       <trans-unit id="1295"><source/><target>Coach</target></trans-unit>
       <trans-unit id="1296"><source/><target>Blacksmith</target></trans-unit>
@@ -1386,7 +1383,7 @@
       <trans-unit id="1298"><source/><target>Cook</target></trans-unit>
       <trans-unit id="1299"><source/><target>Courier</target></trans-unit>
       <trans-unit id="1300"><source/><target>Curator</target></trans-unit>
-      <trans-unit id="1301"><source/><target>Painter</target></trans-unit>
+      <trans-unit id="1301"><source/><target>Varnisher</target></trans-unit>
       <trans-unit id="1302"><source/><target>Lecturer</target></trans-unit>
       <trans-unit id="1303"><source/><target>Forester</target></trans-unit>
       <trans-unit id="1304"><source/><target>Stewardess / steward</target></trans-unit>
@@ -1475,7 +1472,7 @@
       <trans-unit id="1387"><source/><target>Decoration builder</target></trans-unit>
       <trans-unit id="1388"><source/><target>Dentist</target></trans-unit>
       <trans-unit id="1389"><source/><target>Mechanical engineer</target></trans-unit>
-      <trans-unit id="1390"><source/><target>Driver</target></trans-unit>
+      <trans-unit id="1390"><source/><target>Engine/train driver</target></trans-unit>
       <trans-unit id="1391"><source/><target>High school teacher</target></trans-unit>
       <trans-unit id="1392"><source/><target>Editor</target></trans-unit>
       <trans-unit id="1393"><source/><target>Welder</target></trans-unit>
@@ -1493,7 +1490,7 @@
       <trans-unit id="1405"><source/><target>Spokesperson</target></trans-unit>
       <trans-unit id="1406"><source/><target>Interpreter</target></trans-unit>
       <trans-unit id="1407"><source/><target>Stoker</target></trans-unit>
-      <trans-unit id="1408"><source/><target>Coach</target></trans-unit>
+      <trans-unit id="1408"><source/><target>Trainer</target></trans-unit>
       <trans-unit id="1409"><source/><target>Joiner</target></trans-unit>
       <trans-unit id="1410"><source/><target>Cleaning woman</target></trans-unit>
       <trans-unit id="1411"><source/><target>Kindergarten teacher</target></trans-unit>
@@ -1503,7 +1500,7 @@
       <trans-unit id="1415"><source/><target>Clerk, Official, Officer</target></trans-unit>
       <trans-unit id="1416"><source/><target>Veterinary</target></trans-unit>
       <trans-unit id="1417"><source/><target>Soldier</target></trans-unit>
-      <trans-unit id="1418"><source/><target>Porter</target></trans-unit>
+      <trans-unit id="1418"><source/><target>Doorkeeper, Doorman</target></trans-unit>
       <trans-unit id="1419"><source/><target>Tutor</target></trans-unit>
       <trans-unit id="1420"><source/><target>University teacher</target></trans-unit>
       <trans-unit id="1421"><source/><target>General practitioner</target></trans-unit>
@@ -1676,7 +1673,7 @@
       <trans-unit id="1580"><source/><target>Oboe</target></trans-unit>
       <trans-unit id="1581"><source/><target>Violin</target></trans-unit>
       <trans-unit id="1582"><source/><target>Clarinet</target></trans-unit>
-      <trans-unit id="1583"><source/><target>Piano</target></trans-unit>
+      <trans-unit id="1583"><source/><target>Grand piano</target></trans-unit>
       <trans-unit id="1584"><source/><target>Double bass</target></trans-unit>
       <trans-unit id="1585"><source/><target>Guitar</target></trans-unit>
       <trans-unit id="1586"><source/><target>French horn</target></trans-unit>
@@ -1684,7 +1681,7 @@
       <trans-unit id="1588"><source/><target>Lyre</target></trans-unit>
       <trans-unit id="1589"><source/><target>Mandolin</target></trans-unit>
       <trans-unit id="1590"><source/><target>Piano</target></trans-unit>
-      <trans-unit id="1591"><source/><target>Flute</target></trans-unit>
+      <trans-unit id="1591"><source/><target>Western concert flute</target></trans-unit>
       <trans-unit id="1592"><source/><target>Jingle bell</target></trans-unit>
       <trans-unit id="1593"><source/><target>Maraca</target></trans-unit>
       <trans-unit id="1594"><source/><target>Ritual bells</target></trans-unit>

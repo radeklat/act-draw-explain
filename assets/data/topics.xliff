@@ -164,7 +164,7 @@
       <trans-unit color="tealAccent" icon="palette" id="20">
         <attribution url="https://cs.wikipedia.org/wiki/Kategorie:Um%C4%9Bleck%C3%A9_sm%C4%9Bry" />
         <question-ids>
-          <range max="674" min="650" />
+          <range max="673" min="650" />
         </question-ids>
         <source>Visual styles</source>
       </trans-unit>
@@ -173,7 +173,7 @@
         <attribution url="https://cs.wikipedia.org/wiki/Seznam_olympijsk%C3%BDch_sport%C5%AF" />
         <attribution url="https://cs.wikipedia.org/wiki/Abecedn%C3%AD_seznam_sportovn%C3%ADch_discipl%C3%ADn" />
         <question-ids>
-          <list>919, 955, 973, 980, 981, 983, 989, 991, 996, 1000, 1010, 1028</list>
+          <list>919, 955, 973, 980, 981, 983, 991, 996, 1000, 1010</list>
           <range max="751" min="675" />
         </question-ids>
         <source>Sports</source>
@@ -191,10 +191,11 @@
         <attribution url="https://en.wikipedia.org/wiki/List_of_hobbies" />
         <question-ids>
           <list>
-            675,679,680,682,684,688,690,691,692,695,696,701,703,705,707,708,710,719,724,726,727,728,730,731,732,733,
-            734,735,736,737,742,743,744,745,746,748,749,750
+            675,679,680,682,683,684,688,690,691,692,695,696,701,703,705,706,707,708,710,719,724,726,727,728,730,731,732,733,
+            734,735,736,737,742,743,744,745,746,748,749,750,
           </list>
-          <range max="1028" min="904" />
+          <range max="988" min="904" />
+          <range max="1027" min="990" />
         </question-ids>
         <source>Hobbies</source>
       </trans-unit>
