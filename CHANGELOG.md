@@ -12,6 +12,7 @@ Types of changes are:
 ## [Unreleased]
 <!-- Don't forget to update version in pubspec.yaml -->
 
+## [2.1.0+18] - 2020-07-19 <a name="2.1.0" />
 ### Features
 * New topics:
   * Czech
@@ -26,6 +27,10 @@ Types of changes are:
     * Food and drinks
     * Occupations
     * Musical instruments
+
+### Fixes
+* Remove duplicated questions
+* Fixed typos
 
 ## [2.0.0+17] - 2020-07-19 <a name="2.0.0" />
 ### Features
@@ -124,7 +129,8 @@ Types of changes are:
 ### Features
 * Initial source code
 
-[Unreleased]: https://github.com/radeklat/act-draw-explain/compare/releases/2.0.0+17...HEAD
+[Unreleased]: https://github.com/radeklat/act-draw-explain/compare/releases/2.1.0+18...HEAD
+[2.1.0+18]: https://github.com/radeklat/act-draw-explain/compare/releases/2.0.0+17...releases/2.1.0+18
 [2.0.0+17]: https://github.com/radeklat/act-draw-explain/compare/releases/1.1.1+15...releases/2.0.0+17
 [1.1.1+15]: https://github.com/radeklat/act-draw-explain/compare/releases/1.1.0+13...releases/1.1.1+15
 [1.1.0+13]: https://github.com/radeklat/act-draw-explain/compare/releases/1.0.0+11...releases/1.1.0+13
