@@ -29,19 +29,25 @@ void main() {
     test('should not have duplicates', () {
       Set<String> questionTexts = Set();
       Map<String, int> duplicates = {};
-      Set<String> exceptions = {"cs/Lov", "cs/Kofola"};
+      Map<String, int> exceptions = {"cs/Lov": 2, "cs/Kofola": 2, "en/Turkey": 2, "en/Reading": 2};
 
       GameData.questions.values.forEach((question) {
         question.localizedTexts.forEach((language, text) {
           String localisedText = "$language/$text";
 
-          if (!exceptions.contains(localisedText) && text != LocalizedItem.DISABLED && text != "") {
+          if (text != LocalizedItem.DISABLED && text != "") {
             if (questionTexts.contains(localisedText)) {
               duplicates.update(localisedText, (value) => value + 1, ifAbsent: () => 2);
             }
             questionTexts.add(localisedText);
           }
         });
+      });
+
+      exceptions.forEach((key, value) {
+        if (duplicates[key] == value) {
+          duplicates.remove(key);
+        }
       });
 
       expect(duplicates, isEmpty, reason: "Listed items appear more than once.");

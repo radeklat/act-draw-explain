@@ -66,27 +66,32 @@ class Topic extends LocalizedItem {
         .toList();
 
     HashMap<int, Question> topicQuestions = HashMap();
+    String baseText = xmlTopic.findElements("source").first.text;
+    int id = LocalizedItem.idFromXmlElement(xmlTopic);
+
+    Function copyQuestion = (int questionID) {
+      assert(
+        allQuestions.containsKey(questionID),
+        "Question with ID '$questionID' in topic $id ($baseText) does not exist.",
+      );
+      topicQuestions[questionID] = allQuestions[questionID];
+    };
 
     xmlTopic.findElements("question-ids").forEach((XmlElement xmlQuestionIDs) {
       xmlQuestionIDs.descendants.forEach((XmlNode xmlQuestionIDsItem) {
         if (xmlQuestionIDsItem is XmlElement) {
           if (xmlQuestionIDsItem.name.local == "list") {
-            _idRegExp.allMatches(xmlQuestionIDsItem.text).forEach((match) {
-              int questionID = int.parse(match.group(0));
-              topicQuestions[questionID] = allQuestions[questionID];
-            });
+            _idRegExp.allMatches(xmlQuestionIDsItem.text).forEach((match) => copyQuestion(int.parse(match.group(0))));
           } else if (xmlQuestionIDsItem.name.local == "range") {
-            _range(xmlQuestionIDsItem).forEach((questionID) {
-              topicQuestions[questionID] = allQuestions[questionID];
-            });
+            _range(xmlQuestionIDsItem).forEach((questionID) => copyQuestion(questionID));
           }
         }
       });
     });
 
     return Topic(
-      id: LocalizedItem.idFromXmlElement(xmlTopic),
-      baseText: xmlTopic.findElements("source").first.text,
+      id: id,
+      baseText: baseText,
       color: colorByName(xmlTopic.getAttribute("color") ?? ""),
       icon: iconByName(xmlTopic.getAttribute("icon") ?? ""),
       questions: UnmodifiableMapView(topicQuestions),

@@ -12,6 +12,21 @@ Types of changes are:
 ## [Unreleased]
 <!-- Don't forget to update version in pubspec.yaml -->
 
+### Features
+* New topics:
+  * Czech
+    * National dishes
+  * English
+    * Countries of Europe
+    * Board Games
+    * Visual Styles
+    * Sports
+    * Animals
+    * Hobbies
+    * Food and drinks
+    * Occupations
+    * Musical instruments
+
 ## [2.0.0+17] - 2020-07-19 <a name="2.0.0" />
 ### Features
 * Translate application to English
