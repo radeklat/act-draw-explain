@@ -4,7 +4,6 @@ import 'package:act_draw_explain/models/game.dart';
 import 'package:act_draw_explain/models/topic.dart';
 import 'package:act_draw_explain/utilities/device_info.dart';
 import 'package:act_draw_explain/utilities/urls.dart';
-import 'package:act_draw_explain/utilities/vibrations.dart';
 import 'package:act_draw_explain/widgets/topic/card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

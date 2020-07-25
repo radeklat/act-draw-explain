@@ -6,10 +6,8 @@ import 'package:act_draw_explain/controllers/score.dart';
 import 'package:act_draw_explain/models/game_result.dart';
 import 'package:act_draw_explain/models/question.dart';
 import 'package:act_draw_explain/models/topic.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:xml/xml.dart';
 
 import '../../utils/fakers.dart';
 

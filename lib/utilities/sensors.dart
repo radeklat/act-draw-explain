@@ -1,8 +1,6 @@
 import 'package:act_draw_explain/utilities/logging.dart';
-import 'package:flutter/foundation.dart';
 import 'package:sensors/sensors.dart';
 import 'package:sprintf/sprintf.dart';
-
 import 'package:stream_transform/stream_transform.dart';
 
 import '../constants.dart';
