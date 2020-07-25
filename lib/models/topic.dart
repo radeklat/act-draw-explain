@@ -44,10 +44,8 @@ class Topic extends LocalizedItem {
     return _enabledQuestionIDs[locale];
   }
 
-  List<int> asShuffledQuestionIDs(Locale locale) {
-    List<int> questionsCopy = List.from(questionIDs(locale));
-    questionsCopy.shuffle();
-    return questionsCopy;
+  List<Question> shuffledQuestions(Locale locale) {
+    return questions.values.toList()..shuffle();
   }
 
   static List<int> _range(XmlElement xmlRange) {

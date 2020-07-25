@@ -13,23 +13,22 @@ import 'package:flutter/foundation.dart';
 
 class ScoreController {
   final Topic topic;
-  final HashMap<int, Question> questions;
   final Locale locale;
-  List<int> _questionIDs;
-  int _currentQuestionID;
+  final Function(String) onNextQuestion;
+  final Function(GameResult) onGameEnd;
+  final Function(int) setNewScore;
+  final Function(Topic, Question, Duration, QuestionState) logQuestion;
+
+  List<Question> _shuffledQuestions;
+  Question _currentQuestion;
   Stopwatch _stopwatch = Stopwatch();
-  static GameSounds gameSounds = GameSounds();
   int _score = 0;
   int _maxQuestions;
-  Function(int) setNewScore;
 
-  Function(String) onNextQuestion;
-  Function(GameResult) onGameEnd;
-  Function(Topic, Question, Duration, QuestionState) logQuestion;
+  static GameSounds gameSounds = GameSounds();
 
   ScoreController({
     @required this.topic,
-    @required this.questions,
     @required this.locale,
     this.onNextQuestion,
     this.onGameEnd,
@@ -37,18 +36,18 @@ class ScoreController {
     this.logQuestion,
     maxQuestions,
   }) {
-    _questionIDs = topic.asShuffledQuestionIDs(locale);
-    _maxQuestions = min(((maxQuestions ?? 0) == 0) ? _questionIDs.length : maxQuestions, _questionIDs.length);
-    _questionIDs = _questionIDs.sublist(0, _maxQuestions);
+    _shuffledQuestions = topic.shuffledQuestions(locale);
+    _maxQuestions = min(((maxQuestions ?? 0) == 0) ? _shuffledQuestions.length : maxQuestions, _shuffledQuestions.length);
+    _shuffledQuestions = _shuffledQuestions.sublist(0, _maxQuestions);
 
     try {
-      _currentQuestionID = _questionIDs.removeLast();
+      _currentQuestion = _shuffledQuestions.removeLast();
     } on RangeError {
       _endGame(newScore: 0);
       return;
     }
 
-    onNextQuestion?.call(questions[_currentQuestionID].text(locale));
+    onNextQuestion?.call(_currentQuestion.text(locale));
     _stopwatch.start();
   }
 
@@ -56,13 +55,13 @@ class ScoreController {
 
   void _endGame({int newScore}) {
     bool timeOut = false;
-    int questionsGuessed = _maxQuestions - _questionIDs.length;
+    int questionsGuessed = _maxQuestions - _shuffledQuestions.length;
 
     if (newScore == null) {
       newScore = _score;
       questionsGuessed -= 1;
       timeOut = true;
-      logQuestion?.call(topic, questions[_currentQuestionID], _stopwatch.elapsed, QuestionState.timeout);
+      logQuestion?.call(topic, _currentQuestion, _stopwatch.elapsed, QuestionState.timeout);
     }
 
     setNewScore?.call(newScore);
@@ -74,17 +73,17 @@ class ScoreController {
 
   void nextQuestion({@required bool passed}) {
     int newScore = (passed) ? _score + 1 : _score;
-    int newQuestionID;
+    Question newQuestion;
 
     logQuestion?.call(
       topic,
-      questions[_currentQuestionID],
+      _currentQuestion,
       _stopwatch.elapsed,
       (passed) ? QuestionState.pass : QuestionState.fail,
     );
 
     try {
-      newQuestionID = _questionIDs.removeLast();
+      newQuestion = _shuffledQuestions.removeLast();
     } on RangeError {
       _endGame(newScore: newScore);
       return;
@@ -93,13 +92,13 @@ class ScoreController {
     (passed) ? gameSounds.correct() : gameSounds.wrong();
     GameVibrations.answer();
     _score = newScore;
-    _currentQuestionID = newQuestionID;
+    _currentQuestion = newQuestion;
     _stopwatch.reset();
-    onNextQuestion?.call(questions[_currentQuestionID].text(locale));
+    onNextQuestion?.call(_currentQuestion.text(locale));
   }
 
   bool get hasMoreQuestions {
-    return _questionIDs.length > 0;
+    return _shuffledQuestions.length > 0;
   }
 }
 

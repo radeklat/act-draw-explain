@@ -25,7 +25,6 @@ void main() {
       String nextQuestion;
       var sc = ScoreController(
         topic: fakeNonEmptyTopic,
-        questions: fakeQuestions,
         locale: Locale(K.settings.languageCode.defaultValue),
         onNextQuestion: (str) {
           nextQuestion = str;
@@ -43,7 +42,6 @@ void main() {
       GameResult result;
       ScoreController sc = ScoreController(
         topic: fakeNonEmptyTopic,
-        questions: fakeQuestions,
         locale: Locale(K.settings.languageCode.defaultValue),
         onGameEnd: (gameResult) {
           result = gameResult;
@@ -75,7 +73,6 @@ void main() {
       GameResult result;
       ScoreController(
         topic: fakeEmptyTopic,
-        questions: fakeQuestions,
         locale: Locale(K.settings.languageCode.defaultValue),
         onGameEnd: (gameResult) {
           result = gameResult;
@@ -89,7 +86,6 @@ void main() {
       GameResult result;
       ScoreController(
         topic: fakeNonEmptyTopic,
-        questions: fakeQuestions,
         locale: Locale(K.settings.languageCode.defaultValue),
         onGameEnd: (gameResult) {
           result = gameResult;
@@ -104,7 +100,6 @@ void main() {
     testWidgets('should expose if it has more questions', (WidgetTester tester) async {
       ScoreController sc = ScoreController(
         topic: fakeNonEmptyTopic,
-        questions: fakeQuestions,
         locale: Locale(K.settings.languageCode.defaultValue),
       );
       List.generate(fakeQuestions.length - 1, (index) {
@@ -120,7 +115,6 @@ void main() {
       QuestionState expectedState = QuestionState.pass;
       ScoreController sc = ScoreController(
         topic: fakeNonEmptyTopic,
-        questions: fakeQuestions,
         locale: Locale(K.settings.languageCode.defaultValue),
         logQuestion: (Topic t, Question q, Duration d, QuestionState qs) {
           expect(t, fakeNonEmptyTopic, reason: "Topic in $expectedState");

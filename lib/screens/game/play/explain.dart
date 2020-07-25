@@ -84,7 +84,6 @@ class _ExplainScreenState extends State<ExplainScreen> with SingleTickerProvider
       setState(() {
         scoreController = ScoreController(
           topic: GameData.topics[widget.topicID],
-          questions: GameData.questions,
           locale: Localizations.localeOf(context),
           onNextQuestion: (newQuestion) {
             setState(() {
