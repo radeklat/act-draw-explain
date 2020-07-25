@@ -17,7 +17,7 @@ class Topic extends LocalizedItem {
 
   static RegExp _idRegExp = RegExp(r"[0-9]+");
 
-  HashMap<String, UnmodifiableSetView<int>> _enabledQuestionIDs = HashMap();
+  HashMap<Locale, UnmodifiableSetView<int>> _enabledQuestionIDs = HashMap();
 
   Topic({
     this.id,
@@ -29,23 +29,23 @@ class Topic extends LocalizedItem {
   }) : super(baseText);
 
   /// itemJson is a "trans-unit" from "<TYPE>/<LOCALE>.xliff"
-  updateWithLocalizedXmlElement(XmlElement xmlItem, String languageCode) {
-    super.updateWithLocalizedXmlElement(xmlItem, languageCode);
-    _enabledQuestionIDs[languageCode] = UnmodifiableSetView(
-      questions.values.where((question) => !question.isDisabled(languageCode)).map((question) => question.id).toSet(),
+  updateWithLocalizedXmlElement(XmlElement xmlItem, Locale locale) {
+    super.updateWithLocalizedXmlElement(xmlItem, locale);
+    _enabledQuestionIDs[locale] = UnmodifiableSetView(
+      questions.values.where((question) => !question.isDisabled(locale)).map((question) => question.id).toSet(),
     );
   }
 
-  bool isDisabled(String languageCode) {
-    return super.isDisabled(languageCode) || _enabledQuestionIDs[languageCode].isEmpty;
+  bool isDisabled(Locale locale) {
+    return super.isDisabled(locale) || _enabledQuestionIDs[locale].isEmpty;
   }
 
-  UnmodifiableSetView<int> questionIDs(String languageCode) {
-    return _enabledQuestionIDs[languageCode];
+  UnmodifiableSetView<int> questionIDs(Locale locale) {
+    return _enabledQuestionIDs[locale];
   }
 
-  List<int> asShuffledQuestionIDs(String languageCode) {
-    List<int> questionsCopy = List.from(questionIDs(languageCode));
+  List<int> asShuffledQuestionIDs(Locale locale) {
+    List<int> questionsCopy = List.from(questionIDs(locale));
     questionsCopy.shuffle();
     return questionsCopy;
   }

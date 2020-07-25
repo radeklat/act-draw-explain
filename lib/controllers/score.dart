@@ -1,5 +1,6 @@
 import 'dart:collection';
 import 'dart:math';
+import 'dart:ui';
 
 import 'package:act_draw_explain/analytics.dart';
 import 'package:act_draw_explain/models/game_result.dart';
@@ -13,7 +14,7 @@ import 'package:flutter/foundation.dart';
 class ScoreController {
   final Topic topic;
   final HashMap<int, Question> questions;
-  final String languageCode;
+  final Locale locale;
   List<int> _questionIDs;
   int _currentQuestionID;
   Stopwatch _stopwatch = Stopwatch();
@@ -29,14 +30,14 @@ class ScoreController {
   ScoreController({
     @required this.topic,
     @required this.questions,
-    @required this.languageCode,
+    @required this.locale,
     this.onNextQuestion,
     this.onGameEnd,
     this.setNewScore,
     this.logQuestion,
     maxQuestions,
   }) {
-    _questionIDs = topic.asShuffledQuestionIDs(languageCode);
+    _questionIDs = topic.asShuffledQuestionIDs(locale);
     _maxQuestions = min(((maxQuestions ?? 0) == 0) ? _questionIDs.length : maxQuestions, _questionIDs.length);
     _questionIDs = _questionIDs.sublist(0, _maxQuestions);
 
@@ -47,7 +48,7 @@ class ScoreController {
       return;
     }
 
-    onNextQuestion?.call(questions[_currentQuestionID].text(languageCode));
+    onNextQuestion?.call(questions[_currentQuestionID].text(locale));
     _stopwatch.start();
   }
 
@@ -94,7 +95,7 @@ class ScoreController {
     _score = newScore;
     _currentQuestionID = newQuestionID;
     _stopwatch.reset();
-    onNextQuestion?.call(questions[_currentQuestionID].text(languageCode));
+    onNextQuestion?.call(questions[_currentQuestionID].text(locale));
   }
 
   bool get hasMoreQuestions {

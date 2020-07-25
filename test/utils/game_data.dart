@@ -22,7 +22,7 @@ class LocalAssetLoader extends AssetLoader {
         .listSync(followLinks: false)
         .where((element) => element is File)
         .map(
-          (file) => localeFromString(
+          (file) => languageCodeOnlyLocaleFromString(
             file.path.split(Platform.pathSeparator).last.replaceAll(".xliff", ""),
           ),
         )

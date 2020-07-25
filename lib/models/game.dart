@@ -35,8 +35,8 @@ class GameData {
     return true;
   }
 
-  static Iterable<Topic> enabledTopics(String languageCode) {
-    return topics.values.where((Topic topic) => !topic.isDisabled(languageCode));
+  static Iterable<Topic> enabledTopics(Locale locale) {
+    return topics.values.where((Topic topic) => !topic.isDisabled(locale));
   }
 
   static List<int> get topicIDs {

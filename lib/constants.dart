@@ -72,7 +72,7 @@ class KeyDefault {
 
 class _Settings {
   static const _PREFIX = "settings";
-  final locales = KeyDefault("$_PREFIX.locales", "en");
+  final languageCode = KeyDefault("$_PREFIX.languageCode", "en");
   final game = _Game();
 }
 

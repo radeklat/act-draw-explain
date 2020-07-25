@@ -32,7 +32,7 @@ void main() {
       var assetLoader = MockAssetLoader();
       when(assetLoader.loadString("topics"))
           .thenAnswer((_) => Future.value(MOCK_DUPLICATE_TOPIC_XLIFF));
-      var loader = TranslationsLoader([K.settings.locales.defaultValue], assetLoader);
+      var loader = TranslationsLoader([K.settings.languageCode.defaultValue], assetLoader);
       HashMap<int, Question> questions = HashMap.from({81: Question(baseText: "mock question", id: 81)});
 
       expect(

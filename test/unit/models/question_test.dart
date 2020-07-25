@@ -1,9 +1,11 @@
+import 'dart:ui';
+
 import 'package:act_draw_explain/models/localized_item.dart';
 import 'package:act_draw_explain/models/question.dart';
 import 'package:test/test.dart';
 
+import '../../utils/constants.dart';
 import '../../utils/fakers.dart';
-import '../../widget/controllers/score_test.dart';
 
 void main() {
   group('Question', () {
@@ -14,13 +16,13 @@ void main() {
     });
 
     group('should identify disabled question for', () {
-      test("enabled translation", () => expect(question.isDisabled("en"), false));
-      test("disabled translation", () => expect(question.isDisabled("cs"), true));
+      test("enabled translation", () => expect(question.isDisabled(EN), false));
+      test("disabled translation", () => expect(question.isDisabled(CS), true));
     });
 
     group('should return correct translation for', () {
-      test("enabled translation", () => expect(question.text("en"), "enabled"));
-      test("disabled translation", () => expect(question.text("cs"), LocalizedItem.DISABLED));
+      test("enabled translation", () => expect(question.text(EN), "enabled"));
+      test("disabled translation", () => expect(question.text(CS), LocalizedItem.DISABLED));
     });
   });
 }

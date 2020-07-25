@@ -4,6 +4,7 @@ import 'package:act_draw_explain/models/localized_item.dart';
 import 'package:act_draw_explain/models/topic.dart';
 import 'package:test/test.dart';
 
+import '../../utils/constants.dart';
 import '../../utils/fakers.dart';
 
 void main() {
@@ -22,8 +23,8 @@ void main() {
         );
       });
 
-      test("en", () => expect(topic.questionIDs("en"), [1, 2]));
-      test("cs", () => expect(topic.questionIDs("cs"), [2, 3]));
+      test("en", () => expect(topic.questionIDs(EN), [1, 2]));
+      test("cs", () => expect(topic.questionIDs(CS), [2, 3]));
     });
 
     group('should identify topics ', () {
@@ -36,9 +37,9 @@ void main() {
         );
       });
 
-      test("enabled by name", () => expect(topic.isDisabled("en"), false));
-      test("disabled by name", () => expect(topic.isDisabled("cs"), true));
-      test("disabled by not having any enabled question", () => expect(topic.isDisabled("de"), true));
+      test("enabled by name", () => expect(topic.isDisabled(EN), false));
+      test("disabled by name", () => expect(topic.isDisabled(CS), true));
+      test("disabled by not having any enabled question", () => expect(topic.isDisabled(DE), true));
     });
   });
 }

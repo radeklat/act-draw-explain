@@ -80,7 +80,7 @@ class _MyAppState extends State<MyApp> {
       ],
       child: MaterialApp(
 //        debugShowCheckedModeBanner: false,
-        locale: locale ?? localeFromString(Platform.localeName),
+        locale: locale ?? languageCodeOnlyLocaleFromString(Platform.localeName),
         supportedLocales: MyApp.localizationsDelegate.supportedLocales,
         localizationsDelegates: [
           MyApp.localizationsDelegate,
@@ -90,14 +90,15 @@ class _MyAppState extends State<MyApp> {
         ],
         localeResolutionCallback: (Locale deviceLocale, Iterable<Locale> supportedLocales) {
           Locale requestedLocale = this.locale ??
-              localeFromString(PrefService.getString(K.settings.locales.key) ?? deviceLocale.toString(),
-                  );
+              languageCodeOnlyLocaleFromString(
+                PrefService.getString(K.settings.languageCode.key) ?? deviceLocale.toString(),
+              );
 
           if (localeLanguageCodeIn(requestedLocale, supportedLocales)) {
             return requestedLocale;
           }
 
-          return Locale(K.settings.locales.defaultValue);
+          return Locale(K.settings.languageCode.defaultValue);
         },
         onGenerateTitle: (BuildContext context) => S.of(context).name,
         theme: appTheme,

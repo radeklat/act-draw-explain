@@ -26,7 +26,7 @@ void main() {
       var sc = ScoreController(
         topic: fakeNonEmptyTopic,
         questions: fakeQuestions,
-        languageCode: K.settings.locales.defaultValue,
+        locale: Locale(K.settings.languageCode.defaultValue),
         onNextQuestion: (str) {
           nextQuestion = str;
         },
@@ -44,7 +44,7 @@ void main() {
       ScoreController sc = ScoreController(
         topic: fakeNonEmptyTopic,
         questions: fakeQuestions,
-        languageCode: K.settings.locales.defaultValue,
+        locale: Locale(K.settings.languageCode.defaultValue),
         onGameEnd: (gameResult) {
           result = gameResult;
         },
@@ -76,7 +76,7 @@ void main() {
       ScoreController(
         topic: fakeEmptyTopic,
         questions: fakeQuestions,
-        languageCode: K.settings.locales.defaultValue,
+        locale: Locale(K.settings.languageCode.defaultValue),
         onGameEnd: (gameResult) {
           result = gameResult;
         },
@@ -90,7 +90,7 @@ void main() {
       ScoreController(
         topic: fakeNonEmptyTopic,
         questions: fakeQuestions,
-        languageCode: K.settings.locales.defaultValue,
+        locale: Locale(K.settings.languageCode.defaultValue),
         onGameEnd: (gameResult) {
           result = gameResult;
         },
@@ -105,7 +105,7 @@ void main() {
       ScoreController sc = ScoreController(
         topic: fakeNonEmptyTopic,
         questions: fakeQuestions,
-        languageCode: K.settings.locales.defaultValue,
+        locale: Locale(K.settings.languageCode.defaultValue),
       );
       List.generate(fakeQuestions.length - 1, (index) {
         expect(sc.hasMoreQuestions, true, reason: "hasMoreQuestions during round ${index + 1}/${fakeQuestions.length}");
@@ -121,7 +121,7 @@ void main() {
       ScoreController sc = ScoreController(
         topic: fakeNonEmptyTopic,
         questions: fakeQuestions,
-        languageCode: K.settings.locales.defaultValue,
+        locale: Locale(K.settings.languageCode.defaultValue),
         logQuestion: (Topic t, Question q, Duration d, QuestionState qs) {
           expect(t, fakeNonEmptyTopic, reason: "Topic in $expectedState");
           expect(q, isIn(fakeQuestions.values), reason: "Question in $expectedState");

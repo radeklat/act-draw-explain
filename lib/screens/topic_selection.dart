@@ -57,7 +57,7 @@ class _TopicSelectionScreenState extends State<TopicSelectionScreen> {
               maxCrossAxisExtent: 150,
               mainAxisSpacing: 10,
               crossAxisSpacing: 10,
-              children: GameData.enabledTopics(Localizations.localeOf(context).languageCode)
+              children: GameData.enabledTopics(Localizations.localeOf(context))
                   .map((Topic topic) => TopicCard(topic: topic, key: Key("topic_card_${topic.id}")))
                   .toList(),
             ),

@@ -27,7 +27,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       K.settings.game.cardsCount: PrefService.getString,
       K.settings.game.control: PrefService.getString,
       K.settings.game.vibrate: PrefService.getBool,
-      K.settings.locales: PrefService.getString
+      K.settings.languageCode: PrefService.getString
     }.map(
       (_setting, getFunc) => MapEntry(
         _setting.keyUnderscored,
@@ -47,16 +47,16 @@ class _SettingsScreenState extends State<SettingsScreen> {
             PreferenceTitle(S.of(context).settings_title_languages),
             DropdownPreference(
               S.of(context).settings_language,
-              K.settings.locales.key,
+              K.settings.languageCode.key,
               desc: S.of(context).settings_language_description,
-              defaultVal: Localizations.localeOf(context).toString(),
+              defaultVal: Localizations.localeOf(context).languageCode,
               values: widget.supportedLocales.map((locale) => locale.languageCode).toList(),
               displayValues: widget.supportedLocales
                   .map((locale) => isoLanguages[locale.languageCode].nativeName)
                   .toList(),
               onChange: (languageCode) {
                 MyApp.setLocale(context, Locale(languageCode));
-                this.onChange(K.settings.locales);
+                this.onChange(K.settings.languageCode);
               },
             ),
             PreferenceTitle(S.of(context).settings_title_options),

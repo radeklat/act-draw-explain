@@ -1,6 +1,8 @@
 import 'dart:collection';
+import 'dart:ui';
 
 import 'package:act_draw_explain/models/localized_item.dart';
+import 'package:act_draw_explain/utilities/intl/languages.dart';
 import 'package:flutter/services.dart';
 import 'package:xml/xml.dart';
 
@@ -42,10 +44,10 @@ class TranslationsLoader {
   }
 
   Future<HashMap<int, Item>> load<Item extends LocalizedItem>(
-      String itemType,
-      Function(XmlElement) itemFromXmlElement,
-      Function(XmlElement) idFromXmlElement,
-      ) async {
+    String itemType,
+    Function(XmlElement) itemFromXmlElement,
+    Function(XmlElement) idFromXmlElement,
+  ) async {
     DateTime start = DateTime.now();
     XmlDocument xmlRoot = await _loadXliffAsset(itemType);
     var log = _log.subLogger(itemType);
@@ -54,11 +56,11 @@ class TranslationsLoader {
 
     xmlRoot.findAllElements("file").forEach((XmlElement xmlFile) {
       xmlFile.findAllElements("trans-unit").forEach(
-            (XmlElement xmlItem) {
+        (XmlElement xmlItem) {
           Item item = itemFromXmlElement(xmlItem);
           assert(
-          !items.containsKey(item.id),
-          "$itemType with ID '${item.id}' appear in the source file more than once",
+            !items.containsKey(item.id),
+            "$itemType with ID '${item.id}' appear in the source file more than once",
           );
           items[item.id] = item;
         },
@@ -78,25 +80,27 @@ class TranslationsLoader {
       xmlLocalizedItem.findAllElements("file").forEach((XmlElement xmlFile) {
         String transItemLanguageCode = xmlFile.getAttribute("target-language");
         langLog.when(transItemLanguageCode != languageCode).error(
-          "<trans-item target-language='$transItemLanguageCode'> does not match "
+              "<trans-item target-language='$transItemLanguageCode'> does not match "
               "the file language code",
-        );
+            );
 
         String original = xmlFile.getAttribute("original");
         langLog.when(seenFileOriginals.contains(original)).error(
-          "<file original='$original'> appear in the $itemType/$languageCode file more than once",
-        );
+              "<file original='$original'> appear in the $itemType/$languageCode file more than once",
+            );
         seenFileOriginals.add(original);
 
         xmlFile.findAllElements("trans-unit").forEach(
-              (XmlElement xmlItem) {
-            items[idFromXmlElement(xmlItem)].updateWithLocalizedXmlElement(xmlItem, languageCode);
+          (XmlElement xmlItem) {
+            items[idFromXmlElement(xmlItem)].updateWithLocalizedXmlElement(
+              xmlItem,
+              languageCodeOnlyLocaleFromString(languageCode),
+            );
           },
         );
       });
       langLog.time(start).debug("File loaded");
     }
-
 
     return items;
   }

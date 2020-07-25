@@ -8,12 +8,12 @@ import 'package:flutter/material.dart';
 import 'package:xml/xml.dart';
 
 _localize(LocalizedItem item, Map<String, String> localisations) {
-  (localisations ?? {K.settings.locales.defaultValue: null}).forEach((languageCode, text) {
+  (localisations ?? {K.settings.languageCode.defaultValue: null}).forEach((languageCode, text) {
     item.updateWithLocalizedXmlElement(
       XmlElement(XmlName("trans-unit"), [], [
         XmlElement(XmlName("target"), [], [XmlText(text ?? "Fake $languageCode question")])
       ]),
-      languageCode,
+      Locale(languageCode),
     );
   });
 }

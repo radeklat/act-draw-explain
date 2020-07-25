@@ -1,8 +1,7 @@
 import 'dart:ui';
 
-Locale localeFromString(String locale) {
-  List<String> languageCountry = locale.split("_");
-  return (languageCountry.length == 1) ? Locale(languageCountry[0]) : Locale(languageCountry[0], languageCountry[1]);
+Locale languageCodeOnlyLocaleFromString(String locale) {
+  return Locale(locale.split("_")[0]);
 }
 
 bool localeLanguageCodeIn(Locale locale, List<Locale> locales) {
