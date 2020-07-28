@@ -6,6 +6,7 @@ import 'package:act_draw_explain/models/results.dart';
 import 'package:act_draw_explain/screens/about.dart';
 import 'package:act_draw_explain/screens/crash.dart';
 import 'package:act_draw_explain/screens/game/end_game.dart';
+import 'package:act_draw_explain/screens/game/play/activity.dart';
 import 'package:act_draw_explain/screens/game/play/countdown.dart';
 import 'package:act_draw_explain/screens/game/play/heads_up.dart';
 import 'package:act_draw_explain/screens/game/start_game.dart';
@@ -113,6 +114,8 @@ class _MyAppState extends State<MyApp> {
               switch (settings.name) {
                 case HeadsUpScreen.ID:
                   return HeadsUpScreen(newGame: arguments);
+                case ActivityScreen.ID:
+                  return ActivityScreen(newGame: arguments);
                 case StartGameScreen.ID:
                   return StartGameScreen(newGame: arguments);
                 case TopicSelectionScreen.ID:

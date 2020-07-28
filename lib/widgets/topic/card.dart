@@ -1,6 +1,7 @@
 import 'package:act_draw_explain/models/game/new.dart';
 import 'package:act_draw_explain/models/results.dart';
 import 'package:act_draw_explain/models/topic.dart';
+import 'package:act_draw_explain/screens/game/play/activity.dart';
 import 'package:act_draw_explain/screens/game/play/heads_up.dart';
 import 'package:act_draw_explain/screens/game/start_game.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +31,8 @@ class TopicCard extends StatelessWidget {
             Navigator.pushNamed(
               context,
               StartGameScreen.ID,
-              arguments: NewGame(topic, {GameMode.explain}, HeadsUpScreen.ID),
+              arguments: NewGame(topic, GameMode.ACTIVITY, ActivityScreen.ID),
+              //arguments: NewGame(topic, GameMode.HEADS_UP, HeadsUpScreen.ID),
             );
           },
           child: Stack(
