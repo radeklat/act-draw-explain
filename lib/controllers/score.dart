@@ -2,7 +2,7 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:act_draw_explain/analytics.dart';
-import 'package:act_draw_explain/models/game_result.dart';
+import 'package:act_draw_explain/models/game/result.dart';
 import 'package:act_draw_explain/models/question.dart';
 import 'package:act_draw_explain/models/topic.dart';
 import 'package:act_draw_explain/utilities/vibrations.dart';

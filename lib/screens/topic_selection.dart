@@ -1,6 +1,6 @@
 import 'package:act_draw_explain/analytics.dart';
 import 'package:act_draw_explain/generated/l10n.dart';
-import 'package:act_draw_explain/models/game.dart';
+import 'package:act_draw_explain/models/game/data.dart';
 import 'package:act_draw_explain/models/topic.dart';
 import 'package:act_draw_explain/utilities/device_info.dart';
 import 'package:act_draw_explain/utilities/urls.dart';

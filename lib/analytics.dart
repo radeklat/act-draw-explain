@@ -1,4 +1,4 @@
-import 'package:act_draw_explain/models/game_result.dart';
+import 'package:act_draw_explain/models/game/result.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/foundation.dart';
 

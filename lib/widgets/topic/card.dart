@@ -1,5 +1,7 @@
+import 'package:act_draw_explain/models/game/new.dart';
 import 'package:act_draw_explain/models/results.dart';
 import 'package:act_draw_explain/models/topic.dart';
+import 'package:act_draw_explain/screens/game/play/heads_up.dart';
 import 'package:act_draw_explain/screens/game/start_game.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -10,6 +12,7 @@ import 'name_icon.dart';
 
 class TopicCard extends StatelessWidget {
   final Topic topic;
+
   const TopicCard({Key key, @required this.topic}) : super(key: key);
 
   @override
@@ -24,7 +27,11 @@ class TopicCard extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
           color: backgroundColor,
           onPressed: () {
-            Navigator.pushNamed(context, StartGameScreen.ID, arguments: topic.id);
+            Navigator.pushNamed(
+              context,
+              StartGameScreen.ID,
+              arguments: NewGame(topic, {GameMode.explain}, HeadsUpScreen.ID),
+            );
           },
           child: Stack(
             children: <Widget>[

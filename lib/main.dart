@@ -7,7 +7,7 @@ import 'package:act_draw_explain/screens/about.dart';
 import 'package:act_draw_explain/screens/crash.dart';
 import 'package:act_draw_explain/screens/game/end_game.dart';
 import 'package:act_draw_explain/screens/game/play/countdown.dart';
-import 'package:act_draw_explain/screens/game/play/explain.dart';
+import 'package:act_draw_explain/screens/game/play/heads_up.dart';
 import 'package:act_draw_explain/screens/game/start_game.dart';
 import 'package:act_draw_explain/screens/help.dart';
 import 'package:act_draw_explain/screens/settings.dart';
@@ -111,16 +111,16 @@ class _MyAppState extends State<MyApp> {
             settings: RouteSettings(name: settings.name),
             builder: (context) {
               switch (settings.name) {
-                case ExplainScreen.ID:
-                  return ExplainScreen(topicID: arguments);
+                case HeadsUpScreen.ID:
+                  return HeadsUpScreen(newGame: arguments);
                 case StartGameScreen.ID:
-                  return StartGameScreen(topicID: arguments);
+                  return StartGameScreen(newGame: arguments);
                 case TopicSelectionScreen.ID:
                   return TopicSelectionScreen();
                 case EndGameScreen.ID:
                   return EndGameScreen(lastGameResult: arguments);
                 case CountdownScreen.ID:
-                  return CountdownScreen(topicID: arguments);
+                  return CountdownScreen(newGame: arguments);
                 case SettingsScreen.ID:
                   return SettingsScreen(
                     supportedLocales: MyApp.localizationsDelegate.supportedLocales,

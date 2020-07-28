@@ -1,18 +1,17 @@
+import 'package:act_draw_explain/constants.dart';
 import 'package:act_draw_explain/controllers/score.dart';
+import 'package:act_draw_explain/models/game/new.dart';
 import 'package:act_draw_explain/utilities/vibrations.dart';
 import 'package:act_draw_explain/widgets/countdown_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../constants.dart';
-import 'explain.dart';
-
 class CountdownScreen extends StatelessWidget {
   static const String ID = "countdown_screen";
-  final int topicID;
+  final NewGame newGame;
   static GameSounds gameSounds = GameSounds();
 
-  const CountdownScreen({Key key, this.topicID}) : super(key: key);
+  const CountdownScreen({Key key, this.newGame}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +31,7 @@ class CountdownScreen extends StatelessWidget {
                       onFinished: () {
                         gameSounds.gameStart();
                         GameVibrations.gameStart();
-                        Navigator.pushReplacementNamed(context, ExplainScreen.ID, arguments: topicID);
+                        Navigator.pushReplacementNamed(context, newGame.screenId, arguments: newGame);
                       },
                     ),
                   ),

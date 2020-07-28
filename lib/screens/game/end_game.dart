@@ -1,5 +1,5 @@
 import 'package:act_draw_explain/generated/l10n.dart';
-import 'package:act_draw_explain/models/game_result.dart';
+import 'package:act_draw_explain/models/game/result.dart';
 import 'package:act_draw_explain/screens/topic_selection.dart';
 import 'package:act_draw_explain/widgets/one_button_info_screen.dart';
 import 'package:flutter/material.dart';

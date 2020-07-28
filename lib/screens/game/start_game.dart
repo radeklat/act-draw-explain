@@ -1,13 +1,15 @@
 import 'package:act_draw_explain/generated/l10n.dart';
+import 'package:act_draw_explain/models/game/new.dart';
+import 'package:act_draw_explain/models/topic.dart';
 import 'package:act_draw_explain/screens/game/play/countdown.dart';
 import 'package:act_draw_explain/widgets/one_button_info_screen.dart';
 import 'package:flutter/material.dart';
 
 class StartGameScreen extends StatelessWidget {
   static const String ID = "start_game_screen";
-  final int topicID;
+  final NewGame newGame;
 
-  const StartGameScreen({Key key, this.topicID}) : super(key: key);
+  const StartGameScreen({Key key, this.newGame}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,7 @@ class StartGameScreen extends StatelessWidget {
       buttonText: S.of(context).start_game_button,
       key: Key("start_game"),
       onPressed: () {
-        Navigator.pushReplacementNamed(context, CountdownScreen.ID, arguments: topicID);
+        Navigator.pushReplacementNamed(context, CountdownScreen.ID, arguments: newGame);
       },
     );
   }

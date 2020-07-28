@@ -3,7 +3,7 @@ import 'dart:collection';
 import 'package:act_draw_explain/analytics.dart';
 import 'package:act_draw_explain/constants.dart';
 import 'package:act_draw_explain/controllers/score.dart';
-import 'package:act_draw_explain/models/game_result.dart';
+import 'package:act_draw_explain/models/game/result.dart';
 import 'package:act_draw_explain/models/question.dart';
 import 'package:act_draw_explain/models/topic.dart';
 import 'package:flutter/material.dart';
