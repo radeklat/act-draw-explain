@@ -2,6 +2,7 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:act_draw_explain/analytics.dart';
+import 'package:act_draw_explain/models/game/new.dart';
 import 'package:act_draw_explain/models/game/result.dart';
 import 'package:act_draw_explain/models/question.dart';
 import 'package:act_draw_explain/models/topic.dart';
@@ -13,15 +14,18 @@ import 'package:flutter/foundation.dart';
 class ScoreController {
   final Topic topic;
   final Locale locale;
-  final Function(String) onNextQuestion;
+  final Function(String, Activity) onNextQuestion;
   final Function(GameResult) onGameEnd;
   final Function(int) setNewScore;
   final Function(Topic, Question, Duration, QuestionState) logQuestion;
 
+  final Random _random = Random();
   List<Question> _shuffledQuestions;
+  List<Activity> _activities;
   Question _currentQuestion;
   Stopwatch _stopwatch = Stopwatch();
   int _score = 0;
+
   int _maxQuestions;
 
   static GameSounds gameSounds = GameSounds();
@@ -29,6 +33,7 @@ class ScoreController {
   ScoreController({
     @required this.topic,
     @required this.locale,
+    @required activities,
     this.onNextQuestion,
     this.onGameEnd,
     this.setNewScore,
@@ -38,6 +43,7 @@ class ScoreController {
     _shuffledQuestions = topic.shuffledQuestions(locale);
     _maxQuestions = min(((maxQuestions ?? 0) == 0) ? _shuffledQuestions.length : maxQuestions, _shuffledQuestions.length);
     _shuffledQuestions = _shuffledQuestions.sublist(0, _maxQuestions);
+    _activities = List.from(activities);
 
     try {
       _currentQuestion = _shuffledQuestions.removeLast();
@@ -46,8 +52,12 @@ class ScoreController {
       return;
     }
 
-    onNextQuestion?.call(_currentQuestion.text(locale));
+    onNextQuestion?.call(_currentQuestion.text(locale), _randomActivity());
     _stopwatch.start();
+  }
+
+  Activity _randomActivity() {
+    return _activities[_random.nextInt(_activities.length)];
   }
 
   void endGame() => _endGame();
@@ -93,7 +103,7 @@ class ScoreController {
     _score = newScore;
     _currentQuestion = newQuestion;
     _stopwatch.reset();
-    onNextQuestion?.call(_currentQuestion.text(locale));
+    onNextQuestion?.call(_currentQuestion.text(locale), _randomActivity());
   }
 
   bool get hasMoreQuestions {

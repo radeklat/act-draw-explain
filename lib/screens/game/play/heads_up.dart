@@ -82,8 +82,9 @@ class _HeadsUpScreenState extends State<HeadsUpScreen> with SingleTickerProvider
       setState(() {
         scoreController = ScoreController(
           topic: widget.newGame.topic,
+          activities: widget.newGame.activities,
           locale: Localizations.localeOf(context),
-          onNextQuestion: (newQuestion) {
+          onNextQuestion: (newQuestion, _activity) {
             setState(() {
               questionText = newQuestion;
             });

@@ -32,6 +32,7 @@ class _ActivityScreenState extends State<ActivityScreen> with SingleTickerProvid
 
   Color backgroundColor = K_COLOR_BACKGROUND;
   String questionText = "";
+  Activity activity;
   Duration gameDuration;
 
   @override
@@ -59,10 +60,12 @@ class _ActivityScreenState extends State<ActivityScreen> with SingleTickerProvid
       setState(() {
         scoreController = ScoreController(
           topic: widget.newGame.topic,
+          activities: widget.newGame.activities,
           locale: Localizations.localeOf(context),
-          onNextQuestion: (newQuestion) {
+          onNextQuestion: (newQuestion, activity) {
             setState(() {
               questionText = newQuestion;
+              this.activity = activity;
             });
           },
           logQuestion: (topic, question, duration, state) => Provider.of<Analytics>(context, listen: false)

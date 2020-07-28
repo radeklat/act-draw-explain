@@ -1,6 +1,5 @@
 import 'package:act_draw_explain/generated/l10n.dart';
 import 'package:act_draw_explain/models/game/new.dart';
-import 'package:act_draw_explain/models/topic.dart';
 import 'package:act_draw_explain/screens/game/play/countdown.dart';
 import 'package:act_draw_explain/widgets/one_button_info_screen.dart';
 import 'package:flutter/material.dart';

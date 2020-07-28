@@ -3,6 +3,7 @@ import 'dart:collection';
 import 'package:act_draw_explain/analytics.dart';
 import 'package:act_draw_explain/constants.dart';
 import 'package:act_draw_explain/controllers/score.dart';
+import 'package:act_draw_explain/models/game/new.dart';
 import 'package:act_draw_explain/models/game/result.dart';
 import 'package:act_draw_explain/models/question.dart';
 import 'package:act_draw_explain/models/topic.dart';
@@ -11,8 +12,8 @@ import 'package:flutter_test/flutter_test.dart';
 
 import '../../utils/fakers.dart';
 
-HashMap<int, Question> fakeQuestions = HashMap.from(
-  {1: fakeQuestion(1), 2: fakeQuestion(2), 3: fakeQuestion(3), 4: fakeQuestion(4)},
+HashMap<int, Question> fakeQuestions = HashMap.fromEntries(
+  List.generate(4, (index) => MapEntry(index, fakeQuestion(index))),
 );
 Topic fakeNonEmptyTopic = fakeTopic(questions: fakeQuestions);
 Topic fakeEmptyTopic = fakeTopic();
@@ -23,8 +24,9 @@ void main() {
       String nextQuestion;
       var sc = ScoreController(
         topic: fakeNonEmptyTopic,
+        activities: GameMode.ACTIVITY,
         locale: Locale(K.settings.languageCode.defaultValue),
-        onNextQuestion: (str) {
+        onNextQuestion: (str, _activity) {
           nextQuestion = str;
         },
       );
@@ -35,11 +37,38 @@ void main() {
       expect(nextQuestion.length, isPositive, reason: "nextQuestion.length");
     });
 
+    testWidgets('should generate next activity type', (WidgetTester tester) async {
+      var iterations = 20;
+      Set<Activity> recordedActivities = {};
+      var sc = ScoreController(
+        topic: fakeTopic(
+          questions: HashMap.fromEntries(
+            List.generate(
+              iterations,
+              (index) => MapEntry(index, fakeQuestion(index)),
+            ),
+          ),
+        ),
+        activities: GameMode.ACTIVITY,
+        locale: Locale(K.settings.languageCode.defaultValue),
+        onNextQuestion: (_str, activity) {
+          recordedActivities.add(activity);
+        },
+      );
+
+      for (int i = 0; i <= iterations; i++) {
+        sc.nextQuestion(passed: true);
+      }
+
+      expect(recordedActivities, GameMode.ACTIVITY, reason: "all activities should be recorded");
+    });
+
     GameResult _playGame({List<bool> answers, int maxQuestions}) {
       if (answers == null) answers = List.generate(fakeQuestions.length, (_) => true);
       GameResult result;
       ScoreController sc = ScoreController(
         topic: fakeNonEmptyTopic,
+        activities: GameMode.ACTIVITY,
         locale: Locale(K.settings.languageCode.defaultValue),
         onGameEnd: (gameResult) {
           result = gameResult;
@@ -71,6 +100,7 @@ void main() {
       GameResult result;
       ScoreController(
         topic: fakeEmptyTopic,
+        activities: GameMode.ACTIVITY,
         locale: Locale(K.settings.languageCode.defaultValue),
         onGameEnd: (gameResult) {
           result = gameResult;
@@ -84,6 +114,7 @@ void main() {
       GameResult result;
       ScoreController(
         topic: fakeNonEmptyTopic,
+        activities: GameMode.ACTIVITY,
         locale: Locale(K.settings.languageCode.defaultValue),
         onGameEnd: (gameResult) {
           result = gameResult;
@@ -98,6 +129,7 @@ void main() {
     testWidgets('should expose if it has more questions', (WidgetTester tester) async {
       ScoreController sc = ScoreController(
         topic: fakeNonEmptyTopic,
+        activities: GameMode.ACTIVITY,
         locale: Locale(K.settings.languageCode.defaultValue),
       );
       List.generate(fakeQuestions.length - 1, (index) {
@@ -113,6 +145,7 @@ void main() {
       QuestionState expectedState = QuestionState.pass;
       ScoreController sc = ScoreController(
         topic: fakeNonEmptyTopic,
+        activities: GameMode.ACTIVITY,
         locale: Locale(K.settings.languageCode.defaultValue),
         logQuestion: (Topic t, Question q, Duration d, QuestionState qs) {
           expect(t, fakeNonEmptyTopic, reason: "Topic in $expectedState");
