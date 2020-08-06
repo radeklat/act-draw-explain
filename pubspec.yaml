@@ -80,6 +80,7 @@ flutter:
     - assets/data/topics/
     - assets/data/questions/
     - assets/data/
+    - assets/activity_icons/
     - assets/
 
 flutter_intl:

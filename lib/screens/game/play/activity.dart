@@ -110,12 +110,17 @@ class _ActivityScreenState extends State<ActivityScreen> with SingleTickerProvid
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text(
-                    activityToName(activity, S.of(context)),
-                    style: Theme.of(context).textTheme.headline4,
+                  ActivityIcon(activity: activity),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: ActivityIcon.SIZE/2),
+                    child: Text(
+                      activityToName(activity, S.of(context)),
+                      style: Theme.of(context).textTheme.headline4,
+                    ),
                   ),
+                  ActivityIcon(activity: activity, reversed: true),
                 ],
               ),
               if (gameDuration.inSeconds > 0)
@@ -173,5 +178,24 @@ class _ActivityScreenState extends State<ActivityScreen> with SingleTickerProvid
         ),
       ),
     );
+  }
+}
+
+class ActivityIcon extends StatelessWidget {
+  const ActivityIcon({
+    Key key,
+    @required this.activity,
+    this.reversed = false,
+  }) : super(key: key);
+
+  final Activity activity;
+  final bool reversed;
+
+  static const double SIZE = 40.0;
+
+  @override
+  Widget build(BuildContext context) {
+    String reversed = (this.reversed) ? "-reversed" : "";
+    return Image.asset('assets/activity_icons/${describeEnum(activity)}$reversed.png', height: SIZE,);
   }
 }
