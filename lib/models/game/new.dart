@@ -1,3 +1,4 @@
+import 'package:act_draw_explain/generated/l10n.dart';
 import 'package:act_draw_explain/models/topic.dart';
 
 class GameMode {
@@ -7,6 +8,15 @@ class GameMode {
 
 enum Activity {
   act, draw, explain
+}
+
+String activityToName(Activity activity, S s) {
+  switch (activity) {
+    case Activity.act: return s.activity_act;
+    case Activity.draw: return s.activity_draw;
+    case Activity.explain: return s.activity_explain;
+  }
+  return "";
 }
 
 class NewGame {

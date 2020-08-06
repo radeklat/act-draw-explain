@@ -43,6 +43,36 @@ class S {
     );
   }
 
+  /// `Act out`
+  String get activity_act {
+    return Intl.message(
+      'Act out',
+      name: 'activity_act',
+      desc: 'Short activity description',
+      args: [],
+    );
+  }
+
+  /// `Draw`
+  String get activity_draw {
+    return Intl.message(
+      'Draw',
+      name: 'activity_draw',
+      desc: 'Short activity description',
+      args: [],
+    );
+  }
+
+  /// `Explain`
+  String get activity_explain {
+    return Intl.message(
+      'Explain',
+      name: 'activity_explain',
+      desc: 'Short activity description',
+      args: [],
+    );
+  }
+
   /// `Languages`
   String get settings_title_languages {
     return Intl.message(

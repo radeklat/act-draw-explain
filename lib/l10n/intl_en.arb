@@ -3,6 +3,15 @@
   "name": "Act, Draw, Explain",
   "@name": {"description": "Name of the app"},
 
+  "activity_act": "Act out",
+  "@activity_act": {"description": "Short activity description"},
+
+  "activity_draw": "Draw",
+  "@activity_draw": {"description": "Short activity description"},
+
+  "activity_explain": "Explain",
+  "@activity_explain": {"description": "Short activity description"},
+
   "settings_title_languages": "Languages",
   "@settings_title_languages": {"description": "Settings title for laguages"},
 

@@ -11,6 +11,7 @@ import 'package:act_draw_explain/widgets/countdown_text.dart';
 import 'package:act_draw_explain/widgets/progress_button.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:preferences/preference_service.dart';
 import 'package:provider/provider.dart';
@@ -108,6 +109,15 @@ class _ActivityScreenState extends State<ActivityScreen> with SingleTickerProvid
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  Text(
+                    activityToName(activity, S.of(context)),
+                    style: Theme.of(context).textTheme.headline4,
+                  ),
+                ],
+              ),
               if (gameDuration.inSeconds > 0)
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -128,7 +138,7 @@ class _ActivityScreenState extends State<ActivityScreen> with SingleTickerProvid
                         child: AutoSizeText(
                           questionText,
                           textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.headline2,
+                          style: Theme.of(context).textTheme.headline4,
                           minFontSize: Theme.of(context).textTheme.headline5.fontSize,
                           wrapWords: false,
                           maxLines: 4,
