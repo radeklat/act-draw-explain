@@ -8,6 +8,7 @@ import 'package:act_draw_explain/models/results.dart';
 import 'package:act_draw_explain/screens/game/end_game.dart';
 import 'package:act_draw_explain/utilities/orientation.dart';
 import 'package:act_draw_explain/widgets/countdown_text.dart';
+import 'package:act_draw_explain/widgets/empty_app_bar.dart';
 import 'package:act_draw_explain/widgets/progress_button.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
@@ -100,12 +101,58 @@ class _ActivityScreenState extends State<ActivityScreen> with SingleTickerProvid
     if (scoreController.hasMoreQuestions) answerColorAnimation.startAnimation(passed);
   }
 
+  Color get primaryColor {
+    switch (activity) {
+      case Activity.act:
+        return Colors.teal[800];
+      case Activity.draw:
+        return Colors.deepPurple[800];
+      case Activity.explain:
+        return Colors.red[800];
+    }
+
+    return null;
+  }
+
+  Color get secondaryColor {
+    switch (activity) {
+      case Activity.act:
+        return Colors.greenAccent[400];
+      case Activity.draw:
+        return Colors.purple[500];
+      case Activity.explain:
+        return Colors.amber[700];
+    }
+
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
+    if (activity == null) {
+      return Scaffold();
+    }
+
     return Scaffold(
+      appBar: EmptyAppBar(backgroundColor: primaryColor),
       body: SafeArea(
         child: Container(
-          color: backgroundColor,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, stops: [
+              0,
+              0.35,
+              0.5,
+              0.5,
+              1
+            ], colors: [
+              primaryColor,
+              secondaryColor.withOpacity(0.22),
+              secondaryColor.withOpacity(0),
+              K_COLOR_BACKGROUND.withOpacity(0),
+              backgroundColor
+            ]),
+          ),
+//          color: backgroundColor,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
@@ -114,10 +161,10 @@ class _ActivityScreenState extends State<ActivityScreen> with SingleTickerProvid
                 children: <Widget>[
                   ActivityIcon(activity: activity),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: ActivityIcon.SIZE/2),
+                    padding: const EdgeInsets.symmetric(horizontal: ActivityIcon.SIZE / 2),
                     child: Text(
                       activityToName(activity, S.of(context)),
-                      style: Theme.of(context).textTheme.headline4,
+                      style: Theme.of(context).textTheme.headline4.copyWith(color: Colors.white),
                     ),
                   ),
                   ActivityIcon(activity: activity, reversed: true),
@@ -130,7 +177,7 @@ class _ActivityScreenState extends State<ActivityScreen> with SingleTickerProvid
                     CountdownText(
                       onFinished: scoreController?.endGame,
                       duration: gameDuration,
-                      style: Theme.of(context).textTheme.headline4,
+                      style: Theme.of(context).textTheme.headline4.copyWith(color: Colors.white),
                     ),
                   ],
                 ),
@@ -196,6 +243,9 @@ class ActivityIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String reversed = (this.reversed) ? "-reversed" : "";
-    return Image.asset('assets/activity_icons/${describeEnum(activity)}$reversed.png', height: SIZE,);
+    return Image.asset(
+      'assets/activity_icons/${describeEnum(activity)}$reversed.png',
+      height: SIZE,
+    );
   }
 }
