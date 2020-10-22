@@ -12,6 +12,10 @@ Types of changes are:
 ## [Unreleased]
 <!-- Don't forget to update version in pubspec.yaml -->
 
+### Features
+* Application font replaced with a Google font Ubuntu
+* New license page in the About dialog
+
 ## [2.1.0+18] - 2020-07-19 <a name="2.1.0" />
 ### Features
 * New topics:
