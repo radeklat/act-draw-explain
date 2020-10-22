@@ -64,6 +64,19 @@ class _AboutScreenState extends State<AboutScreen> {
                 ...sources(),
               ],
             ),
+            TextCard(
+              children: <Widget>[
+                TextTitle(S.of(context).about_licenses_title
+                ),
+                MaterialButton(
+                  child: Text(
+                    S.of(context).about_licenses_button,
+                    style: Theme.of(context).textTheme.headline6.copyWith(color: Colors.lightBlue),
+                  ),
+                  onPressed: () => showLicensePage(context: context, applicationVersion: appVersion),
+                ),
+              ],
+            ),
           ],
         ),
       ),

@@ -28,6 +28,8 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
     "about_changelog_link" : MessageLookupByLibrary.simpleMessage("change log"),
+    "about_licenses_button" : MessageLookupByLibrary.simpleMessage("show licenses"),
+    "about_licenses_title" : MessageLookupByLibrary.simpleMessage("Licenses"),
     "about_packages_title" : MessageLookupByLibrary.simpleMessage("Packages"),
     "about_sources_title" : MessageLookupByLibrary.simpleMessage("Sources"),
     "about_title_version" : MessageLookupByLibrary.simpleMessage("Application version"),

@@ -88,6 +88,12 @@
   "about_packages_title": "Packages",
   "@about_packages_title": {"description": "About screen, title for packages"},
 
+  "about_licenses_title": "Licenses",
+  "@about_licenses_title": {"description": "About screen, title for licenses"},
+
+  "about_licenses_button": "show licenses",
+  "@about_licenses_button": {"description": "About screen, show licenses button"},
+
   "feedback_device_info_msg": "Device info has been copied to the clipboard",
   "@feedback_device_info_msg": {"description": "Toast message displayed when feedback form is opened"},
 

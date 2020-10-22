@@ -2,6 +2,7 @@ import 'dart:collection';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 const Color K_COLOR_PASS = Colors.lightGreen;
 const Color K_COLOR_FAIL = Colors.pink;
@@ -14,7 +15,7 @@ final ThemeData appTheme = ThemeData(
   buttonColor: Colors.pinkAccent,
 
   // http://spencermortensen.com/articles/typographic-scale/
-  textTheme: TextTheme(
+  textTheme: GoogleFonts.ubuntuTextTheme(TextTheme(
     headline1: TextStyle(fontSize: 192, color: Colors.black87),
     headline2: TextStyle(fontSize: 96, color: Colors.black87),
     headline3: TextStyle(fontSize: 60, color: Colors.black87),
@@ -28,7 +29,7 @@ final ThemeData appTheme = ThemeData(
     caption: TextStyle(fontSize: 12),
     button: TextStyle(fontSize: 24, color: Colors.white),
     overline: TextStyle(fontSize: 11, letterSpacing: 0),
-  ),
+  )),
 );
 
 const Duration K_DURATION_START_GAME = Duration(seconds: (kReleaseMode) ? 5 : 5);

@@ -279,6 +279,26 @@ class S {
     );
   }
 
+  /// `Licenses`
+  String get about_licenses_title {
+    return Intl.message(
+      'Licenses',
+      name: 'about_licenses_title',
+      desc: 'About screen, title for licenses',
+      args: [],
+    );
+  }
+
+  /// `show licenses`
+  String get about_licenses_button {
+    return Intl.message(
+      'show licenses',
+      name: 'about_licenses_button',
+      desc: 'About screen, show licenses button',
+      args: [],
+    );
+  }
+
   /// `Device info has been copied to the clipboard`
   String get feedback_device_info_msg {
     return Intl.message(

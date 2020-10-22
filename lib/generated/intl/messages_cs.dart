@@ -28,6 +28,8 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
     "about_changelog_link" : MessageLookupByLibrary.simpleMessage("seznam změn"),
+    "about_licenses_button" : MessageLookupByLibrary.simpleMessage("zobrazit licence"),
+    "about_licenses_title" : MessageLookupByLibrary.simpleMessage("Licence"),
     "about_packages_title" : MessageLookupByLibrary.simpleMessage("Balíčky"),
     "about_sources_title" : MessageLookupByLibrary.simpleMessage("Použité zdroje"),
     "about_title_version" : MessageLookupByLibrary.simpleMessage("Verze aplikace"),

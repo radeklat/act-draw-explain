@@ -21,6 +21,7 @@ import 'package:firebase_analytics/observer.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:preferences/preferences.dart';
 import 'package:provider/provider.dart';
@@ -41,6 +42,11 @@ main() async {
   await GameVibrations.init();
   Logger.logLevel = (kReleaseMode) ? Logger.WARNING : Logger.DEBUG;
   Logger.blacklist = {"TiltEvent.other", "TiltEvent.movement", "TiltEvent.detection"};
+
+  LicenseRegistry.addLicense(() async* {
+    final license = await rootBundle.loadString('google_fonts/UFL.txt');
+    yield LicenseEntryWithLineBreaks(['google_fonts'], license);
+  });
 
   runZoned(() {
     runApp(MyApp());

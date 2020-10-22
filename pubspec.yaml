@@ -45,6 +45,7 @@ dependencies:
   collection: ^1.14.11
   intl: ^0.16.1
   xml: ^3.6.1
+  google_fonts: ^1.1.0
 
 dev_dependencies:
   flutter_test:
@@ -82,6 +83,8 @@ flutter:
     - assets/data/
     - assets/activity_icons/
     - assets/
+    - google_fonts/Ubuntu-Regular.ttf
+    - google_fonts/UFL.txt
 
 flutter_intl:
   enable: true
