@@ -201,25 +201,31 @@ class _ActivityScreenState extends State<ActivityScreen> with SingleTickerProvid
                   ],
                 ),
               ),
-              Row(
-                children: <Widget>[
-                  ProgressButton(
-                    title: S.of(context).button_answer_correct,
-                    iconData: Icons.thumb_up,
-                    color: K_COLOR_PASS,
-                    value: true,
-                    onPressed: nextQuestion,
-                    key: Key("answer_correct"),
-                  ),
-                  ProgressButton(
-                    title: S.of(context).button_answer_wrong,
-                    iconData: Icons.thumb_down,
-                    color: K_COLOR_FAIL,
-                    value: false,
-                    onPressed: nextQuestion,
-                    key: Key("answer_wrong"),
-                  ),
-                ],
+              Container(
+                decoration: BoxDecoration(
+                  boxShadow: kElevationToShadow[8],
+                  color: Theme.of(context).bottomAppBarColor
+                ),
+                child: Row(
+                  children: <Widget>[
+                    ProgressButton(
+                      title: S.of(context).button_answer_correct,
+                      iconData: Icons.thumb_up,
+                      color: K_COLOR_PASS,
+                      value: true,
+                      onPressed: nextQuestion,
+                      key: Key("answer_correct"),
+                    ),
+                    ProgressButton(
+                      title: S.of(context).button_answer_wrong,
+                      iconData: Icons.thumb_down,
+                      color: K_COLOR_FAIL,
+                      value: false,
+                      onPressed: nextQuestion,
+                      key: Key("answer_wrong"),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

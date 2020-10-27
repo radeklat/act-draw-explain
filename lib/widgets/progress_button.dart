@@ -21,16 +21,19 @@ class ProgressButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: FlatButton(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: <Widget>[
-            Icon(
-              iconData,
-              color: color,
-              size: 50,
-            ),
-            Text(title),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+              Icon(
+                iconData,
+                color: color,
+                size: 50,
+              ),
+              Text(title),
+            ],
+          ),
         ),
         onPressed: () {onPressed(value);},
       ),
