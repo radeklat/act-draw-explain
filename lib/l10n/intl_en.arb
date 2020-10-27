@@ -148,6 +148,12 @@
   "button_answer_wrong": "Wrong",
   "@button_answer_wrong": {"description": "Button description in the game play for a wrong answer"},
 
+  "button_question_hide": "Hide question",
+  "@button_question_hide": {"description": "Button description in the game play for hiding the question text"},
+
+  "button_question_show": "Show question",
+  "@button_question_show": {"description": "Button description in the game play for revealing the question text"},
+
   "help_how_to_play_title": "How to play",
   "@help_how_to_play_title": {"description": "Section title on the help screen"},
 

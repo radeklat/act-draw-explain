@@ -439,6 +439,26 @@ class S {
     );
   }
 
+  /// `Hide question`
+  String get button_question_hide {
+    return Intl.message(
+      'Hide question',
+      name: 'button_question_hide',
+      desc: 'Button description in the game play for hiding the question text',
+      args: [],
+    );
+  }
+
+  /// `Show question`
+  String get button_question_show {
+    return Intl.message(
+      'Show question',
+      name: 'button_question_show',
+      desc: 'Button description in the game play for revealing the question text',
+      args: [],
+    );
+  }
+
   /// `How to play`
   String get help_how_to_play_title {
     return Intl.message(

@@ -38,6 +38,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "activity_explain" : MessageLookupByLibrary.simpleMessage("Popiš"),
     "button_answer_correct" : MessageLookupByLibrary.simpleMessage("Správně"),
     "button_answer_wrong" : MessageLookupByLibrary.simpleMessage("Špatně"),
+    "button_question_hide" : MessageLookupByLibrary.simpleMessage("Skrýt otázku"),
+    "button_question_show" : MessageLookupByLibrary.simpleMessage("Zobrazit otázku"),
     "duration_minutes" : m0,
     "duration_seconds" : m1,
     "duration_unlimited" : MessageLookupByLibrary.simpleMessage("Neomezeně"),

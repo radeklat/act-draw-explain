@@ -37,6 +37,7 @@ class _ActivityScreenState extends State<ActivityScreen> with SingleTickerProvid
   String questionText = "";
   Activity activity;
   Duration gameDuration;
+  bool questionVisible = true;
 
   @override
   void initState() {
@@ -97,6 +98,9 @@ class _ActivityScreenState extends State<ActivityScreen> with SingleTickerProvid
   }
 
   void nextQuestion(bool passed) {
+    setState(() {
+      questionVisible = true;
+    });
     scoreController.nextQuestion(passed: passed);
 
     if (scoreController.hasMoreQuestions) answerColorAnimation.startAnimation(passed);
@@ -133,6 +137,8 @@ class _ActivityScreenState extends State<ActivityScreen> with SingleTickerProvid
     if (activity == null) {
       return Scaffold();
     }
+
+    var buttonsGroup = AutoSizeGroup();
 
     return Scaffold(
       appBar: EmptyAppBar(backgroundColor: primaryColor),
@@ -189,7 +195,7 @@ class _ActivityScreenState extends State<ActivityScreen> with SingleTickerProvid
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: AutoSizeText(
-                          questionText,
+                          (questionVisible) ? questionText : "",
                           textAlign: TextAlign.center,
                           style: Theme.of(context).textTheme.headline4,
                           minFontSize: Theme.of(context).textTheme.headline5.fontSize,
@@ -215,6 +221,20 @@ class _ActivityScreenState extends State<ActivityScreen> with SingleTickerProvid
                       value: true,
                       onPressed: nextQuestion,
                       key: Key("answer_correct"),
+                      buttonsGroup: buttonsGroup,
+                    ),
+                    ProgressButton(
+                      title: (questionVisible) ? S.of(context).button_question_hide : S.of(context).button_question_show,
+                      iconData: (questionVisible) ? Icons.visibility_off : Icons.visibility,
+                      color: Colors.black54,
+                      value: questionVisible,
+                      onPressed: (hideQuestion) {
+                        setState(() {
+                          questionVisible = !questionVisible;
+                        });
+                      },
+                      key: Key("toggle_visibility"),
+                      buttonsGroup: buttonsGroup,
                     ),
                     ProgressButton(
                       title: S.of(context).button_answer_wrong,
@@ -223,6 +243,7 @@ class _ActivityScreenState extends State<ActivityScreen> with SingleTickerProvid
                       value: false,
                       onPressed: nextQuestion,
                       key: Key("answer_wrong"),
+                      buttonsGroup: buttonsGroup,
                     ),
                   ],
                 ),

@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -7,6 +8,7 @@ class ProgressButton extends StatelessWidget {
   final Color color;
   final Function(bool) onPressed;
   final bool value;
+  final AutoSizeGroup buttonsGroup;
 
   const ProgressButton({
     Key key,
@@ -14,7 +16,8 @@ class ProgressButton extends StatelessWidget {
     @required this.iconData,
     @required this.color,
     @required this.onPressed,
-    this.value
+    this.value,
+    this.buttonsGroup,
   }) : super(key: key);
 
   @override
@@ -31,11 +34,22 @@ class ProgressButton extends StatelessWidget {
                 color: color,
                 size: 50,
               ),
-              Text(title),
+              AutoSizeText(
+                title,
+                maxFontSize: Theme.of(context).textTheme.button.fontSize,
+                minFontSize: Theme.of(context).textTheme.bodyText1.fontSize,
+                presetFontSizes: [24, 21, 18, 16],
+                textAlign: TextAlign.center,
+                maxLines: 2,
+                wrapWords: false,
+                group: buttonsGroup,
+              ),
             ],
           ),
         ),
-        onPressed: () {onPressed(value);},
+        onPressed: () {
+          onPressed(value);
+        },
       ),
     );
   }
