@@ -6,16 +6,27 @@ import 'package:flutter/material.dart';
 import 'package:act_draw_explain/utilities/duration.dart';
 
 class CountdownText extends StatefulWidget {
-  const CountdownText({
+  static Stopwatch get defaultStopwatch {
+    Stopwatch stopwatch = Stopwatch();
+    stopwatch.start();
+    return stopwatch;
+  }
+
+  CountdownText({
     Key key,
     @required this.onFinished,
     @required this.duration,
     this.style,
-  }) : super(key: key);
+    Stopwatch stopwatch, // use external stopwatch if you want to keep the time in multiple components
+  })  : this._stopwatch = (stopwatch == null) ? defaultStopwatch : stopwatch,
+        this._externalStopwatch = (stopwatch != null),
+        super(key: key);
 
   final Function onFinished;
   final Duration duration;
   final TextStyle style;
+  final Stopwatch _stopwatch;
+  final bool _externalStopwatch;
 
   @override
   _CountdownTextState createState() => _CountdownTextState();
@@ -23,7 +34,6 @@ class CountdownText extends StatefulWidget {
 
 class _CountdownTextState extends State<CountdownText> with SingleTickerProviderStateMixin {
   StreamSubscription _stream;
-  Stopwatch _stopwatch = Stopwatch();
   Duration _remainingTime;
   bool _disabled = false;
   static GameSounds gameSounds = GameSounds();
@@ -37,12 +47,9 @@ class _CountdownTextState extends State<CountdownText> with SingleTickerProvider
       return;
     }
 
-    _remainingTime = widget.duration;
-    _stopwatch.start();
+    _remainingTime = (widget._externalStopwatch) ? this.newRemainingTime() : widget.duration;
     _stream = Stream.periodic(Duration(seconds: 1)).listen((_value) {
-      Duration newRemainingTime = widget.duration - _stopwatch.elapsed + Duration(seconds: 1);
-
-
+      Duration newRemainingTime = this.newRemainingTime();
 
       if (newRemainingTime.inSeconds < 1) {
         stop(isDisposing: false);
@@ -58,13 +65,16 @@ class _CountdownTextState extends State<CountdownText> with SingleTickerProvider
     });
   }
 
+  Duration newRemainingTime() {
+    return widget.duration - widget._stopwatch.elapsed + Duration(seconds: 1);
+  }
+
   void stop({bool isDisposing}) {
-    _stopwatch?.stop();
     _stream?.cancel();
 
     if (!isDisposing) {
+      widget._stopwatch.stop();
       setState(() {
-        _stopwatch = null;
         _stream = null;
       });
       widget.onFinished();

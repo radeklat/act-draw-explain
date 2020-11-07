@@ -34,11 +34,15 @@ class ProgressButton extends StatelessWidget {
                 color: color,
                 size: 50,
               ),
+              SizedBox(height: 8,),
               AutoSizeText(
                 title,
                 maxFontSize: Theme.of(context).textTheme.button.fontSize,
                 minFontSize: Theme.of(context).textTheme.bodyText1.fontSize,
-                presetFontSizes: [24, 21, 18, 16],
+                presetFontSizes: [
+                  Theme.of(context).textTheme.button.fontSize,
+                  Theme.of(context).textTheme.bodyText1.fontSize,
+                ],
                 textAlign: TextAlign.center,
                 maxLines: 2,
                 wrapWords: false,

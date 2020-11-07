@@ -439,20 +439,20 @@ class S {
     );
   }
 
-  /// `Hide question`
+  /// `Hide`
   String get button_question_hide {
     return Intl.message(
-      'Hide question',
+      'Hide',
       name: 'button_question_hide',
       desc: 'Button description in the game play for hiding the question text',
       args: [],
     );
   }
 
-  /// `Show question`
+  /// `Show`
   String get button_question_show {
     return Intl.message(
-      'Show question',
+      'Show',
       name: 'button_question_show',
       desc: 'Button description in the game play for revealing the question text',
       args: [],

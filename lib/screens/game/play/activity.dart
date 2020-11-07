@@ -14,7 +14,6 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:preferences/preference_service.dart';
 import 'package:provider/provider.dart';
 import 'package:wakelock/wakelock.dart';
@@ -38,6 +37,7 @@ class _ActivityScreenState extends State<ActivityScreen> with SingleTickerProvid
   Activity activity;
   Duration gameDuration;
   bool questionVisible = true;
+  Stopwatch stopwatch = Stopwatch();
 
   @override
   void initState() {
@@ -86,6 +86,7 @@ class _ActivityScreenState extends State<ActivityScreen> with SingleTickerProvid
               PrefService.getString(K.settings.game.cardsCount.key) ?? "${K.settings.game.cardsCount.defaultValue}"),
         );
       });
+      stopwatch.start();
     });
   }
 
@@ -138,7 +139,17 @@ class _ActivityScreenState extends State<ActivityScreen> with SingleTickerProvid
       return Scaffold();
     }
 
-    var buttonsGroup = AutoSizeGroup();
+    AutoSizeGroup buttonsGroup = AutoSizeGroup();
+    String middleButtonText;
+    IconData middleButtonIcon;
+
+    if (activity == Activity.draw) {
+      middleButtonText = (questionVisible) ? "Draw" : "Question";
+      middleButtonIcon = (questionVisible) ? Icons.brush : Icons.font_download_outlined;
+    } else {
+      middleButtonText = (questionVisible) ? S.of(context).button_question_hide : S.of(context).button_question_show;
+      middleButtonIcon = (questionVisible) ? Icons.visibility_off : Icons.visibility;
+    }
 
     return Scaffold(
       appBar: EmptyAppBar(backgroundColor: primaryColor),
@@ -163,55 +174,34 @@ class _ActivityScreenState extends State<ActivityScreen> with SingleTickerProvid
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  ActivityIcon(activity: activity),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: ActivityIcon.SIZE / 2),
-                    child: Text(
-                      activityToName(activity, S.of(context)),
-                      style: Theme.of(context).textTheme.headline4.copyWith(color: Colors.white),
-                    ),
-                  ),
-                  ActivityIcon(activity: activity, reversed: true),
-                ],
-              ),
-              if (gameDuration.inSeconds > 0)
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    CountdownText(
+              Builder(
+                builder: (context) {
+                  if (activity == Activity.draw && questionVisible == false) {
+                    return PaintWidget(
+                      countdownText: CountdownText(
+                        onFinished: scoreController?.endGame,
+                        stopwatch: stopwatch,
+                        duration: gameDuration,
+                        style: Theme.of(context).textTheme.headline4.copyWith(color: Colors.white),
+                      ),
+                    );
+                  }
+
+                  return QuestionWidget(
+                    activity: activity,
+                    countdownText: CountdownText(
                       onFinished: scoreController?.endGame,
+                      stopwatch: stopwatch,
                       duration: gameDuration,
                       style: Theme.of(context).textTheme.headline4.copyWith(color: Colors.white),
                     ),
-                  ],
-                ),
-              Expanded(
-                child: Row(
-                  children: <Widget>[
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: AutoSizeText(
-                          (questionVisible) ? questionText : "",
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.headline4,
-                          minFontSize: Theme.of(context).textTheme.headline5.fontSize,
-                          wrapWords: false,
-                          maxLines: 4,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                    questionText: questionText,
+                    questionVisible: questionVisible,
+                  );
+                },
               ),
               Container(
-                decoration: BoxDecoration(
-                  boxShadow: kElevationToShadow[8],
-                  color: Theme.of(context).bottomAppBarColor
-                ),
+                decoration: BoxDecoration(boxShadow: kElevationToShadow[8], color: Theme.of(context).bottomAppBarColor),
                 child: Row(
                   children: <Widget>[
                     ProgressButton(
@@ -224,8 +214,8 @@ class _ActivityScreenState extends State<ActivityScreen> with SingleTickerProvid
                       buttonsGroup: buttonsGroup,
                     ),
                     ProgressButton(
-                      title: (questionVisible) ? S.of(context).button_question_hide : S.of(context).button_question_show,
-                      iconData: (questionVisible) ? Icons.visibility_off : Icons.visibility,
+                      title: middleButtonText,
+                      iconData: middleButtonIcon,
                       color: Colors.black54,
                       value: questionVisible,
                       onPressed: (hideQuestion) {
@@ -251,6 +241,149 @@ class _ActivityScreenState extends State<ActivityScreen> with SingleTickerProvid
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class QuestionWidget extends StatelessWidget {
+  const QuestionWidget({
+    Key key,
+    @required this.activity,
+    @required this.countdownText,
+    @required this.questionVisible,
+    @required this.questionText,
+  }) : super(key: key);
+
+  final Activity activity;
+  final CountdownText countdownText;
+  final bool questionVisible;
+  final String questionText;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              ActivityIcon(activity: activity),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: ActivityIcon.SIZE / 2),
+                child: Text(
+                  activityToName(activity, S.of(context)),
+                  style: Theme.of(context).textTheme.headline4.copyWith(color: Colors.white),
+                ),
+              ),
+              ActivityIcon(activity: activity, reversed: true),
+            ],
+          ),
+          if (countdownText != null)
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[countdownText],
+            ),
+          if (questionVisible)
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: AutoSizeText(
+                      questionText,
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.headline4,
+                      minFontSize: Theme.of(context).textTheme.headline5.fontSize,
+                      wrapWords: false,
+                      maxLines: 4,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+}
+
+class PaintWidget extends StatelessWidget {
+  const PaintWidget({
+    Key key,
+    @required this.countdownText,
+  }) : super(key: key);
+
+  final CountdownText countdownText;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  padding: EdgeInsets.only(left: 16),
+                  child: countdownText,
+                ),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 16),
+                      child: MaterialButton(
+                        onPressed: () {},
+                        color: Colors.blue,
+                        padding: EdgeInsets.all(24),
+                        minWidth: 0,
+                        shape: CircleBorder(side: BorderSide(width: 2.0, color: Colors.black87)),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 16),
+                      child: MaterialButton(
+                        onPressed: () {},
+                        color: Colors.white,
+                        minWidth: 0,
+                        padding: EdgeInsets.all(20),
+                        child: Container(
+                          height: 8,
+                          width: 8,
+                          decoration: BoxDecoration(color: Colors.black87, shape: BoxShape.circle),
+                        ),
+                        shape: CircleBorder(side: BorderSide(width: 2.0, color: Colors.black87)),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 0, right: 16),
+                      child: MaterialButton(
+                        onPressed: () {},
+                        color: Colors.white,
+                        minWidth: 0,
+                        child: Icon(
+                          Icons.delete,
+                          size: 24.0,
+                        ),
+                        padding: EdgeInsets.all(12),
+                        shape: CircleBorder(),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: Container(
+              margin: EdgeInsets.only(left: 8, right: 8, bottom: 8),
+              decoration: BoxDecoration(color: Colors.white, border: Border.all(color: Colors.black54, width: 2.0)),
+            ),
+          )
+        ],
       ),
     );
   }
