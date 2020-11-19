@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:act_draw_explain/screens/game/play/activity/brush_size.dart';
 import 'package:act_draw_explain/widgets/countdown_text.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'brush_color.dart';
 
@@ -14,6 +15,20 @@ class TouchPoints {
   Offset points;
 
   TouchPoints({this.points, this.paint});
+}
+
+class TouchPointsChangeNotifier extends ChangeNotifier {
+  final List<TouchPoints> points = [];
+
+  void add(TouchPoints touchPoints) {
+    points.add(touchPoints);
+    notifyListeners();
+  }
+
+  void clear() {
+    points.clear();
+    notifyListeners();
+  }
 }
 
 class MyPainter extends CustomPainter {
@@ -60,8 +75,6 @@ class PaintWidget extends StatefulWidget {
 }
 
 class _PaintWidgetState extends State<PaintWidget> {
-  List<TouchPoints> points = List();
-
   double opacity = 1.0;
   StrokeCap strokeType = StrokeCap.round;
   double strokeWidth = 4.0;
@@ -124,9 +137,7 @@ class _PaintWidgetState extends State<PaintWidget> {
                       padding: const EdgeInsets.only(left: 0, right: 16),
                       child: MaterialButton(
                         onPressed: () {
-                          setState(() {
-                            points.clear();
-                          });
+                          Provider.of<TouchPointsChangeNotifier>(context, listen: false).clear();
                         },
                         color: Colors.white,
                         minWidth: 0,
@@ -153,41 +164,38 @@ class _PaintWidgetState extends State<PaintWidget> {
                     builder: (context) {
                       return GestureDetector(
                         onPanDown: (details) {
-                          setState(() {
-                            RenderBox renderBox = context.findRenderObject();
-                            points.add(
-                              TouchPoints(
-                                points: renderBox.globalToLocal(details.globalPosition),
-                                paint: Paint()
-                                  ..strokeCap = strokeType
-                                  ..isAntiAlias = true
-                                  ..color = selectedColor.withOpacity(opacity)
-                                  ..strokeWidth = strokeWidth,
-                              ),
-                            );
-                          });
+                          RenderBox renderBox = context.findRenderObject();
+                          Provider.of<TouchPointsChangeNotifier>(context, listen: false).add(
+                            TouchPoints(
+                              points: renderBox.globalToLocal(details.globalPosition),
+                              paint: Paint()
+                                ..strokeCap = strokeType
+                                ..isAntiAlias = true
+                                ..color = selectedColor.withOpacity(opacity)
+                                ..strokeWidth = strokeWidth,
+                            ),
+                          );
                         },
                         onPanUpdate: (details) {
-                          setState(() {
-                            RenderBox renderBox = context.findRenderObject();
-                            points.add(
-                              TouchPoints(
-                                points: renderBox.globalToLocal(details.globalPosition),
-                                paint: Paint()
-                                  ..strokeCap = strokeType
-                                  ..isAntiAlias = true
-                                  ..color = selectedColor.withOpacity(opacity)
-                                  ..strokeWidth = strokeWidth,
-                              ),
-                            );
-                          });
+                          RenderBox renderBox = context.findRenderObject();
+                          Provider.of<TouchPointsChangeNotifier>(context, listen: false).add(
+                            TouchPoints(
+                              points: renderBox.globalToLocal(details.globalPosition),
+                              paint: Paint()
+                                ..strokeCap = strokeType
+                                ..isAntiAlias = true
+                                ..color = selectedColor.withOpacity(opacity)
+                                ..strokeWidth = strokeWidth,
+                            ),
+                          );
                         },
                         onPanEnd: (details) {
-                          setState(() {
-                            points.add(null);
-                          });
+                          Provider.of<TouchPointsChangeNotifier>(context, listen: false).add(null);
                         },
-                        child: CustomPaint(size: Size.infinite, painter: MyPainter(pointsList: points)),
+                        child: Consumer<TouchPointsChangeNotifier>(builder: (_context, provider, _child) => CustomPaint(
+                          size: Size.infinite,
+                          painter: MyPainter(pointsList: provider.points),
+                        )),
                       );
                     },
                   ),

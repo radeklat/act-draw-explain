@@ -6,6 +6,7 @@ import 'package:act_draw_explain/models/results.dart';
 import 'package:act_draw_explain/screens/about.dart';
 import 'package:act_draw_explain/screens/crash.dart';
 import 'package:act_draw_explain/screens/game/end_game.dart';
+import 'package:act_draw_explain/screens/game/play/activity/paint.dart';
 import 'file:///D:/projekty/flutter/act-draw-explain/lib/screens/game/play/activity/activity.dart';
 import 'package:act_draw_explain/screens/game/play/countdown.dart';
 import 'package:act_draw_explain/screens/game/play/heads_up.dart';
@@ -85,6 +86,7 @@ class _MyAppState extends State<MyApp> {
         ChangeNotifierProvider<TopicBestScore>(create: (_) => TopicBestScore()),
         Provider<Analytics>(create: (_) => Analytics(MyApp.analytics)),
         Provider<FirebaseAnalyticsObserver>.value(value: MyApp.observer),
+        ChangeNotifierProvider<TouchPointsChangeNotifier>(create: (_) => TouchPointsChangeNotifier()),
       ],
       child: MaterialApp(
 //        debugShowCheckedModeBanner: false,

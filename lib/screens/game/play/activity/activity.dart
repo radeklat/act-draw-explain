@@ -101,6 +101,9 @@ class _ActivityScreenState extends State<ActivityScreen> with SingleTickerProvid
   }
 
   void nextQuestion(bool passed) {
+    if (activity == Activity.draw) {
+      Provider.of<TouchPointsChangeNotifier>(context, listen: false).clear();
+    }
     setState(() {
       questionVisible = true;
     });

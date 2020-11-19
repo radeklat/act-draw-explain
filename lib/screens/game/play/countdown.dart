@@ -5,6 +5,9 @@ import 'package:act_draw_explain/utilities/vibrations.dart';
 import 'package:act_draw_explain/widgets/countdown_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'activity/paint.dart';
 
 class CountdownScreen extends StatelessWidget {
   static const String ID = "countdown_screen";
@@ -29,6 +32,7 @@ class CountdownScreen extends StatelessWidget {
                       duration: K_DURATION_START_GAME,
                       style: Theme.of(context).textTheme.headline1,
                       onFinished: () {
+                        Provider.of<TouchPointsChangeNotifier>(context, listen: false).clear();
                         gameSounds.gameStart();
                         GameVibrations.gameStart();
                         Navigator.pushReplacementNamed(context, newGame.screenId, arguments: newGame);
