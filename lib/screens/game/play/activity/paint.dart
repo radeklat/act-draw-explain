@@ -3,8 +3,10 @@ import 'dart:ui';
 import 'package:act_draw_explain/screens/game/play/activity/brush_size.dart';
 import 'package:act_draw_explain/widgets/countdown_text.dart';
 import 'package:flutter/material.dart';
+import 'package:preferences/preference_service.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../constants.dart';
 import 'brush_color.dart';
 
 // Based on https://ptyagicodecamp.github.io/building-cross-platform-finger-painting-app-in-flutter.html
@@ -77,8 +79,10 @@ class PaintWidget extends StatefulWidget {
 class _PaintWidgetState extends State<PaintWidget> {
   double opacity = 1.0;
   StrokeCap strokeType = StrokeCap.round;
-  double strokeWidth = 4.0;
-  Color selectedColor = Colors.black;
+  double strokeWidth = PrefService.getDouble(K.settings.game.brushSize.key) ?? K.settings.game.brushSize.defaultValue;
+  Color selectedColor = Color(
+    PrefService.getInt(K.settings.game.brushColor.key) ?? K.settings.game.brushColor.defaultValue,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -192,10 +196,11 @@ class _PaintWidgetState extends State<PaintWidget> {
                         onPanEnd: (details) {
                           Provider.of<TouchPointsChangeNotifier>(context, listen: false).add(null);
                         },
-                        child: Consumer<TouchPointsChangeNotifier>(builder: (_context, provider, _child) => CustomPaint(
-                          size: Size.infinite,
-                          painter: MyPainter(pointsList: provider.points),
-                        )),
+                        child: Consumer<TouchPointsChangeNotifier>(
+                            builder: (_context, provider, _child) => CustomPaint(
+                                  size: Size.infinite,
+                                  painter: MyPainter(pointsList: provider.points),
+                                )),
                       );
                     },
                   ),

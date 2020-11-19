@@ -90,7 +90,7 @@ class _HeadsUpScreenState extends State<HeadsUpScreen> with SingleTickerProvider
             });
           },
           logQuestion: (topic, question, duration, state) => Provider.of<Analytics>(context, listen: false)
-              .playedQuestion(topic, question, duration, state, gameDuration),
+              .playedQuestion(topic, question, duration, state, gameDuration, "Heads up"),
           onGameEnd: (gameResult) {
             Provider.of<Analytics>(context, listen: false)
                 .playedGame(widget.newGame.topic, gameDuration, gameResult);

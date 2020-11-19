@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:preferences/preference_service.dart';
+
+import '../../../../constants.dart';
 
 class BrushSizeButton extends StatelessWidget {
   final Function onPressed;
@@ -40,6 +43,7 @@ class BrushSizeDialog extends StatelessWidget {
     return Center(
       child: BrushSizeButton(
         onPressed: () {
+          PrefService.setDouble(K.settings.game.brushSize.key, size);
           this.onChange(size);
           Navigator.of(context).pop();
         },

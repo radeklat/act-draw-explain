@@ -75,7 +75,7 @@ class _ActivityScreenState extends State<ActivityScreen> with SingleTickerProvid
             });
           },
           logQuestion: (topic, question, duration, state) => Provider.of<Analytics>(context, listen: false)
-              .playedQuestion(topic, question, duration, state, gameDuration),
+              .playedQuestion(topic, question, duration, state, gameDuration, "Activity", activity),
           onGameEnd: (gameResult) {
             Provider.of<Analytics>(context, listen: false).playedGame(widget.newGame.topic, gameDuration, gameResult);
             Navigator.pushReplacementNamed(context, EndGameScreen.ID, arguments: gameResult);

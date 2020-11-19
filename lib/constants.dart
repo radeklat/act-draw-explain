@@ -83,6 +83,8 @@ class _Game {
   final cardsCount = KeyDefault("${_Settings._PREFIX}$_PREFIX.card.count", 20);
   final control = KeyDefault("${_Settings._PREFIX}$_PREFIX.control", K_GAME_CONTROL_BOTH);
   final vibrate = KeyDefault("${_Settings._PREFIX}$_PREFIX.vibrate", true);
+  final brushColor = KeyDefault("${_Settings._PREFIX}$_PREFIX.brush.color", Colors.black.value);
+  final brushSize = KeyDefault("${_Settings._PREFIX}$_PREFIX.brush.size", 4.0);
 }
 
 class K {

@@ -1,3 +1,4 @@
+import 'package:act_draw_explain/models/game/new.dart';
 import 'package:act_draw_explain/models/game/result.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/foundation.dart';
@@ -14,7 +15,14 @@ class Analytics {
   Analytics(this.analytics);
 
   void playedQuestion(
-      Topic topic, Question question, Duration duration, QuestionState state, Duration timeLimit) async {
+    Topic topic,
+    Question question,
+    Duration duration,
+    QuestionState state,
+    Duration timeLimit,
+    String gameType, [
+    Activity activity,
+  ]) async {
     await analytics.logEvent(
       name: 'playedQuestion',
       parameters: <String, dynamic>{
@@ -25,6 +33,8 @@ class Analytics {
         'durationSeconds': duration.inMilliseconds / 1000,
         'state': describeEnum(state),
         'timeLimitSeconds': timeLimit.inSeconds,
+        'gameType': gameType,
+        'activity': (activity == null) ? "N/A" : describeEnum(activity)
       },
     );
   }
@@ -51,7 +61,9 @@ class Analytics {
   void userFeedback(FeedbackType type) async {
     await analytics.logEvent(
       name: 'feedback',
-      parameters: <String, dynamic>{'type': describeEnum(type),},
+      parameters: <String, dynamic>{
+        'type': describeEnum(type),
+      },
     );
   }
 

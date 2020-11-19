@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:preferences/preference_service.dart';
+
+import '../../../../constants.dart';
 
 class BrushColorButton extends StatelessWidget {
   final Function onPressed;
@@ -51,6 +54,7 @@ class BrushColorDialog extends StatelessWidget {
     return Center(
       child: BrushColorButton(
         onPressed: () {
+          PrefService.setInt(K.settings.game.brushColor.key, color.value);
           this.onChange(color);
           Navigator.of(context).pop();
         },
