@@ -1,5 +1,7 @@
+import 'package:act_draw_explain/analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:preferences/preference_service.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../constants.dart';
 
@@ -44,6 +46,7 @@ class BrushSizeDialog extends StatelessWidget {
       child: BrushSizeButton(
         onPressed: () {
           PrefService.setDouble(K.settings.game.brushSize.key, size);
+          Provider.of<Analytics>(context, listen: false).brushSizeChoice(size);
           this.onChange(size);
           Navigator.of(context).pop();
         },

@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:act_draw_explain/analytics.dart';
 import 'package:act_draw_explain/screens/game/play/activity/brush_size.dart';
 import 'package:act_draw_explain/widgets/countdown_text.dart';
 import 'package:flutter/material.dart';
@@ -21,9 +22,15 @@ class TouchPoints {
 
 class TouchPointsChangeNotifier extends ChangeNotifier {
   final List<TouchPoints> points = [];
+  bool _modified = false;
+
+  bool get modified {
+    return _modified;
+  }
 
   void add(TouchPoints touchPoints) {
     points.add(touchPoints);
+    _modified = true;
     notifyListeners();
   }
 
@@ -141,6 +148,7 @@ class _PaintWidgetState extends State<PaintWidget> {
                       padding: const EdgeInsets.only(left: 0, right: 16),
                       child: MaterialButton(
                         onPressed: () {
+                          Provider.of<Analytics>(context, listen: false).clearCanvas();
                           Provider.of<TouchPointsChangeNotifier>(context, listen: false).clear();
                         },
                         color: Colors.white,
@@ -194,7 +202,11 @@ class _PaintWidgetState extends State<PaintWidget> {
                           );
                         },
                         onPanEnd: (details) {
-                          Provider.of<TouchPointsChangeNotifier>(context, listen: false).add(null);
+                          var touchPoints = Provider.of<TouchPointsChangeNotifier>(context, listen: false);
+                          if (!touchPoints.modified) {
+                            Provider.of<Analytics>(context, listen: false).paintCanvas();
+                          }
+                          touchPoints.add(null);
                         },
                         child: Consumer<TouchPointsChangeNotifier>(
                             builder: (_context, provider, _child) => CustomPaint(

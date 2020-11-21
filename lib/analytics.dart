@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:act_draw_explain/models/game/new.dart';
 import 'package:act_draw_explain/models/game/result.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
@@ -34,7 +36,7 @@ class Analytics {
         'state': describeEnum(state),
         'timeLimitSeconds': timeLimit.inSeconds,
         'gameType': gameType,
-        'activity': (activity == null) ? "N/A" : describeEnum(activity)
+        'activity_type': (activity == null) ? "N/A" : describeEnum(activity)
       },
     );
   }
@@ -63,6 +65,44 @@ class Analytics {
       name: 'feedback',
       parameters: <String, dynamic>{
         'type': describeEnum(type),
+      },
+    );
+  }
+
+  void brushColorChoice(Color color) async {
+    await analytics.logEvent(
+      name: 'paint_event',
+      parameters: <String, dynamic>{
+        'type': 'brush_color',
+        'value': color.value
+      },
+    );
+  }
+
+  void brushSizeChoice(double size) async {
+    await analytics.logEvent(
+      name: 'paint_event',
+      parameters: <String, dynamic>{
+        'type': 'brush_size',
+        'value': size
+      },
+    );
+  }
+
+  void clearCanvas() async {
+    await analytics.logEvent(
+      name: 'paint_event',
+      parameters: <String, dynamic>{
+        'type': 'clear_canvas'
+      },
+    );
+  }
+
+  void paintCanvas() async {
+    await analytics.logEvent(
+      name: 'paint_event',
+      parameters: <String, dynamic>{
+        'type': 'paint'
       },
     );
   }

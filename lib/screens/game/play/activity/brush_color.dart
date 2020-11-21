@@ -1,5 +1,7 @@
+import 'package:act_draw_explain/analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:preferences/preference_service.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../constants.dart';
 
@@ -55,6 +57,7 @@ class BrushColorDialog extends StatelessWidget {
       child: BrushColorButton(
         onPressed: () {
           PrefService.setInt(K.settings.game.brushColor.key, color.value);
+          Provider.of<Analytics>(context, listen: false).brushColorChoice(color);
           this.onChange(color);
           Navigator.of(context).pop();
         },
