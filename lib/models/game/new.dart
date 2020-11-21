@@ -21,8 +21,7 @@ String activityToName(Activity activity, S s) {
 
 class NewGame {
   final Topic topic;
-  final Set<Activity> activities;
   final String screenId;
 
-  NewGame(this.topic, this.activities, this.screenId);
+  NewGame(this.topic, this.screenId);
 }

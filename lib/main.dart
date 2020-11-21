@@ -36,7 +36,7 @@ main() async {
 
   await Firebase.initializeApp();
   FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(kReleaseMode);
-  // FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);  // To enable in debug mode
+  FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);  // To enable in debug mode
   FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
   ErrorWidget.builder = (FlutterErrorDetails details) => CrashScreen(details: details);
   await PrefService.init();

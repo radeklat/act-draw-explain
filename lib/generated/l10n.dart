@@ -9,6 +9,8 @@ import 'intl/messages_all.dart';
 // **************************************************************************
 
 // ignore_for_file: non_constant_identifier_names, lines_longer_than_80_chars
+// ignore_for_file: join_return_with_assignment, prefer_final_in_for_each
+// ignore_for_file: avoid_redundant_argument_values
 
 class S {
   S();
@@ -139,6 +141,36 @@ class S {
       'Game options',
       name: 'settings_title_options',
       desc: 'Settings title for game options',
+      args: [],
+    );
+  }
+
+  /// `Game type`
+  String get settings_game_type {
+    return Intl.message(
+      'Game type',
+      name: 'settings_game_type',
+      desc: 'Settings description for game type',
+      args: [],
+    );
+  }
+
+  /// `Act, draw, explain`
+  String get settings_game_type_act_draw_explain {
+    return Intl.message(
+      'Act, draw, explain',
+      name: 'settings_game_type_act_draw_explain',
+      desc: 'Act, draw, explain game type',
+      args: [],
+    );
+  }
+
+  /// `Heads up`
+  String get settings_game_type_heads_up {
+    return Intl.message(
+      'Heads up',
+      name: 'settings_game_type_heads_up',
+      desc: 'Heads up game type',
       args: [],
     );
   }

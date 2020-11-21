@@ -1,14 +1,15 @@
 import 'package:act_draw_explain/analytics.dart';
+import 'package:act_draw_explain/constants.dart';
 import 'package:act_draw_explain/generated/l10n.dart';
+import 'package:act_draw_explain/main.dart';
+import 'package:act_draw_explain/screens/game/play/activity/activity.dart';
+import 'package:act_draw_explain/screens/game/play/heads_up.dart';
 import 'package:act_draw_explain/utilities/intl/languages.dart';
 import 'package:act_draw_explain/utilities/vibrations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:preferences/preferences.dart';
 import 'package:provider/provider.dart';
-
-import '../constants.dart';
-import '../main.dart';
 
 class SettingsScreen extends StatefulWidget {
   static const String ID = "settings_screen";
@@ -51,15 +52,25 @@ class _SettingsScreenState extends State<SettingsScreen> {
               desc: S.of(context).settings_language_description,
               defaultVal: Localizations.localeOf(context).languageCode,
               values: widget.supportedLocales.map((locale) => locale.languageCode).toList(),
-              displayValues: widget.supportedLocales
-                  .map((locale) => isoLanguages[locale.languageCode].nativeName)
-                  .toList(),
+              displayValues:
+                  widget.supportedLocales.map((locale) => isoLanguages[locale.languageCode].nativeName).toList(),
               onChange: (languageCode) {
                 MyApp.setLocale(context, Locale(languageCode));
                 this.onChange(K.settings.languageCode);
               },
             ),
             PreferenceTitle(S.of(context).settings_title_options),
+            DropdownPreference(
+              S.of(context).settings_game_type,
+              K.settings.game.type.key,
+              defaultVal: K.settings.game.type.defaultValue,
+              values: [ActivityScreen.ID, HeadsUpScreen.ID],
+              displayValues: [
+                S.of(context).settings_game_type_act_draw_explain,
+                S.of(context).settings_game_type_heads_up
+              ],
+              onChange: (_val) => this.onChange(K.settings.game.type),
+            ),
             DropdownPreference(
               S.of(context).settings_game_length,
               K.settings.game.duration.key,

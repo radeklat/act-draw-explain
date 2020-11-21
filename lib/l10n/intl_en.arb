@@ -33,6 +33,15 @@
   "settings_title_options": "Game options",
   "@settings_title_options": {"description": "Settings title for game options"},
 
+  "settings_game_type": "Game type",
+  "@settings_game_type": {"description": "Settings description for game type"},
+
+  "settings_game_type_act_draw_explain": "Act, draw, explain",
+  "@settings_game_type_act_draw_explain": {"description": "Act, draw, explain game type"},
+
+  "settings_game_type_heads_up": "Heads up",
+  "@settings_game_type_heads_up": {"description": "Heads up game type"},
+
   "settings_game_length": "Game length",
   "@settings_game_length": {"description": "Settings description for game length"},
 

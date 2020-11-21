@@ -1,5 +1,6 @@
 import 'dart:collection';
 
+import 'package:act_draw_explain/screens/game/play/activity/activity.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -79,6 +80,7 @@ class _Settings {
 
 class _Game {
   static const _PREFIX = "game";
+  final type = KeyDefault("${_Settings._PREFIX}$_PREFIX.type", ActivityScreen.ID);
   final duration = KeyDefault("${_Settings._PREFIX}$_PREFIX.duration", 90);
   final cardsCount = KeyDefault("${_Settings._PREFIX}$_PREFIX.card.count", 20);
   final control = KeyDefault("${_Settings._PREFIX}$_PREFIX.control", K_GAME_CONTROL_BOTH);

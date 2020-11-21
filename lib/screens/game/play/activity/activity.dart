@@ -66,7 +66,7 @@ class _ActivityScreenState extends State<ActivityScreen> with SingleTickerProvid
       setState(() {
         scoreController = ScoreController(
           topic: widget.newGame.topic,
-          activities: widget.newGame.activities,
+          activities: [Activity.act, Activity.draw, Activity.explain],
           locale: Localizations.localeOf(context),
           onNextQuestion: (newQuestion, activity) {
             setState(() {
