@@ -36,7 +36,7 @@ class TranslationsLoader {
     log.time(start).debug("File content loaded");
 
     start = DateTime.now();
-    XmlDocument parsedXml = parse(xmlContent);
+    XmlDocument parsedXml = XmlDocument.parse(xmlContent);
     log.time(start).debug("XML parsed");
 
     return parsedXml;

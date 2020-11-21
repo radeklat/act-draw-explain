@@ -120,7 +120,7 @@ class GameSounds {
 
   static AudioCache _audioPlayer = AudioCache(
     fixedPlayer: AudioPlayer(mode: PlayerMode.LOW_LATENCY),
-    prefix: "sounds/",
+    prefix: "assets/sounds/",
   );
   static bool _initialised = false;
 

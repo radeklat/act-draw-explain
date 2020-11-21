@@ -19,6 +19,7 @@ import 'package:act_draw_explain/utilities/logging.dart';
 import 'package:act_draw_explain/utilities/vibrations.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -33,11 +34,10 @@ import 'generated/l10n.dart';
 main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  Crashlytics.instance.enableInDevMode = false; // Pass all uncaught errors from the framework to Crashlytics.
-  FlutterError.onError = (details) {
-    Zone.current.handleUncaughtError(details.exception, details.stack);
-    Crashlytics.instance.recordFlutterError(details);
-  };
+  await Firebase.initializeApp();
+  FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(kReleaseMode);
+  // FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);  // To enable in debug mode
+  FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
   ErrorWidget.builder = (FlutterErrorDetails details) => CrashScreen(details: details);
   await PrefService.init();
   await GameVibrations.init();
@@ -51,10 +51,11 @@ main() async {
 
   runZoned(() {
     runApp(MyApp());
-  }, onError: Crashlytics.instance.recordError);
+  }, onError: FirebaseCrashlytics.instance.recordError);
 }
 
 class MyApp extends StatefulWidget {
+  // Disable AdAway
   // To enable Analytics Debug mode on an emulated Android device, execute the following command line:
   //    adb shell setprop debug.firebase.analytics.app sk.lat.act_draw_explain.debug
   // This behavior persists until you explicitly disable Debug mode by executing the following command line:
