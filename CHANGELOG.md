@@ -12,9 +12,11 @@ Types of changes are:
 ## [Unreleased]
 <!-- Don't forget to update version in pubspec.yaml -->
 
+## [2.2.0+20] - 2020-11-24 <a name="2.2.0" />
 ### Features
 * Application font replaced with a Google font Ubuntu
 * New license page in the About dialog
+* New act, draw, explain game mode
 
 ## [2.1.0+18] - 2020-07-19 <a name="2.1.0" />
 ### Features
@@ -133,7 +135,8 @@ Types of changes are:
 ### Features
 * Initial source code
 
-[Unreleased]: https://github.com/radeklat/act-draw-explain/compare/releases/2.1.0+18...HEAD
+[Unreleased]: https://github.com/radeklat/act-draw-explain/compare/releases/2.2.0+20...HEAD
+[2.2.0+20]: https://github.com/radeklat/act-draw-explain/compare/releases/2.1.0+18...releases/2.2.0+20
 [2.1.0+18]: https://github.com/radeklat/act-draw-explain/compare/releases/2.0.0+17...releases/2.1.0+18
 [2.0.0+17]: https://github.com/radeklat/act-draw-explain/compare/releases/1.1.1+15...releases/2.0.0+17
 [1.1.1+15]: https://github.com/radeklat/act-draw-explain/compare/releases/1.1.0+13...releases/1.1.1+15
