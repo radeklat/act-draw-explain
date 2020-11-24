@@ -66,15 +66,23 @@ android {
         release {
             signingConfig signingConfigs.release
 
+            ndk {
+                debugSymbolLevel "FULL"
+            }
+
 //            https://firebase.google.com/docs/crashlytics/ndk-reports?authuser=0
-//            firebaseCrashlytics {
-//                nativeSymbolUploadEnabled true
-//            }
+            firebaseCrashlytics {
+                nativeSymbolUploadEnabled true
+                strippedNativeLibsDir "$buildDir/ndklibs/obj"
+                unstrippedNativeLibsDir "$buildDir/ndklibs/libs"
+            }
         }
         debug {
             applicationIdSuffix ".debug"
         }
     }
+
+    ndkVersion "22.0.6917172"
 }
 
 flutter {
@@ -87,6 +95,6 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation platform('com.google.firebase:firebase-bom:26.1.0')
-    implementation 'com.google.firebase:firebase-crashlytics'
+    implementation 'com.google.firebase:firebase-crashlytics-ndk'
     implementation 'com.google.firebase:firebase-analytics'
 }
