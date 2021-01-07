@@ -56,7 +56,7 @@
       <trans-unit color="pinkAccent" icon="looks" id="7">
         <attribution url="" />
         <question-ids>
-          <list>435, 436, 901, 902, 903, 1109, 1110, 1111, 1112, 1113, 1114, 1115</list>
+          <list>435, 436, 901, 902, 903, 1109, 1110, 1111, 1112, 1113, 1114, 1115, 85, 86</list>
           <range max="172" min="125" />
         </question-ids>
         <source>RuPaul's Drag Race</source>

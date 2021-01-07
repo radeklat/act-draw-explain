@@ -80,6 +80,7 @@ Topic and questions are at the moment distributed with the app. They are located
 Running `flutter pub run sync_translation_files` from the repository source will:
 * inject `DISABLED` into all question of a disabled topic in given language variant (see [Disabling translations](#disabling-translations) below)
 * inject topic names into questions to be visible as context in the translation system
+* list free IDs for new questions and topics
 
 ## Testing
 

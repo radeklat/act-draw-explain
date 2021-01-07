@@ -838,6 +838,10 @@
         <source/>
         <target>DISABLED</target>
       </trans-unit>
+      <trans-unit id="85"><source/>
+        <target>DISABLED</target></trans-unit>
+      <trans-unit id="86"><source/>
+        <target>DISABLED</target></trans-unit>
     </body>
   </file>
   <file category="Top Android Apps" original="8" target-language="cs">
