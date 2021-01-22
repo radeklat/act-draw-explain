@@ -11,7 +11,7 @@ void main() {
   group('Topic', () {
     Topic topic;
 
-    group('should identify disabled question', () {
+    group('should not produce disabled question', () {
       setUp(() {
         topic = fakeTopic(
           questions: HashMap.from({
@@ -23,8 +23,18 @@ void main() {
         );
       });
 
-      test("en", () => expect(topic.questionIDs(EN), [1, 2]));
-      test("cs", () => expect(topic.questionIDs(CS), [2, 3]));
+      test("en", () => expect(topic.shuffledQuestions(EN).map((question) => question.id).toSet(), {1, 2}));
+      test("cs", () => expect(topic.shuffledQuestions(CS).map((question) => question.id).toSet(), {2, 3}));
+    });
+
+    test('should not produce questions from hidden packages', () {
+      topic = fakeTopic(
+        questions: HashMap.from({1: fakeQuestion(1), 2: fakeQuestion(2), 3: fakeQuestion(3)}),
+        packages: {1: [1,2], 2: [3]},
+      );
+      topic.setEnabledPackages({1});
+
+      expect(topic.shuffledQuestions(EN).map((question) => question.id).toSet(), {1, 2});
     });
 
     group('should identify topics ', () {

@@ -15,10 +15,11 @@ class Topic extends LocalizedItem {
   final UnmodifiableMapView<int, Question> questions;
   final List<String> sources;
   final Map<int, List<int>> packages;
-
   static RegExp _idRegExp = RegExp(r"[0-9]+");
 
-  HashMap<Locale, UnmodifiableSetView<int>> _enabledQuestionIDs = HashMap();
+  HashMap<Locale, UnmodifiableSetView<int>> _displayableQuestionIDs = HashMap();
+  Set<int> _enabledPackageIDs = Set();
+  Set<int> _questionIDsInDisabledPackages = Set();
 
   Topic({
     this.id,
@@ -28,26 +29,43 @@ class Topic extends LocalizedItem {
     this.questions,
     this.packages,
     this.sources = const [],
-  }) : super(baseText);
+  }) : super(baseText) {
+    setEnabledPackages({1});  // TODO: Requires ability to buy packages.
+  }
+
+  void setEnabledPackages(Set<int> packageIDs) {
+    _enabledPackageIDs = packageIDs;
+
+    // Remember all question IDs that are present in disabled packages to hide them
+    packages.forEach((packageID, packageQuestionIDs) {
+      if (!_enabledPackageIDs.contains(packageID)) {
+        _questionIDsInDisabledPackages.addAll(packageQuestionIDs);
+      }
+    });
+  }
 
   /// itemJson is a "trans-unit" from "<TYPE>/<LOCALE>.xliff"
   updateWithLocalizedXmlElement(XmlElement xmlItem, Locale locale) {
     super.updateWithLocalizedXmlElement(xmlItem, locale);
-    _enabledQuestionIDs[locale] = UnmodifiableSetView(
+    _displayableQuestionIDs[locale] = UnmodifiableSetView(
       questions.values.where((question) => !question.isDisabled(locale)).map((question) => question.id).toSet(),
     );
   }
 
   bool isDisabled(Locale locale) {
-    return super.isDisabled(locale) || _enabledQuestionIDs[locale].isEmpty;
+    return super.isDisabled(locale) || _displayableQuestionIDs[locale].isEmpty;
   }
 
-  UnmodifiableSetView<int> questionIDs(Locale locale) {
-    return _enabledQuestionIDs[locale];
+  int length(Locale locale) {
+    return _enabledQuestionIDs(locale).length;
   }
 
   List<Question> shuffledQuestions(Locale locale) {
-    return questions.values.toList()..shuffle();
+    return _enabledQuestionIDs(locale).map((questionId) => questions[questionId]).toList()..shuffle();
+  }
+
+  Set<int> _enabledQuestionIDs(Locale locale) {
+    return _displayableQuestionIDs[locale].difference(_questionIDsInDisabledPackages);
   }
 
   static List<int> _range(XmlElement xmlRange) {

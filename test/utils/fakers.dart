@@ -24,13 +24,20 @@ Question fakeQuestion(int id, {String baseText, Map<String, String> localisation
   return question;
 }
 
-Topic fakeTopic({int id, String baseText, Map<String, String> localisations, HashMap<int, Question> questions}) {
+Topic fakeTopic({
+  int id,
+  String baseText,
+  Map<String, String> localisations,
+  HashMap<int, Question> questions,
+  Map<int, List<int>> packages,
+}) {
   Topic topic = Topic(
     id: id ?? 1,
     baseText: baseText ?? "Fake topic",
     color: Colors.black,
     icon: Icon(Icons.score),
     questions: UnmodifiableMapView(questions ?? {}),
+    packages: packages ?? ((questions == null) ? Map() : {1: questions.keys.toList()}),
   );
 
   _localize(topic, localisations);
