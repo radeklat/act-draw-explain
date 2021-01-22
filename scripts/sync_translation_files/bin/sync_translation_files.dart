@@ -96,8 +96,8 @@ listFreeIDs() {
   [TYPE_TOPICS, TYPE_QUESTIONS].forEach((fileType) async {
     Set<int> seenIDs = {};
     int maxID = 0;
-    var questionsXml = await loadXliffAsset(fileType);
-    questionsXml.findAllElements("trans-unit").forEach((topic) {
+    var documentXml = await loadXliffAsset(fileType);
+    documentXml.findAllElements("trans-unit").forEach((topic) {
       var id = int.parse(topic.getAttribute("id"));
       seenIDs.add(id);
       if (id > maxID) maxID = id;
@@ -112,8 +112,42 @@ listFreeIDs() {
   });
 }
 
+List<int> _range(XmlElement xmlRange) {
+  int min = int.parse(xmlRange.getAttribute("min"));
+  int max = int.parse(xmlRange.getAttribute("max"));
+  return [for (var i = min; i <= max; i += 1) i];
+}
+RegExp _idRegExp = RegExp(r"[0-9]+");
+
+listTopics() async {
+  printHeading("List of packages in topics");
+
+  var topicsXml = await loadXliffAsset(TYPE_TOPICS);
+  topicsXml.findAllElements("trans-unit").forEach((topic) {
+    var id = int.parse(topic.getAttribute("id"));
+    printHeading("Package ID $id", level: 2);
+    topic.findAllElements("package-ids").forEach((package) {
+      var level = package.getAttribute("level");
+      var visible = (package.getAttribute("visible") == "false") ? ", hidden" : "";
+      Set<int> IDs = Set();
+      package.descendants.forEach((XmlNode xmlQuestionIDsItem) {
+        if (xmlQuestionIDsItem is XmlElement) {
+          if (xmlQuestionIDsItem.name.local == "list") {
+            IDs.addAll(_idRegExp.allMatches(xmlQuestionIDsItem.text).map((match) => int.parse(match.group(0))));
+          } else if (xmlQuestionIDsItem.name.local == "range") {
+            IDs.addAll(_range(xmlQuestionIDsItem));
+          }
+        }
+      });
+
+      print(" * Level $level: ${IDs.length} questions$visible");
+    });
+  });
+}
+
 main() async {
   await injectCategoryNames();
+  await listTopics();
   injectDisabled();
   listFreeIDs();
 }

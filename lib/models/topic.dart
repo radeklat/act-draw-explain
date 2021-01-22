@@ -14,6 +14,7 @@ class Topic extends LocalizedItem {
   final Icon icon;
   final UnmodifiableMapView<int, Question> questions;
   final List<String> sources;
+  final Map<int, List<int>> packages;
 
   static RegExp _idRegExp = RegExp(r"[0-9]+");
 
@@ -25,6 +26,7 @@ class Topic extends LocalizedItem {
     this.color,
     this.icon,
     this.questions,
+    this.packages,
     this.sources = const [],
   }) : super(baseText);
 
@@ -64,27 +66,34 @@ class Topic extends LocalizedItem {
         .toList();
 
     HashMap<int, Question> topicQuestions = HashMap();
+    HashMap<int, List<int>> packages = HashMap();
     String baseText = xmlTopic.findElements("source").first.text;
     int id = LocalizedItem.idFromXmlElement(xmlTopic);
 
-    Function copyQuestion = (int questionID) {
+    Function copyQuestion = (int questionID, List<int> packageQuestionIDs) {
       assert(
         allQuestions.containsKey(questionID),
         "Question with ID '$questionID' in topic $id ($baseText) does not exist.",
       );
       topicQuestions[questionID] = allQuestions[questionID];
+      packageQuestionIDs.add(questionID);
     };
 
-    xmlTopic.findElements("question-ids").forEach((XmlElement xmlQuestionIDs) {
-      xmlQuestionIDs.descendants.forEach((XmlNode xmlQuestionIDsItem) {
+    xmlTopic.findElements("package-ids").forEach((XmlElement xmlPackage) {
+      int level = int.parse(xmlPackage.getAttribute("level"));
+      List<int> packageQuestionIDs = List();
+      xmlPackage.descendants.forEach((XmlNode xmlQuestionIDsItem) {
         if (xmlQuestionIDsItem is XmlElement) {
           if (xmlQuestionIDsItem.name.local == "list") {
-            _idRegExp.allMatches(xmlQuestionIDsItem.text).forEach((match) => copyQuestion(int.parse(match.group(0))));
+            _idRegExp
+                .allMatches(xmlQuestionIDsItem.text)
+                .forEach((match) => copyQuestion(int.parse(match.group(0)), packageQuestionIDs));
           } else if (xmlQuestionIDsItem.name.local == "range") {
-            _range(xmlQuestionIDsItem).forEach((questionID) => copyQuestion(questionID));
+            _range(xmlQuestionIDsItem).forEach((questionID) => copyQuestion(questionID, packageQuestionIDs));
           }
         }
       });
+      packages[level] = packageQuestionIDs;
     });
 
     return Topic(
@@ -93,6 +102,7 @@ class Topic extends LocalizedItem {
       color: colorByName(xmlTopic.getAttribute("color") ?? ""),
       icon: iconByName(xmlTopic.getAttribute("icon") ?? ""),
       questions: UnmodifiableMapView(topicQuestions),
+      packages: packages,
       sources: sources,
     );
   }

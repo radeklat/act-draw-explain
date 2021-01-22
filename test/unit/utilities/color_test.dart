@@ -21,7 +21,7 @@ void main() {
 
       test('accented colors with shade', () {
         expect(colorByName("redAccent200"), Colors.redAccent.shade200);
-        expect(colorByName("redAccent50"), Colors.redAccent.shade50);
+        expect(colorByName("redAccent100"), Colors.redAccent.shade100);
       });
 
       test('black shades', () {

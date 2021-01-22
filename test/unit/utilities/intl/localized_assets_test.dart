@@ -17,10 +17,10 @@ const String MOCK_DUPLICATE_TOPIC_XLIFF = """
   <?xml version='1.0' encoding='UTF-8'?>
   <xliff version="1.2"><file original="game topics"><body>
     <trans-unit id="4" color="amber" icon="movie">
-      <question-ids><list>81</list></question-ids><source>Top 20 IMDB Movies</source>
+      <package-ids level="1"><list>81</list></package-ids><source>Top 20 IMDB Movies</source>
     </trans-unit>
     <trans-unit id="4" color="amber" icon="movie">
-      <question-ids><list>81</list></question-ids><source>Top 20 IMDB Movies</source>
+      <package-ids level="1"><list>81</list></package-ids><source>Top 20 IMDB Movies</source>
     </trans-unit>
   </body></file></xliff>
 """;
