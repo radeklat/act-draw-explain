@@ -111,6 +111,7 @@ class Topic extends LocalizedItem {
           }
         }
       });
+      assert(!packages.containsKey(level), "Topic with ID $id ($baseText) contains level '$level' more than once.");
       packages[level] = packageQuestionIDs;
     });
 

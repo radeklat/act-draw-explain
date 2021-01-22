@@ -2,6 +2,7 @@
 import 'package:act_draw_explain/models/game/data.dart';
 import 'package:test/test.dart';
 
+import '../../utils/constants.dart';
 import '../../utils/game_data.dart';
 
 void main() {
@@ -53,6 +54,33 @@ void main() {
           reason: "Topic '$topic' contains no questions IDs",
         ),
       );
+    });
+
+    group('should have reasonable amount of questions visible for each language if enabled', () {
+      const int minCnt = 15;
+      const int maxCnt = 30;
+      Map<String, int> minCntExceptions = {"13/cs": 11};
+
+      AllLocales.forEach((locale) {
+        test(locale.toString(), () {
+          GameData.topics.values.where((topic) => !topic.isDisabled(locale)).forEach((topic) {
+            int topicMinCnt = minCntExceptions["${topic.id}/$locale"] ?? minCnt;
+            int topicLen = topic.length(locale);
+
+            expect(
+              topicLen,
+              greaterThanOrEqualTo(topicMinCnt),
+              reason: "Topic ${topic.id} ${topic.baseText} has less than $topicMinCnt questions visible.",
+            );
+
+            expect(
+              topicLen,
+              lessThanOrEqualTo(maxCnt),
+              reason: "Topic ${topic.id} ${topic.baseText} has more than $maxCnt questions visible.",
+            );
+          });
+        });
+      });
     });
   });
 }
