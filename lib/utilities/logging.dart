@@ -16,7 +16,7 @@ class Logger {
   static int _logLevel = WARNING;
   static Set<String> _blacklist = Set();
 
-  final String name;
+  final String? name;
 
   Logger([this.name]);
 

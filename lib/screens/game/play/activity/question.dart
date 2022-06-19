@@ -8,11 +8,11 @@ import 'activity_icon.dart';
 
 class QuestionWidget extends StatelessWidget {
   const QuestionWidget({
-    Key key,
-    @required this.activity,
-    @required this.countdownText,
-    @required this.questionVisible,
-    @required this.questionText,
+    Key? key,
+    required this.activity,
+    required this.countdownText,
+    required this.questionVisible,
+    required this.questionText,
   }) : super(key: key);
 
   final Activity activity;

@@ -44,8 +44,8 @@ class TiltEvent {
 
   TiltEvent(this.acc, this.gyro);
 
-  TiltDirection get direction {
-    TiltDirection tilt;
+  TiltDirection? get direction {
+    TiltDirection? tilt;
 
     List<int> gyroMoving = [_noChange(gyro.x), _inRange(gyro.y.abs(), 2, _MAX_VAL), _noChange(gyro.z)];
 
@@ -74,11 +74,10 @@ class TiltEvent {
 
 Logger _log = Logger("TiltEvent.detection");
 
-Stream<TiltEvent> tiltStream = accelerometerEvents
+Stream<TiltEvent?> tiltStream = accelerometerEvents
     .throttle(K_SENSORS_THROTTLE)
-    .where((event) => event != null)
     .combineLatest(
-      gyroscopeEvents.throttle(K_SENSORS_THROTTLE).where((event) => event != null),
+      gyroscopeEvents.throttle(K_SENSORS_THROTTLE),
       (AccelerometerEvent accelEvent, GyroscopeEvent gyroEvent) {
         var tilt = TiltEvent(accelEvent, gyroEvent);
         return (tilt.direction == null) ? null : tilt;

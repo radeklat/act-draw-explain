@@ -6,13 +6,13 @@ import 'package:provider/provider.dart';
 import '../../../../constants.dart';
 
 class BrushColorButton extends StatelessWidget {
-  final Function onPressed;
+  final VoidCallback? onPressed;
   final Color color;
 
   const BrushColorButton({
-    Key key,
-    @required this.color,
-    @required this.onPressed,
+    Key? key,
+    required this.color,
+    required this.onPressed,
   }) : super(key: key);
 
   @override
@@ -48,8 +48,8 @@ class BrushColorDialog extends StatelessWidget {
   final Function(Color) onChange;
 
   const BrushColorDialog({
-    Key key,
-    @required this.onChange,
+    Key? key,
+    required this.onChange,
   }) : super(key: key);
 
   Widget buildButton(BuildContext context, Color color) {

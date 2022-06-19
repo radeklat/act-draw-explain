@@ -13,11 +13,11 @@ class CountdownText extends StatefulWidget {
   }
 
   CountdownText({
-    Key key,
-    @required this.onFinished,
-    @required this.duration,
-    this.style,
-    Stopwatch stopwatch, // use external stopwatch if you want to keep the time in multiple components
+    Key? key,
+    required this.onFinished,
+    required this.duration,
+    required this.style,
+    Stopwatch? stopwatch, // use external stopwatch if you want to keep the time in multiple components
   })  : this._stopwatch = (stopwatch == null) ? defaultStopwatch : stopwatch,
         this._externalStopwatch = (stopwatch != null),
         super(key: key);
@@ -33,8 +33,8 @@ class CountdownText extends StatefulWidget {
 }
 
 class _CountdownTextState extends State<CountdownText> with SingleTickerProviderStateMixin {
-  StreamSubscription _stream;
-  Duration _remainingTime;
+  StreamSubscription? _stream;
+  Duration? _remainingTime;
   bool _disabled = false;
   static GameSounds gameSounds = GameSounds();
 
@@ -69,7 +69,7 @@ class _CountdownTextState extends State<CountdownText> with SingleTickerProvider
     return widget.duration - widget._stopwatch.elapsed + Duration(seconds: 1);
   }
 
-  void stop({bool isDisposing}) {
+  void stop({required bool isDisposing}) {
     _stream?.cancel();
 
     if (!isDisposing) {
@@ -90,7 +90,7 @@ class _CountdownTextState extends State<CountdownText> with SingleTickerProvider
   @override
   Widget build(BuildContext context) {
     return Text(
-      (_disabled) ? "" : _remainingTime.format(),
+      (_disabled || _remainingTime == null) ? "" : _remainingTime!.format(),
       style: widget.style,
     );
   }

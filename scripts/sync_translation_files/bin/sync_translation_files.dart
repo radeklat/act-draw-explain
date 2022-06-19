@@ -12,16 +12,18 @@ const Map<int, String> LEVEL_TO_PADDING_CHAR = {1: "#", 2: "=", 3: "-"};
 printHeading(String text, {int level = 1}) {
   int columns = (stdout.hasTerminal) ? stdout.terminalColumns : 120;
   int paddingLength = ((columns - text.length - 2) / 2).floor();
-  String paddingChar = LEVEL_TO_PADDING_CHAR[level];
+  String paddingChar = LEVEL_TO_PADDING_CHAR[level]??" ";
   String paddingLeft = "".padLeft(paddingLength, paddingChar);
   String paddingRight = "".padLeft(paddingLength + (text.length % 2), paddingChar);
   print("\n$paddingLeft $text $paddingRight\n");
 }
 
-Future<XmlDocument> loadXliffAsset(String type, [String locale]) async {
-  locale = (locale == null) ? "" : "/$locale";
+Future<XmlDocument> loadXliffAsset(String type, [String locale = ""]) async {
+  if (locale != "") {
+    locale = "/$locale";
+  }
   var filename = '$ASSETS_DIR/$type$locale.xliff';
-  return parse(await File("${Directory.current.path}/$filename").readAsString());
+  return XmlDocument.parse(await File("${Directory.current.path}/$filename").readAsString());
 }
 
 injectCategoryNames() async {
@@ -43,7 +45,7 @@ injectCategoryNames() async {
 
         var questionsXml = await loadXliffAsset(TYPE_QUESTIONS, languageCode);
         questionsXml.findAllElements("file").forEach((fileXml) {
-          fileXml.getAttributeNode("category").value = topicIdToName[fileXml.getAttribute("original")] ?? "";
+          fileXml.getAttributeNode("category")!.value = topicIdToName[fileXml.getAttribute("original")] ?? "";
         });
 
         questionFile.writeAsString(questionsXml.toXmlString());
@@ -66,7 +68,7 @@ injectDisabled() {
         Set<String> disabledTopicIDs = {};
         topicsXml.findAllElements("trans-unit").forEach((XmlElement topicXml) {
           if (topicXml.findAllElements("target").single.text == DISABLED_TRANSLATION) {
-            disabledTopicIDs.add(topicXml.getAttribute("id"));
+            disabledTopicIDs.add(topicXml.getAttribute("id")!);
           }
         });
 
@@ -98,7 +100,7 @@ listFreeIDs() {
     int maxID = 0;
     var documentXml = await loadXliffAsset(fileType);
     documentXml.findAllElements("trans-unit").forEach((topic) {
-      var id = int.parse(topic.getAttribute("id"));
+      var id = int.parse(topic.getAttribute("id")!);
       seenIDs.add(id);
       if (id > maxID) maxID = id;
     });
@@ -113,8 +115,8 @@ listFreeIDs() {
 }
 
 List<int> _range(XmlElement xmlRange) {
-  int min = int.parse(xmlRange.getAttribute("min"));
-  int max = int.parse(xmlRange.getAttribute("max"));
+  int min = int.parse(xmlRange.getAttribute("min")!);
+  int max = int.parse(xmlRange.getAttribute("max")!);
   return [for (var i = min; i <= max; i += 1) i];
 }
 RegExp _idRegExp = RegExp(r"[0-9]+");
@@ -124,7 +126,7 @@ listTopics() async {
 
   var topicsXml = await loadXliffAsset(TYPE_TOPICS);
   topicsXml.findAllElements("trans-unit").forEach((topic) {
-    var id = int.parse(topic.getAttribute("id"));
+    var id = int.parse(topic.getAttribute("id")!);
     printHeading("Package ID $id", level: 2);
     topic.findAllElements("package-ids").forEach((package) {
       var level = package.getAttribute("level");
@@ -133,7 +135,7 @@ listTopics() async {
       package.descendants.forEach((XmlNode xmlQuestionIDsItem) {
         if (xmlQuestionIDsItem is XmlElement) {
           if (xmlQuestionIDsItem.name.local == "list") {
-            IDs.addAll(_idRegExp.allMatches(xmlQuestionIDsItem.text).map((match) => int.parse(match.group(0))));
+            IDs.addAll(_idRegExp.allMatches(xmlQuestionIDsItem.text).map((match) => int.parse(match.group(0)!)));
           } else if (xmlQuestionIDsItem.name.local == "range") {
             IDs.addAll(_range(xmlQuestionIDsItem));
           }

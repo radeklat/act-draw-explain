@@ -68,7 +68,7 @@ class _TopicSelectionScreenState extends State<TopicSelectionScreen> {
 }
 
 class LoadingAnimation extends StatelessWidget {
-  const LoadingAnimation({Key key}) : super(key: key);
+  const LoadingAnimation({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +87,7 @@ class LoadingAnimation extends StatelessWidget {
 
 class AppBarPopupMenu extends StatelessWidget {
   const AppBarPopupMenu({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   void openFeedback(BuildContext context, FeedbackType feedbackType) async {

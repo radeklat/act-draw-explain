@@ -8,7 +8,7 @@ class EndGameScreen extends StatelessWidget {
   static const String ID = "end_game_screen";
   final GameResult lastGameResult;
 
-  const EndGameScreen({Key key, this.lastGameResult}) : super(key: key);
+  const EndGameScreen({Key? key, this.lastGameResult}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

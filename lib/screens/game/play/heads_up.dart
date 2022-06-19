@@ -23,7 +23,7 @@ class HeadsUpScreen extends StatefulWidget {
   static const String ID = "explain_screen";
   final NewGame newGame;
 
-  const HeadsUpScreen({Key key, @required this.newGame}) : super(key: key);
+  const HeadsUpScreen({Key? key, required this.newGame}) : super(key: key);
 
   @override
   _HeadsUpScreenState createState() => _HeadsUpScreenState();

@@ -14,7 +14,7 @@ description: A new Flutter application.
 version: 2.2.0+20
 
 environment:
-  sdk: ">=2.8.4 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 # `flutter pub outdated` to see what can be upgraded
 dependencies:
@@ -23,39 +23,39 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
-  shared_preferences: ^0.5.6+3
-  sprintf: ^5.0.0
-  auto_size_text: ^2.1.0
-  preferences: ^5.2.0
-  sensors: ">=0.4.1+10 <2.0.0"
-  stream_transform: ^1.2.0
-  wakelock: ^0.2.1+1
-  audioplayers: ^0.17.0
-  provider: ^4.0.5
-  vibration: ^1.2.4
-  firebase_core : ^0.5.2
-  firebase_crashlytics: ^0.2.3
-  firebase_analytics: ^6.2.0
+  shared_preferences: ^2.0.15
+  sprintf: ^6.0.0
+  auto_size_text: ^3.0.0
+  pref: ^2.6.0
+  sensors: ^2.0.3
+  stream_transform: ^2.0.0
+  wakelock: ^0.6.1+2
+  audioplayers: ^1.0.1
+  provider: ^6.0.3
+  vibration: ^1.7.4-nullsafety.0
+  firebase_core : ^1.18.0
+  firebase_crashlytics: ^2.8.2
+  firebase_analytics: ^9.1.10
   # https://pub.dev/packages/flutter_launcher_icons#book-guide
-  flutter_launcher_icons: ^0.8.1 # flutter pub run flutter_launcher_icons:main
-  url_launcher: ^5.4.5
-  package_info: ^0.4.0+17
-  device_info: ">=0.4.2+4 <2.0.0"
-  fluttertoast: ^7.1.1
-  equatable: ^1.1.1
-  collection: ^1.14.13
-  intl: ^0.16.1
-  xml: ^4.5.1
-  google_fonts: ^1.1.0
+  flutter_launcher_icons: ^0.9.3 # flutter pub run flutter_launcher_icons:main
+  url_launcher: ^6.1.3
+  package_info: ^2.0.2
+  device_info: ^2.0.3
+  fluttertoast: ^8.0.9
+  equatable: ^2.0.3
+  collection: ^1.16.0
+  intl: ^0.17.0
+  xml: ^5.3.1
+  google_fonts: ^3.0.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 #  flutter_driver:
 #    sdk: flutter
-  test: ^1.15.5
-  intl_utils: ^1.6.2
-  mockito: ^4.1.1
+  test: ^1.21.1
+  intl_utils: ^2.6.1
+  mockito: ^5.2.0
   sync_translation_files:
     path: scripts/sync_translation_files
 

@@ -22,12 +22,12 @@ class Topic extends LocalizedItem {
   Set<int> _questionIDsInDisabledPackages = Set();
 
   Topic({
-    this.id,
-    String baseText,
-    this.color,
-    this.icon,
-    this.questions,
-    this.packages,
+    required this.id,
+    required String baseText,
+    required this.color,
+    required this.icon,
+    required this.questions,
+    required this.packages,
     this.sources = const [],
   }) : super(baseText) {
     setEnabledPackages({1});  // TODO: Requires ability to buy packages.
@@ -53,7 +53,7 @@ class Topic extends LocalizedItem {
   }
 
   bool isDisabled(Locale locale) {
-    return super.isDisabled(locale) || _displayableQuestionIDs[locale].isEmpty;
+    return super.isDisabled(locale) || _displayableQuestionIDs[locale]!.isEmpty;
   }
 
   int length(Locale locale) {
@@ -61,16 +61,16 @@ class Topic extends LocalizedItem {
   }
 
   List<Question> shuffledQuestions(Locale locale) {
-    return _enabledQuestionIDs(locale).map((questionId) => questions[questionId]).toList()..shuffle();
+    return _enabledQuestionIDs(locale).map((questionId) => questions[questionId]!).toList()..shuffle();
   }
 
   Set<int> _enabledQuestionIDs(Locale locale) {
-    return _displayableQuestionIDs[locale].difference(_questionIDsInDisabledPackages);
+    return _displayableQuestionIDs[locale]!.difference(_questionIDsInDisabledPackages);
   }
 
   static List<int> _range(XmlElement xmlRange) {
-    int min = int.parse(xmlRange.getAttribute("min"));
-    int max = int.parse(xmlRange.getAttribute("max"));
+    int min = int.parse(xmlRange.getAttribute("min")!);
+    int max = int.parse(xmlRange.getAttribute("max")!);
     return [for (var i = min; i <= max; i += 1) i];
   }
 
@@ -79,7 +79,7 @@ class Topic extends LocalizedItem {
     List<String> sources = xmlTopic
         .findElements("attribution")
         .map(
-          (XmlElement attribution) => attribution.getAttribute("url"),
+          (XmlElement attribution) => attribution.getAttribute("url")!,
         )
         .toList();
 
@@ -93,19 +93,19 @@ class Topic extends LocalizedItem {
         allQuestions.containsKey(questionID),
         "Question with ID '$questionID' in topic $id ($baseText) does not exist.",
       );
-      topicQuestions[questionID] = allQuestions[questionID];
+      topicQuestions[questionID] = allQuestions[questionID]!;
       packageQuestionIDs.add(questionID);
     };
 
     xmlTopic.findElements("package-ids").forEach((XmlElement xmlPackage) {
-      int level = int.parse(xmlPackage.getAttribute("level"));
-      List<int> packageQuestionIDs = List();
+      int level = int.parse(xmlPackage.getAttribute("level")!);
+      List<int> packageQuestionIDs = List.empty();
       xmlPackage.descendants.forEach((XmlNode xmlQuestionIDsItem) {
         if (xmlQuestionIDsItem is XmlElement) {
           if (xmlQuestionIDsItem.name.local == "list") {
             _idRegExp
                 .allMatches(xmlQuestionIDsItem.text)
-                .forEach((match) => copyQuestion(int.parse(match.group(0)), packageQuestionIDs));
+                .forEach((match) => copyQuestion(int.parse(match.group(0)!), packageQuestionIDs));
           } else if (xmlQuestionIDsItem.name.local == "range") {
             _range(xmlQuestionIDsItem).forEach((questionID) => copyQuestion(questionID, packageQuestionIDs));
           }

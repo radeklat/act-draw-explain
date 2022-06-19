@@ -14,7 +14,7 @@ class CountdownScreen extends StatelessWidget {
   final NewGame newGame;
   static GameSounds gameSounds = GameSounds();
 
-  const CountdownScreen({Key key, this.newGame}) : super(key: key);
+  const CountdownScreen({Key? key, this.newGame}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

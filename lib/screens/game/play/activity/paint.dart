@@ -73,8 +73,8 @@ class MyPainter extends CustomPainter {
 
 class PaintWidget extends StatefulWidget {
   const PaintWidget({
-    Key key,
-    @required this.countdownText,
+    Key? key,
+    required this.countdownText,
   }) : super(key: key);
 
   final CountdownText countdownText;

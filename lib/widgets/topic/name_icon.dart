@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 
 class TopicNameIcon extends StatelessWidget {
   const TopicNameIcon({
-    Key key,
-    @required this.foregroundColor,
-    @required this.topic,
+    Key? key,
+    required this.foregroundColor,
+    required this.topic,
   }) : super(key: key);
 
   final Color foregroundColor;
@@ -40,10 +40,10 @@ class TopicNameIcon extends StatelessWidget {
               child: Center(
                 child: AutoSizeText(
                   topic.text(Localizations.localeOf(context)),
-                  style: Theme.of(context).textTheme.button.copyWith(color: foregroundColor),
+                  style: Theme.of(context).textTheme.button!.copyWith(color: foregroundColor),
                   textAlign: TextAlign.center,
                   maxLines: 3,
-                  minFontSize: Theme.of(context).textTheme.overline.fontSize,
+                  minFontSize: Theme.of(context).textTheme.overline!.fontSize!,
                   overflow: TextOverflow.fade,
                   wrapWords: false,
                 ),

@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.VIBRATE"/>
     <application
-        android:name="io.flutter.app.FlutterApplication"
+        android:name="io.flutter.embedding.android.FlutterApplication"
         android:label="@string/title"
         android:icon="@mipmap/launcher_icon">
         <activity

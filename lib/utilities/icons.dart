@@ -680,7 +680,7 @@ const Map<String, Icon> _STRING_TO_ICON = {
   "picture_in_picture": Icon(Icons.picture_in_picture),
   "picture_in_picture_alt": Icon(Icons.picture_in_picture_alt),
   "pie_chart": Icon(Icons.pie_chart),
-  "pie_chart_outlined": Icon(Icons.pie_chart_outlined),
+  "pie_chart_outlined": Icon(Icons.pie_chart_outline),
   "pin_drop": Icon(Icons.pin_drop),
   "place": Icon(Icons.place),
   "play_arrow": Icon(Icons.play_arrow),
@@ -993,6 +993,6 @@ const Map<String, Icon> _STRING_TO_ICON = {
   "zoom_out_map": Icon(Icons.zoom_out_map),
 };
 
-Icon iconByName(String name) {
+Icon? iconByName(String name) {
   return _STRING_TO_ICON[name];
 }

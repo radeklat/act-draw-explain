@@ -9,31 +9,30 @@ import 'package:act_draw_explain/models/topic.dart';
 import 'package:act_draw_explain/utilities/vibrations.dart';
 import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
-import 'package:flutter/foundation.dart';
 
 class ScoreController {
   final Topic topic;
   final Locale locale;
-  final Function(String, Activity) onNextQuestion;
-  final Function(GameResult) onGameEnd;
-  final Function(int) setNewScore;
-  final Function(Topic, Question, Duration, QuestionState) logQuestion;
+  final Function(String, Activity)? onNextQuestion;
+  final Function(GameResult)? onGameEnd;
+  final Function(int)? setNewScore;
+  final Function(Topic, Question, Duration, QuestionState)? logQuestion;
 
   final Random _random = Random();
-  List<Question> _shuffledQuestions;
-  List<Activity> _activities;
-  Question _currentQuestion;
+  late List<Question> _shuffledQuestions;
+  late List<Activity> _activities;
+  late Question _currentQuestion;
   Stopwatch _stopwatch = Stopwatch();
   int _score = 0;
 
-  int _maxQuestions;
+  late int _maxQuestions;
 
   static GameSounds gameSounds = GameSounds();
 
   ScoreController({
-    @required this.topic,
-    @required this.locale,
-    @required activities,
+    required this.topic,
+    required this.locale,
+    required activities,
     this.onNextQuestion,
     this.onGameEnd,
     this.setNewScore,
@@ -62,7 +61,7 @@ class ScoreController {
 
   void endGame() => _endGame();
 
-  void _endGame({int newScore}) {
+  void _endGame({int? newScore}) {
     bool timeOut = false;
     int questionsGuessed = _maxQuestions - _shuffledQuestions.length;
 
@@ -80,7 +79,7 @@ class ScoreController {
     onGameEnd?.call(GameResult(_maxQuestions, questionsGuessed, newScore, timeOut));
   }
 
-  void nextQuestion({@required bool passed}) {
+  void nextQuestion({required bool passed}) {
     int newScore = (passed) ? _score + 1 : _score;
     Question newQuestion;
 

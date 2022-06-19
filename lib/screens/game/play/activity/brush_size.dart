@@ -6,13 +6,13 @@ import 'package:provider/provider.dart';
 import '../../../../constants.dart';
 
 class BrushSizeButton extends StatelessWidget {
-  final Function onPressed;
+  final VoidCallback? onPressed;
   final double size;
 
   const BrushSizeButton({
-    Key key,
-    @required this.onPressed,
-    @required this.size,
+    Key? key,
+    required this.onPressed,
+    required this.size,
   }) : super(key: key);
 
   @override
@@ -37,8 +37,8 @@ class BrushSizeDialog extends StatelessWidget {
   final Function(double) onChange;
 
   const BrushSizeDialog({
-    Key key,
-    @required this.onChange,
+    Key? key,
+    required this.onChange,
   }) : super(key: key);
 
   Widget buildButton(BuildContext context, double size) {

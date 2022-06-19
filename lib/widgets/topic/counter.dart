@@ -1,13 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TopicCounter extends StatelessWidget {
   const TopicCounter({
-    Key key,
-    @required this.valueTop,
-    @required this.valueBottom,
-    @required this.foregroundColor,
-    this.alignment,
+    Key? key,
+    required this.valueTop,
+    required this.valueBottom,
+    required this.foregroundColor,
+    required this.alignment,
   }) : super(key: key);
 
   final String valueTop;
@@ -18,7 +17,7 @@ class TopicCounter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final TextStyle style =
-        Theme.of(context).textTheme.overline.copyWith(fontWeight: FontWeight.w400, color: foregroundColor);
+        Theme.of(context).textTheme.overline!.copyWith(fontWeight: FontWeight.w400, color: foregroundColor);
     return Container(
       alignment: alignment,
       padding: EdgeInsets.all(5),

@@ -4,7 +4,7 @@ import 'package:xml/xml.dart';
 class Question extends LocalizedItem {
   final int id;
 
-  Question({this.id, String baseText}) : super(baseText);
+  Question({required this.id, required String baseText}) : super(baseText);
 
   /// questionJson is a "trans-unit" from "topics.xliff"
   static Question fromXmlElement(XmlElement xmlQuestion) {

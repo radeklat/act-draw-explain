@@ -1,5 +1,4 @@
 import 'package:flutter/animation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/scheduler.dart';
 
@@ -7,11 +6,11 @@ import '../constants.dart';
 
 class AnswerColorAnimation {
   ColorTween _colorTween = ColorTween(end: K_COLOR_BACKGROUND);
-  AnimationController _animationController;
-  Animation _animation;
+  AnimationController? _animationController;
+  late Animation _animation;
   Function(Color) listener;
 
-  AnswerColorAnimation({@required TickerProvider vsync, @required this.listener}) {
+  AnswerColorAnimation({required TickerProvider vsync, required this.listener}) {
     _animationController = AnimationController(
       duration: K_DURATION_PASS_FAIL_ANIMATION,
       vsync: vsync,
@@ -20,12 +19,15 @@ class AnswerColorAnimation {
         listener(_animation.value);
       });
 
-    _animation = _colorTween.animate(_animationController);
+    _animation = _colorTween.animate(_animationController!);
   }
 
   void startAnimation(bool passed) {
+    if (_animationController != null) {
+      throw Exception("Animation cannot start because it has been disposed.");
+    }
     _colorTween.begin = (passed) ? K_COLOR_PASS : K_COLOR_FAIL;
-    _animationController.forward(from: 0);
+    _animationController!.forward(from: 0);
   }
 
   void dispose() {

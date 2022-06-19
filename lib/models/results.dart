@@ -9,7 +9,7 @@ class TopicBestScore extends ChangeNotifier {
     return sprintf(keyPattern, [topicID]);
   }
 
-  void record({@required int topicID, @required int newScore}) {
+  void record({required int topicID, required int newScore}) {
     String key = _getKey(topicID);
     int bestScore = PrefService.getInt(key) ?? 0;
 
@@ -19,7 +19,7 @@ class TopicBestScore extends ChangeNotifier {
     }
   }
 
-  int get({@required int topicID}) {
+  int get({required int topicID}) {
     return PrefService.getInt(_getKey(topicID));
   }
 }

@@ -23,7 +23,7 @@ class Analytics {
     QuestionState state,
     Duration timeLimit,
     String gameType, [
-    Activity activity,
+    Activity? activity,
   ]) async {
     await analytics.logEvent(
       name: 'playedQuestion',

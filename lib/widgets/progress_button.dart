@@ -8,15 +8,15 @@ class ProgressButton extends StatelessWidget {
   final Color color;
   final Function(bool) onPressed;
   final bool value;
-  final AutoSizeGroup buttonsGroup;
+  final AutoSizeGroup? buttonsGroup;
 
   const ProgressButton({
-    Key key,
-    @required this.title,
-    @required this.iconData,
-    @required this.color,
-    @required this.onPressed,
-    this.value,
+    Key? key,
+    required this.title,
+    required this.iconData,
+    required this.color,
+    required this.onPressed,
+    required this.value,
     this.buttonsGroup,
   }) : super(key: key);
 
@@ -37,11 +37,11 @@ class ProgressButton extends StatelessWidget {
               SizedBox(height: 8,),
               AutoSizeText(
                 title,
-                maxFontSize: Theme.of(context).textTheme.button.fontSize,
-                minFontSize: Theme.of(context).textTheme.bodyText1.fontSize,
+                maxFontSize: Theme.of(context).textTheme.button!.fontSize!,
+                minFontSize: Theme.of(context).textTheme.bodyText1!.fontSize!,
                 presetFontSizes: [
-                  Theme.of(context).textTheme.button.fontSize,
-                  Theme.of(context).textTheme.bodyText1.fontSize,
+                  Theme.of(context).textTheme.button!.fontSize!,
+                  Theme.of(context).textTheme.bodyText1!.fontSize!,
                 ],
                 textAlign: TextAlign.center,
                 maxLines: 2,

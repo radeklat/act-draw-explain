@@ -10,12 +10,12 @@ import '../logging.dart';
 class AssetLoader {
   static const String ASSETS_DIR = "assets/data";
 
-  Future<String> loadString(String type, [String locale]) async {
+  Future<String> loadString(String type, [String locale = ""]) async {
     return await rootBundle.loadString(languageFile(type, locale));
   }
 
-  String languageFile(String type, [String locale]) {
-    locale = (locale == null) ? "" : "/$locale";
+  String languageFile(String type, [String locale = ""]) {
+    locale = (locale == "") ? locale : "/$locale";
     return '$ASSETS_DIR/$type$locale.xliff';
   }
 }
@@ -29,7 +29,7 @@ class TranslationsLoader {
 
   /// Returns XLIFF document as JSON in Badgerfish Convention
   /// See: http://wiki.open311.org/JSON_and_XML_Conversion/
-  Future<XmlDocument> _loadXliffAsset(String type, [String locale]) async {
+  Future<XmlDocument> _loadXliffAsset(String type, [String locale = ""]) async {
     DateTime start = DateTime.now();
     var log = _log.subLogger(type).subLogger(locale);
     String xmlContent = await assetFileLoader.loadString(type, locale);
@@ -77,13 +77,13 @@ class TranslationsLoader {
       Set<String> seenFileOriginals = {};
 
       xmlLocalizedItem.findAllElements("file").forEach((XmlElement xmlFile) {
-        String transItemLanguageCode = xmlFile.getAttribute("target-language");
+        String transItemLanguageCode = xmlFile.getAttribute("target-language")!;
         langLog.when(transItemLanguageCode != languageCode).error(
               "<trans-item target-language='$transItemLanguageCode'> does not match "
               "the file language code",
             );
 
-        String original = xmlFile.getAttribute("original");
+        String original = xmlFile.getAttribute("original")!;
         langLog.when(seenFileOriginals.contains(original)).error(
               "<file original='$original'> appear in the $itemType/$languageCode file more than once",
             );
@@ -91,7 +91,7 @@ class TranslationsLoader {
 
         xmlFile.findAllElements("trans-unit").forEach(
           (XmlElement xmlItem) {
-            items[idFromXmlElement(xmlItem)].updateWithLocalizedXmlElement(
+            items[idFromXmlElement(xmlItem)]!.updateWithLocalizedXmlElement(
               xmlItem,
               languageCodeOnlyLocaleFromString(languageCode),
             );

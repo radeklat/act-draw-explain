@@ -4,9 +4,9 @@ Locale languageCodeOnlyLocaleFromString(String locale) {
   return Locale(locale.split("_")[0]);
 }
 
-bool localeLanguageCodeIn(Locale locale, List<Locale> locales) {
-  for (int i = 0; i < locales.length; i++) {
-    if (locale.languageCode == locales[i].languageCode) return true;
+bool localeLanguageCodeIn(Locale locale, Iterable<Locale> locales) {
+  for (final element in locales) {
+    if (locale.languageCode == element.languageCode) return true;
   }
 
   return false;

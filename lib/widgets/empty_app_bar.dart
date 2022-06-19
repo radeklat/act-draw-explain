@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class EmptyAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Color backgroundColor;
 
-  const EmptyAppBar({@required this.backgroundColor});
+  const EmptyAppBar({required this.backgroundColor});
 
   @override
   Widget build(BuildContext context) {

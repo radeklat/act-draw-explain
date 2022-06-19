@@ -2,12 +2,14 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:act_draw_explain/constants.dart';
+import 'package:act_draw_explain/models/game/new.dart';
+import 'package:act_draw_explain/models/game/result.dart';
 import 'package:act_draw_explain/models/results.dart';
 import 'package:act_draw_explain/screens/about.dart';
 import 'package:act_draw_explain/screens/crash.dart';
 import 'package:act_draw_explain/screens/game/end_game.dart';
 import 'package:act_draw_explain/screens/game/play/activity/paint.dart';
-import 'file:///D:/projekty/flutter/act-draw-explain/lib/screens/game/play/activity/activity.dart';
+import 'package:act_draw_explain/screens/game/play/activity/activity.dart';
 import 'package:act_draw_explain/screens/game/play/countdown.dart';
 import 'package:act_draw_explain/screens/game/play/heads_up.dart';
 import 'package:act_draw_explain/screens/game/start_game.dart';
@@ -36,7 +38,7 @@ main() async {
 
   await Firebase.initializeApp();
   FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(kReleaseMode);
-  FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);  // To enable in debug mode
+  FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true); // To enable in debug mode
   FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
   ErrorWidget.builder = (FlutterErrorDetails details) => CrashScreen(details: details);
   await PrefService.init();
@@ -65,10 +67,10 @@ class MyApp extends StatefulWidget {
   static AppLocalizationDelegate localizationsDelegate = AppLocalizationDelegate();
 
   static void setLocale(BuildContext context, Locale newLocale) {
-    _MyAppState state = context.findAncestorStateOfType<_MyAppState>();
+    _MyAppState? state = context.findAncestorStateOfType<_MyAppState>();
 
     // ignore: invalid_use_of_protected_member
-    state.setState(() {
+    state?.setState(() {
       state.locale = newLocale;
     });
   }
@@ -78,7 +80,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  Locale locale;
+  Locale? locale;
 
   @override
   Widget build(BuildContext context) {
@@ -99,7 +101,7 @@ class _MyAppState extends State<MyApp> {
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
-        localeResolutionCallback: (Locale deviceLocale, Iterable<Locale> supportedLocales) {
+        localeResolutionCallback: (Locale? deviceLocale, Iterable<Locale> supportedLocales) {
           Locale requestedLocale = this.locale ??
               languageCodeOnlyLocaleFromString(
                 PrefService.getString(K.settings.languageCode.key) ?? deviceLocale.toString(),
@@ -122,17 +124,17 @@ class _MyAppState extends State<MyApp> {
             builder: (context) {
               switch (settings.name) {
                 case HeadsUpScreen.ID:
-                  return HeadsUpScreen(newGame: arguments);
+                  return HeadsUpScreen(newGame: arguments as NewGame);
                 case ActivityScreen.ID:
-                  return ActivityScreen(newGame: arguments);
+                  return ActivityScreen(newGame: arguments as NewGame);
                 case StartGameScreen.ID:
-                  return StartGameScreen(newGame: arguments);
+                  return StartGameScreen(newGame: arguments as NewGame);
                 case TopicSelectionScreen.ID:
                   return TopicSelectionScreen();
                 case EndGameScreen.ID:
-                  return EndGameScreen(lastGameResult: arguments);
+                  return EndGameScreen(lastGameResult: arguments as GameResult);
                 case CountdownScreen.ID:
-                  return CountdownScreen(newGame: arguments);
+                  return CountdownScreen(newGame: arguments as NewGame);
                 case SettingsScreen.ID:
                   return SettingsScreen(
                     supportedLocales: MyApp.localizationsDelegate.supportedLocales,
@@ -142,7 +144,9 @@ class _MyAppState extends State<MyApp> {
                 case AboutScreen.ID:
                   return AboutScreen();
               }
-              return null;
+              Logger("main").critical("Unknown screen ID '${settings.name}' used in route generator. "
+                  "Falling back to '${TopicSelectionScreen.ID}'.");
+              return TopicSelectionScreen();
             },
           );
         },

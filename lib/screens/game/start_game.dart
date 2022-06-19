@@ -8,7 +8,7 @@ class StartGameScreen extends StatelessWidget {
   static const String ID = "start_game_screen";
   final NewGame newGame;
 
-  const StartGameScreen({Key key, this.newGame}) : super(key: key);
+  const StartGameScreen({Key? key, this.newGame}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

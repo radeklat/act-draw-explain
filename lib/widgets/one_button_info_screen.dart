@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 class OneButtonInfoScreen extends StatelessWidget {
   final String text;
   final String buttonText;
-  final Function onPressed;
+  final VoidCallback? onPressed;
 
   const OneButtonInfoScreen({
-    Key key,
-    @required this.text,
-    @required this.buttonText,
-    @required this.onPressed,
+    Key? key,
+    required this.text,
+    required this.buttonText,
+    required this.onPressed,
   }) : super(key: key);
 
   @override

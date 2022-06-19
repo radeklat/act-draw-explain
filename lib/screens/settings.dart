@@ -15,7 +15,7 @@ class SettingsScreen extends StatefulWidget {
   static const String ID = "settings_screen";
   final List<Locale> supportedLocales;
 
-  const SettingsScreen({Key key, this.supportedLocales}) : super(key: key);
+  const SettingsScreen({Key? key, this.supportedLocales}) : super(key: key);
 
   @override
   _SettingsScreenState createState() => _SettingsScreenState();

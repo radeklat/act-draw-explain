@@ -7,7 +7,7 @@ class GameVibrations {
   static const MethodChannel _channel = MethodChannel('vibration');
   static bool hasVibrator = false;
 
-  static Future<void> _vibrate({
+  static Future<void>? _vibrate({
     int duration = 500,
     List<int> pattern = const [],
     int repeat = -1,

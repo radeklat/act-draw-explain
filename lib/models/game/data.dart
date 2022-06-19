@@ -13,7 +13,7 @@ class GameData {
   static HashMap<int, Question> questions = HashMap();
   static Logger _log = Logger("GameData");
 
-  static Future<bool> initialize(List<Locale> supportedLocales, [AssetLoader assetLoader]) async {
+  static Future<bool> initialize(List<Locale> supportedLocales, [AssetLoader? assetLoader]) async {
     List<String> supportedLanguageCodes = supportedLocales.map((locale) => locale.languageCode).toList();
     TranslationsLoader translationsLoader = TranslationsLoader(supportedLanguageCodes, assetLoader ?? AssetLoader());
 

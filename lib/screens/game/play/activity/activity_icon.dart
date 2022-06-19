@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 
 class ActivityIcon extends StatelessWidget {
   const ActivityIcon({
-    Key key,
-    @required this.activity,
+    Key? key,
+    required this.activity,
     this.reversed = false,
   }) : super(key: key);
 

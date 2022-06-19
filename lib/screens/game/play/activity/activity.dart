@@ -24,7 +24,7 @@ class ActivityScreen extends StatefulWidget {
   static const String ID = "activity_screen";
   final NewGame newGame;
 
-  const ActivityScreen({Key key, @required this.newGame}) : super(key: key);
+  const ActivityScreen({Key? key, required this.newGame}) : super(key: key);
 
   @override
   _ActivityScreenState createState() => _ActivityScreenState();

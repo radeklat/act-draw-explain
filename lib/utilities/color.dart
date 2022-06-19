@@ -81,19 +81,19 @@ const Set<String> _SIMPLE_COLORS = {"black", "white"};
 
 RegExp _colorRegex = RegExp(r"(?<name>[a-zA-Z]+)(?<shade>[0-9]*)");
 
-Color colorByName(String name) {
-  RegExpMatch match = _colorRegex.firstMatch(name);
+Color? colorByName(String name) {
+  RegExpMatch? match = _colorRegex.firstMatch(name);
 
   if (match == null) return null;
 
-  String colorName = match.namedGroup("name");
+  String colorName = match.namedGroup("name")!;
   int defaultShade = (colorName.endsWith("Accent")) ? 200 : 500;
-  int colorShade = (match.namedGroup("shade") == "") ? defaultShade : int.parse(match.namedGroup("shade"));
+  int colorShade = (match.namedGroup("shade") == "") ? defaultShade : int.parse(match.namedGroup("shade")!);
 
   if (_SIMPLE_COLORS.contains(colorName)) {
     return _STRING_TO_COLOR[name];
   }
 
-  ColorSwatch baseColor = _STRING_TO_COLOR_SWATCH[colorName];
+  ColorSwatch? baseColor = _STRING_TO_COLOR_SWATCH[colorName];
   return (baseColor == null) ? null : baseColor[colorShade];
 }

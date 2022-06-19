@@ -10,8 +10,8 @@ class TextCard extends StatelessWidget {
   final List<Widget> children;
 
   const TextCard({
-    Key key,
-    this.children,
+    Key? key,
+    required this.children,
   }) : super(key: key);
 
   @override
@@ -29,13 +29,13 @@ class TextCard extends StatelessWidget {
 class TextTitle extends StatelessWidget {
   final String text;
 
-  const TextTitle(this.text, {Key key}) : super(key: key);
+  const TextTitle(this.text, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 0, bottom: 16),
-      child: Text(text, style: Theme.of(context).textTheme.headline5.copyWith(color: Theme.of(context).accentColor)),
+      child: Text(text, style: Theme.of(context).textTheme.headline5!.copyWith(color: Theme.of(context).accentColor)),
     );
   }
 }
@@ -43,7 +43,7 @@ class TextTitle extends StatelessWidget {
 class TextSubtitle extends StatelessWidget {
   final String text;
 
-  const TextSubtitle(this.text, {Key key}) : super(key: key);
+  const TextSubtitle(this.text, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +57,7 @@ class TextSubtitle extends StatelessWidget {
 class TextBody1 extends StatelessWidget {
   final String text;
 
-  const TextBody1(this.text, {Key key}) : super(key: key);
+  const TextBody1(this.text, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -71,13 +71,13 @@ class TextBody1 extends StatelessWidget {
 class TextBodyLink extends StatelessWidget {
   final String text;
   final String url;
-  final TextStyle baseStyle;
+  final TextStyle? baseStyle;
 
-  const TextBodyLink({Key key, @required this.text, @required this.url, this.baseStyle}) : super(key: key);
+  const TextBodyLink({Key? key, required this.text, required this.url, this.baseStyle}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    TextStyle style = baseStyle ?? Theme.of(context).textTheme.bodyText1;
+    TextStyle style = baseStyle ?? Theme.of(context).textTheme.bodyText1!;
     style = style.copyWith(color: Colors.lightBlue);
 
     return Padding(
@@ -94,10 +94,10 @@ class TextBodyLink extends StatelessWidget {
 }
 
 class TextButton extends StatelessWidget {
-  final Function onPressed;
+  final VoidCallback? onPressed;
   final String text;
 
-  const TextButton({Key key, this.onPressed, this.text}) : super(key: key);
+  const TextButton({Key? key, this.onPressed, required this.text}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
